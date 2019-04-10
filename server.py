@@ -39,7 +39,8 @@ def headlines_list():
     """Retrieve list of all headlines"""
 
     payload = {
-        'country': 'us'
+        'country': 'us',
+        'category': 'science'
     }
 
     response = requests.get(HEADLINES_URL, 

@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
 import json
+from beautiful_soup import *
 
 
 #Set up flask object

@@ -8,59 +8,58 @@ saved_articles = ['https://www.cbssports.com/college-basketball/news/virginia-vs
 
 # test_p_str = '<p><a href="https://www.foxnews.com/science/four-legged-whale-that-lived-40-million-years-ago-found-off-coast-in-peru" target="_blank"><strong>FOUR-LEGGED WHALE THAT LIVED 40 MILLION YEARS AGO FOUND OFF COAST IN PERU</strong></a></p>'
 
-def find_text(string, start_from):
+def find_text(html_string, start_from):
     # print('find_text string', string)
     try:
-        start_index = string.index('>', start_from) + 1
-        stop_index = string.index('<', start_index)
-        result = string[start_index:stop_index]
-        # print('result type', type(result))
-        # print('result in find_text', result.strip(), 'end of result')
-        # print('find_text result', result)
+        start_index = html_string.index('>', start_from) + 1
+        stop_index = html_string.index('<', start_index)
+        result = html_string[start_index:stop_index]
         return result
     except ValueError:
         return ""
 
 
-def format_p_string(string):
-    """clean formatting of p eelemt strings from beautiful soup"""
-    result_str = ''
+def format_p_string(html_string):
+    """clean formatting of p element strings from beautiful soup"""
+    text_str = ''
     counter = -1
-    for character in string:
+    for character in html_string:
         counter+=1
-        # print(character)
         if character == '>':
-            # print('inside if loop', counter)
-            result = find_text(string, counter)
-            # print('result', result)
-            result_str+=result
-
-    return result_str
-
-def extract_p_tags(url):
-    """Extract all p elements from given url"""
+            text = find_text(html_string, counter)
+            text_str+=text
     
+    formatted_str = re.sub(' +', ' ', text_str).replace(
+                                    '\n', '').replace('&amp;apos', "'")
+    return formatted_str
+
+def fetch_article(url):
+    """given the url, fetch the news article"""
+
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
-    text = []
+    return soup
+
+def extract_p_tags(soup):
+    """Extract all p elements and join together into one string"""
+    
+    text_list = []
     for tag in soup.find_all('p'):
-        # print('list elements',tag )
-        text.append(str(tag))
-    text_string = " ".join(text)
-    # text_string.rstrip()
-    # print('text_string', type(text_string))    
-    formatted = format_p_string(text_string)
-    result = re.sub(' +', ' ', formatted)
-    result = re.sub('\n', '', result)
-    result = re.sub('&amp;apos', "'", result)
-    print(result)
-    return result
+        text_list.append(str(tag))
+    html_string = " ".join(text_list)   
+
+    return html_string
+
+def get_body_from_article(url):
+    bs = fetch_article(url)
+    full_html_str = extract_p_tags(bs)
+    article_body = format_p_string(full_html_str)
+    return article_body
 
 counter = 0
 for article in saved_articles:
     counter+=1
-    # if counter==3:
-    print('\n', 'ARTICLE', counter, '\n')
-    print('url', article, '\n')
-    extract_p_tags(article)
+    if counter==2:
+        article_body = get_body_from_article(article)
+        print(article_body)
 

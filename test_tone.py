@@ -1,8 +1,7 @@
 import json
 import os
-
+from operator import itemgetter
 from watson_developer_cloud import ToneAnalyzerV3
-from beautiful_soup import *
 
 IBM_KEY = os.environ['IBM_API_KEY']
 IBM_URL = os.environ['IBM_URL']
@@ -14,8 +13,6 @@ tone_analyzer = ToneAnalyzerV3(
     url=IBM_URL
 )
 
-article_body = get_article_body('https://www.foxnews.com/opinion/dan-gainor-media-concede-theres-a-border-crisis-but-wont-give-trump-credit-for-getting-mexico-to-act')
-
 def analyze_tone(text):
     """Analyze sentimental tone of text"""
 
@@ -24,10 +21,34 @@ def analyze_tone(text):
                                        sentences=False)
     return tone_analysis.get_result()
 
+ibm_result_sample = {
+  "document_tone": {
+    "tones": [
+      {
+        "score": 0.563865,
+        "tone_id": "sadness",
+        "tone_name": "Sadness"
+      },
+      {
+        "score": 0.788541,
+        "tone_id": "tentative",
+        "tone_name": "Tentative"
+      },
+      {
+        "score": 0.773136,
+        "tone_id": "analytical",
+        "tone_name": "Analytical"
+      }
+    ]
+  }
+}
 
-ibm_result = analyze_tone(article_body)
+def extract_tones(ibm_result_json):
+    """extract tone and their values from IBM json results"""
 
-print(ibm_result)
+    tones_list = ibm_result_json['document_tone']['tones']
+    sorted_tones = sorted(tones_list, key=itemgetter('score'), reverse=True) 
+    print(sorted_tones)
+    return sorted_tones
 
-print(json.dumps(ibm_result, indent=2))
-
+extract_tones(ibm_result_sample)

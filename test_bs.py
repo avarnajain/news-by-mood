@@ -43,7 +43,7 @@ def extract_p_tags(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
     text = []
-    for tag in soup.find_all('p', class_='*body'):
+    for tag in soup.find_all('p'):
         # print('list elements',tag )
         text.append(str(tag))
     text_string = " ".join(text)
@@ -59,8 +59,8 @@ def extract_p_tags(url):
 counter = 0
 for article in saved_articles:
     counter+=1
-    if counter==3:
-        print('\n', 'ARTICLE', counter, '\n')
-        print('url', article, '\n')
-        extract_p_tags(article)
+    # if counter==3:
+    print('\n', 'ARTICLE', counter, '\n')
+    print('url', article, '\n')
+    extract_p_tags(article)
 

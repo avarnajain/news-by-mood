@@ -19,7 +19,8 @@ def analyze_tone(text):
     tone_analysis = tone_analyzer.tone(tone_input={"text":text},
                                        content_type='application/json',
                                        sentences=False)
-    return tone_analysis.get_result()
+    tones_json = tone_analysis.get_result()
+    return tones_json
 
 ibm_result_sample = {
   "document_tone": {
@@ -43,13 +44,12 @@ ibm_result_sample = {
   }
 }
 
-def extract_tones(ibm_result_json):
-    """extract tones in order of their score from IBM json results"""
+def extract_tones(tones_json):
+    """list of tones in order of their score from IBM json results"""
 
-    tones_dict = ibm_result_json['document_tone']['tones']
-    sorted_tones = sorted(tones_dict, key=itemgetter('score'), reverse=True)
-    tones_list = [item['tone_id'] for item in sorted_tones] 
-    print(tones_list)
-    return tones_list
+    tones_list = tones_json['document_tone']['tones']
+    sorted_tones = sorted(tones_list, key=itemgetter('score'), reverse=True)
+    tones = [item['tone_id'] for item in sorted_tones] 
+    return tones
 
 extract_tones(ibm_result_sample)

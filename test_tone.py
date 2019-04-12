@@ -44,11 +44,12 @@ ibm_result_sample = {
 }
 
 def extract_tones(ibm_result_json):
-    """extract tone and their values from IBM json results"""
+    """extract tones in order of their score from IBM json results"""
 
-    tones_list = ibm_result_json['document_tone']['tones']
-    sorted_tones = sorted(tones_list, key=itemgetter('score'), reverse=True) 
-    print(sorted_tones)
-    return sorted_tones
+    tones_dict = ibm_result_json['document_tone']['tones']
+    sorted_tones = sorted(tones_dict, key=itemgetter('score'), reverse=True)
+    tones_list = [item['tone_id'] for item in sorted_tones] 
+    print(tones_list)
+    return tones_list
 
 extract_tones(ibm_result_sample)

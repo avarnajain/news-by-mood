@@ -6,6 +6,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
 import json
 from beautiful_soup import *
+from model import connect_to_db
 
 
 #Set up flask object
@@ -56,6 +57,7 @@ def headlines_list():
 
 if __name__ == "__main__":
     app.debug = True
+    # connect_to_db(app)
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     DebugToolbarExtension(app)
     app.run(host="0.0.0.0")

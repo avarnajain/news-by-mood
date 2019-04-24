@@ -1,6 +1,6 @@
-from flask import Flask
+# from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from server import app
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -10,11 +10,15 @@ class Article(db.Model):
     __tablename__ = "articles"
 
     article_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    url = db.Column(db.String(200), nullable=False)
-    title = db.Column(db.String(100), nullable=False)
-    source = db.Column(db.String(50), nullable=False)
-    published = db.Column(db.Datetime, nullable=False)
-    description = db.Column(db.String(1000), nullable=False)
+    url = db.Column(db.String(300), nullable=False)
+    title = db.Column(db.String(150), nullable=False)
+    source = db.Column(db.String(100), nullable=False)
+    published = db.Column(db.DateTime, nullable=False)
+    description = db.Column(db.String(2000), nullable=False)
+
+    tones = db.relationship('Tone',
+                            secondary='article_tones', 
+                            backref='articles')
 
     def __repr__(self):
 
@@ -22,47 +26,52 @@ class Article(db.Model):
                                                         self.url)
 
 
-class Relation(db.Model):
-    """Middle table to connect article to sentiment"""
+class Article_Tone(db.Model):
+    """All tones and score for articles"""
 
-    __tablename__ = "relations"
+    __tablename__ = "article_tones"
 
     relation_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     article_id = db.Column(db.Integer, db.ForeignKey('articles.article_id'))
-    sentiment_id = db.Column(db.Integer, db.ForeignKey('sentiments.sentiment_id'))
-    score = db.Column(db.)
+    tone_id = db.Column(db.Integer, db.ForeignKey('tones.tone_id'))
+    score = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
 
-        return "<Relation> relation_id {} article_id {} sentiment_id {}".format(self.relation_id,
+        return "<Article_Tone> relation_id {} article_id {} tone_id {}".format(self.relation_id,
                                                                                 self.article_id,
-                                                                                self.sentiment_id)
+                                                                                self.tone_id)
 
 
-class Sentiment(db.Model):
-    """Db of sentiments"""
+class Tone(db.Model):
+    """Db of tones"""
 
-    __tablename__ = sentiments
+    __tablename__ = 'tones'
 
-    sentiment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    tone_id = db.Column(db.String(3), primary_key=True)
     tone = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
 
-        return "<Sentiment> sentiment_id {} tone {}".format(self.sentiment_id,
-                                                            self.tone)
+        return "<Tone> tone_id {} tone {}".format(self.tone_id, self.tone)
 
 
-def connect_to_db(app, db_name):
+def connect_to_db(app):
     """Connect to db"""
 
-    app.config['SQLAlCHEMY_DATABASE_URI'] = 'postgresql:///' + db
-    # app.config['SQLALCHEMY_ECHO'] = True # to print sql statements
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///news'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_ECHO'] = False # to print sql statements
     db.app = app
     db.init_app(app)
     db.create_all()
 
-connect_to_db(app, db)
+if __name__ == "__main__":  
+    
+    from server import app
+
+    connect_to_db(app)
+    print("after connect is called")
 
 
     

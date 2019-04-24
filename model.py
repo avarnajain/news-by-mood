@@ -28,8 +28,9 @@ class Tone(db.Model):
 
     __tablename__ = "tones"
 
-    tone_id = db.Column(db.String(3), primary_key=True)
-    tone = db.Column(db.String(20), nullable=False)
+    tone_id = db.Column(db.String(20), primary_key=True)
+    tone_category = db.Column(db.String(20), nullable=False)
+    tone_name = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
 

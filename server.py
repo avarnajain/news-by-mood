@@ -6,7 +6,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
 import json
 from beautiful_soup import *
-from model import connect_to_db
+from model import connect_to_db, db, Article, Tone, Score
 
 
 #Set up flask object

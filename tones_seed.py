@@ -5,6 +5,8 @@ from server import app
 if __name__ == "__main__":
     connect_to_db(app)
     # db.create_all()
+    app.config['SQLALCHEMY_ECHO'] = True
+
 
     anger = Tone(tone_id='anger', tone_category='emotional', tone_name='Anger')
     db.session.add(anger)

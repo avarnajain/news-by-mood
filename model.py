@@ -13,7 +13,8 @@ class Article(db.Model):
     article_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     url = db.Column(db.String(300), nullable=False)
     title = db.Column(db.String(150), nullable=False)
-    source = db.Column(db.String(100), nullable=False)
+    source = db.Column(db.String(100))
+    category = db.Column(db.String(50))
     published = db.Column(db.DateTime, nullable=False)
     description = db.Column(db.String(2000), nullable=False)
 

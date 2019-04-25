@@ -3,10 +3,13 @@
     {% for article in data%}
     <ul>
       <h3><a href="{{article['url']}}">{{article['title']}}</a></h3>
-      <li>Published: {{article['published_at']}}</li>
+      <li>Article ID: </li>
+      <li>Category: </li>
+      <li>Published At: {{article['published_at']}}</li>
       <li>Source: {{article['source']['name']}}</li>
       <li>Authors(s): {{article['author']}}</li>
       <li>Description: {{article['description']}}</li>
+      <li><a href="{{article['urlToImage']}}">Image url</a></li>
     </ul>
     {% endfor %}
 

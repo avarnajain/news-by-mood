@@ -11,10 +11,11 @@ class Article(db.Model):
     __tablename__ = "articles"
 
     article_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    url = db.Column(db.String(300), nullable=False)
+    url = db.Column(db.String(400), nullable=False)
     title = db.Column(db.String(150), nullable=False)
     source = db.Column(db.String(100))
-    category = db.Column(db.String(50))
+    category = db.Column(db.String(20), db.ForeignKey('categories.category_id'))
+    image_url = db.Column(db.String(400))
     published = db.Column(db.DateTime, nullable=False)
     description = db.Column(db.String(2000), nullable=False)
 
@@ -49,15 +50,30 @@ class Score(db.Model):
     score = db.Column(db.Float, nullable=False)
 
     #Define relationship to Article
-    articles = db.relationship("Article", backref=db.backref("scores"))
+    article = db.relationship("Article", backref=db.backref("scores"))
     #Define relationship to Tone
-    # tones = db.relationship("Tone", backref=db.backref("scores"))
+    tone = db.relationship("Tone", backref=db.backref("scores"))
 
     def __repr__(self):
 
         return "<Article_Tone> score_id {} article_id {} tone_id {}".format(self.score_id,
                                                                                 self.article_id,
                                                                                 self.tone_id)
+class Category(db.Model):
+    """News Categories from News API"""
+
+    __tablename__ = "categories"
+
+    category_id = db.Column(db.String(20), primary_key=True)
+    category_name = db.Column(db.String(20), nullable=False)
+
+    #Define relationship to Article
+    articles = db.relationship("Article", backref=db.backref("categories"))
+
+    def __repr__(self):
+
+        return "<Category> category_id {}".format(self.category_id)
+
 
 ##############################################################################
 # Helper functions

@@ -7,7 +7,7 @@ from newsapi import NewsApiClient
 import json
 from beautiful_soup import *
 from model import connect_to_db, db, Article, Tone, Score, Category
-
+import pprint
 
 #Set up flask object
 app = Flask(__name__)
@@ -23,6 +23,8 @@ EVERYTHING_URL = 'https://newsapi.org/v2/everything'
 
 NEWS_CATEGORIES = ['business', 'entertainment', 'general', 
                    'health', 'science', 'sports', 'technology']
+
+pp = pprint.PrettyPrinter(indent=4)
 
 @app.route('/')
 def homepage():
@@ -70,15 +72,35 @@ def get_by_category():
                                 headers=news_headers)
 
         data = response.json()
-        news = data['articles']
-        print(news)
+        articles = data['articles']
+    
+        for article in articles:
+            author = article['author']
+            url = article['url']
+            title = article['title']
+            source = article['source']
+            image_url = article['urlToImage']
+            published = article['publishedAt']
+            description = article['description']
 
-
-    # return render_template('headlines_list.html' , data=news)
+            add_article = Article(author=author,
+                                  url=url,
+                                  title=title,
+                                  source=source,
+                                  category=category,
+                                  image_url=image_url,
+                                  published=published,
+                                  description=description)
+            db.session.add(add_article)
+            db.session.commit()
+        
+            print(">>>>>>>>>>END OF ARTICLE COMMIT")
+        print("ALL ARTICLES COMMMITED")
+    return render_template('headlines_list.html' , data=articles)
 
 if __name__ == "__main__":
     app.debug = True
-    # connect_to_db(app)
+    connect_to_db(app)
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     DebugToolbarExtension(app)
     app.run(host="0.0.0.0")

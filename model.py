@@ -11,13 +11,14 @@ class Article(db.Model):
     __tablename__ = "articles"
 
     article_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    author = db.Column(db.String(200))
     url = db.Column(db.String(400), nullable=False)
     title = db.Column(db.String(150), nullable=False)
     source = db.Column(db.String(100))
     category = db.Column(db.String(20), db.ForeignKey('categories.category_id'))
     image_url = db.Column(db.String(400))
-    published = db.Column(db.DateTime, nullable=False)
-    description = db.Column(db.String(2000), nullable=False)
+    published = db.Column(db.DateTime)
+    description = db.Column(db.String(2000))
 
     def __repr__(self):
 

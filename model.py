@@ -11,20 +11,19 @@ class Article(db.Model):
     __tablename__ = "articles"
 
     article_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    author = db.Column(db.String(200))
-    url = db.Column(db.String(400), nullable=False)
-    title = db.Column(db.String(150), nullable=False)
-    source = db.Column(db.String(100))
+    author = db.Column(db.String(500))
+    url = db.Column(db.String(2000), nullable=False)
+    title = db.Column(db.String(1500), nullable=False)
+    source = db.Column(db.String(200))
     category = db.Column(db.String(20), db.ForeignKey('categories.category_id'))
-    image_url = db.Column(db.String(400))
+    image_url = db.Column(db.String(1500))
     published = db.Column(db.DateTime)
     description = db.Column(db.String(2000))
 
     def __repr__(self):
 
         return "<Article> article_id {} url {}".format(self.article_id,
-                                                        self.url)
-
+                                                       self.url)
 
 class Tone(db.Model):
     """Db of tones"""
@@ -38,7 +37,6 @@ class Tone(db.Model):
     def __repr__(self):
 
         return "<Tone> tone_id {} tone {}".format(self.tone_id, self.tone)
-
 
 class Score(db.Model):
     """All tones and score for articles"""
@@ -58,8 +56,9 @@ class Score(db.Model):
     def __repr__(self):
 
         return "<Article_Tone> score_id {} article_id {} tone_id {}".format(self.score_id,
-                                                                                self.article_id,
-                                                                                self.tone_id)
+                                                                            self.article_id,
+                                                                            self.tone_id)
+
 class Category(db.Model):
     """News Categories from News API"""
 
@@ -75,7 +74,6 @@ class Category(db.Model):
 
         return "<Category> category_id {}".format(self.category_id)
 
-
 ##############################################################################
 # Helper functions
 
@@ -88,7 +86,7 @@ def connect_to_db(app):
     app.config['SQLALCHEMY_ECHO'] = False
     db.app = app
     db.init_app(app)
-    # db.create_all()
+    db.create_all()
 
 
 if __name__ == "__main__":

@@ -58,11 +58,12 @@ def homepage():
 
 #     return render_template('headlines_list.html' , data=news)
 
-@app.route('/get-by-category')
-def get_by_category():
+@app.route('/headlines-by-category')
+def headlines_by_category():
     """get headlines by category"""
 
-    for category in ['science']:
+    # Loop through each category provided by the NEWS API
+    for category in NEWS_CATEGORIES:
         payload = {
             'country': 'us',
             'category': category
@@ -76,12 +77,19 @@ def get_by_category():
     
         for article in articles:
             author = article['author']
+            print('author:', author)
             url = article['url']
+            print('url:', url)
             title = article['title']
-            source = article['source']
+            print('title:', title)
+            source = article['source']['name']
+            print('source:', source)
             image_url = article['urlToImage']
+            print('image_url:', image_url)
             published = article['publishedAt']
+            print('published:', published)
             description = article['description']
+            print('description:', description)
 
             add_article = Article(author=author,
                                   url=url,
@@ -92,11 +100,13 @@ def get_by_category():
                                   published=published,
                                   description=description)
             db.session.add(add_article)
-            db.session.commit()
-        
-            print(">>>>>>>>>>END OF ARTICLE COMMIT")
-        print("ALL ARTICLES COMMMITED")
-    return render_template('headlines_list.html' , data=articles)
+            print(">>>>>END OF ARTICLE DB ADD")
+
+        db.session.commit()
+        print(">>>>>>>>>>ALL ARTICLES IN CATEGORY COMMMITED")
+    print(">>>>>>>>>>>>>>>>>>>>ALL COMMMITED")
+
+    # return render_template('headlines_list.html' , data=articles)
 
 if __name__ == "__main__":
     app.debug = True

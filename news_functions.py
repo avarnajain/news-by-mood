@@ -29,6 +29,7 @@ def add_articles_to_db(category, articles):
     """Loop through each article that comes in the category"""
 
     for article in articles:
+
         author = article['author']
         url = article['url']
         title = article['title']
@@ -41,11 +42,12 @@ def add_articles_to_db(category, articles):
                               url=url,
                               title=title,
                               source=source,
-                              category=category,
                               image_url=image_url,
                               published=published,
                               description=description)
         db.session.add(add_article)
+        #Add the article-category association
+        add_article.categories.append(category)
 
     db.session.commit()
 

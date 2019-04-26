@@ -24,7 +24,7 @@ def get_headlines_by_category():
         payload = {
             'country': 'us',
             'category': category,
-            'pageSize': 100
+            'pageSize': 1
         }
         response = requests.get(HEADLINES_URL,
                                 params=payload,
@@ -66,7 +66,7 @@ def add_article_to_db(category, article):
         db.session.add(add_article)
         db.session.commit()
         add_article.categories.append(category_obj)
-        
+
         # Add Score for each article
         # scores = get_scores_from_url(url)
         # add_scores_to_db(scores, add_article.article_id)

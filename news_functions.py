@@ -34,45 +34,50 @@ def get_headlines_by_category():
         total_results = data['totalResults']
         print('category: {}, totalResults: {}'.format(category, total_results))
         articles = data['articles'] 
-        add_articles_to_db(category, articles)
+        
+        for article in articles:
+            add_article_to_db(category, article)
 
-def add_articles_to_db(category, articles):
-    """Loop through each article that comes in the category"""
+        print('Category completed (max 100 per category)')
 
-    for article in articles:
 
-        author = article['author']
-        url = article['url']
-        title = article['title']
-        source = article['source']['name']
-        image_url = article['urlToImage']
-        published = article['publishedAt']
-        description = article['description']
+def add_article_to_db(category, article):
+    """Add article and category to db"""
 
-        category_obj = Category.query.get(category)
+    author = article['author']
+    url = article['url']
+    title = article['title']
+    source = article['source']['name']
+    image_url = article['urlToImage']
+    published = article['publishedAt']
+    description = article['description']
 
-        try:
-            add_article = Article(author=author,
-                                  url=url,
-                                  title=title,
-                                  source=source,
-                                  image_url=image_url,
-                                  published=published,
-                                  description=description)
+    category_obj = Category.query.get(category)
 
-            db.session.add(add_article)
-            db.session.commit()
-            add_article.categories.append(category_obj)
-            db.session.flush()
+    try:
+        add_article = Article(author=author,
+                              url=url,
+                              title=title,
+                              source=source,
+                              image_url=image_url,
+                              published=published,
+                              description=description)
 
-        except exc.IntegrityError:
-            db.session.rollback()
-            existing_obj = Article.query.filter(Article.url==url).one()
-            existing_obj.categories.append(category_obj)
-            db.session.commit()
-    
-    print('Category completed (max 100 per category)')
+        db.session.add(add_article)
+        db.session.commit()
+        add_article.categories.append(category_obj)
+        
+        # Add Score for each article
+        # scores = get_scores_from_url(url)
+        # add_scores_to_db(scores, add_article.article_id)
 
+        db.session.flush()
+
+    except exc.IntegrityError:
+        db.session.rollback()
+        existing_obj = Article.query.filter(Article.url==url).one()
+        existing_obj.categories.append(category_obj)
+        db.session.commit()
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

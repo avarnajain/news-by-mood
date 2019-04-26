@@ -17,7 +17,7 @@ class Article(db.Model):
 
     article_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     author = db.Column(db.String(500))
-    url = db.Column(db.String(2000), nullable=False)
+    url = db.Column(db.String(2000), nullable=False, unique=True)
     title = db.Column(db.String(1500), nullable=False)
     source = db.Column(db.String(200))
     image_url = db.Column(db.String(1500))

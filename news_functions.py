@@ -3,8 +3,9 @@ import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
 from beautiful_soup import *
 from tone_functions import *
-
+from sqlalchemy import exc
 import server
+import psycopg2
 
 #Call API key from environment
 NEWS_KEY = os.environ.get('NEWS_API_KEY')
@@ -48,21 +49,29 @@ def add_articles_to_db(category, articles):
         published = article['publishedAt']
         description = article['description']
 
-        add_article = Article(author=author,
-                              url=url,
-                              title=title,
-                              source=source,
-                              image_url=image_url,
-                              published=published,
-                              description=description)
-
-        db.session.add(add_article)
-        # Add the article-category association
         category_obj = Category.query.get(category)
-        add_article.categories.append(category_obj)
 
-    db.session.commit()
-    print('All articles within category added (max 100)')
+        try:
+            add_article = Article(author=author,
+                                  url=url,
+                                  title=title,
+                                  source=source,
+                                  image_url=image_url,
+                                  published=published,
+                                  description=description)
+
+            db.session.add(add_article)
+            db.session.commit()
+            add_article.categories.append(category_obj)
+            db.session.flush()
+
+        except exc.IntegrityError:
+            db.session.rollback()
+            existing_obj = Article.query.filter(Article.url==url).one()
+            existing_obj.categories.append(category_obj)
+            db.session.commit()
+    
+    print('Added (max 100 per category)')
 
 
 if __name__ == "__main__":

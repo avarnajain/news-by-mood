@@ -1,0 +1,331 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: article_category; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE public.article_category (
+    article_id integer,
+    category_id character varying(20)
+);
+
+
+ALTER TABLE public.article_category OWNER TO vagrant;
+
+--
+-- Name: articles; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE public.articles (
+    article_id integer NOT NULL,
+    author character varying(500),
+    url character varying(2000) NOT NULL,
+    title character varying(1500) NOT NULL,
+    source character varying(200),
+    image_url character varying(1500),
+    published timestamp without time zone,
+    description character varying(2000)
+);
+
+
+ALTER TABLE public.articles OWNER TO vagrant;
+
+--
+-- Name: articles_article_id_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE public.articles_article_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.articles_article_id_seq OWNER TO vagrant;
+
+--
+-- Name: articles_article_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE public.articles_article_id_seq OWNED BY public.articles.article_id;
+
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE public.categories (
+    category_id character varying(20) NOT NULL,
+    category_name character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.categories OWNER TO vagrant;
+
+--
+-- Name: scores; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE public.scores (
+    score_id integer NOT NULL,
+    article_id integer,
+    tone_id character varying(20),
+    score double precision NOT NULL
+);
+
+
+ALTER TABLE public.scores OWNER TO vagrant;
+
+--
+-- Name: scores_score_id_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE public.scores_score_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.scores_score_id_seq OWNER TO vagrant;
+
+--
+-- Name: scores_score_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE public.scores_score_id_seq OWNED BY public.scores.score_id;
+
+
+--
+-- Name: tones; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE public.tones (
+    tone_id character varying(20) NOT NULL,
+    tone_type character varying(20) NOT NULL,
+    tone_name character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.tones OWNER TO vagrant;
+
+--
+-- Name: articles article_id; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.articles ALTER COLUMN article_id SET DEFAULT nextval('public.articles_article_id_seq'::regclass);
+
+
+--
+-- Name: scores score_id; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.scores ALTER COLUMN score_id SET DEFAULT nextval('public.scores_score_id_seq'::regclass);
+
+
+--
+-- Data for Name: article_category; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY public.article_category (article_id, category_id) FROM stdin;
+1	business
+2	entertainment
+3	general
+4	health
+5	science
+6	sports
+7	technology
+\.
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY public.articles (article_id, author, url, title, source, image_url, published, description) FROM stdin;
+1	\N	https://bitcoinist.com/bitfinex-tethere-850-million-nydfs/	Bitfinex Will Vigorously Challenge $850M Lost Tether 'False Assertions' - Bitcoinist	Bitcoinist.com	https://bitcoinist.com/wp-content/uploads/2019/02/shutterstock_215897020-980x613.jpg	2019-04-26 07:07:04	Following the New York Attorney General's accusations of a $850M cover-up by Bitfinex, the company has issued its response. Binfinex refutes the claims as Binfinex has refuted claims by the NY Attorney General as 'riddled with false assertions' and that the $…
+2	dirk-winifred	https://www.cheatsheet.com/entertainment/how-long-has-queen-elizabeth-been-waiting-for-prince-harry-to-settle-down.html/	How Long Has Queen Elizabeth Been Waiting for Prince Harry to Settle Down? - The Cheat Sheet	Cheatsheet.com	https://www.cheatsheet.com/wp-content/uploads/2019/04/Prince-Harry-10-1024x806.jpg	2019-04-26 06:05:57	This is why the queen wanted Prince Harry to settle down.
+3	Joshua Berlinger, CNN	https://www.cnn.com/2019/04/26/asia/kim-jong-un-vladivostok-intl/index.html	Kim Jong Un accuses US of acting in 'bad faith' - CNN	CNN	https://cdn.cnn.com/cnnnext/dam/assets/190425073551-kim-jong-un-vladimir-putin-super-tease.jpg	2019-04-26 06:38:00	North Korean leader Kim Jong Un told Russian President Vladimir Putin that he believes the United States acted in "bad faith" at the Hanoi summit, North Korean state media reported.
+4	Wayne Drash, CNN	https://www.cnn.com/2019/04/25/health/california-universities-measles-quarantine/index.html	Measles quarantine issued at two California universities - CNN	CNN	https://cdn.cnn.com/cnnnext/dam/assets/190425224938-measles-quarantine-ucla-cal-state-la-vpx-00003828-super-tease.jpg	2019-04-26 03:17:00	A measles quarantine was ordered Thursday at UCLA and Cal State LA in an effort to try to prevent the spread of the highly contagious disease. The order was issued as the nation remains gripped in the worst measles outbreak since 2000.
+5	Jackson Ryan	https://www.cnet.com/news/nasa-urges-patience-as-spacex-investigates-the-crew-dragon-explosion/	NASA urges patience as SpaceX investigates the Crew Dragon explosion - CNET	Cnet.com	https://cnet4.cbsistatic.com/img/Sn9GRyY_QFiJ3by0UUrWuyXvGe4=/756x567/2019/03/03/5dcb5dcc-30b8-4cad-8677-a0eb78c0f5b9/crew-dragon-closeup.jpg	2019-04-26 04:12:00	Details remain scant but NASA insists the investigation into the crew capsule incident will take time.
+6	\N	http://www.espn.com/nfl/story/_/id/26606215/de-ferrell-goes-4th-raiders-admits-surprise	DE Ferrell goes 4th to Raiders, admits 'surprise' - ESPN	Espn.com	https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2019%2F0104%2Fr484855_1296x729_16%2D9.jpg	2019-04-26 07:03:17	Clemson's Clelin Ferrell admitted to being surprised when the Raiders used the No. 4 overall pick on him Thursday. Oakland also took Alabama RB Josh Jacobs at No. 24 and Mississippi State safety Jonathan Abram at No. 27.
+7	\N	https://www.ghacks.net/2019/04/26/windows-10-updates-kb4493437-kb4493440-kb4493436-and-kb4493473-arrive-a-week-late/	Windows 10 updates KB4493437, KB4493440, KB4493436 and KB4493473 arrive a week late - Ghacks Technology News	Ghacks.net	https://www.ghacks.net/wp-content/uploads/2019/04/KB4493437-windows-10.png	2019-04-26 06:21:38	Microsoft released the usual second batch of updates that it releases each month for Windows 10 version 1607, 1703, 1709 and Windows 10 version 1803
+\.
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY public.categories (category_id, category_name) FROM stdin;
+business	Business
+entertainment	Entertainment
+general	General
+health	Health
+science	Science
+sports	Sports
+technology	Technology
+\.
+
+
+--
+-- Data for Name: scores; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY public.scores (score_id, article_id, tone_id, score) FROM stdin;
+1	1	analytical	0.699999999999999956
+2	2	joy	0.619999999999999996
+3	2	sadness	0.540000000000000036
+4	2	analytical	0.709999999999999964
+5	3	analytical	0.780000000000000027
+6	4	analytical	0.729999999999999982
+7	5	sadness	0.520000000000000018
+8	5	analytical	0.75
+9	6	sadness	0.609999999999999987
+10	6	joy	0.560000000000000053
+11	7	analytical	0.699999999999999956
+\.
+
+
+--
+-- Data for Name: tones; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY public.tones (tone_id, tone_type, tone_name) FROM stdin;
+anger	emotional	Anger
+fear	emotional	Fear
+joy	emotional	Joy
+sadness	emotional	Sadness
+analytical	language	Analytical
+confident	language	Confident
+tentative	language	Tentative
+\.
+
+
+--
+-- Name: articles_article_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('public.articles_article_id_seq', 7, true);
+
+
+--
+-- Name: scores_score_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('public.scores_score_id_seq', 11, true);
+
+
+--
+-- Name: articles articles_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (article_id);
+
+
+--
+-- Name: articles articles_url_key; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_url_key UNIQUE (url);
+
+
+--
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (category_id);
+
+
+--
+-- Name: scores scores_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.scores
+    ADD CONSTRAINT scores_pkey PRIMARY KEY (score_id);
+
+
+--
+-- Name: tones tones_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.tones
+    ADD CONSTRAINT tones_pkey PRIMARY KEY (tone_id);
+
+
+--
+-- Name: article_category article_category_article_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.article_category
+    ADD CONSTRAINT article_category_article_id_fkey FOREIGN KEY (article_id) REFERENCES public.articles(article_id);
+
+
+--
+-- Name: article_category article_category_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.article_category
+    ADD CONSTRAINT article_category_category_id_fkey FOREIGN KEY (category_id) REFERENCES public.categories(category_id);
+
+
+--
+-- Name: scores scores_article_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.scores
+    ADD CONSTRAINT scores_article_id_fkey FOREIGN KEY (article_id) REFERENCES public.articles(article_id);
+
+
+--
+-- Name: scores scores_tone_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY public.scores
+    ADD CONSTRAINT scores_tone_id_fkey FOREIGN KEY (tone_id) REFERENCES public.tones(tone_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

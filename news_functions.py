@@ -1,6 +1,8 @@
 import os
 import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
+from beautiful_soup import *
+from tone_functions import *
 
 #Call API key from environment
 NEWS_KEY = os.environ.get('NEWS_API_KEY')

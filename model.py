@@ -1,9 +1,14 @@
-# from flask import Flask
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import psycopg2
 
 db = SQLAlchemy()
+
+article_category = db.Table('article_category',
+    db.Column('article_id', db.Integer, db.ForeignKey('articles.article_id')),
+    db.Column('category_id', db.String(20), db.ForeignKey('categories.category_id'))
+    )
 
 class Article(db.Model):
     """Databse of news articles"""
@@ -15,7 +20,6 @@ class Article(db.Model):
     url = db.Column(db.String(2000), nullable=False)
     title = db.Column(db.String(1500), nullable=False)
     source = db.Column(db.String(200))
-    category = db.Column(db.String(20), db.ForeignKey('categories.category_id'))
     image_url = db.Column(db.String(1500))
     published = db.Column(db.DateTime)
     description = db.Column(db.String(2000))
@@ -31,7 +35,7 @@ class Tone(db.Model):
     __tablename__ = "tones"
 
     tone_id = db.Column(db.String(20), primary_key=True)
-    tone_category = db.Column(db.String(20), nullable=False)
+    tone_type = db.Column(db.String(20), nullable=False)
     tone_name = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
@@ -68,7 +72,10 @@ class Category(db.Model):
     category_name = db.Column(db.String(20), nullable=False)
 
     #Define relationship to Article
-    articles = db.relationship("Article", backref=db.backref("categories"))
+    articles = db.relationship("Article", 
+                        secondary=article_category,
+                        backref=db.backref("categories", 
+                                    lazy='dynamic'))
 
     def __repr__(self):
 

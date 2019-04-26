@@ -8,6 +8,7 @@ from beautiful_soup import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 from news_functions import *
 
+
 #Set up flask object
 app = Flask(__name__)
 app.secret_key = "SECRET"

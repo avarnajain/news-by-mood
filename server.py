@@ -8,14 +8,9 @@ from beautiful_soup import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 from news_functions import *
 
-
 #Set up flask object
 app = Flask(__name__)
 app.secret_key = "SECRET"
-
-#Set categories for headlines by NEWS API
-NEWS_CATEGORIES = ['business', 'entertainment', 'general', 
-                   'health', 'science', 'sports', 'technology']
 
 @app.route('/')
 def homepage():
@@ -27,16 +22,15 @@ def homepage():
 def headlines_by_category():
     """get headlines by category and insert into db"""
 
-    for category in NEWS_CATEGORIES:
-        payload = {
-            'country': 'us',
-            'category': category,
-            'pageSize': 100
-        }
-        articles = get_headlines_by_category(category, payload)
-        add_articles_to_db(category, articles)
+    #to get headlines for all predefined categories
+    get_headlines_by_category()
+    print('Headlines for all categories added to DB')
+
 
 if __name__ == "__main__":
+     # As a convenience, if we run this module interactively, it will leave
+    # you in a state of being able to work with the database directly.
+
     app.debug = True
     connect_to_db(app)
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False

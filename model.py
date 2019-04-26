@@ -74,8 +74,7 @@ class Category(db.Model):
     #Define relationship to Article
     articles = db.relationship("Article", 
                         secondary=article_category,
-                        backref=db.backref("categories", 
-                                    lazy='dynamic'))
+                        backref=db.backref("categories"))
 
     def __repr__(self):
 

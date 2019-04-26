@@ -5,7 +5,7 @@ from server import app
 if __name__ == "__main__":
     connect_to_db(app)
     db.create_all()
-    app.config['SQLALCHEMY_ECHO'] = True
+    app.config['SQLALCHEMY_ECHO'] = False
 
     #Seed tones table
     anger = Tone(tone_id='anger', tone_type='emotional', tone_name='Anger')

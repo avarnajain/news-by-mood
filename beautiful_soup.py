@@ -45,7 +45,6 @@ def format_p_string(html_string):
 def find_text(html_string, start_from):
     """find and extract text strings within html tags"""
 
-    # print('find_text string', string)
     try:
         start_index = html_string.index('>', start_from) + 1
         stop_index = html_string.index('<', start_index)

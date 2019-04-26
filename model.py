@@ -49,7 +49,7 @@ class Score(db.Model):
 
     score_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     article_id = db.Column(db.Integer, db.ForeignKey('articles.article_id'))
-    tone_id = db.Column(db.String(3), db.ForeignKey('tones.tone_id'))
+    tone_id = db.Column(db.String(20), db.ForeignKey('tones.tone_id'))
     score = db.Column(db.Float, nullable=False)
 
     #Define relationship to Article

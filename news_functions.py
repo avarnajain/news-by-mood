@@ -71,7 +71,7 @@ def add_articles_to_db(category, articles):
             existing_obj.categories.append(category_obj)
             db.session.commit()
     
-    print('Added (max 100 per category)')
+    print('Category completed (max 100 per category)')
 
 
 if __name__ == "__main__":
@@ -81,4 +81,5 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
+    get_headlines_by_category()
 

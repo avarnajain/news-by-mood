@@ -2,7 +2,7 @@ import json
 import os
 from operator import itemgetter
 from watson_developer_cloud import ToneAnalyzerV3
-from beautiful_soup import *
+from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 
 
@@ -19,16 +19,24 @@ tone_analyzer = ToneAnalyzerV3(
 def get_Article_from_db():
     """Add Score for Articles in db"""
 
-
+    #Get articles from db that do not have entries in Score yet
+    article_objs = Article.query.filter().all()
+    #get their article_id and url
+    for article_obj in article_objs:
+        url = article_obj.url
+        article_id = article_obj.article_id
+        
+        #get scores using IBM API and add to db
+        get_scores_add_to_db(url, article_id)
 
 
 def get_scores_add_to_db(url, article_id):
     """Add Score for each article in db"""
 
     scores = get_scores_from_url(url)
-    add_scores_to_db(scores, article_id)
+    add_Score_to_db(scores, article_id)
 
-def add_scores_to_db(scores, article_id):
+def add_Score_to_db(scores, article_id):
     """Add scores to db given article_id"""
 
     for score in scores:
@@ -51,7 +59,7 @@ def get_scores_from_url(url):
     return scores
 
 def analyze_text_for_tones(text):
-    """Analyze emotional and language tone of text"""
+    """Analyze emotional and language tone of text using IBM API"""
 
     tone_analysis = tone_analyzer.tone(tone_input={"text":text},
                                        content_type='application/json',
@@ -60,7 +68,7 @@ def analyze_text_for_tones(text):
     return tones_json
 
 def extract_scores(tones_json):
-    """extract tones and their scores as a list of tuples"""
+    """extract tones and their scores from json as a list of tuples"""
 
     tones_list = tones_json['document_tone']['tones']
     scores = [(item['tone_id'], item['score']) for item in tones_list]

@@ -1,7 +1,7 @@
 import os
 import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
-from beautiful_soup import *
+from article_scraper import *
 from tone_functions import *
 from sqlalchemy import exc
 import server
@@ -21,10 +21,10 @@ def get_articles_add_to_db():
     """get articles by category and add to db"""
 
     for category in NEWS_CATEGORIES:
-        articles = get_articles_by_category(category, 1)
+        articles = get_articles_by_category(category, 3)
 
         for article in articles:
-            add_article_to_db(category, article)
+            add_Article_Category_to_db(category, article)
 
         print('Category completed (max 100 per category)')
 
@@ -49,9 +49,17 @@ def get_articles_by_category(category, pageSize=30):
     return articles
 
 
-def add_article_category_to_db(category, article):
+def add_Article_Category_to_db(category, article):
     """Add Article, Article_Category to db"""
 
+    category_obj = Category.query.get(category)
+    Article_added = add_Article_to_db(article)
+    Article_added.categories.append(category_obj)
+    db.session.commit()
+
+def add_Article_to_db(article):
+    """Create article object"""
+    
     author = article['author']
     url = article['url']
     title = article['title']
@@ -59,8 +67,6 @@ def add_article_category_to_db(category, article):
     image_url = article['urlToImage']
     published = article['publishedAt']
     description = article['description']
-
-    category_obj = Category.query.get(category)
 
     try:
         add_article = Article(author=author,
@@ -70,17 +76,16 @@ def add_article_category_to_db(category, article):
                               image_url=image_url,
                               published=published,
                               description=description)
-
         db.session.add(add_article)
         db.session.commit()
-        add_article.categories.append(category_obj)
         db.session.flush()
+        return add_article
 
     except exc.IntegrityError:
         db.session.rollback()
         existing_obj = Article.query.filter(Article.url==url).one()
-        existing_obj.categories.append(category_obj)
         db.session.commit()
+        return existing_obj
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

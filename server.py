@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
 import json
-from beautiful_soup import *
+from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 from news_functions import *
 

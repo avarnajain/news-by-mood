@@ -17,32 +17,40 @@ EVERYTHING_URL = 'https://newsapi.org/v2/everything'
 NEWS_CATEGORIES = ['business', 'entertainment', 'general', 
                    'health', 'science', 'sports', 'technology']
 
-def get_headlines_by_category():
-    """return json of articles"""
+def get_articles_add_to_db():
+    """get articles by category and add to db"""
 
     for category in NEWS_CATEGORIES:
-        payload = {
-            'country': 'us',
-            'category': category,
-            'pageSize': 1
-        }
-        response = requests.get(HEADLINES_URL,
-                                params=payload,
-                                headers=NEWS_HEADERS)
+        articles = get_articles_by_category(category, 1)
 
-        data = response.json()
-        total_results = data['totalResults']
-        print('category: {}, totalResults: {}'.format(category, total_results))
-        articles = data['articles'] 
-        
         for article in articles:
             add_article_to_db(category, article)
 
         print('Category completed (max 100 per category)')
 
 
-def add_article_to_db(category, article):
-    """Add article and category to db"""
+def get_articles_by_category(category, pageSize=30):
+    """API request for articles"""
+
+    payload = {
+            'country': 'us',
+            'category': category,
+            'pageSize': pageSize
+    }
+    response = requests.get(HEADLINES_URL,
+                            params=payload,
+                            headers=NEWS_HEADERS)
+
+    data = response.json()
+    total_results = data['totalResults']
+    print('category: {}, totalResults: {}'.format(category, total_results))
+    articles = data['articles'] 
+
+    return articles
+
+
+def add_article_category_to_db(category, article):
+    """Add Article, Article_Category to db"""
 
     author = article['author']
     url = article['url']
@@ -66,11 +74,6 @@ def add_article_to_db(category, article):
         db.session.add(add_article)
         db.session.commit()
         add_article.categories.append(category_obj)
-
-        # Add Score for each article
-        # scores = get_scores_from_url(url)
-        # add_scores_to_db(scores, add_article.article_id)
-
         db.session.flush()
 
     except exc.IntegrityError:
@@ -86,5 +89,5 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
-    get_headlines_by_category()
+    get_articles_add_to_db()
 

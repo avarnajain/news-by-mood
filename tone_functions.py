@@ -16,6 +16,18 @@ tone_analyzer = ToneAnalyzerV3(
     url=IBM_URL
 )
 
+def get_Article_from_db():
+    """Add Score for Articles in db"""
+
+
+
+
+def get_scores_add_to_db(url, article_id):
+    """Add Score for each article in db"""
+
+    scores = get_scores_from_url(url)
+    add_scores_to_db(scores, article_id)
+
 def add_scores_to_db(scores, article_id):
     """Add scores to db given article_id"""
 
@@ -27,16 +39,14 @@ def add_scores_to_db(scores, article_id):
                           tone_id=tone_id,
                           score=score)
         db.session.add(add_score)
-        db.session.commit()
+    db.session.commit()
 
 
 def get_scores_from_url(url):
     """Get tone and score from url"""
 
-    text = get_article_body(url)
+    text = get_article_body(url) #from article_scraper.py
     tones_json = analyze_text_for_tones(text)
-    # scores returned as list of tuples
-    # [(tone_id, score), (tone_id, score)]
     scores = extract_scores(tones_json)
     return scores
 
@@ -88,5 +98,6 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
+    get_scores_add_to_db()
 
 

@@ -16,25 +16,30 @@ tone_analyzer = ToneAnalyzerV3(
     url=IBM_URL
 )
 
-def get_Article_from_db():
-    """Add Score for Articles in db"""
+def get_scores_add_to_db():
+    """Add Score for each article without Score in db"""
 
-    #Get articles from db that do not have entries in Score yet
-    article_objs = Article.query.filter().all()
+    article_id_list = get_Articles_without_Score()
+    
     #get their article_id and url
-    for article_obj in article_objs:
+    for article_id in article_id_list:
+        article_obj = Article.query.get(article_id)
         url = article_obj.url
-        article_id = article_obj.article_id
-        
-        #get scores using IBM API and add to db
-        get_scores_add_to_db(url, article_id)
 
+        scores = get_scores_from_url(url)
+        add_Score_to_db(scores, article_id)
 
-def get_scores_add_to_db(url, article_id):
-    """Add Score for each article in db"""
+def get_Articles_without_Score():
+    """Get a list of article_ids for Articles without Score in db"""
 
-    scores = get_scores_from_url(url)
-    add_Score_to_db(scores, article_id)
+    article_id_list = []
+
+    #Check db for outer left join
+    #entries in articles but not in scores
+
+    
+
+    return article_id_list
 
 def add_Score_to_db(scores, article_id):
     """Add scores to db given article_id"""
@@ -106,6 +111,6 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
-    get_scores_add_to_db()
+    loop_Articles_add_Score_to_db()
 
 

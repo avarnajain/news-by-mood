@@ -21,10 +21,11 @@ def get_articles_add_to_db():
     """get articles by category and add to db"""
 
     for category in NEWS_CATEGORIES:
-        articles = get_articles_by_category(category, 3)
+        articles = get_articles_by_category(category, 1)
 
         for article in articles:
-            add_Article_Category_to_db(category, article)
+            Article_added = add_Article_to_db(article)
+            add_Article_Category_to_db(category, Article_added)
 
         print('Category completed (max 100 per category)')
 
@@ -49,11 +50,10 @@ def get_articles_by_category(category, pageSize=30):
     return articles
 
 
-def add_Article_Category_to_db(category, article):
+def add_Article_Category_to_db(category, Article_added):
     """Add Article, Article_Category to db"""
 
     category_obj = Category.query.get(category)
-    Article_added = add_Article_to_db(article)
     Article_added.categories.append(category_obj)
     db.session.commit()
 

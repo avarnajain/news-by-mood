@@ -1,10 +1,9 @@
 import json
 import os
 from operator import itemgetter
-from watson_developer_cloud import ToneAnalyzerV3
+from watson_developer_cloud import ToneAnalyzerV3, watson_service
 from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
-
 
 IBM_KEY = os.environ['IBM_API_KEY']
 IBM_URL = os.environ['IBM_URL']
@@ -21,13 +20,12 @@ def get_scores_add_to_db():
 
     article_list = get_Articles_without_Score()
     
-    #get their article_id and url
+    # Loop over article to get tone analysis
     for article in article_list:
         url = article.url
-        print('\n', article.title, '\n', url, '\n', article.source)
         scores = get_scores_from_url(url)
-        print('\n SCORE:', scores)
-        add_Score_to_db(scores, article.article_id)
+        while (scores):
+            add_Score_to_db(scores, article.article_id)
 
 def get_Articles_without_Score():
     """Get a list of Article objs without Score in db"""
@@ -51,6 +49,7 @@ def add_Score_to_db(scores, article_id):
                           tone_id=tone_id,
                           score=score)
         db.session.add(add_score)
+        print("Article added")
     db.session.commit()
 
 
@@ -60,17 +59,23 @@ def get_scores_from_url(url):
     text = get_article_body(url) #from article_scraper.py
     print('ARTICLE BODY >>>>>>>>>>> \n',text)
     tones_json = analyze_text_for_tones(text)
+    
+    if "Method failed with status code" in tones_json:
+        return [] 
+
     scores = extract_scores(tones_json)
     return scores
 
 def analyze_text_for_tones(text):
     """Analyze emotional and language tone of text using IBM API"""
-
-    tone_analysis = tone_analyzer.tone(tone_input={"text":text},
+    try:
+        tone_analysis = tone_analyzer.tone(tone_input={"text":text},
                                        content_type='application/json',
                                        sentences=False)
-    tones_json = tone_analysis.get_result()
-    return tones_json
+        tones_json = tone_analysis.get_result()
+        return tones_json
+    except watson_service.WatsonApiException as ex:
+        return "Method failed with status code {}: {}".format(str(ex.code), ex.message)
 
 def extract_scores(tones_json):
     """extract tones and their scores from json as a list of tuples"""
@@ -111,6 +116,6 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
-    # get_scores_add_to_db()
+    get_scores_add_to_db()
 
 

@@ -7,6 +7,7 @@ def get_article_body(url):
 
     bs = fetch_article(url)
     full_html_str = find_p_tags(bs)
+    print(soup)
     article_body = format_p_string(full_html_str)
     return article_body
 

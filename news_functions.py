@@ -30,7 +30,7 @@ def get_articles_add_to_db():
         print('Category completed (max 100 per category)')
 
 
-def get_articles_by_category(category, pageSize=10):
+def get_articles_by_category(category, pageSize=1):
     """API request for articles"""
 
     payload = {

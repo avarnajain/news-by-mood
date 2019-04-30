@@ -22,9 +22,11 @@ def get_scores_add_to_db():
     article_list = get_Articles_without_Score()
     
     #get their article_id and url
-        for article in article_list:
-            url = article.url
+    for article in article_list:
+        url = article.url
+        print('\n', article.title, '\n', url, '\n', article.source)
         scores = get_scores_from_url(url)
+        print('\n SCORE:', scores)
         add_Score_to_db(scores, article.article_id)
 
 def get_Articles_without_Score():
@@ -56,6 +58,7 @@ def get_scores_from_url(url):
     """Get tone and score from url"""
 
     text = get_article_body(url) #from article_scraper.py
+    print('ARTICLE BODY >>>>>>>>>>> \n',text)
     tones_json = analyze_text_for_tones(text)
     scores = extract_scores(tones_json)
     return scores

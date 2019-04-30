@@ -60,7 +60,7 @@ def get_scores_from_url(url):
     print('ARTICLE BODY >>>>>>>>>>> \n',text)
     tones_json = analyze_text_for_tones(text)
     
-    if "Method failed with status code" in tones_json:
+    if "IBM API Method failed" in tones_json:
         return [] 
 
     scores = extract_scores(tones_json)
@@ -75,7 +75,8 @@ def analyze_text_for_tones(text):
         tones_json = tone_analysis.get_result()
         return tones_json
     except watson_service.WatsonApiException as ex:
-        return "Method failed with status code {}: {}".format(str(ex.code), ex.message)
+        print("Method failed with status code {}: {}".format(str(ex.code), ex.message))
+        return "IBM API Method failed"
 
 def extract_scores(tones_json):
     """extract tones and their scores from json as a list of tuples"""

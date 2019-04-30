@@ -19,27 +19,24 @@ tone_analyzer = ToneAnalyzerV3(
 def get_scores_add_to_db():
     """Add Score for each article without Score in db"""
 
-    article_id_list = get_Articles_without_Score()
+    article_list = get_Articles_without_Score()
     
     #get their article_id and url
-    for article_id in article_id_list:
-        article_obj = Article.query.get(article_id)
-        url = article_obj.url
-
+        for article in article_list:
+            url = article.url
         scores = get_scores_from_url(url)
-        add_Score_to_db(scores, article_id)
+        add_Score_to_db(scores, article.article_id)
 
 def get_Articles_without_Score():
-    """Get a list of article_ids for Articles without Score in db"""
+    """Get a list of Article objs without Score in db"""
 
-    article_id_list = []
+    # Check db for outer left join
+    # For entries in articles but not in scores
+    article_list = db.session.query(Article).outerjoin((Score, 
+                    Article.article_id == Score.article_id)
+                    ).filter(Score.article_id == None).all()
 
-    #Check db for outer left join
-    #entries in articles but not in scores
-
-    
-
-    return article_id_list
+    return article_list
 
 def add_Score_to_db(scores, article_id):
     """Add scores to db given article_id"""
@@ -111,6 +108,6 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
-    loop_Articles_add_Score_to_db()
+    # get_scores_add_to_db()
 
 

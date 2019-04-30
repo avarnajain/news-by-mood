@@ -26,8 +26,9 @@ class Article(db.Model):
 
     def __repr__(self):
 
-        return "<Article> article_id {} url {}".format(self.article_id,
-                                                       self.url)
+        return "<Article> article_id {} url {} published {}".format(self.article_id,
+                                                                    self.url,
+                                                                    self.published)
 
 class Tone(db.Model):
     """Db of tones"""

@@ -85,30 +85,6 @@ def extract_scores(tones_json):
     scores = [(item['tone_id'], item['score']) for item in tones_list]
     return scores
 
-# ibm_result_sample = {
-#     "document_tone": {
-#         "tones": [
-#             {
-#             "score": 0.563865,
-#             "tone_id": "sadness",
-#             "tone_name": "Sadness"
-#             },
-#             {
-#             "score": 0.788541,
-#             "tone_id": "tentative",
-#             "tone_name": "Tentative"
-#             },
-#             {
-#             "score": 0.773136,
-#             "tone_id": "analytical",
-#             "tone_name": "Analytical"
-#             }
-#         ]
-#     }
-# }
-
-# scores = extract_scores(ibm_result_sample)
-
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.

@@ -21,13 +21,13 @@ def get_articles_add_to_db():
     """get articles by category and add to db"""
 
     for category in NEWS_CATEGORIES:
-        articles = get_articles_by_category(category, 1)
+        articles = get_articles_by_category(category, 10)
 
         for article in articles:
             Article_added = add_Article_to_db(article)
             add_Article_Category_to_db(category, Article_added)
 
-        print('Category completed (max 100 per category)')
+        print(('Category {} completed (max 100 per category)').format(category))
 
 
 def get_articles_by_category(category, pageSize=1):
@@ -44,7 +44,6 @@ def get_articles_by_category(category, pageSize=1):
 
     data = response.json()
     total_results = data['totalResults']
-    print('category: {}, totalResults: {}'.format(category, total_results))
     articles = data['articles'] 
 
     return articles
@@ -78,10 +77,10 @@ def add_Article_to_db(article):
                               description=description)
         db.session.add(add_article)
         db.session.commit()
-        db.session.flush()
         return add_article
 
     except exc.IntegrityError:
+        print('INTEGRITY ERROR: Duplicate article')
         db.session.rollback()
         existing_obj = Article.query.filter(Article.url==url).one()
         db.session.commit()

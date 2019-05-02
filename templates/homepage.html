@@ -1,8 +1,34 @@
 {% extends 'base.html' %}
 
+{% block title %} NEWS {% endblock %}
+
 {% block body %}
-    <h1>Homepage</h1>
-    <h3><a href="/headlines-by-category">Headlines by category</a></h3>
-    <h3><a href="/everything-by-date">Everything by date</a></h3>
+    <h1>NEWS BY MOOD</h1>
+
+    <form id='language-form' action='/headlines-by-emotion'>
+        <div id='emotional_news'>
+            I want news that invokes the following emotion: <br>
+            {% for tone in tones %}
+                {% if tone.tone_type == 'emotional' %}
+                    <input type="radio" name="emotion" value="{{tone.tone_id}}">{{tone.tone_name}} <br>
+                    {% endif %}
+                {% endfor %}
+            <input type="submit" name="">
+        </div>
+    </form>
+
+    <h1>NEWS BY WRITING STYLE</h1>   
+    <form id='language-form' action='/headlines-by-language'>
+        <div id='language_news'>
+            I want news that is written in the following style: <br>
+            {% for tone in tones %}
+                {% if tone.tone_type == 'language' %}
+                    <input type="radio" name="language" value="{{tone.tone_id}}">{{tone.tone_name}} <br>
+                    {% endif %}
+                {% endfor %}
+            <input type="submit" name="">
+        </div>
+    </form>
+    
 {% endblock %}
 

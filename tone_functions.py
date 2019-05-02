@@ -24,7 +24,7 @@ def get_scores_add_to_db():
     for article in article_list:
         url = article.url
         scores = get_scores_from_url(url)
-        while (scores):
+        if (scores):
             add_Score_to_db(scores, article.article_id)
 
 def get_Articles_without_Score():
@@ -49,7 +49,7 @@ def add_Score_to_db(scores, article_id):
                           tone_id=tone_id,
                           score=score)
         db.session.add(add_score)
-        print("Article added")
+        print(("Score for article_id {} added").format(article_id))
     db.session.commit()
 
 
@@ -57,7 +57,7 @@ def get_scores_from_url(url):
     """Get tone and score from url"""
 
     text = get_article_body(url) #from article_scraper.py
-    print('ARTICLE BODY >>>>>>>>>>> \n',text)
+    # print('ARTICLE BODY >>>>>>>>>>> \n',text)
     tones_json = analyze_text_for_tones(text)
     
     if "IBM API Method failed" in tones_json:

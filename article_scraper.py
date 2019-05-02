@@ -15,6 +15,7 @@ def fetch_article(url):
 
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
+    print(soup)
     return soup
 
 def find_p_tags(soup):

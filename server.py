@@ -8,6 +8,7 @@ from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 from news_functions import *
 from sqlalchemy import desc
+from db_querying_functions import *
 
 #Set up flask object
 app = Flask(__name__)
@@ -21,39 +22,14 @@ def homepage():
 
     return render_template('homepage.html', tones=tones)
 
-
-def sort_by_date(Article):
-    """Sort Articles by date of publishing"""
-
-    datetime = Article.published
-    date = datetime.date()
-    print(date)
-    
-    return date
-
-# def sort_by_score(Article):
-#     """Sort Scores within the article"""
-    
-#     scores = Article.scores
-
-#     emotional_scores = scores.join((Tone, Score.tone_id == Tone.tone_id)
-#             ).filter(Tone.tone_type == 'emotional').all()
-#     for score in emotional_scores:
-#         if score.tone 
-
-
 @app.route('/headlines-by-emotion')
 def headlines_by_emotion():
     """get headlines for chosen emotion from db"""
 
     # get emotion chosen in form
     emotion = request.args.get('emotion')
-    # get all scores with the chosen tone_id
-    Scores = Score.query.filter(Score.tone_id==emotion).order_by(desc(Score.score)).all()
-    # get all articles with the chosen tone_id
-    Articles = [Score.article for Score in Scores]
-    # sort articles by day they were published
-    Articles_date = sorted(Articles, key=sort_by_date)
+    Articles = get_Articles_with_emotion(emotion)
+
     # get list of all tone_ids in emotional type
     article_filter = Tone.query.filter(Tone.tone_type=='emotional').all()
     
@@ -68,7 +44,7 @@ def headlines_by_language():
     """get headlines for chosen language from db"""
     
     language = request.args.get('language')
-    Scores = Score.query.filter(Score.tone_id==language).order_by(desc(Score.score)).all()
+    Scores = Score.query.filter(Score.tone_id==language).all()
     Articles = [Score.article for Score in Scores]
     
     article_filter = Tone.query.filter(Tone.tone_type=='language').all()

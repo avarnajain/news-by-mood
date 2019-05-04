@@ -94,6 +94,6 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
-    get_scores_add_to_db()
+    # get_scores_add_to_db()
 
 

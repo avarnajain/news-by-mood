@@ -8,6 +8,7 @@ def get_article_body(url):
     """Call all functions needed to extract p tag text from article urls"""
     # print('URL:', url)
     bs = fetch_article(url)
+    print(bs)
     if (bs):
         full_html_str = find_p_tags(bs)
         article_body = format_p_string(full_html_str)
@@ -23,14 +24,17 @@ def fetch_article(url):
         soup = BeautifulSoup(response.content, "html.parser")
     except ConnectionError:
         soup = None
+    
     return soup
 
 def find_p_tags(soup):
     """find all p elements and join together into one string"""
     
     text_list = []
+    counter = 0
     for tag in soup.find_all('p'):
         text_list.append(str(tag))
+        counter += 1
     html_string = " ".join(text_list)   
 
     return html_string
@@ -45,9 +49,10 @@ def format_p_string(html_string):
         counter+=1
         if character == '>':
             text = find_text(html_string, counter)
+            print(counter, text)
             text_str+=text
     formatted_str = re.sub(' +', ' ', text_str).replace('\n', '')
-    # .replace('&amp;apos', "'")
+    formatted_str.replace('&amp;apos', "'")
     return formatted_str
 
 def find_text(html_string, start_from):
@@ -57,6 +62,9 @@ def find_text(html_string, start_from):
         start_index = html_string.index('>', start_from) + 1
         stop_index = html_string.index('<', start_index)
         result = html_string[start_index:stop_index]
+        # print(result)
+        if "\t" in result:
+            return ""
         return result
     except ValueError:
         return ""

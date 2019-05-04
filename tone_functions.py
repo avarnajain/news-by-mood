@@ -27,7 +27,7 @@ def get_scores_add_to_db():
         if (scores):
             add_Score_to_db(scores, article.article_id)
         else:
-            print(("ERROR for article_id {}" + '\n' + " URL {}").format(article.article_id, url))
+            print(("ERROR for article_id {}\nURL: {}\n").format(article.article_id, url))
         
 def get_Articles_without_Score():
     """Get a list of Article objs without Score in db"""
@@ -36,7 +36,7 @@ def get_Articles_without_Score():
     # For entries in articles but not in scores
     article_list = db.session.query(Article).outerjoin((Score, 
                     Article.article_id == Score.article_id)
-                    ).filter(Score.article_id == None, Article.article_id > 75).all()
+                    ).filter(Score.article_id == None).all()
 
     return article_list
 
@@ -62,13 +62,10 @@ def get_scores_from_url(url):
     # print('ARTICLE BODY >>>>>>>>>>> \n',text)
     if (text):
         tones_json = analyze_text_for_tones(text)
+        scores = extract_scores(tones_json)
+        return scores
     else:
         return []
-    if "IBM API Method failed" in tones_json:
-        return [] 
-
-    scores = extract_scores(tones_json)
-    return scores
 
 def analyze_text_for_tones(text):
     """Analyze emotional and language tone of text using IBM API"""

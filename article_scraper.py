@@ -1,21 +1,28 @@
 from bs4 import BeautifulSoup, NavigableString
 import requests
 import re
+import time
+from requests import ConnectionError
 
 def get_article_body(url):
     """Call all functions needed to extract p tag text from article urls"""
-
+    # print('URL:', url)
     bs = fetch_article(url)
-    full_html_str = find_p_tags(bs)
-    article_body = format_p_string(full_html_str)
+    if (bs):
+        full_html_str = find_p_tags(bs)
+        article_body = format_p_string(full_html_str)
+    else:
+        return []
     return article_body
 
 def fetch_article(url):
     """given the url, fetch the news article and parse html"""
 
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, "html.parser")
-    print(soup)
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+    except ConnectionError:
+        soup = None
     return soup
 
 def find_p_tags(soup):

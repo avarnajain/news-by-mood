@@ -26,7 +26,9 @@ def get_scores_add_to_db():
         scores = get_scores_from_url(url)
         if (scores):
             add_Score_to_db(scores, article.article_id)
-
+        else:
+            print(("ERROR for article_id {}" + '\n' + " URL {}").format(article.article_id, url))
+        
 def get_Articles_without_Score():
     """Get a list of Article objs without Score in db"""
 
@@ -34,7 +36,7 @@ def get_Articles_without_Score():
     # For entries in articles but not in scores
     article_list = db.session.query(Article).outerjoin((Score, 
                     Article.article_id == Score.article_id)
-                    ).filter(Score.article_id == None).all()
+                    ).filter(Score.article_id == None, Article.article_id > 75).all()
 
     return article_list
 
@@ -49,7 +51,7 @@ def add_Score_to_db(scores, article_id):
                           tone_id=tone_id,
                           score=score)
         db.session.add(add_score)
-        print(("Score for article_id {} added").format(article_id))
+    print(("Scores for article_id {} added").format(article_id))
     db.session.commit()
 
 
@@ -58,8 +60,10 @@ def get_scores_from_url(url):
 
     text = get_article_body(url) #from article_scraper.py
     # print('ARTICLE BODY >>>>>>>>>>> \n',text)
-    tones_json = analyze_text_for_tones(text)
-    
+    if (text):
+        tones_json = analyze_text_for_tones(text)
+    else:
+        return []
     if "IBM API Method failed" in tones_json:
         return [] 
 

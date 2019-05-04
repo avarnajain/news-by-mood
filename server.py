@@ -28,31 +28,31 @@ def headlines_by_emotion():
 
     # get emotion chosen in form
     emotion = request.args.get('emotion')
-    Articles = get_Articles_with_emotion(emotion)
+    Articles = get_Articles_with_filter(emotion, 'emotional')
 
     # get list of all tone_ids in emotional type
-    article_filter = Tone.query.filter(Tone.tone_type=='emotional').all()
+    tone_type = Tone.query.filter(Tone.tone_type=='emotional').all()
     
     return render_template("headlines_list.html",
                             chosen=emotion,
                             type='emotion', 
-                            filter=article_filter,
+                            filter=tone_type,
                             articles=Articles)
 
 @app.route('/headlines-by-language')
 def headlines_by_language():
     """get headlines for chosen language from db"""
     
+    # get language type chosen in form
     language = request.args.get('language')
-    Scores = Score.query.filter(Score.tone_id==language).all()
-    Articles = [Score.article for Score in Scores]
+    Articles = get_Articles_with_filter(language, 'language')
     
-    article_filter = Tone.query.filter(Tone.tone_type=='language').all()
+    tone_type = Tone.query.filter(Tone.tone_type=='language').all()
 
     return render_template("headlines_list.html",
                             chosen=language,
                             type='language', 
-                            filter=article_filter,
+                            filter=tone_type,
                             articles=Articles)
 
 if __name__ == "__main__":

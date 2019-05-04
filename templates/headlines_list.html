@@ -12,6 +12,11 @@
                 {% endif %}
             {% endfor %} <br> other: <br>
             {% for score in article.scores %}
+                {% if score.tone in filter %}
+                    {{score.tone_id}} ({{score.score}}) <br>
+                {% endif %}
+            {% endfor %} <br>
+            {% for score in article.scores %}
                 {% if score.tone not in filter %}
                     {{score.tone_id}} ({{score.score}}) <br>
                 {% endif %}

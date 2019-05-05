@@ -43,3 +43,25 @@ def get_Articles_with_filter(tone_id, tone_type):
     
     return Articles_by_date
 
+def get_sources_db():
+    """Get all sources in db"""
+
+    article_sources = db.session.query(Article.source).group_by(Article.source
+                    ).order_by(Article.source).all()
+    sources = []
+    for article in article_sources:
+        sources.append(article.source)
+
+    return sources
+
+def get_source_statistics(source):
+    """Analyze tone profile of source"""
+
+    
+
+
+
+
+
+
+

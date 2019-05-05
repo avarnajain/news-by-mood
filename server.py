@@ -7,7 +7,7 @@ import json
 from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 from news_functions import *
-from sqlalchemy import desc
+from sqlalchemy import desc, func
 from db_querying_functions import *
 
 #Set up flask object
@@ -18,9 +18,14 @@ app.secret_key = "SECRET"
 def homepage():
     """homepage"""
 
+    # Get all tones
     tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)
-
-    return render_template('homepage.html', tones=tones)
+    #Get all sources in db
+    sources = get_sources_db()
+    
+    return render_template('homepage.html', 
+                            tones=tones,
+                            sources=sources)
 
 @app.route('/headlines-by-emotion')
 def headlines_by_emotion():
@@ -54,6 +59,18 @@ def headlines_by_language():
                             type='language', 
                             filter=tone_type,
                             articles=Articles)
+
+
+@app.route('/source-statistics')
+def source_statistics():
+    """Get statistics on tone analysis by source"""
+
+    source = request.args.get('source')
+    # print('SOURCE', source)
+    #get articles with this source
+
+    return render_template("sources_list.html",
+                           source=source)
 
 if __name__ == "__main__":
      # As a convenience, if we run this module interactively, it will leave

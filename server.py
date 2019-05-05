@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, render_template, request, flash, redirect, jsonify
+from flask import Flask, render_template, request, flash, redirect, jsonify, session
 from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
 import json
@@ -63,14 +63,21 @@ def headlines_by_language():
 
 @app.route('/source-statistics')
 def source_statistics():
-    """Get statistics on tone analysis by source"""
+    """get and save source to session"""
 
     source = request.args.get('source')
-    # print('SOURCE', source)
-    #get articles with this source
-
+    # session['source'] = source
+    # print('redirected')
+    # return redirect('/source-statistics/{}'.format(source))
     return render_template("sources_list.html",
-                           source=source)
+                                source=source)
+    
+# @app.route('/source-statistics/<str:source>')
+# def get_source_stats(source):
+#     source = source
+#     return render_template("sources_list.html",
+#                            source=source)
+
 
 if __name__ == "__main__":
      # As a convenience, if we run this module interactively, it will leave

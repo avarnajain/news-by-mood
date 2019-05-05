@@ -8,7 +8,7 @@ def get_article_body(url):
     """Call all functions needed to extract p tag text from article urls"""
     # print('URL:', url)
     bs = fetch_article(url)
-    print(bs)
+    # print(bs)
     if (bs):
         full_html_str = find_p_tags(bs)
         article_body = format_p_string(full_html_str)
@@ -49,7 +49,7 @@ def format_p_string(html_string):
         counter+=1
         if character == '>':
             text = find_text(html_string, counter)
-            print(counter, text)
+            # print(counter, text)
             text_str+=text
     formatted_str = re.sub(' +', ' ', text_str).replace('\n', '')
     formatted_str.replace('&amp;apos', "'")

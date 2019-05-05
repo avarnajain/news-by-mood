@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %} NEWS {% endblock %}
+{% block head %} 
+    <title> NEWS </title>
+{% endblock %}
 
 {% block body %}
     <h1>NEWS BY MOOD</h1>
@@ -32,7 +34,7 @@
 
     <h1>SOURCE STATISTICS</h1>
     <form id='source-form' action='/source-statistics'>
-        What kind of news does the following source usually produce: <br>
+        Select your source: <br>
         <select id='source' name='source'>
             {% for source in sources %}
                 <option name="source" value="{{source}}"> {{source}} </option> <br>

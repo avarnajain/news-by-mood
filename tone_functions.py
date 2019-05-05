@@ -25,9 +25,13 @@ def get_scores_add_to_db():
         url = article.url
         scores = get_scores_from_url(url)
         if (scores):
-            add_Score_to_db(scores, article.article_id)
+            if "No dominant tones detected" in scores:
+                add_blank_score_db(article_id)
+                print('No dominant tones detected: blank score added to db')
+            else:
+                add_Score_to_db(scores, article.article_id)
         else:
-            print(("ERROR for article_id {}\nURL: {}\n").format(article.article_id, url))
+            print(("NO TEXT for article_id {}\nURL: {}\n").format(article.article_id, url))
         
 def get_Articles_without_Score():
     """Get a list of Article objs without Score in db"""
@@ -36,9 +40,18 @@ def get_Articles_without_Score():
     # For entries in articles but not in scores
     article_list = db.session.query(Article).outerjoin((Score, 
                     Article.article_id == Score.article_id)
-                    ).filter(Score.article_id == None).all()
+                    ).filter(Score.article_id == None, Article.article_id > 104).all()
 
     return article_list
+
+def add_blank_score_db(article_id):
+    """Add blank score to db is no dominant tones detected by IBM API"""
+
+    add_score = Score(article_id=article_id,
+                      tone_id='None',
+                      score=0)
+    db.session.add(add_score)
+    db.session.commit()
 
 def add_Score_to_db(scores, article_id):
     """Add scores to db given article_id"""
@@ -51,7 +64,7 @@ def add_Score_to_db(scores, article_id):
                           tone_id=tone_id,
                           score=score)
         db.session.add(add_score)
-    print(("Scores for article_id {} added").format(article_id))
+    # print(("Scores for article_id {} added").format(article_id))
     db.session.commit()
 
 
@@ -63,7 +76,10 @@ def get_scores_from_url(url):
     if (text):
         tones_json = analyze_text_for_tones(text)
         scores = extract_scores(tones_json)
-        return scores
+        if (scores):
+            return scores
+        else:
+            return "No dominant tones detected in the document."
     else:
         return []
 
@@ -94,6 +110,6 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
-    # get_scores_add_to_db()
+    get_scores_add_to_db()
 
 

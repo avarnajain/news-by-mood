@@ -41,7 +41,7 @@ class Tone(db.Model):
 
     def __repr__(self):
 
-        return "<Tone> tone_id {} tone {}".format(self.tone_id, self.tone)
+        return "<Tone> tone_id {} tone_type {}".format(self.tone_id, self.tone_type)
 
 class Score(db.Model):
     """All tones and score for articles"""
@@ -60,7 +60,7 @@ class Score(db.Model):
 
     def __repr__(self):
 
-        return "<Article_Tone> score_id {} article_id {} tone_id {}".format(self.score_id,
+        return "<Score> score_id {} article_id {} tone_id {}".format(self.score_id,
                                                                             self.article_id,
                                                                             self.tone_id)
 

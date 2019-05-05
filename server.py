@@ -8,7 +8,8 @@ from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 from news_functions import *
 from sqlalchemy import desc, func
-from db_querying_functions import *
+from tone_filter import *
+from source_stats import *
 
 #Set up flask object
 app = Flask(__name__)
@@ -67,19 +68,15 @@ def source_statistics():
     """get and save source to session"""
 
     source = request.args.get('source')
-    articles = get_articles_for_source(source)
-    stats_dict = get_tone_statistics(articles)
+    
+    stats_list = get_source_stats(source)
 
+    emotional_dict = stats_list[0]
+    language_dict = stats_list[1]
+    
     return render_template("sources_list.html",
                                 source=source,
-                                stats_dict=stats_dict)
-    
-# @app.route('/source-statistics/<str:source>')
-# def get_source_stats(source):
-#     source = source
-#     return render_template("sources_list.html",
-#                            source=source)
-
+                                stats_list=stats_list)
 
 if __name__ == "__main__":
      # As a convenience, if we run this module interactively, it will leave

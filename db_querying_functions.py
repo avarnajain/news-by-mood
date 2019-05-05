@@ -3,6 +3,12 @@ import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
 from sqlalchemy import desc
 
+def get_tone_db():
+    """get all tones"""
+
+    tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)
+    return tones
+
 def sort_by_date(Article):
     """Sort Articles by date of publishing"""
 
@@ -10,7 +16,7 @@ def sort_by_date(Article):
     date = datetime.date()
     return date
 
-def get_Articles_with_filter(tone_id, tone_type):
+def get_Articles_with_tone_filter(tone_id, tone_type):
     """Return list of Articles with highest score for chosen emotion"""
 
     # get all scores with the chosen tone_id
@@ -54,10 +60,76 @@ def get_sources_db():
 
     return sources
 
-def get_source_statistics(source):
-    """Analyze tone profile of source"""
+def get_articles_for_source(source):
+    """get all articles of specific source"""
 
+    articles = Article.query.filter(Article.source==source).order_by(
+                                                        Article.published).all()
+
+    return articles
+
+def create_tone_dict(tone_type):
+    """create dict for specific tone type"""
     
+    tone_dict = {}
+    tones = get_tone_db()
+    for tone in tones:
+        if tone.tone_type == tone_type:
+            tone_dict[tone.tone_id] = []
+
+    return tone_dict
+
+def get_highest_scores_for_tone_type_for_article(Article):
+    """Get tone with highest scoe for article"""
+
+    scores = Article.scores
+    
+    highest_emotional = ''
+    highest_language = ''
+    
+    for score in scores:
+        tone = score.tone
+        if tone.tone_type == 'emotional':
+            if highest_emotional == '':
+                highest_emotional = score
+            else:
+                if score.score > highest_emotional.score:
+                    highest_emotional = score
+        else if tone.tone_type == 'language':
+            if highest_language == '':
+                highest_language = score
+            else:
+                if score.score > highest_language.score:
+                    highest_language.score = score
+        else:
+            continue
+
+    return {'emotional': highest_emotional, 'language': highest_language}
+
+def get_tone_statistics(articles):
+    """Analyze tone distribution for articles"""
+    
+    emotional_dict = create_tone_dict('emotional')
+    language_dict = create_tone_dict('language')
+
+    for article in articles:
+        high_scores = get_highest_scores_for_tone_type_for_article(article)
+        for key, value in high_scores:
+            if (value):
+                if key=='emotional':
+                    emotional_dict[value.tone_id].append(value.article_id)
+                else if key=='language':
+                    language_dict[value.tone_id].append(value.article_id)
+
+    print({emotional_dict, language_dict})
+    return {emotional_dict, language_dict}
+
+
+
+
+
+
+
 
 
 

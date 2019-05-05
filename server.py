@@ -19,7 +19,8 @@ def homepage():
     """homepage"""
 
     # Get all tones
-    tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)
+    tones = get_tone_db()
+
     #Get all sources in db
     sources = get_sources_db()
     
@@ -33,7 +34,7 @@ def headlines_by_emotion():
 
     # get emotion chosen in form
     emotion = request.args.get('emotion')
-    Articles = get_Articles_with_filter(emotion, 'emotional')
+    Articles = get_Articles_with_tone_filter(emotion, 'emotional')
 
     # get list of all tone_ids in emotional type
     tone_type = Tone.query.filter(Tone.tone_type=='emotional').all()
@@ -50,7 +51,7 @@ def headlines_by_language():
     
     # get language type chosen in form
     language = request.args.get('language')
-    Articles = get_Articles_with_filter(language, 'language')
+    Articles = get_Articles_with_tone_filter(language, 'language')
     
     tone_type = Tone.query.filter(Tone.tone_type=='language').all()
 
@@ -66,11 +67,12 @@ def source_statistics():
     """get and save source to session"""
 
     source = request.args.get('source')
-    # session['source'] = source
-    # print('redirected')
-    # return redirect('/source-statistics/{}'.format(source))
+    articles = get_articles_for_source(source)
+    stats_dict = get_tone_statistics(articles)
+
     return render_template("sources_list.html",
-                                source=source)
+                                source=source,
+                                stats_dict=stats_dict)
     
 # @app.route('/source-statistics/<str:source>')
 # def get_source_stats(source):

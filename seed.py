@@ -32,6 +32,9 @@ if __name__ == "__main__":
     none = Tone(tone_id='None', tone_type='None', tone_name='None')
     db.session.add(none)
 
+    no_text = Tone(tone_id='no text', tone_type='no text', tone_name='No Text')
+    db.session.add(no_text)
+
     #Seed categories table
     business = Category(category_id='business', category_name='Business')
     db.session.add(business)

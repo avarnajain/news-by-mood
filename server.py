@@ -39,7 +39,7 @@ def headlines_by_emotion():
 
     # get list of all tone_ids in emotional type
     tone_type = Tone.query.filter(Tone.tone_type=='emotional').all()
-    
+
     return render_template("headlines_list.html",
                             chosen=emotion,
                             type='emotion', 

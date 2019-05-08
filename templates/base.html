@@ -3,5 +3,18 @@
 
   <head>{% block head %} head tags go here {% endblock %}</head>
 
-  <body>{% block body %}BODY HERE{% endblock %}</body>
+  <body>
+
+    {% block body %} BODY HERE {% endblock %}
+    
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <script src="http://unpkg.com/babel-standalone"></script>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    {% block scripts %} Scripts tag go here {% endblock %}
+    
+</body>
 </html>

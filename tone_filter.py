@@ -7,6 +7,7 @@ def get_tone_db():
     """get all tones"""
 
     tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)
+
     return tones
 
 def sort_by_date(Article):
@@ -15,6 +16,24 @@ def sort_by_date(Article):
     datetime = Article.published
     date = datetime.date()
     return date
+
+def get_tones_dict_db(tone_type):
+    """get all tones as a dictionary for react stuff"""
+
+    all_tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)
+    tones = [tone for tone in all_tones if tone.tone_type==tone_type]
+
+    tones_list = []
+
+    for tone in tones:
+        tone_dict = {
+            'tone_id': tone.tone_id,
+            'tone_name': tone.tone_name,
+            'tone_type': tone.tone_type
+        }
+        tones_list.append(tone_dict)
+
+    return tones_list
 
 def get_Articles_with_tone_filter(tone_id, tone_type):
     """Return list of Articles with highest score for chosen emotion"""

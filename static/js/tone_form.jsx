@@ -6,7 +6,7 @@ class ToneForm extends React.Component {
     //set state as empty
     constructor(props) {
         super(props);
-        this.state = {data: null};
+        this.state = {data: []};
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleToneSelection = this.handleToneSelection.bind(this)
     }
@@ -26,7 +26,7 @@ class ToneForm extends React.Component {
         //prevents from posting with flask request
         //evt.preventDefault();
         fetch(this.props.post_url, {
-            method: 'GET',
+            method: 'POST',
             body: JSON.stringify({
                 selected_tone: this.state.selected_tone
             }),
@@ -38,7 +38,7 @@ class ToneForm extends React.Component {
     }
 
     getTones() {
-        console.log(this.props)
+
         //.then() handles the response from the ajax call
         fetch(this.props.fetch_url)
         //tells it to handle response like a json object
@@ -53,18 +53,26 @@ class ToneForm extends React.Component {
     }
 
     render() {
-        return (
-            this.state.data &&
-            (
-            <form id='emotion-form' onSubmit={this.handleSubmit} method='POST'>
-                <div id='emotional_news'>
-                    I want news that invokes the following emotion: <br/>
-                    <input type="radio" name="emotion" value={this.state.data[0].tone_id} 
-                        onClick={this.handleToneSelection}/> {this.state.data[0].tone_name} <br/>
-                    <input type="submit" /> <br/>
-                </div>
-            </form>
-        ))
-    }
-}
 
+        const tones = this.state.data;
+        const toneList = tones.map((tone) =>
+            <div>
+                <label> 
+                    <input type="radio" name="emotion" value={tone.tone_id} 
+                        onClick={this.handleToneSelection}/>
+                    {tone.tone_name}
+                </label> <br/>
+            </div>
+        );
+        return (
+            <div>
+                <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
+                    <label>{this.props.question}
+                        {toneList}
+                    </label>
+                    <input type="submit" /> <br/>
+                </form>
+            </div>
+        )
+    };
+}

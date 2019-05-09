@@ -19,7 +19,7 @@ def get_scores_add_to_db():
     """Add Score for each article without Score in db"""
 
     article_list = get_Articles_without_Score()
-    
+    counter = 0
     # Loop over article to get tone analysis
     for article in article_list:
         url = article.url
@@ -27,13 +27,18 @@ def get_scores_add_to_db():
         if (scores):
             if "No dominant tones detected" in scores:
                 add_blank_score_db(article.article_id)
-                print(('No dominant tones detected for article_id {}\n None score added to db').format(article.article_id))
+                print(('No dominant tones detected for article_id {}\nNone score added to db').format(article.article_id))
             else:
                 add_Score_to_db(scores, article.article_id)
         else:
             add_no_text_score_db(article.article_id)
             print(("No text for article_id {}\n'no text' score added to db").format(article.article_id))
-        
+        counter += 1
+        if counter == 10:
+            counter = 0
+            print('10 articles processed, counter reset')
+    print('All articles processed')
+            
 def get_Articles_without_Score():
     """Get a list of Article objs without Score in db"""
 

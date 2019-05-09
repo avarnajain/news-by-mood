@@ -4,6 +4,21 @@ from model import connect_to_db, db, Article, Tone, Score, Category
 from sqlalchemy import desc
 from tone_filter import *
 
+
+def get_sources_dict_db():
+    """Get all sources in db and pass as json"""
+
+    article_sources = db.session.query(Article.source).group_by(Article.source
+                    ).order_by(Article.source).all()
+    sources_list = []
+    for article in article_sources:
+        source_dict = {
+            'source':article.source
+        }
+        sources_list.append(source_dict)
+
+    return sources_list
+
 def get_sources_db():
     """Get all sources in db"""
 

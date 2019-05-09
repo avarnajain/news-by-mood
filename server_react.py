@@ -36,6 +36,12 @@ def language_form():
     language_dict = get_tones_dict_db('language')
     return jsonify(language_dict)
 
+@app.route('/all_sources.json')
+def get_all_sources():
+    """get json of all sources"""
+    sources_dict = get_sources_dict_db()
+    return jsonify(sources_dict)
+
 @app.route('/headlines-by-emotion')
 def get_chosen_emotion():
 
@@ -44,7 +50,11 @@ def get_chosen_emotion():
     emotion = request.json['selected_tone']
     print('after emotion', emotion)
 
+@app.route('/source-stats')
+def get_source_stats():
+    """"""
 
+    
 @app.route('/headlines-by-emotion', methods=['POST'])
 def headlines_by_emotion():
     """get headlines for chosen emotion from db"""

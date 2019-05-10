@@ -10,13 +10,6 @@ def get_tone_db():
 
     return tones
 
-def sort_by_date(Article):
-    """Sort Articles by date of publishing"""
-
-    datetime = Article.published
-    date = datetime.date()
-    return date
-
 def get_tones_dict_db(tone_type):
     """get all tones as a dictionary for react stuff"""
 
@@ -34,6 +27,18 @@ def get_tones_dict_db(tone_type):
         tones_list.append(tone_dict)
 
     return tones_list
+
+def sort_by_score(Article):
+    """Sort filtered Articles by their score"""
+
+    score = Article['selected_score']
+    return score
+
+def sort_by_date(Article):
+
+    datetime = Article['published']
+    date = datetime.date()
+    return date
 
 def get_Articles_with_tone_filter(tone_id, tone_type):
     """Return list of Articles with highest score for chosen emotion"""
@@ -63,16 +68,13 @@ def get_Articles_with_tone_filter(tone_id, tone_type):
         else:
             continue
 
-    # sort articles in descending order using published
-    Articles_by_date = sorted(Articles, key=sort_by_date, reverse=True)
-
-    return Articles_by_date
+    return Articles
 
 def get_Articles_with_tone_dict(tone_id, tone_type):
     """create json object to return"""
 
     Articles_list = get_Articles_with_tone_filter(tone_id, tone_type)
-
+   
     articles = []
     for Article in Articles_list:
         scores = Article.scores
@@ -96,8 +98,11 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
             'other_scores': all_scores
         }
         articles.append(Article_dict)
+    
+    Articles_by_score = sorted(articles, key=sort_by_score, reverse=True)
+    Articles_by_date = sorted(Articles_by_score, key=sort_by_date, reverse=True)
 
-    return articles
+    return Articles_by_date
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

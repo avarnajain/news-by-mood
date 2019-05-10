@@ -6,12 +6,14 @@ ReactDOM.render(
     <div id="homepage">
         <h1> NEWS BY MOOD </h1>
         <ToneForm fetch_url='/emotional_tones.json' 
-                  post_url='/headlines-by-emotion'
+                  post_url='/get_chosen_emotion'
+                  redirect='http://localhost:5000/headlines-by-emotion'
                   question='I want news that invokes the following emotion:'/>
         <br/>
         <h1> NEWS BY WRITING STYLE </h1>
         <ToneForm fetch_url='/language_tones.json' 
-                  post_url='/get-chosen-language'
+                  post_url='/get_chosen_language'
+                  redirect='http://localhost:5000/headlines-by-language'
                   question='I want news reported in the following writing style:'/>
         <br/>
         <h1> SOURCE STATISTICS </h1>

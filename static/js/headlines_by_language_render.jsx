@@ -4,7 +4,7 @@ ReactDOM.render(
 
     //What you want to render + a comma
     <div id="language-headlines">
-        <h1> NEWS BY CHOSEN MOOD </h1>
+        <h1> NEWS BY CHOSEN WRITING STYLE </h1>
         <News fetch_url='/headlines_by_language.json'/>
     </div>,
     //where you want to render it + a comma

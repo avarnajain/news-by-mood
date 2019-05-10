@@ -3,45 +3,18 @@
 {% block head %} 
     <title> NEWS </title>
 {% endblock %}
-
+    
 {% block body %}
-    <h1>NEWS BY MOOD</h1>
+    
+    <div id="root"> </div>
 
-    <form id='language-form' action='/headlines-by-emotion'>
-        <div id='emotional_news'>
-            I want news that invokes the following emotion: <br>
-            {% for tone in tones %}
-                {% if tone.tone_type == 'emotional' %}
-                    <input type="radio" name="emotion" value="{{tone.tone_id}}">{{tone.tone_name}} <br>
-                    {% endif %}
-                {% endfor %}
-            <input type="submit" name="">
-        </div>
-    </form>
+{% endblock %}
 
-    <h1>NEWS BY WRITING STYLE</h1>   
-    <form id='language-form' action='/headlines-by-language'>
-        <div id='language_news'>
-            I want news that is written in the following style: <br>
-            {% for tone in tones %}
-                {% if tone.tone_type == 'language' %}
-                    <input type="radio" name="language" value="{{tone.tone_id}}">{{tone.tone_name}} <br>
-                    {% endif %}
-                {% endfor %}
-            <input type="submit" name="">
-        </div>
-    </form>
+{% block scripts %}
 
-    <h1>SOURCE STATISTICS</h1>
-    <form id='source-form' action='/source-statistics'>
-        Select your source: <br>
-        <select id='source' name='source'>
-            {% for source in sources %}
-                <option name="source" value="{{source}}"> {{source}} </option> <br>
-            {% endfor %}
-        </select>
-        <input type="submit" name="">
-    </form>
- 
+    <script src="http://0.0.0.0:5002/static/js/tone_form.jsx" type="text/jsx"></script>
+    <script src="http://0.0.0.0:5002/static/js/source_form.jsx" type="text/jsx"></script>      
+    <script src="http://0.0.0.0:5002/static/js/homepage_render.jsx" type="text/jsx"></script>
+            
 {% endblock %}
 

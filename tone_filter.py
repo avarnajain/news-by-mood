@@ -75,6 +75,7 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
 
     articles = []
     for Article in Articles_list:
+        print('INSIDE get_ARticle', Article.article_id)
         scores = Article.scores
         all_scores = {}
         for s in scores:

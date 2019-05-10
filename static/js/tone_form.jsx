@@ -30,7 +30,7 @@ class ToneForm extends React.Component {
     handleSubmit(evt){
  
         //prevents from posting with flask request
-        evt.preventDefault();
+        // evt.preventDefault();
         console.log('handleSubmit()')
         fetch(this.props.post_url, {
             method: 'POST',
@@ -41,9 +41,11 @@ class ToneForm extends React.Component {
             body: JSON.stringify({
                 selected_tone: this.state.selected_tone
             })
-        }).then(() => {
-            window.location.href="http://localhost:5000/headlines-by-emotion"
-        });
+        })
+        // .then(() => {
+        //     window.location.href=this.props.redirect
+        // })
+        ;
     }
 
     getTones() {
@@ -65,7 +67,7 @@ class ToneForm extends React.Component {
 
         const tones = this.state.data;
         const toneList = tones.map((tone) =>
-            <div>
+            <div key={tone.tone_id.toString()}>
                 <label> 
                     <input type="radio" name="emotion" value={tone.tone_id} 
                         checked={this.state.emotion} onChange={this.handleToneSelection}/>

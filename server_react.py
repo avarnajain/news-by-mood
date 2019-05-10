@@ -26,28 +26,43 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """homepage"""
-    return render_template('homepage_react.html')
+    return render_template('homepage.html')
 
 @app.route('/headlines-by-emotion')
 def get_headlines_by_emotion():
     """Display headlines for chisen emotion"""
-    session['selected_emotion'] = request.json['selected_tone']
-    print("session['selected_emotion']", session['selected_emotion'])
-    return render_template('headlines_by_emotion_react.html')
+    # session['selected_emotion'] = request.json['selected_tone']
+    return render_template('headlines_by_emotion.html')
 
 @app.route('/headlines-by-language')
 def get_headlines_by_language():
-    """Display headlines for chisen emotion"""
-    session['selected_language'] = request.json['selected_tone']
-    print("session['selected_language']", session['selected_language'])
-    return render_template('headlines_by_language_react.html')
+    """Display headlines for chosen emotion"""
+    return render_template('headlines_by_language.html')
 
-# @app.route('/source-stats')
-# def get_source_stats():
-#     """Get stats for chosen source"""
+@app.route('/source-stats')
+def get_source_stats():
+    """Get stats for chosen source"""
+    session['selected_source'] = request.json['selected_source']
+    print("session['selected_source']", session['selected_source'])
+    
+    return render_template('source_stats.html')
 
 ########################################################################
 #REACT ROUTES
+
+@app.route('/get-chosen-emotion')
+def get_chosen_emotion():
+    """Get chosen emotion from form post"""
+    session['selected_emotion'] = request.json['selected_tone']
+    print("session['selected_emotion']", session['selected_emotion'])
+    return redirect('/headlines-by-emotion')
+
+@app.route('/get-chosen-language')
+def get_chosen_language():
+    """Get chosen emotion from form post"""
+    session['selected_language'] = request.json['selected_tone']
+    print("session['selected_language']", session['selected_language'])
+    return redirect('/headlines-by-language')
 
 #JSON ROUTES
 @app.route('/emotional_tones.json')

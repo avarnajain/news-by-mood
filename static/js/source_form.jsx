@@ -23,7 +23,7 @@ class SourceForm extends React.Component {
     handleSubmit(evt){
  
         //prevents from posting with flask request
-        //evt.preventDefault();
+        evt.preventDefault();
         fetch(this.props.post_url, {
             method: 'POST',
             body: JSON.stringify({
@@ -33,6 +33,8 @@ class SourceForm extends React.Component {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
             }
+        }).then(() => {
+            window.location.href="http://localhost:5000/source-stats"
         });
     }
 
@@ -55,7 +57,7 @@ class SourceForm extends React.Component {
 
         const sources = this.state.data;
         const sourceList = sources.map((source) =>
-            <option value={source.source}>{source.source}</option> 
+            <option key={source.source.toString()} value={source.source}>{source.source}</option> 
         );
         return (
             <div>

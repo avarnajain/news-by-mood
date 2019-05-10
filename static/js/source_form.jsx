@@ -18,6 +18,7 @@ class SourceForm extends React.Component {
 
     handleSourceSelection(evt) {
         this.setState({selected_source: evt.target.value});
+        console.log(this.state.selected_source)
     }
 
     handleSubmit(evt){
@@ -34,7 +35,7 @@ class SourceForm extends React.Component {
             'Accept': 'application/json'
             }
         }).then(() => {
-            window.location.href="http://localhost:5000/source-stats"
+            window.location.href=this.props.redirect
         });
     }
 

@@ -30,8 +30,8 @@ class ToneForm extends React.Component {
     handleSubmit(evt){
  
         //prevents from posting with flask request
-        // evt.preventDefault();
-        console.log('handleSubmit()')
+        evt.preventDefault();
+        console.log('handleSubmit()', this.props.post_url)
         fetch(this.props.post_url, {
             method: 'POST',
             headers: {
@@ -42,9 +42,9 @@ class ToneForm extends React.Component {
                 selected_tone: this.state.selected_tone
             })
         })
-        // .then(() => {
-        //     window.location.href=this.props.redirect
-        // })
+        .then(() => {
+            window.location.href=this.props.redirect
+        })
         ;
     }
 

@@ -4,6 +4,7 @@ from operator import itemgetter
 from watson_developer_cloud import ToneAnalyzerV3, watson_service
 from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
+import time
 
 IBM_KEY = os.environ['IBM_API_KEY']
 IBM_URL = os.environ['IBM_URL']
@@ -27,12 +28,12 @@ def get_scores_add_to_db():
         if (scores):
             if "No dominant tones detected" in scores:
                 add_blank_score_db(article.article_id)
-                print(('No dominant tones detected for article_id {}\nNone score added to db').format(article.article_id))
+                print(('No dominant tones detected for article_id {} | None score added to db').format(article.article_id))
             else:
                 add_Score_to_db(scores, article.article_id)
         else:
             add_no_text_score_db(article.article_id)
-            print(("No text for article_id {}\n'no text' score added to db").format(article.article_id))
+            print(("No text for article_id {} | 'no text' score added to db").format(article.article_id))
         counter += 1
         if counter == 10:
             counter = 0
@@ -125,5 +126,9 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
+    time_start = time.time()
     get_scores_add_to_db()
+    time_end = time.time()
+    print('Time taken:', time_end - time_start)
+
 

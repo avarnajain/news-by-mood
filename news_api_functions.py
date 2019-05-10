@@ -2,10 +2,11 @@ import os
 import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
 from article_scraper import *
-from tone_functions import *
+from tone_api_functions import *
 from sqlalchemy import exc
 import server
 import psycopg2
+import time
 
 #Call API key from environment
 NEWS_KEY = os.environ.get('NEWS_API_KEY')
@@ -93,5 +94,8 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
+    time_start = time.time()
     get_articles_add_to_db()
+    time_end = time.time()
+    print('Time taken:', time_end - time_start)
 

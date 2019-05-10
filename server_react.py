@@ -9,7 +9,7 @@ from newsapi import NewsApiClient
 import json
 from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
-from news_functions import *
+from news_api_functions import *
 from sqlalchemy import desc, func
 from tone_filter import *
 from source_stats import *

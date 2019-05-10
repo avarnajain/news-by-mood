@@ -41,6 +41,8 @@ class ToneForm extends React.Component {
             body: JSON.stringify({
                 selected_tone: this.state.selected_tone
             })
+        }).then(() => {
+            window.location.href="http://localhost:5000/headlines-by-emotion"
         });
     }
 

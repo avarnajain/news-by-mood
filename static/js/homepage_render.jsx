@@ -6,7 +6,7 @@ ReactDOM.render(
     <div id="homepage">
         <h1> NEWS BY MOOD </h1>
         <ToneForm fetch_url='/emotional_tones.json' 
-                  post_url='/get-chosen-emotion'
+                  post_url='/headlines-by-emotion'
                   question='I want news that invokes the following emotion:'/>
         <br/>
         <h1> NEWS BY WRITING STYLE </h1>

@@ -31,31 +31,23 @@ def homepage():
 @app.route('/headlines-by-emotion')
 def get_headlines_by_emotion():
     """Display headlines for chisen emotion"""
+    session['selected_emotion'] = request.json['selected_tone']
+    print("session['selected_emotion']", session['selected_emotion'])
     return render_template('headlines_by_emotion_react.html')
 
 @app.route('/headlines-by-language')
 def get_headlines_by_language():
     """Display headlines for chisen emotion"""
+    session['selected_language'] = request.json['selected_tone']
+    print("session['selected_language']", session['selected_language'])
     return render_template('headlines_by_language_react.html')
 
 # @app.route('/source-stats')
 # def get_source_stats():
 #     """Get stats for chosen source"""
 
+########################################################################
 #REACT ROUTES
-@app.route('/get-chosen-emotion', methods=['POST'])
-def get_chosen_emotion():
-    """Get chosen emotion from form"""
-    session['selected_emotion'] = request.json['selected_tone']
-    print("session['selected_emotion']", session['selected_emotion'])
-    return redirect('/headlines-by-emotion') 
-
-@app.route('/get-chosen-language', methods=['POST'])
-def get_chosen_language():
-    """Get chosen language from form"""
-    session['selected_language'] = request.json['selected_tone']
-    print("session['selected_language']", session['selected_language'])
-    return redirect('/headlines-by-language') 
 
 #JSON ROUTES
 @app.route('/emotional_tones.json')

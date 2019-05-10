@@ -65,8 +65,39 @@ def get_Articles_with_tone_filter(tone_id, tone_type):
 
     # sort articles in descending order using published
     Articles_by_date = sorted(Articles, key=sort_by_date, reverse=True)
-    
+
     return Articles_by_date
+
+def get_Articles_with_tone_dict(tone_id, tone_type):
+    """create json object to return"""
+
+    Articles_list = get_Articles_with_tone_filter(tone_id, tone_type)
+
+    articles = []
+    for Article in Articles_list:
+        scores = Article.scores
+        all_scores = {}
+        for s in scores:
+            if s.tone_id == tone_id:
+                score = s.score
+            all_scores[s.tone_id] = s.score
+        Article_dict = {
+            'article_id': Article.article_id,
+            'url': Article.url,
+            'author': Article.author,
+            'title': Article.title,
+            'source': Article.source,
+            'image_url': Article.image_url,
+            'published': Article.published,
+            'description': Article.description,
+            'selected_tone_type': tone_type,
+            'selected_tone_id': tone_id,
+            'selected_score': score,
+            'other_scores': all_scores
+        }
+        articles.append(Article_dict)
+
+    return articles
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

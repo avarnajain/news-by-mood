@@ -17,23 +17,30 @@ class ToneForm extends React.Component {
     }
 
     handleToneSelection(evt) {
-        this.setState({selected_tone: evt.target.value});
-        console.log(this.state.selected_tone)
+        // this.setState({selected_tone: evt.target.value});
+
+        const selected_tone = event.target.value;
+        console.log('handleToneSelection() value:', selected_tone)
+
+        this.setState({
+            ['selected_tone']: selected_tone
+        });
     }
 
     handleSubmit(evt){
  
         //prevents from posting with flask request
-        //evt.preventDefault();
+        evt.preventDefault();
+        console.log('handleSubmit()')
         fetch(this.props.post_url, {
             method: 'POST',
-            body: JSON.stringify({
-                selected_tone: this.state.selected_tone
-            }),
             headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                selected_tone: this.state.selected_tone
+            })
         });
     }
 
@@ -59,7 +66,7 @@ class ToneForm extends React.Component {
             <div>
                 <label> 
                     <input type="radio" name="emotion" value={tone.tone_id} 
-                        onClick={this.handleToneSelection}/>
+                        checked={this.state.emotion} onChange={this.handleToneSelection}/>
                     {tone.tone_name}
                 </label> <br/>
             </div>

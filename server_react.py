@@ -1,8 +1,8 @@
 # run this WITHOUT VAGRANT alongside server_react.py
 # python server-override.py 5002
-
 import os
 import requests
+from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, jsonify, session
 from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
@@ -18,12 +18,46 @@ from source_stats import *
 app = Flask(__name__)
 app.secret_key = "SECRET"
 
+# Normally, if you use an undefined variable in Jinja2, it fails
+# silently. This is horrible. Fix this so that, instead, it raises an
+# error.
+app.jinja_env.undefined = StrictUndefined
+
 @app.route('/')
 def homepage():
     """homepage"""
-
     return render_template('homepage_react.html')
 
+@app.route('/headlines-by-emotion')
+def get_headlines_by_emotion():
+    """Display headlines for chisen emotion"""
+    return render_template('headlines_by_emotion_react.html')
+
+@app.route('/headlines-by-language')
+def get_headlines_by_language():
+    """Display headlines for chisen emotion"""
+    return render_template('headlines_by_language_react.html')
+
+# @app.route('/source-stats')
+# def get_source_stats():
+#     """Get stats for chosen source"""
+
+#REACT ROUTES
+@app.route('/get-chosen-emotion', methods=['POST'])
+def get_chosen_emotion():
+    """Get chosen emotion from form"""
+    session['selected_emotion'] = request.json['selected_tone']
+    print("session['selected_emotion']", session['selected_emotion'])
+    return redirect('/headlines-by-emotion') 
+
+@app.route('/get-chosen-language', methods=['POST'])
+def get_chosen_language():
+    """Get chosen language from form"""
+    session['selected_language'] = request.json['selected_tone']
+    print("session['selected_language']", session['selected_language'])
+    return redirect('/headlines-by-language') 
+
+#JSON ROUTES
 @app.route('/emotional_tones.json')
 def emotional_form():
     """get list of dicts of emotional tones"""
@@ -36,47 +70,32 @@ def language_form():
     language_dict = get_tones_dict_db('language')
     return jsonify(language_dict)
 
+@app.route('/headlines_by_emotion.json')
+def headlines_by_emotion():
+    """Get articles with chosen tone"""
+    emotional_articles_list = get_Articles_with_tone_dict(session['selected_emotion'], 'emotional')
+    return jsonify(emotional_articles_list)
+
+@app.route('/headlines_by_language.json')
+def headlines_by_language():
+    """Get articles with chosen tone"""
+    language_articles_list = get_Articles_with_tone_dict(session['selected_language'], 'language')
+    return jsonify(language_articles_list)
+
 @app.route('/all_sources.json')
 def get_all_sources():
     """get json of all sources"""
     sources_dict = get_sources_dict_db()
     return jsonify(sources_dict)
 
-@app.route('/headlines-by-emotion')
-def get_chosen_emotion():
-
-    # get emotion chosen in form
-    print('before emotion')
-    emotion = request.json['selected_tone']
-    print('after emotion', emotion)
-
-@app.route('/source-stats')
-def get_source_stats():
-    """"""
-
-    
-@app.route('/headlines-by-emotion', methods=['POST'])
-def headlines_by_emotion():
-    """get headlines for chosen emotion from db"""
-   
-    Articles = get_Articles_with_tone_filter(emotion, 'emotional')
-
-    # get list of all tone_ids in emotional type
-    tone_type = Tone.query.filter(Tone.tone_type=='emotional').all()
-
-    return render_template("headlines_list.html",
-                            chosen=emotion,
-                            type='emotion', 
-                            filter=tone_type,
-                            articles=Articles)
-
-
 if __name__ == "__main__":
      # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
 
-    app.debug = True
+    # app.debug = True
+    # make sure templates, etc. are not cached in debug mode
+    app.jinja_env.auto_reload = app.debug
     connect_to_db(app)
-    app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+    # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     # DebugToolbarExtension(app)
     app.run(host="0.0.0.0")

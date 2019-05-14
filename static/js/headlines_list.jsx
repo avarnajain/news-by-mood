@@ -34,7 +34,6 @@ class News extends React.Component {
     render() {
 
         const news = this.state.data;
-        console.log('this.state.data', this.state.data)
         const newsList = news.map((article) =>
             <div key={article.article_id.toString()}>
                 <h4>

@@ -17,26 +17,33 @@ class SourceForm extends React.Component {
     }
 
     handleSourceSelection(evt) {
-        this.setState({selected_source: evt.target.value});
-        console.log(this.state.selected_source)
+        const selected_source = evt.target.value;
+        console.log('handleSourceSelection(), value:', selected_source)
+
+        this.setState({
+            ['selected_source']: selected_source
+        });
     }
 
     handleSubmit(evt){
  
         //prevents from posting with flask request
         evt.preventDefault();
+        console.log('handleSubmit()', this.props.post_url)
         fetch(this.props.post_url, {
             method: 'POST',
-            body: JSON.stringify({
-                selected_source: this.state.selected_source
-            }),
             headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
-            }
-        }).then(() => {
+            },
+            body: JSON.stringify({
+                selected_source: this.state.selected_source
+            })
+        })
+        .then(() => {
             window.location.href=this.props.redirect
-        });
+        })
+        ;
     }
 
     getSources() {

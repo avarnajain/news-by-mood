@@ -10,6 +10,7 @@ import json
 from article_scraper import *
 from model import connect_to_db, db, Article, Tone, Score, Category
 from news_api_functions import *
+from tone_api_functions import *
 from sqlalchemy import desc, func
 from tone_filter import *
 from source_stats import *
@@ -42,7 +43,6 @@ def show_headlines_by_language():
 def show_source_stats():
     """Get stats for chosen source"""
     return render_template('source_stats.html')
-    
     
 
 ########################################################################
@@ -100,13 +100,43 @@ def get_headlines_by_language():
     language_articles_list = get_Articles_with_tone_dict(session['selected_language'], 'language')
     return jsonify(language_articles_list)
 
-@app.route('/source-stats.json')
-def get_source_stats():
+@app.route('/emotional-source-stats.json')
+def get_emotional_source_stats():
     """Get stats on chosen source"""
-    source_stats_list = get_source_stats(session['selected_source'])
-    print('SOURCE STATS', source_stats_list)
-    # return jsonify(source_stats_list)
+    source_stats_list = get_chosen_source_stats(session['selected_source'])
+    return_stats = source_stats_list[0]['data']
+    return jsonify(return_stats)
 
+@app.route('/language-source-stats.json')
+def get_language_source_stats():
+    """Get stats on chosen source"""
+    source_stats_list = get_chosen_source_stats(session['selected_source'])
+    return_stats = source_stats_list[1]['data']
+    return jsonify(return_stats)
+
+@app.route('/source-name-stats.json')
+def get_source_name_stats():
+    """Get stats on chosen source"""
+    source_stats_list = get_chosen_source_stats(session['selected_source'])
+    return_stats = source_stats_list[0]['source']
+    return jsonify(return_stats)
+########################################################################
+# API ROUTE
+
+@app.route('/api-calls')
+def api_calls():
+    """Call news and tone api"""
+
+    time_start = time.time()
+    get_articles_add_to_db()
+    time_end = time.time()
+    print('Time taken to get news:', time_end - time_start)
+    time_start = time.time()
+    get_scores_add_to_db()
+    time_end = time.time()
+    print('Time taken to get tones:', time_end - time_start)
+
+    return redirect('/')
 
 if __name__ == "__main__":
      # As a convenience, if we run this module interactively, it will leave

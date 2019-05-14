@@ -50,7 +50,7 @@ def get_Articles_with_tone_filter(tone_id, tone_type):
     # get all Scores for chosen articles
     Article_Scores = [article.scores for article in Tone_Articles]
 
-    Articles = []
+    Articles_list = []
     # Loop thorugh article_scores to 
     # find articles having chosen tone with highest score
     for scores in Article_Scores:
@@ -64,11 +64,11 @@ def get_Articles_with_tone_filter(tone_id, tone_type):
                 if score.score > chosen_tone_score.score:
                     highest_score = score
         if chosen_tone_score == highest_score:
-            Articles.append(score.article)
+            Articles_list.append(score.article)
         else:
             continue
 
-    return Articles
+    return Articles_list
 
 def get_Articles_with_tone_dict(tone_id, tone_type):
     """create json object to return"""

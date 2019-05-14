@@ -33,7 +33,7 @@ def get_scores_add_to_db():
                 add_Score_to_db(scores, article.article_id)
         else:
             add_no_text_score_db(article.article_id)
-            print(("No text for article_id {} | 'no text' score added to db").format(article.article_id))
+            print(("No text for article_id {} Source {} | 'no text' score added to db").format(article.article_id, article.source))
         counter += 1
         if counter == 10:
             counter = 0
@@ -129,6 +129,6 @@ if __name__ == "__main__":
     time_start = time.time()
     get_scores_add_to_db()
     time_end = time.time()
-    print('Time taken:', time_end - time_start)
+    print('Time taken to get tones:', time_end - time_start)
 
 

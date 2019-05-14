@@ -9,6 +9,8 @@ ReactDOM.render(
                heading='Emotional Profile'/>
         <Stats fetch_url='/language-source-stats.json'
                heading='Language Profile'/>
+        <Stats fetch_url='/None-source-stats.json'
+                heading='No Dominant Tones Detected'/>
     </div>,
     //where you want to render it + a comma
     document.getElementById("root"),

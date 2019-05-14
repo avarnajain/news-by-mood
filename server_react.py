@@ -114,6 +114,21 @@ def get_language_source_stats():
     return_stats = source_stats_list[1]['data']
     return jsonify(return_stats)
 
+@app.route('/None-source-stats.json')
+def get_None_source_stats():
+    """Get stats on chosen source"""
+    source_stats_list = get_chosen_source_stats(session['selected_source'])
+    return_stats = source_stats_list[2]['data']
+    return jsonify(return_stats)
+    
+@app.route('/session-emotion.json')
+def get_session_emotion():
+    return jsonify(session['selected_emotion'].capitalize())
+
+@app.route('/session-language.json')
+def get_session_language():
+    return jsonify(session['selected_language'].capitalize())
+
 @app.route('/source-name-stats.json')
 def get_source_name_stats():
     """Get stats on chosen source"""

@@ -1,5 +1,34 @@
 "use-strict";
 
+class ChosenTone extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {data: []};
+    }
+    componentDidMount() {
+        this.getChosenTone();
+    }
+    getChosenTone() {
+        console.log('getChosenTone()');
+        fetch(this.props.fetch_url)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                data: data
+            })
+        });
+    }
+    render() {
+        const chosenTone = this.state.data;
+        console.log('chosenTone', chosenTone)
+        return (
+            <div>
+                <h1> {chosenTone} </h1>
+            </div>
+        )
+    }
+}
+
 class News extends React.Component {
     
     //import state property from React Component class, 

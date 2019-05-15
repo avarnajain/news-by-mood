@@ -35,9 +35,8 @@ def get_scores_add_to_db():
             add_no_text_score_db(article.article_id)
             print(("No text for article_id {} Source {} | 'no text' score added to db").format(article.article_id, article.source))
         counter += 1
-        if counter == 10:
-            counter = 0
-            print('10 articles processed, counter reset')
+        if (counter % 10 == 0):
+            print('{} articles processed'.format(counter))
     print('All articles processed')
             
 def get_Articles_without_Score():

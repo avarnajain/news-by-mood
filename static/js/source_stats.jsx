@@ -1,61 +1,4 @@
 "use-strict";
-class Source extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {data: []};
-    }
-    componentDidMount() {
-        this.getSource();
-    }
-    getSource() {
-        console.log('getSource()');
-        fetch(this.props.fetch_url)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                data: data
-            })
-        });
-    }
-    render() {
-        const source = this.state.data;
-        return (
-            <div>
-                <h1> {source} </h1>
-                <h2> Tone Profile </h2>
-            </div>
-        )
-    }
-}
-
-class Total extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {data: []};
-    }
-    componentDidMount() {
-        this.getTotal();
-    }
-    getTotal() {
-        console.log('getTotal()');
-        fetch(this.props.fetch_url)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                data: data
-            })
-        });
-    }
-    render() {
-        const total = this.state.data;
-        console.log('total', total)
-        return (
-            <div>
-                <h4>{this.props.heading}: {total}</h4>
-            </div>
-        )
-    }
-}
 
 class Stats extends React.Component {
     //import state property from React Component class, 
@@ -88,11 +31,35 @@ class Stats extends React.Component {
     }
     render() {
         const stats = this.state.data;
-        // debugger;
-        console.log('this.state.data', this.state.data)
+        const filter_ = this.props.filter_by
         const statsList = Object.keys(stats).map(key => {
-            if (key != 'total') {
-                return <li key={key}> {key}: {stats[key].length}</li>
+            if (stats[key]['filter'] == filter_ && filter_ != 'None' && filter_ != 'total') {
+                const dict = stats[key]['data']
+                return Object.keys(dict).map(tone => {
+                    return <li key={tone}> {tone.charAt(0).toUpperCase() + tone.slice(1)}: {dict[tone].length}</li>
+                })
+            }
+            if (filter_ == 'None' && stats[key]['filter'] == 'None') {
+                return (
+                    <div key='None'>
+                        <h4> Number of articles with <i>no dominant tones</i> detected: {stats[key]['data']['None'].length} </h4>
+                    </div>
+                )
+            }
+            if (filter_ == 'total' && stats[key]['filter'] == 'total') {
+                return (
+                    <div key='total'>
+                        <h4> Total number of articles for source: {stats[key]['data']['total']} </h4>
+                    </div>
+                )
+            }
+            if (filter_ == 'source_name' && key == 0) {
+                return (
+                    <div key='source'>
+                        <h1> {stats[key]['source']} </h1>
+                        <h2> Tone Profile </h2>
+                    </div>
+                )
             }
         });  
         return (

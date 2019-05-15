@@ -63,6 +63,9 @@ def get_tone_stats_dicts(source_articles, source):
     emotional_dict = create_tone_type_dict('emotional', source)
     language_dict = create_tone_type_dict('language', source)
     none_dict = create_tone_type_dict('None', source)
+    total_dict = create_tone_type_dict('total', source)
+    total_dict['data']['total'] = get_num_articles(source)
+
     for article in source_articles:
         # get highest scores for each article
         high_scores = get_highest_scores_for_tone_types(article)
@@ -75,7 +78,7 @@ def get_tone_stats_dicts(source_articles, source):
             elif tone_type=='None':
                 none_dict['data']['None'].append(article.article_id)
 
-    stats_list = [emotional_dict, language_dict, none_dict]
+    stats_list = [emotional_dict, language_dict, none_dict, total_dict]
 
     return stats_list
 
@@ -84,7 +87,7 @@ def create_tone_type_dict(tone_type, source):
     
     tone_type_dict = {
         'source': source,
-        'tone_type': tone_type, 
+        'filter': tone_type, 
         'data': {}
     }
     tones = get_tone_db()

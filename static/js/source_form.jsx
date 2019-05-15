@@ -41,7 +41,7 @@ class SourceForm extends React.Component {
             })
         })
         .then(() => {
-            window.location.href=this.props.redirect
+            window.location.href=`/source-stats/${this.state.selected_source}`
         })
         ;
     }

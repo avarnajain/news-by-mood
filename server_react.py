@@ -38,12 +38,14 @@ def show_headlines_by_emotion():
 def show_headlines_by_language():
     """Display headlines for chosen emotion"""
     return render_template('headlines_by_language.html')
-
-@app.route('/source-stats')
-def show_source_stats():
-    """Get stats for chosen source"""
-    return render_template('source_stats.html')
     
+@app.route('/source-stats/<chosen_source>')
+def show_chosen_source_stats(chosen_source):
+    """Get stats for chosen source"""
+    # session['selected_source'] = chosen_source
+    # print('Selected source changed insode source-stats/<chosen_source>', session['chosen_source'])
+    return render_template('source_stats.html')
+
 
 ########################################################################
 #REACT ROUTES
@@ -67,7 +69,15 @@ def get_chosen_source():
     """Get chosen source from homepage"""
     session['selected_source'] = request.json['selected_source']
     print("session['selected_source']", session['selected_source'])
-    return redirect('/source_stats')
+    return redirect(('/source_stats/{}').format(session['selected_source']))
+
+@app.route('/get-chosen-source/<chosen_source>')
+def get_chosen_source_get(chosen_source):
+    """Get chosen source through link on DOM"""
+    print('CHOSEN SOURCE', chosen_source)
+    session['selected_source'] = chosen_source
+    print("session['selected_source'] changed from react headlines form", session['selected_source'])
+    return redirect(('/source-stats/{}').format(session['selected_source']))
 
 #JSON ROUTES
 @app.route('/emotional-tones.json')
@@ -100,6 +110,15 @@ def get_headlines_by_language():
     language_articles_list = get_Articles_with_tone_dict(session['selected_language'], 'language')
     return jsonify(language_articles_list)
 
+########################################################################
+# SOURCE STATS JSON
+@app.route('/all-source-stats.json')
+def get_all_source_stats():
+    """Get stats on chosen source"""
+    # filter_ = request.args.get("filter")  # all, emotional, language, or None
+    source_stats_list = get_chosen_source_stats(session['selected_source'])
+    return jsonify(source_stats_list)
+
 @app.route('/emotional-source-stats.json')
 def get_emotional_source_stats():
     """Get stats on chosen source"""
@@ -118,9 +137,15 @@ def get_language_source_stats():
 def get_None_source_stats():
     """Get stats on chosen source"""
     source_stats_list = get_chosen_source_stats(session['selected_source'])
-    return_stats = source_stats_list[2]['data']
+    return_stats = len(source_stats_list[2]['data']['None'])
     return jsonify(return_stats)
-    
+
+@app.route('/number-articles-source.json')
+def get_num_articles_source():
+    """Get total number of articles for a source"""
+    number_articles = get_num_articles(session['selected_source'])
+    return jsonify(number_articles)
+
 @app.route('/session-emotion.json')
 def get_session_emotion():
     return jsonify(session['selected_emotion'].capitalize())
@@ -129,12 +154,13 @@ def get_session_emotion():
 def get_session_language():
     return jsonify(session['selected_language'].capitalize())
 
-@app.route('/source-name-stats.json')
+@app.route('/session-source.json')
 def get_source_name_stats():
     """Get stats on chosen source"""
     source_stats_list = get_chosen_source_stats(session['selected_source'])
     return_stats = source_stats_list[0]['source']
     return jsonify(return_stats)
+
 ########################################################################
 # API ROUTE
 

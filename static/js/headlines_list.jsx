@@ -63,12 +63,14 @@ class News extends React.Component {
     render() {
 
         const news = this.state.data;
-        const newsList = news.map((article) =>
+        const newsList = news.map((article) => 
             <div key={article.article_id.toString()}>
                 <h4>
                     <a href={article.url}>{article.title}</a>
                 </h4>
-                <li>Source: {article.source} </li>
+                <li>
+                    Source: <a href={`/get-chosen-source/${article.source}`}>{article.source}</a>
+                </li>
                 <li>Published: {article.published}</li>
                 <li>Tone: {article.selected_tone_id} </li>
                 <li>Score: {article.selected_score} </li>

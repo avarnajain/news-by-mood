@@ -48,6 +48,15 @@ def get_articles_for_source(source):
 
     return source_articles
 
+def get_num_articles(source):
+    """Get total number of articles for a source"""
+
+    articles = get_articles_for_source(source)
+    counter = 0
+    for article in articles:
+        counter += 1
+    return counter
+
 def get_tone_stats_dicts(source_articles, source):
     """Analyze tone distribution of articles from a source"""
     
@@ -63,14 +72,10 @@ def get_tone_stats_dicts(source_articles, source):
                     emotional_dict['data'][score.tone_id].append(score.article_id)
                 elif tone_type=='language':
                     language_dict['data'][score.tone_id].append(score.article_id)
-            else:
+            elif tone_type=='None':
                 none_dict['data']['None'].append(article.article_id)
 
-    emotional_total = count_total_articles_for_tone_type(emotional_dict, 'emotional')
-    language_total = count_total_articles_for_tone_type(language_dict, 'language')
-    none_total = count_total_articles_for_tone_type(none_dict, 'None')
-
-    stats_list = [emotional_total, language_total, none_total]
+    stats_list = [emotional_dict, language_dict, none_dict]
 
     return stats_list
 
@@ -80,9 +85,7 @@ def create_tone_type_dict(tone_type, source):
     tone_type_dict = {
         'source': source,
         'tone_type': tone_type, 
-        'data': {
-            'total': 0,
-        }
+        'data': {}
     }
     tones = get_tone_db()
     for tone in tones:
@@ -107,26 +110,16 @@ def get_highest_scores_for_tone_types(Article):
             elif highest_emotional == '':
                 highest_emotional = score
 
-        elif tone.tone_type == 'language':
+        if tone.tone_type == 'language':
             if (highest_language) and score.score > highest_language.score:
                 highest_language = score
             elif highest_language == '':
                 highest_language = score
-                
+
+        if tone.tone_type == 'None':
+            return {'None': ''}
+            
     return {'emotional': highest_emotional, 'language': highest_language}
-
-def count_total_articles_for_tone_type(source_stats_dict, tone_type):
-    """Count total number of articles for each tone_type"""
-
-    total = 0
-
-    for key, value in source_stats_dict['data'].items():
-        if key != total and (value):
-            total += len(value)
-
-    source_stats_dict['data']['total'] = total
-
-    return source_stats_dict
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

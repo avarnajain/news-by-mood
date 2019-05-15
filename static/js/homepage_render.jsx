@@ -19,7 +19,6 @@ ReactDOM.render(
         <h1> SOURCE STATISTICS </h1>
         <SourceForm fetch_url='/all-sources.json' 
                     post_url='/get-chosen-source'
-                    redirect='/source-stats'
                     question='What type of articles does this source produce?'/>
     </div>,
     //where you want to render it + a comma

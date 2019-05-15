@@ -22,6 +22,36 @@ class Source extends React.Component {
         return (
             <div>
                 <h1> {source} </h1>
+                <h2> Tone Profile </h2>
+            </div>
+        )
+    }
+}
+
+class Total extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {data: []};
+    }
+    componentDidMount() {
+        this.getTotal();
+    }
+    getTotal() {
+        console.log('getTotal()');
+        fetch(this.props.fetch_url)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                data: data
+            })
+        });
+    }
+    render() {
+        const total = this.state.data;
+        console.log('total', total)
+        return (
+            <div>
+                <h4>{this.props.heading}: {total}</h4>
             </div>
         )
     }
@@ -41,6 +71,8 @@ class Stats extends React.Component {
         this.getStats();
     }   
     getStats() {
+        // let fetchUrl = '/all.json?filter=' + this.props.filterVal;
+
         console.log('getStats()')
         //.then() handles the response from the ajax call
         fetch(this.props.fetch_url)
@@ -56,25 +88,19 @@ class Stats extends React.Component {
     }
     render() {
         const stats = this.state.data;
+        // debugger;
         console.log('this.state.data', this.state.data)
-        const total = stats['total'];
-
         const statsList = Object.keys(stats).map(key => {
-            console.log('Key', {key});
-            if ({key} === "total") { 
-                console.log('INSIDE TOTAL', {key});
-                return <li key={key}> {key}: total </li>
-            } else {
+            if (key != 'total') {
                 return <li key={key}> {key}: {stats[key].length}</li>
-
             }
         });  
-
         return (
             <div>
-            <h4> {this.props.heading} </h4>
+                <h4> {this.props.heading} </h4>
                 <div> {statsList} </div>
             </div>
         )
     };
 }
+

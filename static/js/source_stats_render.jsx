@@ -5,8 +5,7 @@ ReactDOM.render(
     //What you want to render + a comma
     <div id="language-headlines">
         <Stats fetch_url='/all-source-stats.json'
-                  filter_by='source_name'
-                  heading=''/>
+                  filter_by='source_name'/>
         <Stats fetch_url='/all-source-stats.json'
                   filter_by='emotional'
                   heading='Emotional Tones'/>
@@ -14,11 +13,9 @@ ReactDOM.render(
                   filter_by='language'
                   heading='Language Tones'/>
         <Stats fetch_url='/all-source-stats.json'
-                filter_by='None'
-                heading=''/>
+                filter_by='None'/>
         <Stats fetch_url='/all-source-stats.json'
-                filter_by='total'
-                heading=''/>
+                filter_by='total'/>
     </div>,
     //where you want to render it + a comma
     document.getElementById("root"),

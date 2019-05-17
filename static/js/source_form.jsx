@@ -68,15 +68,28 @@ class SourceForm extends React.Component {
             <option key={source.source.toString()} value={source.source}>{source.source}</option> 
         );
         return (
-            <div>
-                <form id='source-form' onSubmit={this.handleSubmit} method='POST'>
-                    <label>{this.props.question} <br/>
-                        <select value='source' onChange={this.handleSourceSelection}>
-                            {sourceList}
-                        </select> <br/>
-                    </label>
-                    <input type="submit" value="Submit"/> <br/>
-                </form>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8">
+                        <h1> {this.props.heading} </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <form id='source-form' onSubmit={this.handleSubmit} method='POST'>
+                            <label>
+                                <select value='source' onChange={this.handleSourceSelection}>
+                                    {sourceList}
+                                </select> <br/>
+                            </label>
+                            <div class="row">
+                                <div class="col-8">
+                                    <input type="submit" value="Submit"/> <br/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     };

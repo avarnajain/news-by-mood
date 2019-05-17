@@ -41,31 +41,38 @@ class Stats extends React.Component {
             }
             if (filter_ == 'None' && stats[key]['filter'] == 'None') {
                 return (
-                    <div key='None'>
-                        <h4> Number of articles with <i>no dominant tones</i> detected: {stats[key]['data']['None'].length} </h4>
+                    <div key='None'> <br/>
+                        <p> Number of articles with <b><i>no dominant tones</i></b> detected: {stats[key]['data']['None'].length} </p>
                     </div>
                 )
             }
             if (filter_ == 'total' && stats[key]['filter'] == 'total') {
                 return (
                     <div key='total'>
-                        <h4> Total number of articles for source: {stats[key]['data']['total']} </h4>
+                        <p> Total number of articles for source: {stats[key]['data']['total']} </p>
                     </div>
                 )
             }
             if (filter_ == 'source_name' && key == 0) {
                 return (
                     <div key='source'>
-                        <h1> {stats[key]['source']} </h1>
-                        <h2> Tone Profile </h2>
+                        <h1> <b>{stats[key]['source']}</b> Tone Profile</h1> <br/>
                     </div>
                 )
             }
         });  
         return (
-            <div>
-                <h4> {this.props.heading} </h4>
-                <div> {statsList} </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8">
+                        <h4>{this.props.heading}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div> {statsList} </div>
+                    </div>
+                </div>
             </div>
         )
     };

@@ -68,21 +68,31 @@ class ToneForm extends React.Component {
         const tones = this.state.data;
         const toneList = tones.map((tone) =>
             <div key={tone.tone_id.toString()}>
-                <label> 
+                <label>   
                     <input type="radio" name="emotion" value={tone.tone_id} 
-                        checked={this.state.emotion} onChange={this.handleToneSelection}/>
-                    {tone.tone_name}
+                        checked={this.state.emotion} onChange={this.handleToneSelection}/> {tone.tone_name}
                 </label> <br/>
             </div>
         );
         return (
-            <div>
-                <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
-                    <label>{this.props.question}
-                        {toneList}
-                    </label>
-                    <input type="submit" /> <br/>
-                </form>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8">
+                        <h1> {this.props.header} </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
+                                {toneList}
+                            <div class="row">
+                                <div class="col-8">
+                                    <input type="submit" /> <br/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     };

@@ -1,12 +1,17 @@
+asn1crypto==0.24.0
 beautifulsoup4==4.7.1
 blinker==1.4
 certifi==2019.3.9
+cffi==1.12.3
 chardet==3.0.4
 Click==7.0
+cryptography==2.6.1
 DateTime==4.3
 Flask==1.0.2
 Flask-DebugToolbar==0.10.1
 Flask-SQLAlchemy==2.3.2
+ibm-cloud-sdk-core==0.4.0
+ibm-watson==3.0.3
 idna==2.5
 itsdangerous==1.1.0
 Jinja2==2.10.1
@@ -15,6 +20,8 @@ newsapi-python==0.2.3
 pkg-resources==0.0.0
 pprint==0.1
 psycopg2==2.8.2
+pycparser==2.19
+pyOpenSSL==19.0.0
 python-dateutil==2.8.0
 pytz==2019.1
 requests==2.17.1

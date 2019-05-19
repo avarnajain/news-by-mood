@@ -1,6 +1,6 @@
 "use-strict";
 
-class ToneForm extends React.Component {
+export default class ToneForm extends React.Component {
     
     //import state property from React Component class, 
     //set state as empty

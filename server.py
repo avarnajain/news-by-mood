@@ -1,5 +1,8 @@
-# run this WITHOUT VAGRANT alongside server_react.py
+# run the following line WITHOUT VAGRANT alongside server.py in a diff terminal
 # python server-override.py 5002
+# also run the following file inside vagrant
+# npm run start
+
 import os
 import requests
 from jinja2 import StrictUndefined
@@ -23,6 +26,11 @@ app.secret_key = "SECRET"
 # silently. This is horrible. Fix this so that, instead, it raises an
 # error.
 app.jinja_env.undefined = StrictUndefined
+
+@app.route('/sidebar')
+def show_sidebar():
+    """Show homepage with sidebar"""
+    return render_template('sidebar_trial.html')
 
 @app.route('/')
 def show_homepage():
@@ -54,6 +62,13 @@ def show_chosen_source_stats(chosen_source):
 def get_chosen_emotion():
     """Get chosen emotion from form post"""
     session['selected_emotion'] = request.json['selected_tone']
+    print("session['selected_emotion']", session['selected_emotion'])
+    return redirect('/headlines-by-emotion')
+
+@app.route('/get-chosen-emotion/<chosen_emotion>')
+def get_chosen_emotion_query():
+    """Get chosen emotion from form post"""
+    session['selected_emotion'] = chosen_emotion
     print("session['selected_emotion']", session['selected_emotion'])
     return redirect('/headlines-by-emotion')
 

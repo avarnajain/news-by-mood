@@ -74,6 +74,13 @@ def get_chosen_language():
     print("session['selected_language']", session['selected_language'])
     return redirect('/headlines-by-language')
 
+@app.route('/get-chosen-language/<chosen_language>')
+def get_chosen_language_query():
+    """Get chosen emotion from form post"""
+    session['selected_language'] = chosen_language
+    print("session['selected_language']", session['selected_language'])
+    return redirect('/headlines-by-language')
+
 @app.route('/get-chosen-source', methods=['POST'])
 def get_chosen_source():
     """Get chosen source from homepage"""

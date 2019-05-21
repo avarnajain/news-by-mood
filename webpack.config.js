@@ -22,6 +22,16 @@ module.exports = {
           }
         }],
         exclude: /node_modules/
+      },
+      {
+        test: /.css$/,
+        loader: 'style-loader'
+      },
+      {
+        test: /.css$/,
+        use: [{
+           loader: 'css-loader',
+        }],
       }
     ]
   },

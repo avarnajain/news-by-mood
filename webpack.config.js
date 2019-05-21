@@ -1,11 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: './static/js/sidebar.jsx',
+  entry: './static/js/homepage_render.jsx',
   mode: 'development',
   watchOptions: {
     poll: true,
-    ignored: /node_modeules/
+    ignored: /node_modules/
   },
   output: {
     filename: 'main.js',

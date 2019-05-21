@@ -27,14 +27,9 @@ app.secret_key = "SECRET"
 # error.
 app.jinja_env.undefined = StrictUndefined
 
-@app.route('/sidebar')
-def show_sidebar():
-    """Show homepage with sidebar"""
-    return render_template('sidebar_trial.html')
-
 @app.route('/')
 def show_homepage():
-    """homepage"""
+    """Show homepage with sidebar"""
     return render_template('homepage.html')
 
 @app.route('/headlines-by-emotion')

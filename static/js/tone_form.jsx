@@ -1,6 +1,6 @@
 "use-strict";
 
-export default class ToneForm extends React.Component {
+class ToneForm extends React.Component {
     
     //import state property from React Component class, 
     //set state as empty
@@ -97,3 +97,4 @@ export default class ToneForm extends React.Component {
         )
     };
 }
+export default ToneForm;

@@ -104,6 +104,26 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
 
     return Articles_by_date
 
+def get_top_headline_dict():
+    """"""
+    fear_article = get_Articles_with_tone_dict('fear', 'emotional')[0]
+    sadness_article = get_Articles_with_tone_dict('sadness', 'emotional')[0]
+    joy_article = get_Articles_with_tone_dict('joy', 'emotional')[0]
+    anger_article = get_Articles_with_tone_dict('anger', 'emotional')[0]
+    analytical_article = get_Articles_with_tone_dict('analytical', 'language')[0]
+    confident_article = get_Articles_with_tone_dict('confident', 'language')[0]
+    tentative_article = get_Articles_with_tone_dict('tentative', 'language')[0]
+
+    return {
+        'joy': joy_article, 
+        'fear': fear_article, 
+        'sadness': sadness_article, 
+        'anger': anger_article, 
+        'analytical': analytical_article, 
+        'confident': confident_article, 
+        'tentative': tentative_article
+    }
+
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.

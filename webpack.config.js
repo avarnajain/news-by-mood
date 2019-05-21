@@ -1,15 +1,20 @@
 const path = require('path');
 
 module.exports = {
-  entry: './static/js/homepage_render.jsx',
+  entry: {
+    main: './static/js/homepage_render.jsx',
+    headlines_emotion: './static/js/headlines_by_emotion_render.jsx',
+    headlines_language: './static/js/headlines_by_language_render.jsx',
+    source_stats: './static/js/source_stats_render.jsx'
+  },
   mode: 'development',
   watchOptions: {
     poll: true,
     ignored: /node_modules/
   },
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: '[name].js',
+    path: path.resolve('./dist')
   },
   module: {
     rules: [

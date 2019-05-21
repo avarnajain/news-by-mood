@@ -6,7 +6,7 @@ class News extends React.Component {
     //set state as empty
     constructor(props) {
         super(props);
-        this.state = {data: [], tone:[]};
+        this.state = {data: []};
         // this.handleSubmit = this.handleSubmit.bind(this)
         // this.handleToneSelection = this.handleToneSelection.bind(this)
     }
@@ -14,7 +14,7 @@ class News extends React.Component {
     //this executes when the page is loaded
     componentDidMount() {
         this.getNews();
-        this.getTone();
+        // this.getTone();
     }
     
     getNews() {
@@ -31,31 +31,32 @@ class News extends React.Component {
             })
         });
     }
-    getTone() {
-        console.log('getTone()')
-        //.then() handles the response from the ajax call
-        fetch(this.props.fetch_tone)
-        //tells it to handle response like a json object
-        .then(response => response.json())
-        //
-        .then(tone => {
-            //console.log(data);
-            this.setState({
-                tone: tone
-            })
-        });
-    }
+    // getTone() {
+    //     console.log('getTone()')
+    //     //.then() handles the response from the ajax call
+    //     fetch(this.props.fetch_tone)
+    //     //tells it to handle response like a json object
+    //     .then(response => response.json())
+    //     //
+    //     .then(tone => {
+    //         //console.log(data);
+    //         this.setState({
+    //             tone: tone
+    //         })
+    //     });
+    // }
     render() {
 
         const news = this.state.data;
-        const tone = this.state.tone;
+        // const tone = this.state.tone;
+        // console.log(tone);
         const newsList = news.map((article) => 
             <div key={article.article_id.toString()}>
                 <div class="row">
                     <div class="col-12">
-                        <p>
+                        <h4>
                             <a href={article.url}>{article.title}</a>
-                        </p>
+                        </h4>
                     </div>
                 </div>
                 <div class="row">
@@ -63,10 +64,15 @@ class News extends React.Component {
                         <img src={article.image_url} alt="img" class="img-thumbnail"/>
                     </div>
                     <div class="col-6">
-                        <li>Source: <a href={`/get-chosen-source/${article.source}`}>{article.source}</a></li>
-                        <li>Published: {article.published}</li>
-                        <li>Tone: {article.selected_tone_id} </li>
-                        <li>Score: {article.selected_score} </li>
+                        <h5>
+                            <b>
+                                {article.selected_tone_id.charAt(0).toUpperCase() + article.selected_tone_id.slice(1) + ' '}
+                            </b>
+                             index: {article.selected_score} 
+                        </h5>
+                        <h5>Source: <a href={`/get-chosen-source/${article.source}`}>{article.source}</a></h5>
+                        <h5>Published: {article.published}</h5>
+                        
                     </div>
                 </div>
                 <br/>
@@ -76,11 +82,6 @@ class News extends React.Component {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <h1> {tone} </h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
                         {newsList}
                     </div>
                 </div>
@@ -88,3 +89,5 @@ class News extends React.Component {
         )
     };
 }
+
+export default News;

@@ -1,6 +1,6 @@
 "use-strict";
 
-export class Stats extends React.Component {
+class Stats extends React.Component {
     //import state property from React Component class, 
     //set state as empty
     constructor(props) {
@@ -78,3 +78,4 @@ export class Stats extends React.Component {
     };
 }
 
+export default Stats;

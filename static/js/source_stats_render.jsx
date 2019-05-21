@@ -1,9 +1,12 @@
 "use strict";
 
-ReactDOM.render(
+import React, {Component} from "react";
+import ReactDOM from 'react-dom';
+import App from './homepage.jsx';
+import Stats from "./source_stats.jsx";
 
-    //What you want to render + a comma
-    <div id="language-headlines">
+const content = (
+    <div id="source-stats">
         <Stats fetch_url='/all-source-stats.json'
                   filter_by='source_name'/>
         <Stats fetch_url='/all-source-stats.json'
@@ -16,7 +19,13 @@ ReactDOM.render(
                 filter_by='None'/>
         <Stats fetch_url='/all-source-stats.json'
                 filter_by='total'/>
+    </div>
+);
+
+ReactDOM.render(
+  
+    <div id="homepage">
+        <App content={content}/>
     </div>,
-    //where you want to render it + a comma
-    document.getElementById("root"),
+  document.getElementById('root')
 );

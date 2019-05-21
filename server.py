@@ -115,6 +115,12 @@ def get_all_sources():
     sources_dict = get_sources_dict_db()
     return jsonify(sources_dict)
 
+@app.route('/top-headlines.json')
+def get_top_headlines():
+    """Get top headlines for each tone for homepage"""
+    top_headlines = get_top_headline_dict()
+    return jsonify(top_headlines)
+
 @app.route('/headlines-by-emotion.json')
 def get_headlines_by_emotion():
     """Get articles with chosen tone"""

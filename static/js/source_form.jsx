@@ -1,6 +1,7 @@
 "use-strict";
+import React from "react";
 
-export default class SourceForm extends React.Component {
+class SourceForm extends React.Component {
     
     //import state property from React Component class, 
     //set state as empty
@@ -71,11 +72,6 @@ export default class SourceForm extends React.Component {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-8">
-                        <h1> {this.props.heading} </h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
                         <form id='source-form' onSubmit={this.handleSubmit} method='POST'>
                             <label>
                                 <select value='source' onChange={this.handleSourceSelection}>
@@ -94,3 +90,5 @@ export default class SourceForm extends React.Component {
         )
     };
 }
+
+export default SourceForm;

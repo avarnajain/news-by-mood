@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
-import News from "./headlines_list.jsx";
+import News from "./news.jsx";
 
 
 const content = (

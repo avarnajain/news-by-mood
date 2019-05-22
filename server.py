@@ -1,6 +1,6 @@
 # run the following line WITHOUT VAGRANT alongside server.py in a diff terminal
 # python server-override.py 5002
-# also run the following file inside vagrant
+# also run the following file outside vagrant
 # npm run start
 
 import os
@@ -17,6 +17,7 @@ from tone_api_functions import *
 from sqlalchemy import desc, func
 from tone_filter import *
 from source_stats import *
+from category_functions import *
 
 #Set up flask object
 app = Flask(__name__)
@@ -49,6 +50,10 @@ def show_chosen_source_stats(chosen_source):
     # print('Selected source changed insode source-stats/<chosen_source>', session['chosen_source'])
     return render_template('source_stats.html')
 
+@app.route('/headlines-by-category')
+def show_headlines_by_category():
+    """Display headlines for chosen emotion"""
+    return render_template('headlines_by_category.html')
 
 ########################################################################
 #REACT ROUTES
@@ -96,6 +101,21 @@ def get_chosen_source_get(chosen_source):
     print("session['selected_source'] changed from react headlines form", session['selected_source'])
     return redirect(('/source-stats/{}').format(session['selected_source']))
 
+@app.route('/get-chosen-category', methods=['POST'])
+def get_chosen_category():
+    """Get chosen category from homepage"""
+    session['selected_category'] = request.json['selected_category']
+    print("session['selected_category']", session['selected_category'])
+    return redirect('/headlines-by-category')
+
+@app.route('/get-chosen-category/<chosen_category>')
+def get_chosen_category_get(chosen_category):
+    """Get chosen source through link on DOM"""
+    print('CHOSEN CATEGORY', chosen_category)
+    session['selected_category'] = chosen_category
+    print("session['selected_category'] changed from react headlines form", session['selected_category'])
+    return redirect('/headlines-by-category')
+
 #JSON ROUTES
 @app.route('/emotional-tones.json')
 def get_all_emotional_tones():
@@ -115,6 +135,12 @@ def get_all_sources():
     sources_dict = get_sources_dict_db()
     return jsonify(sources_dict)
 
+@app.route('/all-categories.json')
+def get_all_categories():
+    """get json for all categories"""
+    categories_dict = get_categories_dict_db()
+    return jsonify(categories_dict)
+
 @app.route('/top-headlines.json')
 def get_top_headlines():
     """Get top headlines for each tone for homepage"""
@@ -132,6 +158,12 @@ def get_headlines_by_language():
     """Get articles with chosen tone"""
     language_articles_list = get_Articles_with_tone_dict(session['selected_language'], 'language')
     return jsonify(language_articles_list)
+
+@app.route('/headlines-by-category.json')
+def get_headlines_by_category():
+    """Get articles with chosen category"""
+    category_articles_list = get_Articles_with_category_filter(session['selected_category'])
+    return jsonify(category_articles_list)
 
 ########################################################################
 # SOURCE STATS JSON

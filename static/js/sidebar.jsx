@@ -2,6 +2,7 @@ import React from "react";
 import '../css/sidebar.css';
 import ToneForm from './tone_form.jsx';
 import SourceForm from './source_form.jsx';
+import CategoryForm from './category_form.jsx';
 
 const SideBar = props => {
 
@@ -15,6 +16,10 @@ const SideBar = props => {
             <ul>
                 <h3><a href='/'>Home</a></h3>
                 <br />
+                <h3>By Category</h3>
+                <CategoryForm fetch_url='/all-categories.json'
+                              post_url='/get-chosen-category'
+                              redirect='/headlines-by-category'/>
                 <h3>By Emotion</h3>
                 <ToneForm fetch_url='/emotional-tones.json' 
                           post_url='/get-chosen-emotion'

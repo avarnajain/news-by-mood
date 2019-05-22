@@ -145,15 +145,8 @@ def get_top_headline_dict():
     confident_article = get_highest_Scoring_Article('confident', 'language')
     tentative_article = get_highest_Scoring_Article('tentative', 'language')
 
-    return {
-        'joy': joy_article, 
-        'fear': fear_article, 
-        'sadness': sadness_article, 
-        'anger': anger_article, 
-        'analytical': analytical_article, 
-        'confident': confident_article, 
-        'tentative': tentative_article
-    }
+    return [joy_article, fear_article, sadness_article, anger_article,
+            analytical_article, confident_article, tentative_article]
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

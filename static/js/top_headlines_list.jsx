@@ -55,7 +55,6 @@ class TopNews extends React.Component {
                     </div>
                     <br/>
                 </div>
-
             )
         });
         return (

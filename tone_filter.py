@@ -104,6 +104,14 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
 
     return Articles_by_date
 
+def get_highest_Scoring_Article(tone_id):
+    """Get the highest scoring article for the day"""
+
+    articles = Score.query.filter(Score.tone_id==tone_id).all()
+
+    return 
+
+
 def get_top_headline_dict():
     """"""
     fear_article = get_Articles_with_tone_dict('fear', 'emotional')[0]

@@ -52,18 +52,18 @@ class News extends React.Component {
         // console.log(tone);
         const newsList = news.map((article) => 
             <div key={article.article_id.toString()}>
-                <div class="row">
-                    <div class="col-12">
+                <div className="row">
+                    <div className="col-12">
                         <h4>
                             <a href={article.url}>{article.title}</a>
                         </h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <img src={article.image_url} alt="img" class="img-thumbnail"/>
+                <div className="row">
+                    <div className="col-6">
+                        <img src={article.image_url} alt="img" className="img-thumbnail"/>
                     </div>
-                    <div class="col-6">
+                    <div className="col-6">
                         <h5>
                             <b>
                                 {article.selected_tone_id.charAt(0).toUpperCase() + article.selected_tone_id.slice(1) + ' '}
@@ -79,9 +79,9 @@ class News extends React.Component {
             </div>
         );
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-12">
                         {newsList}
                     </div>
                 </div>

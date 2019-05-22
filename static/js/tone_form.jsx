@@ -75,18 +75,18 @@ class ToneForm extends React.Component {
             </div>
         );
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-8">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-8">
                         <h1> {this.props.header} </h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-8">
+                <div className="row">
+                    <div className="col-8">
                         <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
                                 {toneList}
-                            <div class="row">
-                                <div class="col-8">
+                            <div className="row">
+                                <div className="col-8">
                                     <input type="submit" /> <br/>
                                 </div>
                             </div>

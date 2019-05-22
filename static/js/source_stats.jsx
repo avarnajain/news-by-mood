@@ -1,4 +1,5 @@
 "use-strict";
+import "../css/source_stats.css";
 
 class Stats extends React.Component {
     //import state property from React Component class, 
@@ -62,14 +63,14 @@ class Stats extends React.Component {
             }
         });  
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-8">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-8">
                         <h4>{this.props.heading}</h4>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-8">
+                <div className="row">
+                    <div className="col-8">
                         <div> {statsList} </div>
                     </div>
                 </div>

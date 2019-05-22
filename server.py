@@ -165,7 +165,6 @@ def api_calls():
     get_scores_add_to_db()
     time_end = time.time()
     print('Time taken to get tones:', time_end - time_start)
-
     return redirect('/')
 
 if __name__ == "__main__":

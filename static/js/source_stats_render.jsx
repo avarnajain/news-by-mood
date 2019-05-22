@@ -12,6 +12,7 @@ const content = (
         <Stats fetch_url='/all-source-stats.json'
                   filter_by='emotional'
                   heading='Emotional Tones'/>
+                  <br />
         <Stats fetch_url='/all-source-stats.json'
                   filter_by='language'
                   heading='Language Tones'/>

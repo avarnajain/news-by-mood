@@ -69,17 +69,17 @@ class SourceForm extends React.Component {
             <option key={source.source.toString()} value={source.source}>{source.source}</option> 
         );
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-8">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-8">
                         <form id='source-form' onSubmit={this.handleSubmit} method='POST'>
                             <label>
                                 <select value='source' onChange={this.handleSourceSelection}>
                                     {sourceList}
                                 </select> <br/>
                             </label>
-                            <div class="row">
-                                <div class="col-8">
+                            <div className="row">
+                                <div className="col-8">
                                     <input type="submit" value="Submit"/> <br/>
                                 </div>
                             </div>

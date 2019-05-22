@@ -37,16 +37,16 @@ class TopNews extends React.Component {
             const dict = stats[key]
             return (
                 <div> 
-                    <div class="row">
-                        <div class="col-12">
+                    <div className="row">
+                        <div className="col-12">
                             <h4><a href={dict['url']}>{dict['title']}</a></h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <img src={dict['image_url']} alt="img" class="img-thumbnail"/>
+                    <div className="row">
+                        <div className="col-6">
+                            <img src={dict['image_url']} alt="img" className="img-thumbnail"/>
                         </div>
-                        <div class="col-6">
+                        <div className="col-6">
                             <h3>{dict['selected_tone_id'].charAt(0).toUpperCase() + dict['selected_tone_id'].slice(1)}</h3>
                             <h5>Score: {dict['selected_score']}</h5>
                             <h5>Source: <a href={`/get-chosen-source/${dict['source']}`}>{dict['source']}</a></h5>
@@ -59,9 +59,9 @@ class TopNews extends React.Component {
             )
         });
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-12">
                         {statsList}
                     </div>
                 </div>

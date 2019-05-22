@@ -104,23 +104,46 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
 
     return Articles_by_date
 
-def get_highest_Scoring_Article(tone_id):
+def get_highest_Scoring_Article(tone_id, tone_type):
     """Get the highest scoring article for the day"""
 
-    articles = Score.query.filter(Score.tone_id==tone_id).all()
+    article = (db.session.query(Article)
+                .join(Score)
+                .filter(Score.tone_id==tone_id)
+                .order_by(Article.published.desc(), Score.score.desc())
+                .first())
+    scores = article.scores
+    all_scores = {}
+    for s in scores:
+        if s.tone_id == tone_id:
+            score = s.score
+        all_scores[s.tone_id] = s.score
+    article_dict = {
+        'article_id': article.article_id,
+        'url': article.url,
+        'author': article.author,
+        'title': article.title,
+        'source': article.source,
+        'image_url': article.image_url,
+        'published': article.published,
+        'description': article.description,
+        'selected_tone_type': tone_type,
+        'selected_tone_id': tone_id,
+        'selected_score': score,
+        'other_scores': all_scores
+    }
 
-    return 
-
+    return article_dict
 
 def get_top_headline_dict():
     """"""
-    fear_article = get_Articles_with_tone_dict('fear', 'emotional')[0]
-    sadness_article = get_Articles_with_tone_dict('sadness', 'emotional')[0]
-    joy_article = get_Articles_with_tone_dict('joy', 'emotional')[0]
-    anger_article = get_Articles_with_tone_dict('anger', 'emotional')[0]
-    analytical_article = get_Articles_with_tone_dict('analytical', 'language')[0]
-    confident_article = get_Articles_with_tone_dict('confident', 'language')[0]
-    tentative_article = get_Articles_with_tone_dict('tentative', 'language')[0]
+    fear_article = get_highest_Scoring_Article('fear', 'emotional')
+    sadness_article = get_highest_Scoring_Article('sadness', 'emotional')
+    joy_article = get_highest_Scoring_Article('joy', 'emotional')
+    anger_article = get_highest_Scoring_Article('anger', 'emotional')
+    analytical_article = get_highest_Scoring_Article('analytical', 'language')
+    confident_article = get_highest_Scoring_Article('confident', 'language')
+    tentative_article = get_highest_Scoring_Article('tentative', 'language')
 
     return {
         'joy': joy_article, 
@@ -139,17 +162,4 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print("Connected to DB.")
-
-
-
-
-
-
-
-
-
-
-
-
-
 

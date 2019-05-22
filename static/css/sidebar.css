@@ -35,13 +35,13 @@
 }
 
 .side-bar a {
-    color: #521751;
+    color: #fb3530;
     text-decoration: none;
 }
 
 .side-bar a:hover,
 .side-bar a:active {
-    color: #fa923f;
+    color: #58595B;
 }
 
 /* To hide sidebar in small screen views */

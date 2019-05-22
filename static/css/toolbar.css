@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #521751;
+    background: #fb3530;
     height: 56px;
 }
 
@@ -45,7 +45,7 @@
 }
 .toolbar__navigation-items a:hover,
 .toolbar__navigation-items a:active {
-    color: #fa923f;
+    color: #58595B;
 }
 
 /* To hide toolbar in small screen views */

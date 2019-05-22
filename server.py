@@ -17,7 +17,6 @@ from tone_api_functions import *
 from sqlalchemy import desc, func
 from tone_filter import *
 from source_stats import *
-from category_functions import *
 
 #Set up flask object
 app = Flask(__name__)
@@ -69,7 +68,7 @@ def get_chosen_emotion():
 def get_chosen_emotion_query():
     """Get chosen emotion from form post"""
     session['selected_emotion'] = chosen_emotion
-    print("session['selected_emotion']", session['selected_emotion'])
+    print("session['selected_emotion'] changed using query string to:", session['selected_emotion'])
     return redirect('/headlines-by-emotion')
 
 @app.route('/get-chosen-language', methods=['POST'])
@@ -83,7 +82,7 @@ def get_chosen_language():
 def get_chosen_language_query():
     """Get chosen emotion from form post"""
     session['selected_language'] = chosen_language
-    print("session['selected_language']", session['selected_language'])
+    print("session['selected_language'] changed using query string to:", session['selected_language'])
     return redirect('/headlines-by-language')
 
 @app.route('/get-chosen-source', methods=['POST'])
@@ -98,7 +97,7 @@ def get_chosen_source_get(chosen_source):
     """Get chosen source through link on DOM"""
     print('CHOSEN SOURCE', chosen_source)
     session['selected_source'] = chosen_source
-    print("session['selected_source'] changed from react headlines form", session['selected_source'])
+    print("session['selected_source'] changed using query string to:", session['selected_source'])
     return redirect(('/source-stats/{}').format(session['selected_source']))
 
 @app.route('/get-chosen-category', methods=['POST'])
@@ -113,7 +112,7 @@ def get_chosen_category_get(chosen_category):
     """Get chosen source through link on DOM"""
     print('CHOSEN CATEGORY', chosen_category)
     session['selected_category'] = chosen_category
-    print("session['selected_category'] changed from react headlines form", session['selected_category'])
+    print("session['selected_category'] changed using query string to:", session['selected_category'])
     return redirect('/headlines-by-category')
 
 #JSON ROUTES
@@ -200,7 +199,7 @@ def api_calls():
     return redirect('/')
 
 if __name__ == "__main__":
-     # As a convenience, if we run this module interactively, it will leave
+    # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
 
     # app.debug = True

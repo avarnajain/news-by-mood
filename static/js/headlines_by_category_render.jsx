@@ -2,12 +2,11 @@
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
-import CatNews from "./category_news.jsx";
-
+import News from "./news.jsx";
 
 const content = (
     <div id="category-headlines">
-        <CatNews fetch_url='/headlines-by-category.json'/>
+        <News fetch_url='/headlines-by-category.json'/>
     </div>
 );
 

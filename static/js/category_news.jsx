@@ -7,8 +7,6 @@ class CatNews extends React.Component {
     constructor(props) {
         super(props);
         this.state = {data: []};
-        // this.handleSubmit = this.handleSubmit.bind(this)
-        // this.handleToneSelection = this.handleToneSelection.bind(this)
     }
 
     //this executes when the page is loaded

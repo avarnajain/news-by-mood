@@ -66,9 +66,9 @@ class News extends React.Component {
                     <div className="col-6">
                         <h5>
                             <b>
-                                {article.selected_tone_id.charAt(0).toUpperCase() + article.selected_tone_id.slice(1) + ' '}
+                                {article.filter_id.charAt(0).toUpperCase() + article.filter_id.slice(1) + ' '}
                             </b>
-                             index: {article.selected_score} 
+                             index: {article.filter_score} 
                         </h5>
                         <h5>Source: <a href={`/get-chosen-source/${article.source}`}>{article.source}</a></h5>
                         <h5>Published: {article.published}</h5>

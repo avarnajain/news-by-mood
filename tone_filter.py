@@ -28,12 +28,6 @@ def get_tones_dict_db(tone_type):
 
     return tones_list
 
-def sort_by_score(Article):
-    """Sort filtered Articles by their score"""
-
-    score = Article['selected_score']
-    return score
-
 def sort_by_date(Article):
 
     datetime = Article['published']
@@ -70,6 +64,33 @@ def get_Articles_with_tone_filter(tone_id, tone_type):
 
     return Articles_list
 
+def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None):
+
+    Categories = Article.categories
+    categories = [Category.category_id for Category in Categories]
+    Scores = Article.scores
+    scores = {}
+    for Score in Scores:
+        tone = Score.tone_id
+        scores[tone] = Score.score
+    
+    Article_dict = {
+        'article_id': Article.article_id,
+        'category': categories,
+        'url': Article.url,
+        'author': Article.author,
+        'title': Article.title,
+        'source': Article.source,
+        'image_url': Article.image_url,
+        'published': Article.published,
+        'description': Article.description,
+        'filter_id': filter_id,
+        'filter_type': filter_type,
+        'filter_score': filter_score,
+        'scores': scores
+    }
+    return Article_dict
+
 def get_Articles_with_tone_dict(tone_id, tone_type):
     """create json object to return"""
 
@@ -78,30 +99,14 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
     articles = []
     for Article in Articles_list:
         scores = Article.scores
-        all_scores = {}
+        filter_score = None
         for s in scores:
             if s.tone_id == tone_id:
-                score = s.score
-            all_scores[s.tone_id] = s.score
-        Article_dict = {
-            'article_id': Article.article_id,
-            'url': Article.url,
-            'author': Article.author,
-            'title': Article.title,
-            'source': Article.source,
-            'image_url': Article.image_url,
-            'published': Article.published,
-            'description': Article.description,
-            'selected_tone_type': tone_type,
-            'selected_tone_id': tone_id,
-            'selected_score': score,
-            'other_scores': all_scores
-        }
+                filter_score = s.score
+        Article_dict = single_Article_dict_json(Article, tone_id, tone_type, filter_score)
         articles.append(Article_dict)
     
-    Articles_by_score = sorted(articles, key=sort_by_score, reverse=True)
-    Articles_by_date = sorted(Articles_by_score, key=sort_by_date, reverse=True)
-
+    Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
     return Articles_by_date
 
 def get_highest_Scoring_Article(tone_id, tone_type):
@@ -113,27 +118,14 @@ def get_highest_Scoring_Article(tone_id, tone_type):
                 .order_by(Article.published.desc(), Score.score.desc())
                 .first())
     scores = article.scores
-    all_scores = {}
+    filter_score = None
     for s in scores:
         if s.tone_id == tone_id:
-            score = s.score
-        all_scores[s.tone_id] = s.score
-    article_dict = {
-        'article_id': article.article_id,
-        'url': article.url,
-        'author': article.author,
-        'title': article.title,
-        'source': article.source,
-        'image_url': article.image_url,
-        'published': article.published,
-        'description': article.description,
-        'selected_tone_type': tone_type,
-        'selected_tone_id': tone_id,
-        'selected_score': score,
-        'other_scores': all_scores
-    }
+            filter_score = s.score
+    
+    Article_dict = single_Article_dict_json(article, tone_id, tone_type, filter_score)
 
-    return article_dict
+    return Article_dict
 
 def get_top_headline_dict():
     """"""
@@ -147,6 +139,40 @@ def get_top_headline_dict():
 
     return [joy_article, fear_article, sadness_article, anger_article,
             analytical_article, confident_article, tentative_article]
+
+#################################################################
+# Category queries
+
+def get_categories_dict_db():
+    """Get a list of all categories"""
+
+    all_categories = db.session.query(Category.category_id, Category.category_name)
+    category_list = []
+    for category in all_categories:
+        category_dict = {
+            'category_id': category.category_id,
+            'category_name': category.category_name,
+        }
+        category_list.append(category_dict)
+
+    return category_list
+
+def get_Articles_with_category_filter(category_id):
+    """Return list of Articles with highest score for chosen category"""
+
+    Cat = Category.query.get(category_id)
+    Articles = Cat.articles
+
+    articles = []
+    for Article in Articles:
+        scores = Article.scores        
+        Article_dict = single_Article_dict_json(article, category_id, 'category')
+        articles.append(Article_dict)
+    
+    Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
+
+    return Articles_by_date
+
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

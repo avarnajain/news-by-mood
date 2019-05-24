@@ -1,4 +1,5 @@
 "use-strict";
+import Bubble from './bubblechart';
 
 class News extends React.Component {
     
@@ -64,15 +65,19 @@ class News extends React.Component {
                         <img src={article.image_url} alt="img" className="img-thumbnail"/>
                     </div>
                     <div className="col-6">
-                        <h5>
-                            <b>
-                                {article.filter_id.charAt(0).toUpperCase() + article.filter_id.slice(1) + ' '}
-                            </b>
-                             index: {article.filter_score} 
-                        </h5>
-                        <h5>Source: <a href={`/get-chosen-source/${article.source}`}>{article.source}</a></h5>
-                        <h5>Published: {article.published}</h5>
-                        
+                        <div className="row" id='D3'>
+                            D3 goes here
+                            <Bubble tone_data={article.scores}/>
+                        </div>
+                        <div className="row">
+                            <h5>Category: {article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}</h5>
+                        </div>
+                        <div className="row">
+                            <h5>Source: <a href={`/get-chosen-source/${article.source}`}>{article.source}</a></h5>
+                        </div>
+                        <div className="row">
+                            <h5>Published: {article.published}</h5>
+                        </div>
                     </div>
                 </div>
                 <br/>

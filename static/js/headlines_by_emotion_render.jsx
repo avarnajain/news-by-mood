@@ -7,8 +7,7 @@ import News from "./news.jsx";
 
 const content = (
     <div id="emotional-headlines">
-        <News fetch_url='/headlines-by-emotion.json'
-              fetch_tone='/session-emotion.json'/>
+        <News fetch_url='/headlines-by-emotion.json'/>
     </div>
 );
 

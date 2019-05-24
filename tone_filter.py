@@ -69,10 +69,14 @@ def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None)
     Categories = Article.categories
     categories = [Category.category_id for Category in Categories]
     Scores = Article.scores
-    scores = {}
+    score_list = []
     for Score in Scores:
         tone = Score.tone_id
-        scores[tone] = Score.score
+        Tone_ = Tone.query.get(tone)
+        tone_type = Tone_.tone_type
+        score = Score.score
+        score_dict = {'tone': tone, 'score': score, 'type': tone_type}
+        score_list.append(score_dict)
     
     Article_dict = {
         'article_id': Article.article_id,
@@ -87,7 +91,7 @@ def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None)
         'filter_id': filter_id,
         'filter_type': filter_type,
         'filter_score': filter_score,
-        'scores': scores
+        'scores': score_list
     }
     return Article_dict
 
@@ -166,7 +170,7 @@ def get_Articles_with_category_filter(category_id):
     articles = []
     for Article in Articles:
         scores = Article.scores        
-        Article_dict = single_Article_dict_json(article, category_id, 'category')
+        Article_dict = single_Article_dict_json(Article, category_id, 'category')
         articles.append(Article_dict)
     
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)

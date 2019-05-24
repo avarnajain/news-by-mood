@@ -22,6 +22,7 @@ def get_scores_add_to_db():
     article_list = get_Articles_without_Score()
     counter = 0
     # Loop over article to get tone analysis
+    
     for article in article_list:
         url = article.url
         scores = get_scores_from_url(url)

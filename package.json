@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@weknow/react-bubble-chart-d3": "^1.0.12",
     "bootstrap": "^4.3.1",
     "mdbreact": "^4.14.0",
     "prop-types": "^15.7.2",

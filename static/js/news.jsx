@@ -66,7 +66,6 @@ class News extends React.Component {
                     </div>
                     <div className="col-6">
                         <div className="row" id='D3'>
-                            D3 goes here
                             <Bubble tone_data={article.scores}/>
                         </div>
                         <div className="row">

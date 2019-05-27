@@ -15,24 +15,24 @@ function Bubble(props) {
     console.log('obj_list', obj_list);
     return (<BubbleChart
       graph= {{
-        zoom: 0.8,
+        zoom: 0.5,
         offsetX: 0.05,
         offsetY: 0.01,
       }}
       width={600}
       height={400}
       padding={0} // optional value, number that set the padding between bubbles
-      showLegend={true} // optional value, pass false to disable the legend.
-      legendPercentage={20} // number that represent the % of with that legend going to use.
-      legendFont={{
-            family: 'Arial',
-            size: 12,
-            color: '#000',
-            weight: 'bold',
-          }}
+      showLegend={false} // optional value, pass false to disable the legend.
+      // legendPercentage={20} // number that represent the % of with that legend going to use.
+      // legendFont={{
+      //       family: 'Arial',
+      //       size: 12,
+      //       color: '#000',
+      //       weight: 'bold',
+      //     }}
       valueFont={{
             family: 'Arial',
-            size: 12,
+            size: 10,
             color: '#fff',
             weight: 'bold',
           }}

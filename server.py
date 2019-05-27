@@ -193,7 +193,7 @@ def api_calls():
     time_end = time.time()
     print('Time taken to get news:', time_end - time_start)
     time_start = time.time()
-    get_scores_add_to_db()
+    # get_scores_add_to_db()
     time_end = time.time()
     print('Time taken to get tones:', time_end - time_start)
     return redirect('/')

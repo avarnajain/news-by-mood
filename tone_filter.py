@@ -3,6 +3,38 @@ import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
 from sqlalchemy import desc
 
+def find_Articles_with_duplicate_Scores():
+    """find Articles with duplicate Scores"""
+
+    Articles = db.session.query(Article).all()
+    duplicate_Articles_list = []
+    for article in Articles:
+        duplicate_Scores_list = []
+        for Score in article.scores:
+            if Score.tone_id in duplicate_Scores_list:
+                duplicate_Articles_list.append(article.article_id)
+            else:
+                duplicate_Scores_list.append(Score.tone_id)
+    return set(duplicate_Articles_list)
+
+def delete_duplicate_Scores():
+    """check and remove duplicate scores from an Articles"""
+
+    Articles = find_Articles_with_duplicate_Scores()
+
+    for article_id in Articles:
+        article = Article.query.get(article_id)
+        Scores = article.scores
+        tone_list = []
+        for score in Scores:
+            if score.tone_id in tone_list:
+                score_id = score.score_id
+                print(article_id, score.tone_id)
+                Score.query.filter(Score.score_id==score_id).delete()            
+                db.session.commit()
+            else:
+                tone_list.append(score.tone_id)
+
 def get_tone_db():
     """get all tones"""
 

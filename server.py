@@ -140,12 +140,6 @@ def get_all_categories():
     categories_dict = get_categories_dict_db()
     return jsonify(categories_dict)
 
-@app.route('/top-headlines.json')
-def get_top_headlines():
-    """Get top headlines for each tone for homepage"""
-    top_headlines = get_top_headline_dict()
-    return jsonify(top_headlines)
-
 @app.route('/headlines-by-emotion.json')
 def get_headlines_by_emotion():
     """Get articles with chosen tone"""
@@ -192,10 +186,6 @@ def api_calls():
     get_articles_add_to_db()
     time_end = time.time()
     print('Time taken to get news:', time_end - time_start)
-    time_start = time.time()
-    # get_scores_add_to_db()
-    time_end = time.time()
-    print('Time taken to get tones:', time_end - time_start)
     return redirect('/')
 
 if __name__ == "__main__":

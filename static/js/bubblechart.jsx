@@ -19,8 +19,8 @@ function Bubble(props) {
         offsetX: 0.05,
         offsetY: 0.01,
       }}
-      width={600}
-      height={400}
+      width={300}
+      height={200}
       padding={0} // optional value, number that set the padding between bubbles
       showLegend={false} // optional value, pass false to disable the legend.
       // legendPercentage={20} // number that represent the % of with that legend going to use.

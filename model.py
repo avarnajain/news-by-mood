@@ -81,6 +81,24 @@ class Category(db.Model):
 
         return "<Category> category_id {}".format(self.category_id)
 
+# class User(db.Model):
+#     """User Profiles"""
+
+#     user_id  = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     username = db.Column(db.String(50), nullable=False)
+#     password = db.Column(db.String(100), nullable=False)
+
+# class Preference(db.Model):
+#     """Save user preferences"""
+
+#     pref_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey('User.user_id'))
+#     pref_type = db.Column(db.String(20))
+#     pref_id = db.Column(db.String(20), nullable=False)
+
+#     users = db.relationship("User",
+#                             backref=db.backref("prefs"))
+
 ##############################################################################
 # Helper functions
 

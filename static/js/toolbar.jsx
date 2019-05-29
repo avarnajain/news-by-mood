@@ -18,10 +18,7 @@ const toolbar = props => (
       <div className="toolbar__navigation-items">
         <ul>
           <li> 
-            <a href="/get-chosen-emotion/anger">By Emotion</a> 
-          </li>
-          <li> 
-            <a href="/get-chosen-language">By Language</a> 
+            <a href="/login">Log In</a> 
           </li>
         </ul>
       </div>

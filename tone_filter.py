@@ -143,7 +143,7 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
         articles.append(Article_dict)
     
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
-    return Articles_by_date
+    return Articles_by_date[:2]
 
 def get_highest_Scoring_Article(tone_id, tone_type):
     """Get the highest scoring article for the day"""
@@ -207,7 +207,7 @@ def get_Articles_with_category_filter(category_id):
     
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
 
-    return Articles_by_date
+    return Articles_by_date[:2]
 
 
 if __name__ == "__main__":

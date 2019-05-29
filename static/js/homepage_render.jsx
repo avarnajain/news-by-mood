@@ -6,9 +6,8 @@ import News from './news.jsx';
 
 const content = (
     <div>
-        <h4> Home </h4>
         <div id="top-headlines">
-            <News fetch_url='/top-headlines.json'/>
+            <h1>News By Mood</h1>
         </div>
     </div>
 );

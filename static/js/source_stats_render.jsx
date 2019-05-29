@@ -7,19 +7,41 @@ import Stats from "./source_stats.jsx";
 
 const content = (
     <div id="source-stats">
-        <Stats fetch_url='/all-source-stats.json'
-                  filter_by='source_name'/>
-        <Stats fetch_url='/all-source-stats.json'
-                  filter_by='emotional'
-                  heading='Emotional Tones'/>
-                  <br />
-        <Stats fetch_url='/all-source-stats.json'
-                  filter_by='language'
-                  heading='Language Tones'/>
-        <Stats fetch_url='/all-source-stats.json'
-                filter_by='None'/>
-        <Stats fetch_url='/all-source-stats.json'
-                filter_by='total'/>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col">
+                    <Stats fetch_url='/all-source-stats.json'
+                            filter_by='source_name'/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-4 offset-2">
+                    <Stats fetch_url='/all-source-stats.json'
+                              filter_by='emotional'
+                              heading='Emotional Tones'/>
+                </div>
+                <div className="col-4">
+                    <Stats fetch_url='/all-source-stats.json'
+                              filter_by='language'
+                              heading='Language Tones'/>
+                </div>
+            </div>
+            <div className="row">
+              <br />
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Stats fetch_url='/all-source-stats.json'
+                            filter_by='None'/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Stats fetch_url='/all-source-stats.json'
+                            filter_by='total'/>
+                </div>
+            </div>
+        </div>
     </div>
 );
 

@@ -8,14 +8,11 @@ class News extends React.Component {
     constructor(props) {
         super(props);
         this.state = {data: []};
-        // this.handleSubmit = this.handleSubmit.bind(this)
-        // this.handleToneSelection = this.handleToneSelection.bind(this)
     }
 
     //this executes when the page is loaded
     componentDidMount() {
         this.getNews();
-        // this.getTone();
     }
     
     getNews() {
@@ -32,20 +29,7 @@ class News extends React.Component {
             })
         });
     }
-    // getTone() {
-    //     console.log('getTone()')
-    //     //.then() handles the response from the ajax call
-    //     fetch(this.props.fetch_tone)
-    //     //tells it to handle response like a json object
-    //     .then(response => response.json())
-    //     //
-    //     .then(tone => {
-    //         //console.log(data);
-    //         this.setState({
-    //             tone: tone
-    //         })
-    //     });
-    // }
+
     render() {
 
         const news = this.state.data;

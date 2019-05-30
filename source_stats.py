@@ -47,10 +47,10 @@ def get_source_Articles_by_tone(source, tone_type, tone_id):
 
     for dict_item in stats_list:
         if dict_item['filter'] == tone_type:
-            article_id_list = dict_item['data'][tone_id]
+            article_id_list_ = dict_item['data'][tone_id]
     
+    article_id_list = article_id_list_[::-1]
     article_list = []
-
     for article_id in article_id_list:
         article_obj = Article.query.get(article_id)
         article_dict = single_Article_dict_json(article_obj, tone_id, tone_type)

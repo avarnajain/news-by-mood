@@ -1,5 +1,5 @@
 "use-strict";
-import Bubble from './bubblechart';
+import Bubble from './bubblechart2';
 
 class News extends React.Component {
     
@@ -38,28 +38,35 @@ class News extends React.Component {
         const newsList = news.map((article) => 
             <div key={article.article_id.toString()}>
                 <div className="row">
-                    <div className="col-12">
-                        <h4>
+                    <div className="col">
+                        <h5>
                             <a href={article.url}>{article.title}</a>
-                        </h4>
+                        </h5>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col">
+                        <h6>
+                            <a href={`/get-chosen-source/${article.source}`}>{article.source}</a>
+                            {' • '+article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}
+                            {' • '+article.published}
+                        </h6>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-4">
                         <img src={article.image_url} alt="img" className="img-thumbnail"/>
                     </div>
-                    <div className="col-6">
+                    <div className="col-8">
                         <div className="row" id='D3'>
-                            <Bubble tone_data={article.scores}/>
-                        </div>
-                        <div className="row">
-                            <h5>Category: {article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}</h5>
-                        </div>
-                        <div className="row">
-                            <h5>Source: <a href={`/get-chosen-source/${article.source}`}>{article.source}</a></h5>
-                        </div>
-                        <div className="row">
-                            <h5>Published: {article.published}</h5>
+                            <div className="col-6">
+                                <Bubble tone_data={article.scores}
+                                        filter_type='emotional'/>
+                            </div>
+                            <div className="col-6">
+                                <Bubble tone_data={article.scores}
+                                        filter_type='language'/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,5 +84,19 @@ class News extends React.Component {
         )
     };
 }
+
+
+// const deleted = (<div className="col-8">
+//     <div className="row" id='D3'>
+//         <div className="col-6">
+//             <Bubble tone_data={article.scores}
+//                     filter_type='emotional'/>
+//         </div>
+//         <div className="col-6">
+//             <Bubble tone_data={article.scores}
+//                     filter_type='language'/>
+//         </div>
+//     </div>
+// </div>)
 
 export default News;

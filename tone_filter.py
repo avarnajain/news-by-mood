@@ -109,13 +109,13 @@ def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None)
         score = Score.score
         score_dict = {'tone': tone, 'score': score, 'type': tone_type}
         score_list.append(score_dict)
-    
+    title = format_article_title(Article)
     Article_dict = {
         'article_id': Article.article_id,
         'category': categories,
         'url': Article.url,
         'author': Article.author,
-        'title': Article.title,
+        'title': title,
         'source': Article.source,
         'image_url': Article.image_url,
         'published': Article.published,
@@ -126,6 +126,13 @@ def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None)
         'scores': score_list
     }
     return Article_dict
+
+def format_article_title(Article):
+    """format article title for display"""
+
+    title_ = Article.title
+    title = title_.split(' - ')[0]
+    return title
 
 def get_Articles_with_tone_dict(tone_id, tone_type):
     """create json object to return"""

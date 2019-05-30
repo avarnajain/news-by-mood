@@ -17,10 +17,11 @@ function Bubble(props) {
     console.log('tones', tones);
     const obj_list = [];
     const data = tones.map(tone => {
-        obj_list.push({
-            label:tone.tone,
-            value:tone.score,
-        })
+      obj_list.push({
+          label:tone.tone,
+          value:tone.score,
+          color:TONE_COLORS[tone.tone]
+      })
     });
     console.log('obj_list', obj_list);
     return (<BubbleChart
@@ -32,14 +33,14 @@ function Bubble(props) {
       width={300}
       height={200}
       padding={0} // optional value, number that set the padding between bubbles
-      showLegend={false} // optional value, pass false to disable the legend.
-      // legendPercentage={20} // number that represent the % of with that legend going to use.
-      // legendFont={{
-      //       family: 'Arial',
-      //       size: 12,
-      //       color: '#000',
-      //       weight: 'bold',
-      //     }}
+      showLegend={true} // optional value, pass false to disable the legend.
+      legendPercentage={20} // number that represent the % of with that legend going to use.
+      legendFont={{
+            family: 'Arial',
+            size: 12,
+            color: '#000',
+            weight: 'bold',
+          }}
       valueFont={{
             family: 'Arial',
             size: 10,

@@ -1,5 +1,5 @@
 "use-strict";
-import Bubble from './bubblechart2';
+import Bubble from './bubblechart';
 
 class News extends React.Component {
     
@@ -59,18 +59,14 @@ class News extends React.Component {
                     </div>
                     <div className="col-8">
                         <div className="row" id='D3'>
-                            <div className="col-6">
-                                <Bubble tone_data={article.scores}
-                                        filter_type='emotional'/>
-                            </div>
-                            <div className="col-6">
-                                <Bubble tone_data={article.scores}
-                                        filter_type='language'/>
+                            <div className="col">
+                                <Bubble tone_data={article.scores}/>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br/>
+                <div className="row">
+                </div>
             </div>
         );
         return (
@@ -86,17 +82,21 @@ class News extends React.Component {
 }
 
 
-// const deleted = (<div className="col-8">
-//     <div className="row" id='D3'>
-//         <div className="col-6">
-//             <Bubble tone_data={article.scores}
-//                     filter_type='emotional'/>
-//         </div>
-//         <div className="col-6">
-//             <Bubble tone_data={article.scores}
-//                     filter_type='language'/>
-//         </div>
+// const deleted = (
+//     <div className="col-6">
+//         <Bubble tone_data={article.scores}
+//             filter_type='emotional'/>
 //     </div>
-// </div>)
+//     <div className="col-6">
+//         <Bubble tone_data={article.scores}
+//             filter_type='language'/>
+//     </div>
+// )
+
+// const deleted = (
+//     <div className="col">
+//         <Bubble tone_data={article.scores}/>
+//     </div>
+// )
 
 export default News;

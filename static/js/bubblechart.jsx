@@ -26,11 +26,11 @@ function Bubble(props) {
     console.log('obj_list', obj_list);
     return (<BubbleChart
       graph= {{
-        zoom: 0.5,
+        zoom: 0.4,
         offsetX: 0.05,
         offsetY: 0.01,
       }}
-      width={300}
+      width={600}
       height={200}
       padding={0} // optional value, number that set the padding between bubbles
       showLegend={true} // optional value, pass false to disable the legend.
@@ -41,19 +41,19 @@ function Bubble(props) {
             color: '#000',
             weight: 'bold',
           }}
-      valueFont={{
-            family: 'Arial',
-            size: 10,
-            color: '#fff',
-            weight: 'bold',
-          }}
+      showValue={false}
+      // valueFont={{
+      //       family: 'Arial',
+      //       size: 10,
+      //       color: '#fff',
+      //       weight: 'bold',
+      //     }}
       labelFont={{
             family: 'Arial',
             size: 16,
             color: '#fff',
             weight: 'bold',
           }}
-      //Custom bubble/legend click functions such as searching using the label, redirecting to other page
       data={obj_list}
     />)
 }

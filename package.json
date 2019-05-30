@@ -6,9 +6,11 @@
   "dependencies": {
     "@weknow/react-bubble-chart-d3": "^1.0.12",
     "bootstrap": "^4.3.1",
+    "chart.js": "^2.8.0",
     "mdbreact": "^4.14.0",
     "prop-types": "^15.7.2",
     "react-bootstrap": "^1.0.0-beta.8",
+    "react-chartjs-2": "^2.7.6",
     "react-metismenu": "^1.4.0",
     "react-minimal-pie-chart": "^4.0.0",
     "react-router-dom": "^5.0.0",

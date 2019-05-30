@@ -143,38 +143,7 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
         articles.append(Article_dict)
     
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
-    return Articles_by_date[:2]
-
-def get_highest_Scoring_Article(tone_id, tone_type):
-    """Get the highest scoring article for the day"""
-
-    article = (db.session.query(Article)
-                .join(Score)
-                .filter(Score.tone_id==tone_id)
-                .order_by(Article.published.desc(), Score.score.desc())
-                .first())
-    scores = article.scores
-    filter_score = None
-    for s in scores:
-        if s.tone_id == tone_id:
-            filter_score = s.score
-    
-    Article_dict = single_Article_dict_json(article, tone_id, tone_type, filter_score)
-
-    return Article_dict
-
-def get_top_headline_dict():
-    """"""
-    fear_article = get_highest_Scoring_Article('fear', 'emotional')
-    sadness_article = get_highest_Scoring_Article('sadness', 'emotional')
-    joy_article = get_highest_Scoring_Article('joy', 'emotional')
-    anger_article = get_highest_Scoring_Article('anger', 'emotional')
-    analytical_article = get_highest_Scoring_Article('analytical', 'language')
-    confident_article = get_highest_Scoring_Article('confident', 'language')
-    tentative_article = get_highest_Scoring_Article('tentative', 'language')
-
-    return [joy_article, fear_article, sadness_article, anger_article,
-            analytical_article, confident_article, tentative_article]
+    return Articles_by_date[:5]
 
 #################################################################
 # Category queries
@@ -207,7 +176,7 @@ def get_Articles_with_category_filter(category_id):
     
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
 
-    return Articles_by_date[:2]
+    return Articles_by_date[:5]
 
 
 if __name__ == "__main__":

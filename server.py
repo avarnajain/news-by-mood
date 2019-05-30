@@ -175,6 +175,28 @@ def get_session_emotion():
 def get_session_language():
     return jsonify(session['selected_language'].capitalize())
 
+@app.route('/get-source-news', methods=['POST'])
+def get_source_news():
+    """set session variables to get source news"""
+    session['selected_source_tone_id'] = request.json['selected_source_tone']
+    print('selected source news tone id', session['selected_source_tone_id'])
+    
+    if session['selected_source_tone_id'] in ['fear', 'joy', 'anger', 'sadness']:
+        session['selected_source_tone_type'] = 'emotional'
+    elif session['selected_source_tone_id'] in ['analytical', 'confident', 'tentative']:
+        session['selected_source_tone_type'] = 'language'
+    else:
+        session['selected_source_tone_type'] = None
+
+    return redirect('/source-stats/{}'.format(session['selected_source']))
+
+@app.route('/source-news.json')
+def get_source_news_json():
+
+    if (session['selected_source_tone_type'] and session['selected_source_tone_id']):
+        source_news = get_source_Articles_by_tone(session['selected_source'], session['selected_source_tone_type'], session['selected_source_tone_id'])
+        return jsonify(source_news)
+
 ########################################################################
 # API ROUTE
 

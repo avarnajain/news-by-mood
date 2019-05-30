@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
 import Stats from "./source_stats.jsx";
+import News from "./news.jsx"
 
 const content = (
     <div id="source-stats">
@@ -15,12 +16,12 @@ const content = (
                 </div>
             </div>
             <div className="row">
-                <div className="col-4 offset-2">
+                <div className="col-6">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='emotional'
                               heading='Emotional Tones'/>
                 </div>
-                <div className="col-4">
+                <div className="col-6">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='language'
                               heading='Language Tones'/>
@@ -40,6 +41,9 @@ const content = (
                     <Stats fetch_url='/all-source-stats.json'
                             filter_by='total'/>
                 </div>
+            </div>
+            <div className="sourceNews">
+                <News fetch_url='/source-news.json'/>
             </div>
         </div>
     </div>

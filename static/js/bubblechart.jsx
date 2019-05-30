@@ -2,6 +2,16 @@
 
 import BubbleChart from '@weknow/react-bubble-chart-d3';
 
+const TONE_COLORS = {
+    "sadness": '#76A0A0',
+    "fear": '#001514',
+    "anger": '#CE0002',
+    "joy": '#F6B621',
+    "analytical": '#736F72',
+    "confident": '#9A8F97',
+    "tentative": '#C3BABA'
+}
+
 function Bubble(props) {
     const tones = props.tone_data;
     console.log('tones', tones);

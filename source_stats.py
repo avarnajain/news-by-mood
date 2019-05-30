@@ -40,12 +40,29 @@ def get_chosen_source_stats(chosen_source):
     stats_list = get_tone_stats_dicts(source_articles, chosen_source)
     return stats_list
 
+def get_source_Articles_by_tone(source, tone_type, tone_id):
+    """return articles by tone id for a source as json"""
+
+    stats_list = get_chosen_source_stats(source)
+
+    for dict_item in stats_list:
+        if dict_item['filter'] == tone_type:
+            article_id_list = dict_item['data'][tone_id]
+    
+    article_list = []
+
+    for article_id in article_id_list:
+        article_obj = Article.query.get(article_id)
+        article_dict = single_Article_dict_json(article_obj, tone_id, tone_type)
+        article_list.append(article_dict)
+
+    return article_list
+
 def get_articles_for_source(source):
     """get all articles of specific source"""
 
     source_articles = Article.query.filter(Article.source==source).order_by(
                                                         Article.published).all()
-
     return source_articles
 
 def get_num_articles(source):

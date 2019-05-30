@@ -1,9 +1,7 @@
 "use-strict";
 import "../css/source_stats.css";
-import Pie from './piechart';
 import '../css/pie.css';
-
-// import PieChart from 'react-minimal-pie-chart';
+import PieChart from './piechart.jsx';
 
 class Stats extends React.Component {
     //import state property from React Component class, 
@@ -41,11 +39,12 @@ class Stats extends React.Component {
         const statsList = Object.keys(stats).map(key => {
             if (stats[key]['filter'] == filter_ && filter_ != 'None' && filter_ != 'total') {
                 const dict = stats[key]['data']
-                console.log('dict', dict);
+                // console.log('dict', dict);
                 return dict && (
-                    <div className="pie">
-                        <Pie data={dict} heading={this.props.heading}/>
-                    </div>
+                    <PieChart data={dict} 
+                            heading={this.props.heading}
+                            post_url='/get-source-news'
+                    />
                 )
             }
             if (filter_ == 'None' && stats[key]['filter'] == 'None') {
@@ -65,15 +64,15 @@ class Stats extends React.Component {
             if (filter_ == 'source_name' && key == 0) {
                 return (
                     <div key='source'>
-                        <h1> <b>{stats[key]['source']}</b> Tone Profile</h1> <br/>
+                        <h1> <b>{stats[key]['source']}</b> </h1> <br/>
                     </div>
                 )
             }
         });  
         return (
-            <div className="container-fluid">
+            <div className="stats">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col">
                         <div> {statsList} </div>
                     </div>
                 </div>

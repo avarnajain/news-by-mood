@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 70%;
+    width: 50%;
     max-width: 400px;
     z-index: 200;
     transform: translateX(-100%);
@@ -14,11 +14,10 @@
 
 .side-bar.open {
     transform: translateX(0);
-
 }
 
 .side-bar ul {
-    height: 70%;
+    height: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -27,11 +26,11 @@
 
 .side-bar li {
     margin: 0rem 0;
-    font-size: 1rem;
+    font-size: 0.6rem;
 }
 .side-bar h3 {
     margin: 0.5rem 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .side-bar a {
@@ -42,6 +41,10 @@
 .side-bar a:hover,
 .side-bar a:active {
     color: #58595B;
+}
+
+.side-bar label {
+    font-size: 0.9rem;
 }
 
 /* To hide sidebar in small screen views */

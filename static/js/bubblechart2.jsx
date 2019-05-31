@@ -1,11 +1,12 @@
 "use-strict";
 import React, {Component} from "react";
 import {Polar} from 'react-chartjs-2';
+import {TONE_COLORS} from './constants.jsx'
 
 const TONE_COLORS = {
     "sadness": '#76A0A0',
-    "fear": '#001514',
-    "anger": '#CE0002',
+    "fear": '#587046',
+    "anger": '#A23E48',
     "joy": '#F6B621',
     "analytical": '#736F72',
     "confident": '#9A8F97',

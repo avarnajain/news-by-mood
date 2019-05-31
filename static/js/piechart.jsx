@@ -2,16 +2,8 @@
 import React, {Component} from "react";
 import {Pie} from 'react-chartjs-2';
 import '../css/pie.css'
+import {TONE_COLORS} from './constants.jsx'
 
-const TONE_COLORS = {
-    "sadness": '#76A0A0',
-    "fear": '#001514',
-    "anger": '#CE0002',
-    "joy": '#F6B621',
-    "analytical": '#736F72',
-    "confident": '#9A8F97',
-    "tentative": '#C3BABA'
-}
 
 class PieChart extends Component {
     constructor(props) {
@@ -32,25 +24,27 @@ class PieChart extends Component {
             data: this.props.data
         })
     }
-
     handleToneSelection(evt) {
+
         this.setState({
             selected_source_tone: evt[0]._model.label
         });
         console.log('this.state.selected_source_tone, value:', this.state.selected_source_tone)
-        fetch(this.props.post_url, {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                selected_source_tone: this.state.selected_source_tone
+        if (this.state.selected_source_tone) {
+            fetch(this.props.post_url, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    selected_source_tone: this.state.selected_source_tone
+                })
             })
-        })
-        // .then(() => {
-        //     window.location.reload()
-        // });
+            .then(() => {
+                window.location.reload()
+            });
+        }
     }
 
     render() {

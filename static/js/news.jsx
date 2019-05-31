@@ -33,39 +33,38 @@ class News extends React.Component {
     render() {
 
         const news = this.state.data;
-        // const tone = this.state.tone;
-        // console.log(tone);
         const newsList = news.map((article) => 
             <div key={article.article_id.toString()}>
-                <div className="row">
-                    <div className="col">
-                        <h5>
-                            <a href={article.url}>{article.title}</a>
-                        </h5>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col">
+                            <h5>
+                                <a href={article.url} target="_blank">{article.title}</a>
+                            </h5>
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <h6>
-                            <a href={`/get-chosen-source/${article.source}`}>{article.source}</a>
-                            {' • '+article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}
-                            {' • '+article.published}
-                        </h6>
+                    <div className="row">
+                        <div className="col">
+                            <h6>
+                                <a href={`/get-chosen-source/${article.source}`}>{article.source}</a>
+                                {' • '+article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}
+                                {' • '+article.published}
+                            </h6>
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-4">
-                        <img src={article.image_url} alt="img" className="img-thumbnail"/>
-                    </div>
-                    <div className="col-8">
-                        <div className="row" id='D3'>
-                            <div className="col">
-                                <Bubble tone_data={article.scores}/>
+                    <div className="row">
+                        <div className="col-4">
+                            <img src={article.image_url} alt="img" className="img-thumbnail"/>
+                        </div>
+                        <div className="col-8">
+                            <div className="row" id='D3'>
+                                <div className="col">
+                                    <Bubble tone_data={article.scores}/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="row">
+                    <br />
                 </div>
             </div>
         );

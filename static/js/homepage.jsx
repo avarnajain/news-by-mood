@@ -33,8 +33,14 @@ class App extends React.Component {
         return (
             <div style={{height: '100%'}}>
                 <Toolbar sideBarClickHandler={this.sideBarToggleClickHandler}/>
-                <SideBar show={this.state.sideBarOpen}/>
-                {backdrop}
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col">
+                            <SideBar show={this.state.sideBarOpen}/>
+                            {backdrop}
+                        </div>
+                    </div>
+                </div>
                 <main style={{marginTop: '64px'}}>
                     <h1> {this.props.content} </h1>
                 </main>

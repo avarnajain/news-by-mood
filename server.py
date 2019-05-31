@@ -175,6 +175,14 @@ def get_session_emotion():
 def get_session_language():
     return jsonify(session['selected_language'].capitalize())
 
+@app.route('/session-category.json')
+def get_session_category():
+    return jsonify(session['selected_category'].capitalize())
+
+@app.route('/session-source.json')
+def get_session_source():
+    return jsonify(session['selected_source'].capitalize())
+
 @app.route('/get-source-news', methods=['POST'])
 def get_source_news():
     """set session variables to get source news"""

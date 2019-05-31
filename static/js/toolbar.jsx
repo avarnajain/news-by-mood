@@ -1,7 +1,4 @@
 import React, {Component} from "react";
-// import ReactDOM from "react-dom";
-// import Sidebar from "react-sidebar";
-// import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav'
 import '../css/toolbar.css';
 import SidebarToggleButton from './sidebar_toggle.jsx'
 
@@ -18,7 +15,7 @@ const toolbar = props => (
       <div className="toolbar__navigation-items">
         <ul>
           <li> 
-            <a href="/login">Log In</a> 
+            <a href="/">Home</a> 
           </li>
         </ul>
       </div>

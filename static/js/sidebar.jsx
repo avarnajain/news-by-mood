@@ -13,24 +13,20 @@ const SideBar = props => {
 
     return (
         <nav className={sideBarClasses}>
-            <ul>
-                <h3><a href='/'>Home</a></h3>
-                <br />
-                <h3>By Category</h3>
+            <ul className='sidebar_content'>
+                <h3>What type of news do you want?</h3>
                 <CategoryForm fetch_url='/all-categories.json'
                               post_url='/get-chosen-category'
                               redirect='/headlines-by-category'/>
-                <h3>By Emotion</h3>
+                <h3>How do you want your news to make you feel?</h3>
                 <ToneForm fetch_url='/emotional-tones.json' 
                           post_url='/get-chosen-emotion'
                           redirect='/headlines-by-emotion'/>    
-                <br />
-                <h3>By Language</h3>
+                <h3>What writing style do you want your news to convey?</h3>
                 <ToneForm fetch_url='/language-tones.json' 
                           post_url='/get-chosen-language'
                           redirect='/headlines-by-language'/>
-                <br />
-                <h3><a href='/'>Source Statistics</a></h3>
+                <h3>What is this news source's personality?</h3>
                 <SourceForm fetch_url='/all-sources.json' 
                             post_url='/get-chosen-source'/>
             </ul>

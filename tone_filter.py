@@ -150,7 +150,7 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
         articles.append(Article_dict)
     
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
-    return Articles_by_date[:5]
+    return Articles_by_date
 
 #################################################################
 # Category queries
@@ -183,7 +183,7 @@ def get_Articles_with_category_filter(category_id):
     
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
 
-    return Articles_by_date[:5]
+    return Articles_by_date
 
 
 if __name__ == "__main__":

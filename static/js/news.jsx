@@ -1,5 +1,6 @@
 "use-strict";
 import Bubble from './bubblechart';
+import Pagination from './pagination.jsx';
 
 class News extends React.Component {
     
@@ -7,8 +8,24 @@ class News extends React.Component {
     //set state as empty
     constructor(props) {
         super(props);
-        this.state = {data: []};
+        this.state = {
+            data: [],
+            currentNews:[],
+            currentPage: null,
+            totalPages: null
+        };
     }
+
+    onPageChanged = pageData => {
+        const { data } = this.state;
+        const { currentPage, totalPages, pageLimit } = pageData;
+
+        const offset = (currentPage - 1) * pageLimit;
+        const currentNews = data.slice(offset, offset + pageLimit);
+
+        this.setState({ currentPage, currentNews, totalPages });
+    }
+
 
     //this executes when the page is loaded
     componentDidMount() {
@@ -25,14 +42,19 @@ class News extends React.Component {
         .then(data => {
             //console.log(data);
             this.setState({
-                data: data
+                data: data,
+                currentNews: data.slice(0, 10)
             })
         });
     }
 
     render() {
 
-        const news = this.state.data;
+        const news = this.state.currentNews;
+        const { currentNews, currentPage, totalPages } = this.state;
+        const totalNews = this.state.data.length;
+        if (totalNews === 0) return null;
+        const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
         const newsList = news.map((article) => 
             <div key={article.article_id.toString()}>
                 <div className="container-fluid">
@@ -71,6 +93,23 @@ class News extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
+                    <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
+                        <div className="d-flex flex-row align-items-center">
+                            <h2 className={headerClass}>
+                                <strong className="text-secondary">{totalNews}</strong> Articles
+                            </h2>
+                            { currentPage && (
+                                <span className="current-page d-inline-block h-100 pl-4 text-secondary">
+                                    Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
+                                </span>
+                            )}
+                        </div>
+                        <div className="d-flex flex-row py-4 align-items-center">
+                            <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={2} onPageChanged={this.onPageChanged} />
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col-12">
                         {newsList}
                     </div>
@@ -79,23 +118,5 @@ class News extends React.Component {
         )
     };
 }
-
-
-// const deleted = (
-//     <div className="col-6">
-//         <Bubble tone_data={article.scores}
-//             filter_type='emotional'/>
-//     </div>
-//     <div className="col-6">
-//         <Bubble tone_data={article.scores}
-//             filter_type='language'/>
-//     </div>
-// )
-
-// const deleted = (
-//     <div className="col">
-//         <Bubble tone_data={article.scores}/>
-//     </div>
-// )
 
 export default News;

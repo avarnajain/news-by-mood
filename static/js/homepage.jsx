@@ -10,8 +10,9 @@ import Backdrop from "./backdrop.jsx"
 class App extends React.Component {
 
     state = {
-        sideBarOpen: false
+        sideBarOpen: false,
     };
+
 
     sideBarToggleClickHandler = () => {
         this.setState((prevState) => {

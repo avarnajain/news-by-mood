@@ -5,7 +5,7 @@ import {TONE_COLORS} from './constants.jsx'
 
 function Bubble(props) {
     const tones = props.tone_data;
-    console.log('tones', tones);
+    // console.log('tones', tones);
     const obj_list = [];
     const data = tones.map(tone => {
       obj_list.push({
@@ -14,7 +14,7 @@ function Bubble(props) {
           color:TONE_COLORS[tone.tone]
       })
     });
-    console.log('obj_list', obj_list);
+    // console.log('obj_list', obj_list);
     return (<BubbleChart
       graph= {{
         zoom: 0.4,

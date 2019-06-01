@@ -13,6 +13,7 @@
     "react-chartjs-2": "^2.7.6",
     "react-metismenu": "^1.4.0",
     "react-minimal-pie-chart": "^4.0.0",
+    "react-pagination": "^1.0.0",
     "react-router-dom": "^5.0.0",
     "react-sidebar": "^3.0.2",
     "react-sidenav": "^4.0.0"

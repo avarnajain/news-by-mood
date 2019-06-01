@@ -25,26 +25,28 @@ class PieChart extends Component {
         })
     }
     handleToneSelection(evt) {
-
+        console.log(evt);
+        console.log(evt[0]._model.label);
         this.setState({
             selected_source_tone: evt[0]._model.label
-        });
-        console.log('this.state.selected_source_tone, value:', this.state.selected_source_tone)
-        if (this.state.selected_source_tone) {
-            fetch(this.props.post_url, {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    selected_source_tone: this.state.selected_source_tone
+        }, () => {
+            console.log('this.state.selected_source_tone, value:', this.state.selected_source_tone)
+            if (this.state.selected_source_tone) {
+                fetch(this.props.post_url, {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        selected_source_tone: this.state.selected_source_tone
+                    })
                 })
-            })
-            .then(() => {
-                window.location.reload()
-            });
-        }
+                .then(() => {
+                    window.location.reload()
+                });
+            }
+        });
     }
 
     render() {

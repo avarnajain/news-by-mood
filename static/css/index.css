@@ -13,3 +13,6 @@ body {
     text-align: center;
 }
 
+main svg {
+    overflow: visible;
+}

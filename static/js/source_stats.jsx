@@ -71,11 +71,7 @@ class Stats extends React.Component {
         });  
         return (
             <div className="stats">
-                <div className="row">
-                    <div className="col">
-                        <div> {statsList} </div>
-                    </div>
-                </div>
+                <div> {statsList} </div>
             </div>
         )
     };

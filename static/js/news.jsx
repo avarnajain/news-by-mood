@@ -1,6 +1,7 @@
 "use-strict";
 import Bubble from './bubblechart';
 import Pagination from './pagination.jsx';
+import '../css/news.css';
 
 class News extends React.Component {
     
@@ -105,7 +106,7 @@ class News extends React.Component {
                             )}
                         </div>
                         <div className="d-flex flex-row py-4 align-items-center">
-                            <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={2} onPageChanged={this.onPageChanged} />
+                            <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
                         </div>
                     </div>
                 </div>

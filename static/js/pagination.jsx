@@ -11,30 +11,28 @@ const RIGHT_PAGE = 'RIGHT';
  * range(1, 5) => [1, 2, 3, 4, 5]
  */
 const range = (from, to, step = 1) => {
-  let i = from;
-  const range = [];
+    let i = from;
+    const range = [];
 
-  while (i <= to) {
-    range.push(i);
-    i += step;
-  }
-
-  return range;
+    while (i <= to) {
+        range.push(i);
+        i += step;
+    }
+    return range;
 }
-
 
 class Pagination extends Component {
     constructor(props) {
         super(props);
         const {
             totalRecords=null,
-            pageLimit=15, 
-            pageNeighbors=0
+            pageLimit=10, 
+            pageNeighbours=0
         } = props;
         this.pageLimit = typeof pageLimit === 'number' ? pageLimit : 15;
         this.totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
 
-        this.pageNeighbors = typeof pageNeighbors === 'number' ? Math.max(0, Math.min(pageNeighbors, 2)) : 0;
+        this.pageNeighbours = typeof pageNeighbours === 'number' ? Math.max(0, Math.min(pageNeighbours, 2)) : 0;
 
         this.totalPages = Math.ceil(this.totalRecords / this.pageLimit);
         this.state = {
@@ -43,25 +41,22 @@ class Pagination extends Component {
     }
 
     fetchPageNumbers = () => {
-
         const totalPages = this.totalPages;
         const currentPage = this.state.currentPage;
         const pageNeighbours = this.pageNeighbours;
-
+        // console.log('pageNeighbours', pageNeighbours);
+        // console.log('pageNeighbours', pageNeighbours);
         /**
          * totalNumbers: the total page numbers to show on the control
          * totalBlocks: totalNumbers + 2 to cover for the left(<) and right(>) controls
          */
         const totalNumbers = (this.pageNeighbours * 2) + 3;
         const totalBlocks = totalNumbers + 2;
-
+        // console.log('totalNumbers', totalNumbers, 'totalBlocks', totalBlocks);
         if (totalPages > totalBlocks) {
-
             const startPage = Math.max(2, currentPage - pageNeighbours);
             const endPage = Math.min(totalPages - 1, currentPage + pageNeighbours);
-
             let pages = range(startPage, endPage);
-
             /**
             * hasLeftSpill: has hidden pages to the left
             * hasRightSpill: has hidden pages to the right
@@ -70,7 +65,6 @@ class Pagination extends Component {
             const hasLeftSpill = startPage > 2;
             const hasRightSpill = (totalPages - endPage) > 1;
             const spillOffset = totalNumbers - (pages.length + 1);
-
             switch (true) {
                 // handle: (1) < {5 6} [7] {8 9} (10)
                 case (hasLeftSpill && !hasRightSpill): {
@@ -97,14 +91,14 @@ class Pagination extends Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
+        // console.log('componentDidMount');
         this.gotoPage(1);
     }
 
     gotoPage = page => {
         const { onPageChanged = f => f } = this.props;
         const currentPage = Math.max(0, Math.min(page, this.totalPages));
-        console.log('currentPage', currentPage);
+        // console.log('currentPage', currentPage);
         const paginationData = {
           currentPage,
           totalPages: this.totalPages,
@@ -112,10 +106,10 @@ class Pagination extends Component {
           totalRecords: this.totalRecords
         };
         this.setState({ currentPage }, () => onPageChanged(paginationData));
-      }
+    }
 
     handleClick = page => evt => {
-        console.log('handleClick page', page);
+        // console.log('handleClick page', page);
         evt.preventDefault();
         this.gotoPage(page);
     }
@@ -131,50 +125,41 @@ class Pagination extends Component {
     }
 
     render() {
-
         if (!this.totalRecords || this.totalPages === 1) return null;
-
         const { currentPage } = this.state;
         const pages = this.fetchPageNumbers();
-
         return (
-          <Fragment>
-            <nav aria-label="Countries Pagination">
-              <ul className="pagination">
-                { pages.map((page, index) => {
-
-                  if (page === LEFT_PAGE) return (
-                    <li key={index} className="page-item">
-                      <a className="page-link" href="#" aria-label="Previous" onClick={this.handleMoveLeft}>
-                        <span aria-hidden="true">&laquo;</span>
-                        <span className="sr-only">Previous</span>
-                      </a>
-                    </li>
-                  );
-
-                  if (page === RIGHT_PAGE) return (
-                    <li key={index} className="page-item">
-                      <a className="page-link" href="#" aria-label="Next" onClick={this.handleMoveRight}>
-                        <span aria-hidden="true">&raquo;</span>
-                        <span className="sr-only">Next</span>
-                      </a>
-                    </li>
-                  );
-
-                  return (
-                    <li key={index} className={`page-item${ currentPage === page ? ' active' : ''}`}>
-                      <a className="page-link" href="#" onClick={ this.handleClick(page) }>{ page }</a>
-                    </li>
-                  );
-
-                }) }
-
-              </ul>
-            </nav>
-          </Fragment>
+            <Fragment>
+                <nav aria-label="Countries Pagination">
+                    <ul className="pagination">
+                        { pages.map((page, index) => {
+                            if (page === LEFT_PAGE) return (
+                                <li key={index} className="page-item">
+                                    <a className="page-link" href="#" aria-label="Previous" onClick={this.handleMoveLeft}>
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span className="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                            );
+                            if (page === RIGHT_PAGE) return (
+                                <li key={index} className="page-item">
+                                    <a className="page-link" href="#" aria-label="Next" onClick={this.handleMoveRight}>
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span className="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            );
+                            return (
+                                <li key={index} className={`page-item${ currentPage === page ? ' active' : ''}`}>
+                                    <a className="page-link" href="#" onClick={ this.handleClick(page) }>{ page }</a>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
+            </Fragment>
         );
-
-      }
+    }
 }
 
 Pagination.propTypes = {

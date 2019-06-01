@@ -41,7 +41,8 @@ class Stats extends React.Component {
                 const dict = stats[key]['data']
                 // console.log('dict', dict);
                 return dict && (
-                    <PieChart data={dict} 
+                    <PieChart key={key}
+                            data={dict} 
                             heading={this.props.heading}
                             post_url='/get-source-news'
                     />

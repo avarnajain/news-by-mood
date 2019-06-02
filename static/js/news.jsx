@@ -52,6 +52,7 @@ class News extends React.Component {
     render() {
 
         const news = this.state.currentNews;
+        console.log('currentNews', currentNews);
         const { currentNews, currentPage, totalPages } = this.state;
         const totalNews = this.state.data.length;
         if (totalNews === 0) return null;
@@ -94,20 +95,17 @@ class News extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
-                        <div className="d-flex flex-row align-items-center">
-                            <h2 className={headerClass}>
-                                <strong className="text-secondary">{totalNews}</strong> Articles
-                            </h2>
-                            { currentPage && (
-                                <span className="current-page d-inline-block h-100 pl-4 text-secondary">
-                                    Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
-                                </span>
-                            )}
+                    <div className="page-bar">
+                        <div className="col-12">
+                            <div className="page-bar-2">
+                                <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
+                            </div>
                         </div>
-                        <div className="d-flex flex-row py-4 align-items-center">
-                            <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
-                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <h5> See more </h5>
                     </div>
                 </div>
                 <div className="row">

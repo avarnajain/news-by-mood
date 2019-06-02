@@ -12,7 +12,7 @@ ul.pagination {
     }
 
     a.page-link {
-        padding: 0.75rem 1rem;
+        padding: 0rem 0rem;
         min-width: 3.5rem;
         text-align: center;
         box-shadow: none !important;
@@ -25,4 +25,8 @@ ul.pagination {
             background-color: $light-background;
         }
     }
+}
+
+.page-bar {
+    padding-bottom: 0;
 }

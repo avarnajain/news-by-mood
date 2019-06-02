@@ -18,7 +18,6 @@ class Stats extends React.Component {
     }   
     getStats() {
         // let fetchUrl = '/all.json?filter=' + this.props.filterVal;
-
         console.log('getStats()')
         //.then() handles the response from the ajax call
         fetch(this.props.fetch_url)
@@ -35,16 +34,17 @@ class Stats extends React.Component {
 
     render() {
         const stats = this.state.data;
+        // console.log('stats', stats);
         const filter_ = this.props.filter_by
         const statsList = Object.keys(stats).map(key => {
             if (stats[key]['filter'] == filter_ && filter_ != 'None' && filter_ != 'total') {
                 const dict = stats[key]['data']
-                // console.log('dict', dict);
+                console.log('dict', dict);
                 return dict && (
                     <PieChart key={key}
                             data={dict} 
                             heading={this.props.heading}
-                            post_url='/get-source-news'
+                            post_url={this.props.post_url}
                     />
                 )
             }

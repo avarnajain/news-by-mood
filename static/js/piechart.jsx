@@ -10,7 +10,7 @@ class PieChart extends Component {
         super(props)
         this.state = {
             data: {},
-            selected_source_tone: null
+            selected_pie_tone: null
         }
         this.handleToneSelection = this.handleToneSelection.bind(this)
     }
@@ -25,13 +25,14 @@ class PieChart extends Component {
         })
     }
     handleToneSelection(evt) {
-        console.log(evt);
+        // console.log(evt);
         console.log(evt[0]._model.label);
         this.setState({
-            selected_source_tone: evt[0]._model.label
+            selected_pie_tone: evt[0]._model.label
         }, () => {
-            console.log('this.state.selected_source_tone, value:', this.state.selected_source_tone)
-            if (this.state.selected_source_tone) {
+            console.log('this.state.selected_pie_tone, value:', this.state.selected_pie_tone)
+            if (this.state.selected_pie_tone) {
+                // console.log('inside fetch', this.state.post_url);
                 fetch(this.props.post_url, {
                     method: 'POST',
                     headers: {
@@ -39,7 +40,7 @@ class PieChart extends Component {
                     'Accept': 'application/json'
                     },
                     body: JSON.stringify({
-                        selected_source_tone: this.state.selected_source_tone
+                        selected_pie_tone: this.state.selected_pie_tone
                     })
                 })
                 .then(() => {

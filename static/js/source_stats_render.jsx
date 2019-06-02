@@ -19,12 +19,14 @@ const content = (
                 <div className="col-6">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='emotional'
-                              heading='Emotional Tones'/>
+                              heading='Emotional Tones'
+                              post_url='/get-source-news'/>
                 </div>
                 <div className="col-6">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='language'
-                              heading='Language Tones'/>
+                              heading='Language Tones'
+                              post_url='/get-source-news'/>
                 </div>
             </div>
             <div className="row">

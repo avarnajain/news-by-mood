@@ -209,7 +209,7 @@ def get_source_news_json():
 def get_category_stats():
     """get stats for category"""
     print("session['selected_category']", session['selected_category'])
-    category_stats = get_category_tones_stats(session['selected_category'])
+    category_stats = get_chosen_category_stats(session['selected_category'])
     
     return jsonify(category_stats)
 

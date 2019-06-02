@@ -31,6 +31,12 @@ def get_articles_for_source(source):
                                                         Article.published).all()
     return source_articles
 
+def get_articles_for_Category(category_id):
+    """get all articles within a category"""
+
+    category_ = get_category_obj(category_id)
+    return category_.articles
+
 #TONE FUNCTIONS
 def get_tones_db():
     """get all tones"""

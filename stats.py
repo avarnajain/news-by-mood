@@ -62,6 +62,33 @@ def sort_by_date(Article):
     return date
 
 # Category functions
+def get_chosen_category_stats(category_id):
+    """get stats for all tones within chosen category"""
+    category_articles = get_articles_for_Category(category_id)
+    stats_list = get_category_tones_stats(category_articles, category_id)
+    return stats_list
+
+def get_category_tones_stats(category_articles, category_id):
+    """get stats for tones within a category"""
+    
+    emotional_dict = create_category_tone_dict('emotional', category_id)
+    language_dict = create_category_tone_dict('language', category_id)
+    none_dict = create_category_tone_dict('None', category_id)
+    total_dict = create_category_tone_dict('total', category_id)
+    counter = 0
+    for article in category_articles:
+        counter += 1
+        for score in article.scores:
+            if score.tone_id in ['anger', 'fear', 'joy', 'sadness']:
+                emotional_dict['data'][score.tone_id].append(score.article_id)
+            elif score.tone_id in ['analytical', 'confident', 'tentative']:
+                language_dict['data'][score.tone_id].append(score.article_id)
+            elif score.tone_id == 'None':
+                none_dict['data']['None'].append(article.article_id)
+    total_dict['data']['total'] = counter
+    stats_list = [emotional_dict, language_dict, none_dict, total_dict]
+    return stats_list
+
 def create_category_tone_dict(tone_type, category):
     """create dict for specific tone type"""    
     tone_type_dict = {
@@ -74,31 +101,6 @@ def create_category_tone_dict(tone_type, category):
         if tone.tone_type == tone_type:
             tone_type_dict['data'][tone.tone_id] = []
     return tone_type_dict
-
-def get_category_tones_stats(category_id):
-    """get stats for tones within a category"""
-    category_ = get_category_obj(category_id)
-    category_articles = category_.articles
-    emotional_dict = create_category_tone_dict('emotional', category_id)
-    language_dict = create_category_tone_dict('language', category_id)
-    none_dict = create_category_tone_dict('None', category_id)
-    total_dict = create_category_tone_dict('total', category_id)
-    counter = 0
-    for article in category_articles:
-        # get highest scores for each article
-        counter += 1
-        high_scores = get_highest_scores_for_tone_types(article) #imported from source_stats
-        for tone_type, score in high_scores.items():
-            if (score):
-                if tone_type=='emotional':
-                    emotional_dict['data'][score.tone_id].append(score.article_id)
-                elif tone_type=='language':
-                    language_dict['data'][score.tone_id].append(score.article_id)
-            elif tone_type=='None':
-                none_dict['data']['None'].append(article.article_id)    
-    total_dict['data']['total'] = counter
-    stats_list = [emotional_dict, language_dict, none_dict, total_dict]
-    return stats_list
 
 def get_category_articles_with_tone_filter(category_id, tone_id):
     """Get articles for chosen tone_id within a category"""
@@ -130,7 +132,7 @@ def get_chosen_source_stats(chosen_source):
     Each dict has a key for total number of articles and tone_types 
     and values of a list of Articles within each tone type"""
     source_articles = get_articles_for_source(chosen_source)
-    stats_list = get_tone_stats_dicts(source_articles, chosen_source)
+    stats_list = get_source_tone_stats_dicts(source_articles, chosen_source)
     return stats_list
 
 def get_source_Articles_by_tone(source, tone_type, tone_id):
@@ -148,33 +150,28 @@ def get_source_Articles_by_tone(source, tone_type, tone_id):
         article_list.append(article_dict)
     return article_list
 
-#Tone functions
-def get_tone_stats_dicts(source_articles, source):
+def get_source_tone_stats_dicts(source_articles, source):
     """Analyze tone distribution of articles from a source"""
     
-    emotional_dict = create_tone_type_dict('emotional', source)
-    language_dict = create_tone_type_dict('language', source)
-    none_dict = create_tone_type_dict('None', source)
-    total_dict = create_tone_type_dict('total', source)
+    emotional_dict = create_source_tone_type_dict('emotional', source)
+    language_dict = create_source_tone_type_dict('language', source)
+    none_dict = create_source_tone_type_dict('None', source)
+    total_dict = create_source_tone_type_dict('total', source)
     counter = 0
     for article in source_articles:
         counter += 1
-        # get highest scores for each article
-        high_scores = get_highest_scores_for_tone_types(article)
-        for tone_type, score in high_scores.items():
-            if (score):
-                if tone_type=='emotional':
-                    emotional_dict['data'][score.tone_id].append(score.article_id)
-                elif tone_type=='language':
-                    language_dict['data'][score.tone_id].append(score.article_id)
-            elif tone_type=='None':
+        for score in article.scores:
+            if score.tone_id in ['anger', 'fear', 'joy', 'sadness']:
+                emotional_dict['data'][score.tone_id].append(score.article_id)
+            elif score.tone_id in ['analytical', 'confident', 'tentative']:
+                language_dict['data'][score.tone_id].append(score.article_id)
+            elif score.tone_id == 'None':
                 none_dict['data']['None'].append(article.article_id)
     total_dict['data']['total'] = counter
     stats_list = [emotional_dict, language_dict, none_dict, total_dict]
-
     return stats_list
 
-def create_tone_type_dict(tone_type, source):
+def create_source_tone_type_dict(tone_type, source):
     """create dict for specific tone type"""
     
     tone_type_dict = {
@@ -188,28 +185,6 @@ def create_tone_type_dict(tone_type, source):
             tone_type_dict['data'][tone.tone_id] = []
 
     return tone_type_dict
-
-def get_highest_scores_for_tone_types(Article):
-    """Get tone with highest scoe for article"""
-
-    scores = Article.scores
-    highest_emotional = ''
-    highest_language = ''    
-    for score in scores:
-        tone = score.tone
-        if tone.tone_type == 'emotional':
-            if (highest_emotional) and score.score > highest_emotional.score:
-                highest_emotional = score
-            elif highest_emotional == '':
-                highest_emotional = score
-        if tone.tone_type == 'language':
-            if (highest_language) and score.score > highest_language.score:
-                highest_language = score
-            elif highest_language == '':
-                highest_language = score
-        if tone.tone_type == 'None':
-            return {'None': ''}            
-    return {'emotional': highest_emotional, 'language': highest_language}
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

@@ -25,7 +25,7 @@ const content = (
                           post_url='/get-category-tone-filter'/>
             </div>
         </div>
-        <News fetch_url='/headlines-by-category.json'/>
+        <News fetch_url='/get-category-tones-stats.json'/>
     </div>
 );
 
@@ -37,4 +37,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// <News fetch_url='/get-category-tones-stats.json'/>
+// <News fetch_url='/headlines-by-category.json'/>
+

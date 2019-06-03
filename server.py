@@ -181,7 +181,7 @@ def get_headlines_by_language():
 def get_all_source_stats():
     """Get stats on chosen source"""
     # filter_ = request.args.get("filter")  # all, emotional, language, or None
-    source_stats_list = get_chosen_stats(session['selected_source'], 'source')
+    source_stats_list = get_weighted_chosen_stats(session['selected_source'], 'source')
     return jsonify(source_stats_list)
 
 @app.route('/session-emotion.json')
@@ -211,7 +211,7 @@ def get_source_news_json():
 def get_category_stats():
     """get stats for category"""
     print("session['selected_category']", session['selected_category'])
-    category_stats = get_chosen_stats(session['selected_category'], 'category')
+    category_stats = get_weighted_chosen_stats(session['selected_category'], 'category')
     return jsonify(category_stats)
 
 @app.route('/get-category-tones-stats.json')

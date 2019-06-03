@@ -4,6 +4,25 @@ import {Pie} from 'react-chartjs-2';
 import '../css/pie.css'
 import {TONE_COLORS} from './constants.jsx'
 
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
+function sumArray(arr) {
+    let sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+        sum += arr[i]
+    };
+    return sum;
+}
+
+function totalSum(propsData) {
+    let sum = 0;
+    Object.keys(propsData).forEach((tone) => {
+            sum += sumArray(propsData[tone]);
+    });
+    return sum;
+}
 
 class PieChart extends Component {
     constructor(props) {
@@ -36,8 +55,8 @@ class PieChart extends Component {
                 fetch(this.props.post_url, {
                     method: 'POST',
                     headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify({
                         selected_pie_tone: this.state.selected_pie_tone
@@ -62,9 +81,10 @@ class PieChart extends Component {
             }]
         };
         Object.keys(propsData).forEach((tone) => {
-            chartData['labels'].push(tone);
+            chartData['labels'].push(tone + '%');
             chartData['datasets'][0]['label'].push(tone);
-            chartData['datasets'][0]['data'].push(propsData[tone].length);
+            let value = sumArray(propsData[tone])*100/totalSum(propsData);
+            chartData['datasets'][0]['data'].push(round(value, 1));
             chartData['datasets'][0]['backgroundColor'].push(TONE_COLORS[tone])
         });
         // console.log('chartData', chartData);

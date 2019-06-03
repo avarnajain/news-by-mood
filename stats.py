@@ -74,8 +74,7 @@ def get_category_articles_with_tone_filter(category_id, tone_id):
 
 def get_Articles_with_category_filter(category_id):
     """Return list of Articles with chosen category"""
-    Cat = get_category_obj(category_id)
-    Articles = Cat.articles
+    Articles = get_articles_for_Category(category_id)
     articles = []
     for Article in Articles:
         scores = Article.scores        
@@ -111,6 +110,18 @@ def get_chosen_stats(stats_filter, stats_type):
     stats_list = get_tone_stats_dicts(articles, stats_filter, stats_type)
     return stats_list
 
+def get_weighted_chosen_stats(stats_filter, stats_type):
+    """get list of tone_stats_dicts for a source/category
+        stats_type is a string of either sourceor category
+        stats_filter is the specific source or category you want"""
+    if stats_type == 'source':
+        articles = get_articles_for_source(stats_filter)
+    elif stats_type == 'category':
+        articles = get_articles_for_Category(stats_filter)
+    
+    stats_list = get_weighted_tone_stats_dicts(articles, stats_filter, stats_type)
+    return stats_list
+
 def get_tone_stats_dicts(articles, stats_filter, stats_type):
     """get stats for tones within a source/category"""
     emotional_dict = create_tone_dict('emotional', stats_filter, stats_type)
@@ -127,6 +138,26 @@ def get_tone_stats_dicts(articles, stats_filter, stats_type):
                 language_dict['data'][score.tone_id].append(score.article_id)
             elif score.tone_id == 'None':
                 none_dict['data']['None'].append(article.article_id)
+    total_dict['data']['total'] = counter
+    stats_list = [emotional_dict, language_dict, none_dict, total_dict]
+    return stats_list
+
+def get_weighted_tone_stats_dicts(articles, stats_filter, stats_type):
+    """get stats for tones within a source/category"""
+    emotional_dict = create_tone_dict('emotional', stats_filter, stats_type)
+    language_dict = create_tone_dict('language', stats_filter, stats_type)
+    none_dict = create_tone_dict('None', stats_filter, stats_type)
+    total_dict = create_tone_dict('total', stats_filter, stats_type)
+    counter = 0
+    for article in articles:
+        counter += 1
+        for score in article.scores:
+            if score.tone_id in ['anger', 'fear', 'joy', 'sadness']:
+                emotional_dict['data'][score.tone_id].append(score.score)
+            elif score.tone_id in ['analytical', 'confident', 'tentative']:
+                language_dict['data'][score.tone_id].append(score.score)
+            elif score.tone_id == 'None':
+                none_dict['data']['None'].append(0)
     total_dict['data']['total'] = counter
     stats_list = [emotional_dict, language_dict, none_dict, total_dict]
     return stats_list

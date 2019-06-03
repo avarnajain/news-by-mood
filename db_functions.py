@@ -5,7 +5,7 @@ from sqlalchemy import desc
 
 #ARTICLE FUNCTIONS
 def get_sources_dict_db():
-    """Get all sources in db and pass as json"""
+    """Get dict of all sources in db to pass as json"""
     article_sources = db.session.query(Article.source).group_by(Article.source
                     ).order_by(Article.source).all()
     sources_list = []
@@ -17,7 +17,7 @@ def get_sources_dict_db():
     return sources_list
 
 def get_sources_db():
-    """Get all sources in db"""
+    """Get list of all sources in db"""
     article_sources = db.session.query(Article.source).group_by(Article.source
                     ).order_by(Article.source).all()
     sources = []

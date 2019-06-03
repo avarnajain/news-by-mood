@@ -19,7 +19,8 @@
     "react-pagination": "^1.0.0",
     "react-router-dom": "^5.0.0",
     "react-sidebar": "^3.0.2",
-    "react-sidenav": "^4.0.0"
+    "react-sidenav": "^4.0.0",
+    "reactstrap": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",

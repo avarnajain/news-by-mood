@@ -50,6 +50,10 @@ def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None)
     }
     return Article_dict
 
+# def tone_dict_for_homepage():
+#     """get list of tones for homepage bubble"""
+        
+
 def format_article_title(Article):
     """format article title for display"""
     title_ = Article.title

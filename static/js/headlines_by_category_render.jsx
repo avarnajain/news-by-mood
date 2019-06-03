@@ -5,27 +5,51 @@ import App from './homepage.jsx';
 import News from "./news.jsx";
 import Heading from './heading.jsx';
 import Stats from './stats.jsx';
+import DropdownMenu from './dropdown.jsx';
 
 const content = (
-    <div id="category-headlines">
-        <div className='heading'>
-            <Heading heading='/session-category.json'/>
+    <div className="container-fluid">
+        <div className="row">
+            <div className="col">
+                <div className='heading'>
+                    <Heading heading='/session-category.json'/>
+                </div>
+            </div>
+            <div className="col">
+                <DropdownMenu fetch_url='/get-tone-dropdown-list.json'
+                              post_url='/get-chosen-tone-from-dropdown'
+                              filter_by='Filter by Tone'/>
+            </div>
         </div>
         <div className="row">
             <div className="col-6">
                 <Stats fetch_url='/get-category-stats.json'
-                          filter_by='emotional'
-                          heading='Emotional Tones'
-                          post_url='/get-category-tone-filter'/>
+                    filter_by='emotional'
+                    heading='Emotional Tones'
+                    post_url='/get-category-tone-filter'/>
             </div>
             <div className="col-6">
                 <Stats fetch_url='/get-category-stats.json'
-                          filter_by='language'
-                          heading='Language Tones'
-                          post_url='/get-category-tone-filter'/>
+                    filter_by='language'
+                    heading='Language Tones'
+                    post_url='/get-category-tone-filter'/>
             </div>
         </div>
-        <News fetch_url='/get-category-tones-stats.json'/>
+        <div className="row">
+            <div className="col">
+                <Stats fetch_url='/get-category-stats.json'
+                    filter_by='None'/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col">
+                <Stats fetch_url='/get-category-stats.json'
+                    filter_by='total'/>
+            </div>
+        </div>
+        <div id="category-headlines">
+            <News fetch_url='/get-category-tones-stats.json'/>
+        </div>
     </div>
 );
 

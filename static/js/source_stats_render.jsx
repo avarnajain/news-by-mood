@@ -52,7 +52,6 @@ const content = (
 );
 
 ReactDOM.render(
-  
     <div id="homepage">
         <App content={content}/>
     </div>,

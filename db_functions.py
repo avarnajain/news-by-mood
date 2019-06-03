@@ -43,6 +43,26 @@ def get_tones_db():
     tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)
     return tones
 
+def get_all_tones():
+    """get list of all tones emotional and language"""
+    tones = Tone.query.all()
+    return [tone.tone_id for tone in tones if tone.tone_id not in ['None', 'no text']]
+
+def get_dropdown_filters_list(filter_type):
+    """get list of all tones for dropdown"""
+    if filter_type == 'tone':
+        filters = get_all_tones()
+    elif filter_type == 'category':
+        filters = get_all_categories()
+    filter_list = []
+    for filter_ in filters:
+        filter_dict = {
+            'filter_id': filter_,
+            'filter_name': filter_.capitalize()
+        }
+        filter_list.append(filter_dict)
+    return filter_list
+
 def get_tones_dict_db(tone_type):
     """get all tones as a dictionary for react stuff"""
     all_tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)

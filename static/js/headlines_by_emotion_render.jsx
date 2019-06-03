@@ -4,13 +4,29 @@ import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
 import News from "./news.jsx";
 import Heading from './heading.jsx';
+import DropdownMenu from './dropdown.jsx';
 
 const content = (
-    <div id="emotional-headlines">
-        <div className='heading'>
-            <Heading heading='/session-emotion.json'/>
+    <div className="container-fluid">
+        <div className="row">
+            <div className="col">
+                <div className='heading'>
+                    <Heading heading='/session-emotion.json'/>
+                </div>
+            </div>
+            <div className="col">
+                <DropdownMenu fetch_url='/get-category-dropdown-list.json'
+                                post_url='/get-chosen-category-from-dropdown'
+                                filter_by='Filter by Category'/>
+            </div>
         </div>
-        <News fetch_url='/headlines-by-emotion.json'/>
+        <div className="row">
+            <div className="col">
+                <div id="emotional-headlines">
+                    <News fetch_url='/headlines-by-emotion.json'/>
+                </div>
+            </div>
+        </div>
     </div>
 );
 

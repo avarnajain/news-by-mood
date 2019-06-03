@@ -83,6 +83,17 @@ def get_Articles_with_category_filter(category_id):
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
     return Articles_by_date
 
+def get_tone_Articles_with_category_filter(tone_id, tone_type, category_id):
+    """filter tone articles by category"""
+    tone_articles = get_Articles_with_tone_dict(tone_id, tone_type)
+    category_articles = []
+    for article in tone_articles:
+        categories = article['category']
+        if category_id in categories:
+            category_articles.append(article)
+        # print('categories', categories)
+    return category_articles
+    
 def get_source_Articles_by_tone(source, tone_type, tone_id):
     """return articles by tone id for a source as json"""
 

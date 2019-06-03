@@ -16,3 +16,7 @@ body {
 main svg {
     overflow: visible;
 }
+
+.stats {
+    text-align: center;
+}

@@ -70,9 +70,11 @@ class News extends React.Component {
                     <div className="row">
                         <div className="col">
                             <h6>
-                                <a href={`/get-chosen-source/${article.source}`}>{article.source}</a>
-                                {' • '+article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}
-                                {' • '+article.published}
+                                <a href={`/get-chosen-source/${article.source}`}>{article.source}</a> 
+                                <b> • </b> 
+                                <a href={`/get-chosen-category/${article.category[0]}`}>{article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}</a>
+                                <b> • </b> 
+                                {article.published}
                             </h6>
                         </div>
                     </div>

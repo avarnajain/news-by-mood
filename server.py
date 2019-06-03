@@ -54,6 +54,11 @@ def show_headlines_by_category():
     """Display headlines for chosen emotion"""
     return render_template('headlines_by_category.html')
 
+@app.route('/headlines-by-category/<chosen_category>')
+def show_headlines_by_category_query(chosen_category):
+    """Display headlines for chosen emotion"""
+    return render_template('headlines_by_category.html')
+
 ########################################################################
 #SETTING SESSION ROUTES
 @app.route('/get-chosen-emotion', methods=['POST'])
@@ -124,7 +129,7 @@ def get_chosen_category_get(chosen_category):
     session['selected_category'] = chosen_category
     session['selected_category_tone_id'] = ''
     print("session['selected_category'] changed using query string to:", session['selected_category'])
-    return redirect('/headlines-by-category')
+    return redirect(('/headlines-by-category/{}').format(session['selected_category']))
 
 @app.route('/get-source-news', methods=['POST'])
 def get_source_news():

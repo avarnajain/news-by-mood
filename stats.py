@@ -61,47 +61,6 @@ def sort_by_date(Article):
     date = datetime.date()
     return date
 
-# Category functions
-def get_chosen_category_stats(category_id):
-    """get stats for all tones within chosen category"""
-    category_articles = get_articles_for_Category(category_id)
-    stats_list = get_category_tones_stats(category_articles, category_id)
-    return stats_list
-
-def get_category_tones_stats(category_articles, category_id):
-    """get stats for tones within a category"""
-    
-    emotional_dict = create_category_tone_dict('emotional', category_id)
-    language_dict = create_category_tone_dict('language', category_id)
-    none_dict = create_category_tone_dict('None', category_id)
-    total_dict = create_category_tone_dict('total', category_id)
-    counter = 0
-    for article in category_articles:
-        counter += 1
-        for score in article.scores:
-            if score.tone_id in ['anger', 'fear', 'joy', 'sadness']:
-                emotional_dict['data'][score.tone_id].append(score.article_id)
-            elif score.tone_id in ['analytical', 'confident', 'tentative']:
-                language_dict['data'][score.tone_id].append(score.article_id)
-            elif score.tone_id == 'None':
-                none_dict['data']['None'].append(article.article_id)
-    total_dict['data']['total'] = counter
-    stats_list = [emotional_dict, language_dict, none_dict, total_dict]
-    return stats_list
-
-def create_category_tone_dict(tone_type, category):
-    """create dict for specific tone type"""    
-    tone_type_dict = {
-        'category': category,
-        'filter': tone_type, 
-        'data': {}
-    }
-    tones = get_tones_db()
-    for tone in tones:
-        if tone.tone_type == tone_type:
-            tone_type_dict['data'][tone.tone_id] = []
-    return tone_type_dict
-
 def get_category_articles_with_tone_filter(category_id, tone_id):
     """Get articles for chosen tone_id within a category"""
 
@@ -114,7 +73,7 @@ def get_category_articles_with_tone_filter(category_id, tone_id):
     return tone_articles
 
 def get_Articles_with_category_filter(category_id):
-    """Return list of Articles with highest score for chosen category"""
+    """Return list of Articles with chosen category"""
     Cat = get_category_obj(category_id)
     Articles = Cat.articles
     articles = []
@@ -125,20 +84,10 @@ def get_Articles_with_category_filter(category_id):
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
     return Articles_by_date
 
-#Source functions
-def get_chosen_source_stats(chosen_source):
-    """get list of tone_stats_dicts for a source
-    Returns a list of dictionaries, one for each tone type
-    Each dict has a key for total number of articles and tone_types 
-    and values of a list of Articles within each tone type"""
-    source_articles = get_articles_for_source(chosen_source)
-    stats_list = get_source_tone_stats_dicts(source_articles, chosen_source)
-    return stats_list
-
 def get_source_Articles_by_tone(source, tone_type, tone_id):
     """return articles by tone id for a source as json"""
 
-    stats_list = get_chosen_source_stats(source)
+    stats_list = get_chosen_stats(source, 'source')
     for dict_item in stats_list:
         if dict_item['filter'] == tone_type:
             article_id_list_ = dict_item['data'][tone_id]
@@ -150,15 +99,26 @@ def get_source_Articles_by_tone(source, tone_type, tone_id):
         article_list.append(article_dict)
     return article_list
 
-def get_source_tone_stats_dicts(source_articles, source):
-    """Analyze tone distribution of articles from a source"""
+def get_chosen_stats(stats_filter, stats_type):
+    """get list of tone_stats_dicts for a source/category
+        stats_type is a string of either sourceor category
+        stats_filter is the specific source or category you want"""
+    if stats_type == 'source':
+        articles = get_articles_for_source(stats_filter)
+    elif stats_type == 'category':
+        articles = get_articles_for_Category(stats_filter)
     
-    emotional_dict = create_source_tone_type_dict('emotional', source)
-    language_dict = create_source_tone_type_dict('language', source)
-    none_dict = create_source_tone_type_dict('None', source)
-    total_dict = create_source_tone_type_dict('total', source)
+    stats_list = get_tone_stats_dicts(articles, stats_filter, stats_type)
+    return stats_list
+
+def get_tone_stats_dicts(articles, stats_filter, stats_type):
+    """get stats for tones within a source/category"""
+    emotional_dict = create_tone_dict('emotional', stats_filter, stats_type)
+    language_dict = create_tone_dict('language', stats_filter, stats_type)
+    none_dict = create_tone_dict('None', stats_filter, stats_type)
+    total_dict = create_tone_dict('total', stats_filter, stats_type)
     counter = 0
-    for article in source_articles:
+    for article in articles:
         counter += 1
         for score in article.scores:
             if score.tone_id in ['anger', 'fear', 'joy', 'sadness']:
@@ -171,11 +131,10 @@ def get_source_tone_stats_dicts(source_articles, source):
     stats_list = [emotional_dict, language_dict, none_dict, total_dict]
     return stats_list
 
-def create_source_tone_type_dict(tone_type, source):
-    """create dict for specific tone type"""
-    
+def create_tone_dict(tone_type, stats_filter, stats_type):
+    """create dict for specific tone type"""    
     tone_type_dict = {
-        'source': source,
+        stats_type: stats_filter,
         'filter': tone_type, 
         'data': {}
     }
@@ -183,7 +142,6 @@ def create_source_tone_type_dict(tone_type, source):
     for tone in tones:
         if tone.tone_type == tone_type:
             tone_type_dict['data'][tone.tone_id] = []
-
     return tone_type_dict
 
 if __name__ == "__main__":

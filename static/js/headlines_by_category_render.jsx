@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
 import News from "./news.jsx";
 import Heading from './heading.jsx';
-import Stats from './source_stats.jsx';
+import Stats from './stats.jsx';
 
 const content = (
     <div id="category-headlines">
@@ -30,12 +30,8 @@ const content = (
 );
 
 ReactDOM.render(
-  
     <div id="homepage">
         <App content={content}/>
     </div>,
   document.getElementById('root')
 );
-
-// <News fetch_url='/headlines-by-category.json'/>
-

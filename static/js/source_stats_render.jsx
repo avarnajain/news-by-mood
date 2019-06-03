@@ -3,7 +3,7 @@
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
-import Stats from "./source_stats.jsx";
+import Stats from "./stats.jsx";
 import News from "./news.jsx"
 
 const content = (

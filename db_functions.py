@@ -115,6 +115,11 @@ def delete_duplicate_Scores():
                 tone_list.append(score.tone_id)
 
 #CATEGORY FUNCTIONS
+def get_all_categories():
+    """Get a list of all categories"""
+    categories = Category.query.all()
+    return [category.category_id for category in categories]
+
 def get_category_obj(category_id):
     """Get category object from db"""
     return Category.query.get(category_id)
@@ -131,4 +136,10 @@ def get_categories_dict_db():
         category_list.append(category_dict)
     return category_list
 
+if __name__ == "__main__":
+    # As a convenience, if we run this module interactively, it will leave
+    # you in a state of being able to work with the database directly.
+    from server import app
 
+    connect_to_db(app)
+    print("Connected to DB.")

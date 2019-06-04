@@ -2,7 +2,6 @@
 # python server-override.py 5002
 # also run the following file outside vagrant
 # npm run start
-
 import os
 import requests
 from jinja2 import StrictUndefined
@@ -102,6 +101,7 @@ def get_chosen_source():
     """Get chosen source from homepage"""
     session['selected_source'] = request.json['selected_source']
     session['selected_source_tone_id'] = ''
+    session['selected_category_within_source'] = ''
     print("'/get-chosen-source' session['selected_source']", session['selected_source'], "session['selected_source_tone_id']", session['selected_source_tone_id'])
     return redirect(('/source_stats/{}').format(session['selected_source']))
 
@@ -111,6 +111,7 @@ def get_chosen_source_get(chosen_source):
     print('CHOSEN SOURCE', chosen_source)
     session['selected_source'] = chosen_source
     session['selected_source_tone_id'] = ''
+    session['selected_category_within_source'] = ''
     print("'/get-chosen-source/<chosen_source>' session['selected_source']", session['selected_source'], "session['selected_source_tone_id']", session['selected_source_tone_id'])
     return redirect(('/source-stats/{}').format(session['selected_source']))
 
@@ -165,6 +166,29 @@ def get_chosen_category_from_dropdown():
     session['selected_tone_category'] = request.json['selected_dropdown']
     print("'/get-chosen-category-from-dropdown' session['selected_tone_category']", session['selected_tone_category'])
     return redirect('/get-tone-category-news.json')
+
+@app.route('/get-chosen-tone-within-source', methods=['POST'])
+def get_chosen_tone_within_source():
+    """set session based on dropdown category selection"""
+    session['selected_source_tone_id'] = request.json['selected_dropdown']
+    session['selected_category_within_source'] = ''
+    if session['selected_source_tone_id'] in ['fear', 'joy', 'anger', 'sadness']:
+        session['selected_source_tone_type'] = 'emotional'
+    elif session['selected_source_tone_id'] in ['analytical', 'confident', 'tentative']:
+        session['selected_source_tone_type'] = 'language'
+    else:
+        session['selected_source_tone_type'] = None
+    print("'/get-chosen-tone-within-source' session['selected_source_tone_id']", session['selected_source_tone_id'])
+    return redirect('/get-source-tone-news.json')
+
+@app.route('/get-chosen-category-within-source', methods=['POST'])
+def get_chosen_category_within_source():
+    """set session based on dropdown category selection"""
+    session['selected_category_within_source'] = request.json['selected_dropdown']
+    session['selected_source_tone_id'] = ''
+    session['selected_source_tone_type'] = ''
+    print("'/get-chosen-category-within-source' session['selected_category_within_source']", session['selected_category_within_source'])
+    return redirect('/get-source-category-news.json')
 
 #########################################################
 #JSON ROUTES
@@ -247,11 +271,24 @@ def get_session_tone_category():
     if (session['selected_tone_category']):
         return jsonify(session['selected_tone_category'].capitalize())
 
+@app.route('/session-source-tone.json')
+def get_session_source_tone():
+    if (session['selected_source_tone_id']):
+        return jsonify(session['selected_source_tone_id'].capitalize())
+
+@app.route('/session-source-category.json')
+def get_session_source_category():
+    if (session['selected_category_within_source']):
+        return jsonify(session['selected_category_within_source'].capitalize())
+
 @app.route('/source-news.json')
 def get_source_news_json():
 
     if (session['selected_source_tone_type'] and session['selected_source_tone_id']):
         source_news = get_source_Articles_by_tone(session['selected_source'], session['selected_source_tone_type'], session['selected_source_tone_id'])
+        return jsonify(source_news)
+    elif (session['selected_category_within_source']):
+        source_news = get_source_Articles_by_category(session['selected_source'], session['selected_category_within_source'])
         return jsonify(source_news)
 
 @app.route('/get-category-stats.json')

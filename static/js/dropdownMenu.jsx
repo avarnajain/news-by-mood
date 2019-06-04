@@ -27,13 +27,13 @@ class DropdownMenu extends React.Component {
     }
 
     handleSubmit(evt){
-        console.log('evt', evt);
+        // console.log('evt', evt);
         const selected_dropdown = evt.target.value;
-        console.log('handleFilterSelection(), value:', selected_dropdown)
+        // console.log('handleFilterSelection(), value:', selected_dropdown)
        
         //prevents from posting with flask request
         evt.preventDefault();
-        console.log('handleSubmit()', this.props.post_url)
+        // console.log('handleSubmit()', this.props.post_url)
         fetch(this.props.post_url, {
             method: 'POST',
             headers: {
@@ -66,7 +66,7 @@ class DropdownMenu extends React.Component {
 
     render() {
         const filters = this.state.data;
-        console.log('filters', filters);
+        // console.log('filters', filters);
         const dropdownList = filters.map((filter) =>
             <div key={filter.filter_id.toString()}>
                 <option onClick={this.handleSubmit} value={filter.filter_id}>{filter.filter_name}</option>

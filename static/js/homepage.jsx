@@ -4,15 +4,18 @@ import React from "react";
 import Toolbar from "./toolbar.jsx";
 import ToneForm from './tone_form.jsx';
 import SourceForm from './source_form.jsx';
-import SideBar from "./sidebar.jsx"
-import Backdrop from "./backdrop.jsx"
+import SideBar from "./sidebar.jsx";
+import Backdrop from "./backdrop.jsx";
+// import LoadingSpinner from './spinner.jsx';
 
 class App extends React.Component {
 
-    state = {
-        sideBarOpen: false,
-    };
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            sideBarOpen: false,
+        };
+    }
 
     sideBarToggleClickHandler = () => {
         this.setState((prevState) => {
@@ -28,6 +31,7 @@ class App extends React.Component {
     
     render() {
         let backdrop;
+        const {loading} = this.state;
         if (this.state.sideBarOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler}/>;
         }

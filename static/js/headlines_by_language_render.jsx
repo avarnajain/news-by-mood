@@ -11,11 +11,13 @@ const content = (
         <div className="row">
             <div className="col">
                 <div className='heading'>
-                    <Heading heading='/session-language.json'/>
+                    <Heading heading='/session-language.json'
+                            size='h1'/>
                 </div>
             </div>
             <div className="col">
-                <Heading heading='/session-tone-category.json'/>
+                <Heading heading='/session-tone-category.json'
+                        size='h4'/>
             </div>
             <div className="col">
                 <DropdownMenu fetch_url='/get-category-dropdown-list.json'

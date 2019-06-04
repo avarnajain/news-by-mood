@@ -15,7 +15,7 @@ const content = (
         </div>
         <div className="row">
             <div className="col">
-                <h2>What's Your News Telling you?</h2>
+                <h2>What Tones Does Your News Convey?</h2>
             </div>
         </div>
         <div className="row">
@@ -63,6 +63,11 @@ const content = (
                     body="A person's degree of inhibition."/>
             </div>
         </div>
+        <div className="row">
+            <div className="col">
+                <h5>*click the tone to know what it means</h5>
+            </div>
+        </div>
         <br />
         <div className="row">
             <div className="col">
@@ -71,12 +76,7 @@ const content = (
         </div>
         <div className="row">
             <div className="col">
-                <h3>Let's Find Out!</h3>
-            </div>
-        </div>
-        <div className="row">
-            <div className="col-6">
-                <h3> Select A Source: </h3>
+                <h3>Select a source from above to find out!</h3>
             </div>
         </div>
     </div>

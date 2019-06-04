@@ -34,7 +34,7 @@ class News extends React.Component {
     }
     
     getNews() {
-        console.log('getNews()')
+        // console.log('getNews()')
         //.then() handles the response from the ajax call
         fetch(this.props.fetch_url)
         //tells it to handle response like a json object
@@ -52,7 +52,7 @@ class News extends React.Component {
     render() {
 
         const news = this.state.currentNews;
-        console.log('currentNews', currentNews);
+        // console.log('currentNews', currentNews);
         const { currentNews, currentPage, totalPages } = this.state;
         const totalNews = this.state.data.length;
         if (totalNews === 0) return null;

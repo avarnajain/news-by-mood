@@ -50,10 +50,6 @@ def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None)
     }
     return Article_dict
 
-# def tone_dict_for_homepage():
-#     """get list of tones for homepage bubble"""
-        
-
 def format_article_title(Article):
     """format article title for display"""
     title_ = Article.title
@@ -112,6 +108,18 @@ def get_source_Articles_by_tone(source, tone_type, tone_id):
         article_dict = single_Article_dict_json(article_obj, tone_id, tone_type) #imported from tone_filter
         article_list.append(article_dict)
     return article_list
+
+def get_source_Articles_by_category(source, category_id):
+    """return source articles dict with category filters"""
+    source_articles = get_articles_for_source(source)    
+    category_articles_list = []
+    for article in source_articles:
+        categories = article.categories
+        for category in categories:
+            if category.category_id == category_id:
+                article_dict = single_Article_dict_json(article, category_id, 'category')
+                category_articles_list.append(article_dict)
+    return category_articles_list
 
 def get_chosen_stats(stats_filter, stats_type):
     """get list of tone_stats_dicts for a source/category

@@ -12,7 +12,8 @@ const content = (
         <div className="row">
             <div className="col">
                 <div className='heading'>
-                    <h3><Heading heading='/session-category.json'/></h3>
+                    <Heading heading='/session-category.json'
+                                    size='h1'/>
                 </div>
             </div>
             <div className="col">
@@ -24,7 +25,8 @@ const content = (
                 <h3>Additional Filters:</h3>
             </div>
             <div className="col">
-                <Heading heading='/session-category-tone.json'/>
+                <Heading heading='/session-category-tone.json'
+                            size='h4'/>
             </div>
             <div className="col">
                 <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'

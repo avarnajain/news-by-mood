@@ -49,6 +49,10 @@
     color: #58595B;
 }
 
+#scrollable-dropdown {
+    height: 400px;
+    overflow-y: scroll;
+}
 /* To hide toolbar in small screen views */
 @media (max-width: 768px) {
     .toolbar__navigation-items {

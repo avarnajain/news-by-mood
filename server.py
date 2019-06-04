@@ -271,10 +271,16 @@ def get_category_tone_stats():
         category_articles = get_Articles_with_category_filter(session['selected_category'])
         return jsonify(category_articles)
 
-@app.route('/get-tone-dropdown-list.json')
-def get_tone_dropdown_list():
+@app.route('/get-emotional-dropdown-list.json')
+def get_emotional_dropdown_list():
     """get json for tone dropdown list"""
-    dropdown_list = get_dropdown_filters_list('tone')
+    dropdown_list = get_dropdown_filters_list('emotional')
+    return jsonify(dropdown_list)
+
+@app.route('/get-language-dropdown-list.json')
+def get_language_dropdown_list():
+    """get json for tone dropdown list"""
+    dropdown_list = get_dropdown_filters_list('language')
     return jsonify(dropdown_list)
 
 @app.route('/get-category-dropdown-list.json')

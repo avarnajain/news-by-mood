@@ -16,8 +16,8 @@ const toolbar = props => (
       <div className="spacer"/>
       <div className="toolbar__navigation-items">
         <ul>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               By Emotion
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -27,8 +27,8 @@ const toolbar = props => (
                               filter_by='tone'/>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               By Language
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -38,8 +38,8 @@ const toolbar = props => (
                               filter_by='tone'/>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               By Category
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -49,11 +49,12 @@ const toolbar = props => (
                               filter_by='category'/>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Source Statistics
             </a>
-            <div className="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
+            
+            <div id='scrollable-dropdown' className="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
               <DropdownSources fetch_url='/all-sources.json'
                               post_url='/get-chosen-source'/>
             </div>

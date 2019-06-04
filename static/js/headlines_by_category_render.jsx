@@ -12,16 +12,32 @@ const content = (
         <div className="row">
             <div className="col">
                 <div className='heading'>
-                    <Heading heading='/session-category.json'/>
+                    <h3><Heading heading='/session-category.json'/></h3>
                 </div>
+            </div>
+            <div className="col">
+                <h3><a href='#'>Get Category Statistics</a></h3>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col">
+                <h3>Additional Filters:</h3>
             </div>
             <div className="col">
                 <Heading heading='/session-category-tone.json'/>
             </div>
             <div className="col">
-                <DropdownMenu fetch_url='/get-tone-dropdown-list.json'
+                <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
                               post_url='/get-chosen-tone-from-dropdown'
-                              filter_by='Filter by Tone'/>
+                              filter_by='Select Emotion'/>
+            </div>
+            <div className="col">
+                <h3>or</h3>
+            </div>
+            <div className="col">
+                <DropdownMenu fetch_url='/get-language-dropdown-list.json'
+                              post_url='/get-chosen-tone-from-dropdown'
+                              filter_by='Select Language'/>
             </div>
         </div>
         <div className="row">

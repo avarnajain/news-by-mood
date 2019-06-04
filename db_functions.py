@@ -43,15 +43,15 @@ def get_tones_db():
     tones = db.session.query(Tone.tone_id, Tone.tone_name, Tone.tone_type)
     return tones
 
-def get_all_tones():
+def get_all_tones(tone_type):
     """get list of all tones emotional and language"""
     tones = Tone.query.all()
-    return [tone.tone_id for tone in tones if tone.tone_id not in ['None', 'no text']]
+    return [tone.tone_id for tone in tones if tone.tone_type == tone_type]
 
 def get_dropdown_filters_list(filter_type):
     """get list of all tones for dropdown"""
-    if filter_type == 'tone':
-        filters = get_all_tones()
+    if filter_type in ['emotional', 'language']:
+        filters = get_all_tones(filter_type)
     elif filter_type == 'category':
         filters = get_all_categories()
     filter_list = []

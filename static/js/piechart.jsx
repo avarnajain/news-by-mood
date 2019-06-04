@@ -10,6 +10,9 @@ function round(value, decimals) {
 
 function sumArray(arr) {
     let sum = 0;
+    if (arr.length == 0) {
+        return sum;
+    };
     for (var i = 0; i < arr.length; i++) {
         sum += arr[i]
     };

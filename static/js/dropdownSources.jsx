@@ -23,7 +23,7 @@ class DropdownSources extends React.Component {
         this.setState({
             selected_source: evt.target.value
         }, () => {
-            console.log('this.state.selected_source, value:', this.state.selected_source)
+            // console.log('this.state.selected_source, value:', this.state.selected_source)
             if (this.state.selected_source) {
                 // console.log('inside fetch', this.state.post_url);
                 fetch(this.props.post_url, {
@@ -59,7 +59,7 @@ class DropdownSources extends React.Component {
 
     render() {
         const sources = this.state.data;
-        console.log('sources', sources);
+        // console.log('sources', sources);
         const dropdownList = sources.map((source) =>
             <div key={source.source}>
                 <option onClick={this.handleSourceSelection} value={source.source}>{source.source}</option>

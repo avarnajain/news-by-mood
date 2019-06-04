@@ -24,6 +24,7 @@ class Heading extends React.Component {
 
     render() {
         const heading = this.state.data;
+        console.log('Heading', heading);
         return (
             <div>
                <h1> {heading} </h1>

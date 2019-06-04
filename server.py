@@ -67,7 +67,7 @@ def get_chosen_emotion():
     session['selected_emotion'] = request.json['selected_tone']
     session['selected_language'] = ''
     session['selected_tone_category'] = ''
-    print("session['selected_emotion']", session['selected_emotion'])
+    print("'/get-chosen-emotion' session['selected_emotion']", session['selected_emotion'], "session['selected_language']", session['selected_language'], "session['selected_tone_category']", session['selected_tone_category'])
     return redirect('/headlines-by-emotion')
 
 @app.route('/get-chosen-emotion/<chosen_emotion>')
@@ -76,7 +76,7 @@ def get_chosen_emotion_query():
     session['selected_emotion'] = chosen_emotion
     session['selected_language'] = ''
     session['selected_tone_category'] = ''
-    print("session['selected_emotion'] changed using query string to:", session['selected_emotion'])
+    print("/get-chosen-emotion/<chosen_emotion> session['selected_emotion']", session['selected_emotion'], "session['selected_language']", session['selected_language'], "session['selected_tone_category']", session['selected_tone_category'])
     return redirect('/headlines-by-emotion')
 
 @app.route('/get-chosen-language', methods=['POST'])
@@ -85,7 +85,7 @@ def get_chosen_language():
     session['selected_language'] = request.json['selected_tone']
     session['selected_emotion'] = ''
     session['selected_tone_category'] = ''
-    print("session['selected_language']", session['selected_language'])
+    print("'/get-chosen-language/' session['selected_language']", session['selected_language'], "session['selected_emotion']", session['selected_emotion'], "session['selected_tone_category']", session['selected_tone_category'])
     return redirect('/headlines-by-language')
 
 @app.route('/get-chosen-language/<chosen_language>')
@@ -94,7 +94,7 @@ def get_chosen_language_query():
     session['selected_language'] = chosen_language
     session['selected_emotion'] = ''
     session['selected_tone_category'] = ''
-    print("session['selected_language'] changed using query string to:", session['selected_language'])
+    print("'/get-chosen-language/<chosen_language>' session['selected_language']", session['selected_language'], "session['selected_emotion']", session['selected_emotion'], "session['selected_tone_category']", session['selected_tone_category'])
     return redirect('/headlines-by-language')
 
 @app.route('/get-chosen-source', methods=['POST'])
@@ -102,7 +102,7 @@ def get_chosen_source():
     """Get chosen source from homepage"""
     session['selected_source'] = request.json['selected_source']
     session['selected_source_tone_id'] = ''
-    print("session['selected_source']", session['selected_source'])
+    print("'/get-chosen-source' session['selected_source']", session['selected_source'], "session['selected_source_tone_id']", session['selected_source_tone_id'])
     return redirect(('/source_stats/{}').format(session['selected_source']))
 
 @app.route('/get-chosen-source/<chosen_source>')
@@ -111,7 +111,7 @@ def get_chosen_source_get(chosen_source):
     print('CHOSEN SOURCE', chosen_source)
     session['selected_source'] = chosen_source
     session['selected_source_tone_id'] = ''
-    print("session['selected_source'] changed using query string to:", session['selected_source'])
+    print("'/get-chosen-source/<chosen_source>' session['selected_source']", session['selected_source'], "session['selected_source_tone_id']", session['selected_source_tone_id'])
     return redirect(('/source-stats/{}').format(session['selected_source']))
 
 @app.route('/get-chosen-category', methods=['POST'])
@@ -119,7 +119,7 @@ def get_chosen_category():
     """Get chosen category from homepage"""
     session['selected_category'] = request.json['selected_category']
     session['selected_category_tone_id'] = ''
-    print("session['selected_category']", session['selected_category'])
+    print("'/get-chosen-category' session['selected_category']", session['selected_category'], "session['selected_category_tone_id']", session['selected_category_tone_id'])
     return redirect('/headlines-by-category')
 
 @app.route('/get-chosen-category/<chosen_category>')
@@ -128,14 +128,14 @@ def get_chosen_category_get(chosen_category):
     print('CHOSEN CATEGORY', chosen_category)
     session['selected_category'] = chosen_category
     session['selected_category_tone_id'] = ''
-    print("session['selected_category'] changed using query string to:", session['selected_category'])
+    print("'/get-chosen-category/<chosen_category>' session['selected_category']", session['selected_category'], "session['selected_category_tone_id']", session['selected_category_tone_id'])
     return redirect(('/headlines-by-category/{}').format(session['selected_category']))
 
 @app.route('/get-source-news', methods=['POST'])
 def get_source_news():
     """set session variables to get source news"""
     session['selected_source_tone_id'] = request.json['selected_pie_tone']
-    print('selected source news tone id', session['selected_source_tone_id'])
+    print("'/get-source-news' session['selected_source_tone_id']", session['selected_source_tone_id'])
     
     if session['selected_source_tone_id'] in ['fear', 'joy', 'anger', 'sadness']:
         session['selected_source_tone_type'] = 'emotional'
@@ -149,21 +149,21 @@ def get_source_news():
 def get_category_tone_filter():
     """set session variable to get tone news within a category"""
     session['selected_category_tone_id'] = request.json['selected_pie_tone']
-    print('selected_category_tone_id', session['selected_category_tone_id'])
+    print("'/get-category-tone-filter' session['selected_category_tone_id']", session['selected_category_tone_id'])
     return redirect('/get-category-tone-news.json')
 
 @app.route('/get-chosen-tone-from-dropdown', methods=['POST'])
 def get_chosen_tone_form_dropdown():
     """set session variable based on dropdown tone selection"""
     session['selected_category_tone_id'] = request.json['selected_dropdown']
-    print('selected_category_tone_id', session['selected_category_tone_id'])
+    print("'/get-chosen-tone-from-dropdown' session['selected_category_tone_id']", session['selected_category_tone_id'])
     return redirect('/get-category-tone-news.json')
 
 @app.route('/get-chosen-category-from-dropdown', methods=['POST'])
 def get_chosen_category_from_dropdown():
     """set session based on dropdown category selection"""
     session['selected_tone_category'] = request.json['selected_dropdown']
-    print('selected_tone_category', session['selected_tone_category'])
+    print("'/get-chosen-category-from-dropdown' session['selected_tone_category']", session['selected_tone_category'])
     return redirect('/get-tone-category-news.json')
 
 #########################################################
@@ -195,26 +195,24 @@ def get_all_categories():
 @app.route('/headlines-by-emotion.json')
 def get_headlines_by_emotion():
     """Get articles with chosen tone"""
-    if not session['selected_tone_category']:
-        emotional_articles_list = get_Articles_with_tone_dict(session['selected_emotion'], 'emotional')
-        return jsonify(emotional_articles_list)
+    if (session['selected_tone_category']):
+        tone_id = session['selected_emotion']
+        tone_category_articles = get_tone_Articles_with_category_filter(tone_id, 'emotional', session['selected_tone_category'])
+        return jsonify(tone_category_articles)
     else:
-        if (session['selected_emotion']):
-            tone_id = session['selected_emotion']
-            tone_category_articles = get_tone_Articles_with_category_filter(tone_id, 'emotional', session['selected_tone_category'])
-            return jsonify(tone_category_articles)
+        emotional_articles_list = get_Articles_with_tone_dict(session['selected_emotion'], 'emotional')
+        return jsonify(emotional_articles_list)        
     
 @app.route('/headlines-by-language.json')
 def get_headlines_by_language():
     """Get articles with chosen tone"""
-    if not session['selected_tone_category']:
+    if (session['selected_tone_category']):
+        tone_id = session['selected_language']
+        tone_category_articles = get_tone_Articles_with_category_filter(tone_id, 'language', session['selected_tone_category'])
+        return jsonify(tone_category_articles)
+    else:
         language_articles_list = get_Articles_with_tone_dict(session['selected_language'], 'language')
         return jsonify(language_articles_list)
-    else:
-        if (session['selected_language']):
-            tone_id = session['selected_language']
-            tone_category_articles = get_tone_Articles_with_category_filter(tone_id, 'language', session['selected_tone_category'])
-            return jsonify(tone_category_articles)
 
 @app.route('/all-source-stats.json')
 def get_all_source_stats():
@@ -239,6 +237,16 @@ def get_session_category():
 def get_session_source():
     return jsonify(session['selected_source'].capitalize())
 
+@app.route('/session-category-tone.json')
+def get_session_category_tone():
+    if (session['selected_category_tone_id']):
+        return jsonify(session['selected_category_tone_id'].capitalize())
+
+@app.route('/session-tone-category.json')
+def get_session_tone_category():
+    if (session['selected_tone_category']):
+        return jsonify(session['selected_tone_category'].capitalize())
+
 @app.route('/source-news.json')
 def get_source_news_json():
 
@@ -249,11 +257,11 @@ def get_source_news_json():
 @app.route('/get-category-stats.json')
 def get_category_stats():
     """get stats for category"""
-    print("session['selected_category']", session['selected_category'])
+    # print("get category stats for ", session['selected_category'])
     category_stats = get_weighted_chosen_stats(session['selected_category'], 'category')
     return jsonify(category_stats)
 
-@app.route('/get-category-tones-stats.json')
+@app.route('/get-category-tone-news.json')
 def get_category_tone_stats():
     """post json of stats for tone type within category"""
     if (session['selected_category_tone_id']):

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
 import News from "./news.jsx";
 import Heading from './heading.jsx';
-import DropdownMenu from './dropdown.jsx';
+import DropdownMenu from './dropdownMenu.jsx';
 
 const content = (
     <div className="container-fluid">
@@ -13,6 +13,9 @@ const content = (
                 <div className='heading'>
                     <Heading heading='/session-language.json'/>
                 </div>
+            </div>
+            <div className="col">
+                <Heading heading='/session-tone-category.json'/>
             </div>
             <div className="col">
                 <DropdownMenu fetch_url='/get-category-dropdown-list.json'

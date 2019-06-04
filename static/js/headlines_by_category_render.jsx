@@ -5,7 +5,7 @@ import App from './homepage.jsx';
 import News from "./news.jsx";
 import Heading from './heading.jsx';
 import Stats from './stats.jsx';
-import DropdownMenu from './dropdown.jsx';
+import DropdownMenu from './dropdownMenu.jsx';
 
 const content = (
     <div className="container-fluid">
@@ -14,6 +14,9 @@ const content = (
                 <div className='heading'>
                     <Heading heading='/session-category.json'/>
                 </div>
+            </div>
+            <div className="col">
+                <Heading heading='/session-category-tone.json'/>
             </div>
             <div className="col">
                 <DropdownMenu fetch_url='/get-tone-dropdown-list.json'
@@ -48,7 +51,7 @@ const content = (
             </div>
         </div>
         <div id="category-headlines">
-            <News fetch_url='/get-category-tones-stats.json'/>
+            <News fetch_url='/get-category-tone-news.json'/>
         </div>
     </div>
 );

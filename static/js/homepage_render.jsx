@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
 import PopoverButton from './popover_button.jsx'
 import '../css/homepage.css';
+import SourceForm from './source_form.jsx';
 
 const content = (
     <div className="container-fluid">
@@ -14,10 +15,9 @@ const content = (
         </div>
         <div className="row">
             <div className="col">
-                <h2>Your News Has A Personality</h2>
+                <h2>What's Your News Telling you?</h2>
             </div>
         </div>
-        <br />
         <div className="row">
             <div className="col-2 offset-1" id='tone-profile'>
                 <h3>Emotional Tones</h3>
@@ -43,14 +43,11 @@ const content = (
                     body="Indicates a feeling of loss and disadvantage. When a person can be observed to be quiet, less energetic and withdrawn, it may be inferred that sadness exists."/>
             </div>
         </div>
-        <br />
         <div className="row">
-            <div className="col">
+            <div className="col-2 offset-2" id='tone-profile'>
                 <h3>Language Tones</h3>
             </div>
-        </div>
-        <div className="row">
-            <div className="col-2 offset-3"id='bubble-tone'>
+            <div className="col-2"id='bubble-tone'>
                 <PopoverButton 
                     tone='Analytical'
                     body="A person's reasoning and analytical attitude about things."/>
@@ -69,12 +66,17 @@ const content = (
         <br />
         <div className="row">
             <div className="col">
-                <h2>Do News Websites Have Peronalities Too?</h2>
+                <h2>Do Your News Sources Have Peronalities Too?</h2>
             </div>
         </div>
         <div className="row">
             <div className="col">
                 <h3>Let's Find Out!</h3>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-6">
+                <h3> Select A Source: </h3>
             </div>
         </div>
     </div>

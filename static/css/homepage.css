@@ -4,7 +4,8 @@ h2, h3 {
 
 h1 {
     text-align: center;
-    font-family: 'Benton Bold';
+    font-size: 80px;
+    font-family: 'BlackLetter';
 }
 
 .btn-circle {
@@ -26,3 +27,15 @@ h1 {
     margin-bottom: auto;
     text-align: center; 
 }
+
+/*@font-face {
+  font-family: 'BlackLetter';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('BlackLetter'),
+    local('BlackLetter'),
+    url(./Plain_Black.ttf)
+    format('ttf');
+}
+*/

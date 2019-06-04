@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import '../css/toolbar.css';
 import SidebarToggleButton from './sidebar_toggle.jsx'
 import DropdownItems from './dropdownItems.jsx';
+import DropdownSources from './dropdownSources.jsx';
+
 const toolbar = props => (
   <header className="toolbar">
     <nav className="toolbar__navigation"> 
@@ -45,6 +47,15 @@ const toolbar = props => (
                               post_url='/get-chosen-category'
                               redirect='/headlines-by-category'
                               filter_by='category'/>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Source Statistics
+            </a>
+            <div className="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">
+              <DropdownSources fetch_url='/all-sources.json'
+                              post_url='/get-chosen-source'/>
             </div>
           </li>
         </ul>

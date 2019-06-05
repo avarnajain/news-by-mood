@@ -28,6 +28,12 @@ h1 {
     text-align: center; 
 }
 
+#plain-btn-circle {
+  background-color: #B4B8C5;
+  border-color: #B4B8C5;
+  opacity: 0.5;
+}
+
 /*@font-face {
   font-family: 'BlackLetter';
   font-style: normal;

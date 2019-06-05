@@ -16,13 +16,19 @@ const content = (
                 </div>
             </div>
             <div className="col">
-                <Heading heading='/session-tone-category.json'
-                        size='h4'/>
-            </div>
-            <div className="col">
-                <DropdownMenu fetch_url='/get-category-dropdown-list.json'
+                <div className="row">
+                    <div className="col">
+                        <DropdownMenu fetch_url='/get-category-dropdown-list.json'
                                 post_url='/get-chosen-category-from-dropdown'
                                 filter_by='Filter by Category'/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <Heading heading='/session-tone-category.json'
+                            size='h5'/>
+                    </div>
+                </div>
             </div>
         </div>
         <div className="row">

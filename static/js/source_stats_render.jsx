@@ -39,7 +39,9 @@ const content = (
             </div>
             <div className="row">
                 <div className="col">
-                    <h6>*weighted based on the score of each tone in an article</h6>
+                    <h6 id='weighted-pie-statement'>
+                        *weighted based on the score of each tone in an article
+                    </h6>
                 </div>
             </div>
             <div className="row">

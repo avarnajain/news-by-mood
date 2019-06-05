@@ -5,7 +5,7 @@ import App from './homepage.jsx';
 import PopoverButton from './popover_button.jsx'
 import '../css/homepage.css';
 import SourceForm from './source_form.jsx';
-
+import { Button } from 'reactstrap';
 const content = (
     <div className="container-fluid">
         <div className="row">
@@ -19,8 +19,120 @@ const content = (
             </div>
         </div>
         <div className="row">
-            <div className="col-1 offset-3" id='tone-profile'>
-                <h3>emotions?</h3>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                  <b>Emotions?</b>
+                </Button>
             </div>
             <div className="col-1" id='bubble-tone'>
                 <PopoverButton 
@@ -42,10 +154,71 @@ const content = (
                     tone='Sadness'
                     body="Indicates a feeling of loss and disadvantage. When a person can be observed to be quiet, less energetic and withdrawn, it may be inferred that sadness exists."/>
             </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
         </div>
         <div className="row">
-            <div className="col-1 offset-4" id='tone-profile'>
-                <h3>opinions?</h3>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                  <b>Opinions?</b>
+                </Button>
             </div>
             <div className="col-1"id='bubble-tone'>
                 <PopoverButton 
@@ -61,6 +234,120 @@ const content = (
                 <PopoverButton 
                     tone='Tentative'
                     body="A person's degree of inhibition."/>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
+            </div>
+            <div className="col-1" id='plain-bubble'>
+                <Button 
+                  id='plain-btn-circle' 
+                  type="button" 
+                  className="btn btn-default btn-circle btn-xl">
+                </Button>
             </div>
         </div>
         <div className="row">

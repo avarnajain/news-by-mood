@@ -6,6 +6,7 @@ import {Dropdown, DropdownButton} from 'react-bootstrap';
 // import {DropdownButton} from 'react-bootstrap/DropdownButton';
 import $ from 'jquery'; 
 import Popper from 'popper.js';
+import '../css/dropdownMenu.css';
 
 class DropdownMenu extends React.Component {
     

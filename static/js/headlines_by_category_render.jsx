@@ -39,7 +39,9 @@ const content = (
         </div>
         <div className="row">
             <div className="col">
-                <h6>*weighted based on the score of each tone in an article</h6>
+                <h6 id='weighted-pie-statement'>
+                    *weighted based on the score of each tone in an article
+                </h6>
             </div>
         </div>
         <div className="row">
@@ -50,21 +52,24 @@ const content = (
         </div>
         <div className="row">
             <div className="col">
-                <h3>Additional Filters:</h3>
-            </div>
-            <div className="col">
-                <Heading heading='/session-category-tone.json'
+                <div className="row">
+                    <div className="col">
+                        <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
+                                      post_url='/get-chosen-tone-from-dropdown'
+                                      filter_by='Filter by Emotion'/>
+                    </div>
+                    <div className="col">
+                        <DropdownMenu fetch_url='/get-language-dropdown-list.json'
+                                      post_url='/get-chosen-tone-from-dropdown'
+                                      filter_by='Filter by Opinion'/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <Heading heading='/session-category-tone.json'
                             size='h4'/>
-            </div>
-            <div className="col-2">
-                <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
-                              post_url='/get-chosen-tone-from-dropdown'
-                              filter_by='Filter by Emotion'/>
-            </div>
-            <div className="col-2">
-                <DropdownMenu fetch_url='/get-language-dropdown-list.json'
-                              post_url='/get-chosen-tone-from-dropdown'
-                              filter_by='Filter by Language'/>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="category-headlines">

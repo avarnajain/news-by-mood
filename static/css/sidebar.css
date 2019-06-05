@@ -48,8 +48,8 @@
 }
 
 /* To hide sidebar in small screen views */
-/*@media (min-width: 696px) {
+@media (min-width: 696px) {
     .side-bar {
         display: none;
     }
-}*/
+}

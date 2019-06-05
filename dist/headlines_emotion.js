@@ -294,6 +294,17 @@ eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./static/css/bubblechart.css":
+/*!**************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./static/css/bubblechart.css ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"/*#bubble-chart-jsx {\\n    box-shadow: 2px 2px 2px grey;\\n}*/\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./static/css/bubblechart.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./static/css/dropdownMenu.css":
 /*!***************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./static/css/dropdownMenu.css ***!
@@ -356,7 +367,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n#spinner-1 {\\n    background-color: #76A0A0;\\n}\\n#spinner-2 {\\n    background-color: #587046;\\n}\\n#spinner-3 {\\n    background-color: #A23E48;\\n}\\n#spinner-4 {\\n    background-color: #F6B621;\\n}\\n#spinner-5 {\\n    background-color: #595858;\\n}\\n#spinner-6 {\\n    background-color: #9F838C;\\n}\\n#spinner-7 {\\n    background-color: #C3BABA;\\n}\\n\\n#spinner h4 {\\n    font-size: 16px;\\n}\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./static/css/spinner.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n#spinner-1 {\\n    background-color: #76A0A0;\\n}\\n#spinner-2 {\\n    background-color: #768A67;\\n}\\n#spinner-3 {\\n    background-color: #A23E48;\\n}\\n#spinner-4 {\\n    background-color: #F6B621;\\n}\\n#spinner-5 {\\n    background-color: #595858;\\n}\\n#spinner-6 {\\n    background-color: #9F838C;\\n}\\n#spinner-7 {\\n    background-color: #C3BABA;\\n}\\n\\n#spinner h4 {\\n    font-size: 16px;\\n}\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./static/css/spinner.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -367,7 +378,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \".toolbar {\\n    position: fixed;\\n    top: 0;\\n    left: 0;\\n    width: 100%;\\n    background: white;\\n    height: 56px;\\n    z-index: 100;\\n    /*outline: black;*/\\n}\\n\\n.toolbar__navigation {\\n    display: flex;\\n    height: 100%;\\n    align-items: center;\\n    padding: 0 1rem;\\n    border-bottom: 2px solid black;\\n}\\n\\n.toolbar__logo {\\n    margin-left: 1rem;\\n}\\n\\n.toolbar__logo a {\\n    color: black;\\n    text-decoration: none;\\n    font-size: 1.5rem;\\n}\\n\\n.toolbar__navigation-items ul {\\n    list-style: none;\\n    margin: 0;\\n    padding: 0;\\n    display: flex\\n}\\n\\n.toolbar__navigation-items li {\\n    padding: 0 0.5rem;\\n}\\n\\n.spacer {\\n    flex: 1;\\n}\\n\\n.toolbar__navigation-items a {\\n    color: black;\\n    text-decoration: none;\\n}\\n.toolbar__navigation-items a:hover,\\n.toolbar__navigation-items a:active {\\n    color: #58595B;\\n}\\n.toolbar__logo a:hover,\\n.toolbar__logo a:active {\\n    color: #58595B;\\n}\\n\\n#scrollable-dropdown {\\n    height: 400px;\\n    overflow-y: scroll;\\n}\\n/* To hide toolbar in small screen views */\\n@media (max-width: 768px) {\\n    .toolbar__navigation-items {\\n        display: none;\\n    }\\n}\\n\\n/* To hide sidebar in big screen views */\\n@media (min-width: 769px) {\\n    .toolbar__toggle-button {\\n        display: none;\\n    }\\n    .toolbar__logo {\\n        margin-left: 0; \\n    }\\n}\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./static/css/toolbar.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \".toolbar {\\n    position: fixed;\\n    top: 0;\\n    left: 0;\\n    width: 100%;\\n    background: white;\\n    height: 56px;\\n    z-index: 100;\\n    box-shadow: 2px 2px 3px grey;\\n    /*outline: black;*/\\n}\\n\\n.toolbar__navigation {\\n    display: flex;\\n    height: 100%;\\n    align-items: center;\\n    padding: 0 1rem;\\n    /*border-bottom: 1px solid black;*/\\n}\\n\\n.toolbar__logo {\\n    margin-left: 1rem;\\n}\\n\\n.toolbar__logo a {\\n    color: black;\\n    text-decoration: none;\\n    font-size: 1.5rem;\\n}\\n\\n.toolbar__navigation-items ul {\\n    list-style: none;\\n    margin: 0;\\n    padding: 0;\\n    display: flex\\n}\\n\\n.toolbar__navigation-items li {\\n    padding: 0 0.5rem;\\n}\\n\\n.spacer {\\n    flex: 1;\\n}\\n\\n.toolbar__navigation-items a {\\n    color: black;\\n    text-decoration: none;\\n}\\n.toolbar__navigation-items a:hover,\\n.toolbar__navigation-items a:active {\\n    color: #58595B;\\n}\\n.toolbar__logo a:hover,\\n.toolbar__logo a:active {\\n    color: #58595B;\\n}\\n\\n#scrollable-dropdown {\\n    height: 400px;\\n    overflow-y: scroll;\\n}\\n/* To hide toolbar in small screen views */\\n@media (max-width: 768px) {\\n    .toolbar__navigation-items {\\n        display: none;\\n    }\\n}\\n\\n/* To hide sidebar in big screen views */\\n@media (min-width: 769px) {\\n    .toolbar__toggle-button {\\n        display: none;\\n    }\\n    .toolbar__logo {\\n        margin-left: 0; \\n    }\\n}\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./static/css/toolbar.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -8237,6 +8248,17 @@ eval("\nvar content = __webpack_require__(/*! !../../node_modules/css-loader/dis
 
 /***/ }),
 
+/***/ "./static/css/bubblechart.css":
+/*!************************************!*\
+  !*** ./static/css/bubblechart.css ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\nvar content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./bubblechart.css */ \"./node_modules/css-loader/dist/cjs.js!./static/css/bubblechart.css\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./static/css/bubblechart.css?");
+
+/***/ }),
+
 /***/ "./static/css/dropdownMenu.css":
 /*!*************************************!*\
   !*** ./static/css/dropdownMenu.css ***!
@@ -8334,7 +8356,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @weknow/react-bubble-chart-d3 */ \"./node_modules/@weknow/react-bubble-chart-d3/lib/index.js\");\n/* harmony import */ var _weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _constants_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants.jsx */ \"./static/js/constants.jsx\");\n\"use-strict\";\n\n\n\n\nfunction Bubble(props) {\n  var tones = props.tone_data; // console.log('tones', tones);\n\n  var obj_list = [];\n  var data = tones.map(function (tone) {\n    obj_list.push({\n      label: tone.tone,\n      value: tone.score,\n      color: _constants_jsx__WEBPACK_IMPORTED_MODULE_1__[\"TONE_COLORS\"][tone.tone]\n    });\n  }); // console.log('obj_list', obj_list);\n\n  return React.createElement(_weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0___default.a, {\n    graph: {\n      zoom: 0.4,\n      offsetX: 0.05,\n      offsetY: 0.01\n    },\n    width: 600,\n    height: 200,\n    padding: 0 // optional value, number that set the padding between bubbles\n    ,\n    showLegend: true // optional value, pass false to disable the legend.\n    ,\n    legendPercentage: 20 // number that represent the % of with that legend going to use.\n    ,\n    legendFont: {\n      family: 'Arial',\n      size: 12,\n      color: '#000',\n      weight: 'bold'\n    },\n    showValue: false,\n    valueFont: {\n      family: 'Arial',\n      size: 9,\n      color: '#fff',\n      weight: 'bold'\n    },\n    labelFont: {\n      family: 'Arial',\n      size: 14,\n      color: '#fff',\n      weight: 'bold'\n    },\n    data: obj_list\n  });\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Bubble);\n\n//# sourceURL=webpack:///./static/js/bubblechart.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @weknow/react-bubble-chart-d3 */ \"./node_modules/@weknow/react-bubble-chart-d3/lib/index.js\");\n/* harmony import */ var _weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _constants_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants.jsx */ \"./static/js/constants.jsx\");\n/* harmony import */ var _css_bubblechart_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/bubblechart.css */ \"./static/css/bubblechart.css\");\n/* harmony import */ var _css_bubblechart_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_bubblechart_css__WEBPACK_IMPORTED_MODULE_3__);\n\"use-strict\";\n\n\n\n\n\nfunction Bubble(props) {\n  var tones = props.tone_data; // console.log('tones', tones);\n\n  var obj_list = [];\n  var data = tones.map(function (tone) {\n    obj_list.push({\n      label: tone.tone,\n      value: tone.score,\n      color: _constants_jsx__WEBPACK_IMPORTED_MODULE_1__[\"TONE_COLORS\"][tone.tone]\n    });\n  }); // console.log('obj_list', obj_list);\n\n  return React.createElement(_weknow_react_bubble_chart_d3__WEBPACK_IMPORTED_MODULE_0___default.a, {\n    id: \"bubble-chart-jsx\",\n    graph: {\n      zoom: 0.4,\n      offsetX: 0.05,\n      offsetY: 0.01\n    },\n    width: 600,\n    height: 200,\n    padding: 0 // optional value, number that set the padding between bubbles\n    ,\n    showLegend: true // optional value, pass false to disable the legend.\n    ,\n    legendPercentage: 20 // number that represent the % of with that legend going to use.\n    ,\n    legendFont: {\n      family: 'Arial',\n      size: 12,\n      color: '#000',\n      weight: 'bold'\n    },\n    showValue: false,\n    valueFont: {\n      family: 'Arial',\n      size: 9,\n      color: '#fff',\n      weight: 'bold'\n    },\n    labelFont: {\n      family: 'Arial',\n      size: 14,\n      color: '#fff',\n      weight: 'bold'\n    },\n    data: obj_list\n  });\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Bubble);\n\n//# sourceURL=webpack:///./static/js/bubblechart.jsx?");
 
 /***/ }),
 
@@ -8358,7 +8380,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n\"use-strict\";\n\nfunction _
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TONE_COLORS\", function() { return TONE_COLORS; });\nvar TONE_COLORS = {\n  \"sadness\": '#76A0A0',\n  \"fear\": '#587046',\n  \"anger\": '#A23E48',\n  \"joy\": '#F6B621',\n  \"analytical\": '#595858',\n  \"confident\": '#9F838C',\n  \"tentative\": '#C3BABA'\n};\n\n//# sourceURL=webpack:///./static/js/constants.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TONE_COLORS\", function() { return TONE_COLORS; });\nvar TONE_COLORS = {\n  \"sadness\": '#76A0A0',\n  \"fear\": '#768A67',\n  \"anger\": '#A23E48',\n  \"joy\": '#F6B621',\n  \"analytical\": '#595858',\n  \"confident\": '#9F838C',\n  \"tentative\": '#C3BABA'\n};\n\n//# sourceURL=webpack:///./static/js/constants.jsx?");
 
 /***/ }),
 

@@ -6,6 +6,7 @@
     background: white;
     height: 56px;
     z-index: 100;
+    box-shadow: 2px 2px 3px grey;
     /*outline: black;*/
 }
 
@@ -14,7 +15,7 @@
     height: 100%;
     align-items: center;
     padding: 0 1rem;
-    border-bottom: 2px solid black;
+    /*border-bottom: 1px solid black;*/
 }
 
 .toolbar__logo {

@@ -2,7 +2,7 @@
 import { Component } from 'react';
 import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import {TONE_COLORS} from './constants.jsx'
-
+import '../css/popover.css'
 class PopoverButton extends React.Component {
   constructor(props) {
     super(props);
@@ -29,13 +29,13 @@ class PopoverButton extends React.Component {
       color:'white'
     };
     return (
-      <div id={tone}>
+      <div id={tone} className="row">
         <Button 
           style={divStyle}
           id='Popover1' 
           type="button" 
           className="btn btn-default btn-circle btn-xl">
-          <b>{tone}</b>
+          <a><b>{tone}</b></a>
         </Button>
         <Popover placement="bottom" isOpen={this.state.popoverOpen} target={tone} toggle={this.toggle}>
           <PopoverHeader>{tone}</PopoverHeader>

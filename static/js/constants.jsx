@@ -1,6 +1,6 @@
 export const TONE_COLORS = {
     "sadness": '#76A0A0',
-    "fear": '#587046',
+    "fear": '#768A67',
     "anger": '#A23E48',
     "joy": '#F6B621',
     "analytical": '#595858',

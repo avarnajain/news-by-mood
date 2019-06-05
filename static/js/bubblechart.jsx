@@ -2,7 +2,7 @@
 
 import BubbleChart from '@weknow/react-bubble-chart-d3';
 import {TONE_COLORS} from './constants.jsx'
-
+import '../css/bubblechart.css';
 function Bubble(props) {
     const tones = props.tone_data;
     // console.log('tones', tones);
@@ -15,7 +15,7 @@ function Bubble(props) {
       })
     });
     // console.log('obj_list', obj_list);
-    return (<BubbleChart
+    return (<BubbleChart id='bubble-chart-jsx'
       graph= {{
         zoom: 0.4,
         offsetX: 0.05,

@@ -1,0 +1,11 @@
+#Popover1 a:hover, 
+#Popover1 a:active {
+    color: '#58595B'
+}
+
+#plain-button {
+  background-color: #B4B8C5;
+  border-color: #B4B8C5;
+  opacity: 0.5;
+  color: black;
+}

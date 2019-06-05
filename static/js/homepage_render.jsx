@@ -6,6 +6,8 @@ import PopoverButton from './popover_button.jsx'
 import '../css/homepage.css';
 import SourceForm from './source_form.jsx';
 import { Button } from 'reactstrap';
+import CircleButton from './circle_button.jsx';
+
 const content = (
     <div className="container-fluid">
         <div className="row">
@@ -15,124 +17,17 @@ const content = (
         </div>
         <div className="row">
             <div className="col">
-                <h2>does it have a personality, too?</h2>
+                <h2>does it have a personality?</h2>
             </div>
         </div>
         <div className="row">
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
+            <div className="col-12" id='plain-bubble'>
+                <CircleButton number={12} text={['', '', '', '', '', '', '', '', '', '', '', '']}/>
             </div>
         </div>
         <div className="row">
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                  <b>Emotions?</b>
-                </Button>
+            <div className="col-4" id='plain-bubble'>
+                <CircleButton number={4} text={['', '', '', 'Emotions?']}/>
             </div>
             <div className="col-1" id='bubble-tone'>
                 <PopoverButton 
@@ -154,71 +49,13 @@ const content = (
                     tone='Sadness'
                     body="Indicates a feeling of loss and disadvantage. When a person can be observed to be quiet, less energetic and withdrawn, it may be inferred that sadness exists."/>
             </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
+            <div className="col-4" id='plain-bubble'>
+                <CircleButton number={4} text={['', '', '', '']}/>
             </div>
         </div>
         <div className="row">
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                  <b>Opinions?</b>
-                </Button>
+            <div className="col-5" id='plain-bubble'>
+                <CircleButton number={5} text={['', '', '', '', 'Opinions?']}/>
             </div>
             <div className="col-1"id='bubble-tone'>
                 <PopoverButton 
@@ -235,135 +72,23 @@ const content = (
                     tone='Tentative'
                     body="A person's degree of inhibition."/>
             </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
+            <div className="col-4" id='plain-bubble'>
+                <CircleButton number={4} text={['Click to know more!', '', '', '']}/>
             </div>
         </div>
         <div className="row">
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
-            </div>
-            <div className="col-1" id='plain-bubble'>
-                <Button 
-                  id='plain-btn-circle' 
-                  type="button" 
-                  className="btn btn-default btn-circle btn-xl">
-                </Button>
+            <div className="col" id='plain-bubble'>
+                <CircleButton number={12} text={['', '', '', '', '', '', '', '', '', '', '', '']}/>
             </div>
         </div>
         <div className="row">
             <div className="col">
-                <h5>*click the tone to know what it means</h5>
-            </div>
-        </div>
-        <br />
-        <div className="row">
-            <div className="col">
-                <h2>Do Your News Sources Have Peronalities Too?</h2>
+                <h2>do news sources have peronalities too?</h2>
             </div>
         </div>
         <div className="row">
             <div className="col">
-                <h3>Select a source from above to find out!</h3>
+                <h3>let's find out!</h3>
             </div>
         </div>
     </div>

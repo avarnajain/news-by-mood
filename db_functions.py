@@ -1,14 +1,16 @@
 import os
 import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
-from sqlalchemy import desc
-
+from sqlalchemy import desc, text
+from flask import session
 #ARTICLE FUNCTIONS
 def get_sources_db():
     """Get list of all sources in db"""
     article_sources = db.session.query(Article.source).group_by(Article.source
                     ).order_by(Article.source).all()
     # print('article_sorces', article_sources)
+    if ('all_sources' in session):
+        return session['all_sources']
     sources = []
     for article in article_sources:
         sources.append(article.source)
@@ -17,7 +19,26 @@ def get_sources_db():
         articles = get_articles_for_source(source)
         if len(articles) >= 2:
             return_sources.append(source)
+    session['all_sources'] = return_sources
     return return_sources
+
+def raw_sql():
+
+    sql = text("""
+        SELECT a.source
+        FROM articles a, articles b, scores s
+        WHERE a.article_id != b.article_id 
+        AND a.source = b.source
+        AND a.article_id IN (
+            SELECT article_id
+            FROM scores
+            WHERE score != 0
+            )
+        """)
+    result = db.engine.execute(sql)
+    print(result)
+    return result
+
 
 def get_sources_dict_db():
     """Get dict of all sources in db to pass as json"""

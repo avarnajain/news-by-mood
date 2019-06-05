@@ -270,16 +270,22 @@ def get_session_category_tone():
 def get_session_tone_category():
     if (session['selected_tone_category']):
         return jsonify(session['selected_tone_category'].capitalize())
+    else:
+        return jsonify('')
 
 @app.route('/session-source-tone.json')
 def get_session_source_tone():
     if (session['selected_source_tone_id']):
         return jsonify(session['selected_source_tone_id'].capitalize())
-
+    else:
+        return jsonify('')
+        
 @app.route('/session-source-category.json')
 def get_session_source_category():
     if (session['selected_category_within_source']):
         return jsonify(session['selected_category_within_source'].capitalize())
+    else:
+        return jsonify('')
 
 @app.route('/source-news.json')
 def get_source_news_json():

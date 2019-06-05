@@ -127,7 +127,7 @@ class News extends React.Component {
             return (
                 <div>
                     <LoadingSpinner/>
-                    <p> Loading... </p>
+                    <h4> Loading Articles... </h4>
                 </div>
             )
         }

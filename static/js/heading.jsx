@@ -28,6 +28,7 @@ class Heading extends React.Component {
     render() {
         const heading = this.state.data;
         const size = this.props.size;
+        const filter = this.props.filter;
         if (size == 'h3') {
             return (
                 <div>
@@ -37,13 +38,31 @@ class Heading extends React.Component {
         } else if (size == 'h4') {
             return (
                 <div>
-                   <h4> {heading} </h4>
+                   <h2> {heading} </h2>
                 </div>
             )
-        } else if (size == 'h1') {
+        } else if (size == 'h2' && filter == 'emotion') {
             return (
                 <div>
-                   <h1> {heading} </h1>
+                    <h2>{heading}</h2>
+                </div>
+            )
+        } else if (size == 'h2' && filter == 'language') {
+            return (
+                <div>
+                    <h2>{heading}</h2>
+                </div>
+            )
+        } else if (size == 'h2' && filter == 'category') {
+            return (
+                <div>
+                   <h1>{heading} </h1>
+                </div>
+            )
+        } else if (size == 'h2' && filter == 'source') {
+            return (
+                <div>
+                   <h2> All articles from {heading} </h2>
                 </div>
             )
         } else if (size == 'h5') {

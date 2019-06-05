@@ -4,6 +4,7 @@ import {TONE_COLORS} from './constants.jsx'
 import {Dropdown, DropdownButton} from 'react-bootstrap';
 import $ from 'jquery'; 
 import Popper from 'popper.js';
+import '../css/dropdown.css';
 
 class DropdownSources extends React.Component {
     constructor(props) {
@@ -62,7 +63,7 @@ class DropdownSources extends React.Component {
         // console.log('sources', sources);
         const dropdownList = sources.map((source) =>
             <div key={source.source}>
-                <option onClick={this.handleSourceSelection} value={source.source}>{source.source}</option>
+                <option id="dropdown-item" onClick={this.handleSourceSelection} value={source.source}>{source.source}</option>
             </div>
         );
         return (

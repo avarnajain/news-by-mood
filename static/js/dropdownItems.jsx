@@ -4,6 +4,7 @@ import {TONE_COLORS} from './constants.jsx'
 import {Dropdown, DropdownButton} from 'react-bootstrap';
 import $ from 'jquery'; 
 import Popper from 'popper.js';
+import '../css/dropdown.css';
 
 class DropdownItems extends React.Component {
     
@@ -78,7 +79,7 @@ class DropdownItems extends React.Component {
         if (this.props.filter_by == 'tone') {
             // console.log('filters', filters);
             const dropdownList = filters.map((filter) =>
-                <div key={filter.tone_id.toString()}>
+                <div key={filter.tone_id.toString()} id='dropdown-item'>
                     <option onClick={this.handleToneSubmit} value={filter.tone_id}>{filter.tone_name}</option>
                 </div>
             );
@@ -89,12 +90,12 @@ class DropdownItems extends React.Component {
             )
         } else if (this.props.filter_by == 'category') {
             const dropdownList = filters.map((filter) =>
-                <div key={filter.category_id.toString()}>
-                    <option onClick={this.handleCategorySubmit} value={filter.category_id}>{filter.category_id}</option>
+                <div key={filter.category_id.toString()} id='dropdown-item'>
+                    <option onClick={this.handleCategorySubmit} value={filter.category_id}>{filter.category_name}</option>
                 </div>
             );
             return (
-                <div>
+                <div >
                     {dropdownList}
                 </div>
             )

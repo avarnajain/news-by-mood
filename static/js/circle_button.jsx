@@ -15,9 +15,9 @@ class CircleButton extends React.Component {
         for (let i = 0; i < numberButtons; i++) {
             for (let j = 0; j < text.length; j++) {
                 const txt = text[j];
-                console.log('txt', txt);
+                // console.log('txt', txt);
                 let children = []
-                console.log('i', i);
+                // console.log('i', i);
                 bubble.push(
                     <div id={i + 'circle-btn-div'}>
                         <Button 

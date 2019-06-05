@@ -14,7 +14,8 @@ const content = (
             <div className="row">
                 <div className="col">
                     <Heading heading='/session-source.json'
-                                size='h1'/>
+                                size='h2'
+                                filter='source'/>
                 </div>
             </div>
             <div className="row">
@@ -73,13 +74,15 @@ const content = (
             <div className="row">
                 <div className="col">
                     <Heading heading='/session-source-category.json'
-                                size='h4'/>
+                                size='h5'
+                                filter='category-filter'/>
                 </div>
             </div>
             <div className="row">
                 <div className="col">
                     <Heading heading='/session-source-tone.json'
-                                size='h4'/>
+                                size='h5'
+                                filter='tone-filter'/>
                 </div>
             </div>
             <div className="sourceNews">

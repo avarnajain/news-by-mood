@@ -25,7 +25,7 @@ class Stats extends React.Component {
         .then(response => response.json())
         //
         .then(data => {
-            //console.log(data);
+            // console.log(data);
             this.setState({
                 data: data
             })
@@ -36,11 +36,14 @@ class Stats extends React.Component {
         const stats = this.state.data;
         // console.log('stats', stats);
         const filter_ = this.props.filter_by
+        // console.log('filter_', filter_);
         const statsList = Object.keys(stats).map(key => {
             if (stats[key]['filter'] == filter_ && filter_ != 'None' && filter_ != 'total') {
-                const dict = stats[key]['data']
+                const dict = stats[key]['data'];
                 // console.log('dict', dict);
-                return dict && (
+                console.log('rendering piechart');
+                // console.log('dict', dict);
+                return (
                     <PieChart key={key}
                             data={dict} 
                             heading={this.props.heading}
@@ -49,6 +52,9 @@ class Stats extends React.Component {
                 )
             }
             if (filter_ == 'total' && stats[key]['filter'] == 'total') {
+                // console.log('rendering total');
+                const total = stats[key]['data']['total'];
+                // console.log('total', total)
                 return (
                     <div key='total'>
                         <p> Total number of articles for source: {stats[key]['data']['total']} </p>
@@ -56,6 +62,7 @@ class Stats extends React.Component {
                 )
             }
             if (filter_ == 'None' && stats[key]['filter'] == 'None' && stats[key]['data']['None'] > 0) {
+                // console.log('rendering none');
                 return (
                     <div key='None'>
                         <p> *{stats[key]['data']['None'].length} article(s) were excluded because they had no dominant tones</p>
@@ -64,13 +71,14 @@ class Stats extends React.Component {
             }
      
             if (filter_ == 'source_name' && key == 0) {
+                // console.log('rendering source');
                 return (
                     <div key='source'>
                         <h1> <b>{stats[key]['source']}</b> </h1>
                     </div>
                 )
             }
-        });  
+        });
         return (
             <div className="stats">
                 <div> {statsList} </div>

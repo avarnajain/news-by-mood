@@ -6,10 +6,6 @@ import PropTypes from 'prop-types';
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
 
-/**
- * Helper method for creating a range of numbers
- * range(1, 5) => [1, 2, 3, 4, 5]
- */
 const range = (from, to, step = 1) => {
     let i = from;
     const range = [];
@@ -130,8 +126,8 @@ class Pagination extends Component {
         const pages = this.fetchPageNumbers();
         return (
             <Fragment>
-                <nav aria-label="Countries Pagination">
-                    <ul className="pagination">
+                <nav aria-label="Pagination" id="pagination-nav">
+                    <ul className="pagination" id="pagination-ul">
                         { pages.map((page, index) => {
                             if (page === LEFT_PAGE) return (
                                 <li key={index} className="page-item">

@@ -12,7 +12,8 @@ const content = (
             <div className="col">
                 <div className='heading'>
                     <Heading heading='/session-emotion.json'
-                                size='h1'/>
+                                size='h2'
+                                filter='emotion'/>
                 </div>
             </div>
             <div className="col">
@@ -26,7 +27,8 @@ const content = (
                 <div className="row">
                     <div className="col">
                         <Heading heading='/session-tone-category.json'
-                                size='h5'/>
+                                size='h5'
+                                filter='category-filter'/>
                     </div>
                 </div>
             </div>      

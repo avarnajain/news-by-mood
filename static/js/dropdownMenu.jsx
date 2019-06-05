@@ -7,6 +7,7 @@ import {Dropdown, DropdownButton} from 'react-bootstrap';
 import $ from 'jquery'; 
 import Popper from 'popper.js';
 import '../css/dropdownMenu.css';
+import '../css/dropdown.css';
 
 class DropdownMenu extends React.Component {
     
@@ -69,7 +70,7 @@ class DropdownMenu extends React.Component {
         const filters = this.state.data;
         // console.log('filters', filters);
         const dropdownList = filters.map((filter) =>
-            <div key={filter.filter_id.toString()}>
+            <div key={filter.filter_id.toString()} id='dropdown-item'>
                 <option onClick={this.handleSubmit} value={filter.filter_id}>{filter.filter_name}</option>
             </div>
         );

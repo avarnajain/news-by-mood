@@ -91,6 +91,21 @@ const content = (
                 <h3>let's find out!</h3>
             </div>
         </div>
+        <div className="row">
+            <div className="col-12" id='plain-bubble'>
+                <CircleButton number={12} text={['', '', '', '', '', <a href='/source-stats/CNN'>CNN</a>, '', '', '', '', '', '']}/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-12" id='plain-bubble'>
+                <CircleButton number={12} text={['', '', <a href='/source-stats/The%20New%20York%20Times'>The New York Times</a>, '', '', '', '', '', '', '', '', <a href='/'>See More</a>]}/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-12" id='plain-bubble'>
+                <CircleButton number={12} text={['', '', '', '', '', '', '', <a href='/source-stats/Fox%20News'>Fox News</a>, '', '', '', '']}/>
+            </div>
+        </div>
     </div>
 );
 

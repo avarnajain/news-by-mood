@@ -9,3 +9,11 @@
   opacity: 0.5;
   color: black;
 }
+
+#plain-button a {
+    color: black;
+}
+#plain-button a:hover,
+#plain-button a:active {
+    color: white;
+}

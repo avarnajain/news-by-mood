@@ -1,0 +1,64 @@
+h2, h3, h4, h5 {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 80px;
+    font-family: 'BlackLetter';
+}
+
+.btn-circle {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  padding: 6px 6px;
+  font-size: 18px;
+  line-height: 1.42;
+  border-radius: 120px;
+}
+
+#plain-button {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  padding: 6px 6px;
+  font-size: 18px;
+  line-height: 1.42;
+  border-radius: 120px;
+}
+
+#CircleButton {
+    align-content: center;
+}
+
+#tone-profile {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center; 
+}
+
+.fall {
+    animation-name: fall-animation;
+    animation-duration: 500ms;
+}
+@keyframes fall-animation {
+    from {
+        transform: translateY(-500px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/*@font-face {
+  font-family: 'BlackLetter';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('BlackLetter'),
+    local('BlackLetter'),
+    url(./Plain_Black.ttf)
+    format('ttf');
+}
+*/

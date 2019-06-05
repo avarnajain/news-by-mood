@@ -62,7 +62,7 @@ class Heading extends React.Component {
         } else if (size == 'h2' && filter == 'source') {
             return (
                 <div>
-                   <h2> All articles from {heading} </h2>
+                   <h2> tone profile for {heading} </h2>
                 </div>
             )
         } else if (size == 'h5') {

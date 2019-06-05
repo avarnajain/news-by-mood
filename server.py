@@ -290,6 +290,9 @@ def get_source_news_json():
     elif (session['selected_category_within_source']):
         source_news = get_source_Articles_by_category(session['selected_source'], session['selected_category_within_source'])
         return jsonify(source_news)
+    else:
+        source_news = get_all_source_Articles(session['selected_source'])
+        return jsonify(source_news)
 
 @app.route('/get-category-stats.json')
 def get_category_stats():

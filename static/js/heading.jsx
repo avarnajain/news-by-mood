@@ -1,5 +1,6 @@
 "use-strict";
 import React from "react";
+import '../css/heading.css';
 
 class Heading extends React.Component {
 

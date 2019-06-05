@@ -21,26 +21,31 @@ const content = (
                 <div className="col-6">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='emotional'
-                              heading='Emotional Tones'
+                              heading='% distribution of emotional tones*'
                               post_url='/get-source-news'/>
                 </div>
                 <div className="col-6">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='language'
-                              heading='Language Tones'
+                              heading='% distribution of language tones*'
                               post_url='/get-source-news'/>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Stats fetch_url='/all-source-stats.json'
-                            filter_by='None'/>
                 </div>
             </div>
             <div className="row">
                 <div className="col">
                     <Stats fetch_url='/all-source-stats.json'
                             filter_by='total'/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <h6>*weighted based on the score of each tone in an article</h6>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Stats fetch_url='/all-source-stats.json'
+                            filter_by='None'/>
                 </div>
             </div>
             <div className="row">
@@ -61,6 +66,18 @@ const content = (
                     <DropdownMenu fetch_url='/get-language-dropdown-list.json'
                                   post_url='/get-chosen-tone-within-source'
                                   filter_by='Filter by Language'/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Heading heading='/session-source-category.json'
+                                size='h4'/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Heading heading='/session-source-tone.json'
+                                size='h4'/>
                 </div>
             </div>
             <div className="sourceNews">

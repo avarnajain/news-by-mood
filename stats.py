@@ -77,9 +77,10 @@ def get_Articles_with_category_filter(category_id):
     Articles = get_articles_for_Category(category_id)
     articles = []
     for Article in Articles:
-        scores = Article.scores        
+        # scores = Article.scores        
         Article_dict = single_Article_dict_json(Article, category_id, 'category')
-        articles.append(Article_dict)   
+        if Article_dict['scores'][0]['tone'] != 'no text':
+            articles.append(Article_dict)
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
     return Articles_by_date
 
@@ -93,7 +94,18 @@ def get_tone_Articles_with_category_filter(tone_id, tone_type, category_id):
             category_articles.append(article)
         # print('categories', categories)
     return category_articles
-    
+
+def get_all_source_Articles(source):
+    """get all articles by a source for json"""
+    source_articles = get_articles_for_source(source)    
+    articles_list = []
+    for article in source_articles:
+        article_dict = single_Article_dict_json(article, source, 'source')
+        if article_dict['scores'][0]['tone'] != 'no text':
+            articles_list.append(article_dict)
+    Articles_by_date = sorted(articles_list, key=sort_by_date, reverse=True)
+    return Articles_by_date
+
 def get_source_Articles_by_tone(source, tone_type, tone_id):
     """return articles by tone id for a source as json"""
 
@@ -107,7 +119,8 @@ def get_source_Articles_by_tone(source, tone_type, tone_id):
         article_obj = Article.query.get(article_id)
         article_dict = single_Article_dict_json(article_obj, tone_id, tone_type) #imported from tone_filter
         article_list.append(article_dict)
-    return article_list
+    Articles_by_date = sorted(article_list, key=sort_by_date, reverse=True)
+    return Articles_by_date
 
 def get_source_Articles_by_category(source, category_id):
     """return source articles dict with category filters"""
@@ -118,8 +131,10 @@ def get_source_Articles_by_category(source, category_id):
         for category in categories:
             if category.category_id == category_id:
                 article_dict = single_Article_dict_json(article, category_id, 'category')
-                category_articles_list.append(article_dict)
-    return category_articles_list
+                if article_dict['scores'][0]['tone'] != 'no text':
+                    category_articles_list.append(article_dict)
+    Articles_by_date = sorted(category_articles_list, key=sort_by_date, reverse=True)
+    return Articles_by_date
 
 def get_chosen_stats(stats_filter, stats_type):
     """get list of tone_stats_dicts for a source/category

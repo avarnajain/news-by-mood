@@ -3,8 +3,8 @@ export const TONE_COLORS = {
     "fear": '#587046',
     "anger": '#A23E48',
     "joy": '#F6B621',
-    "analytical": '#736F72',
-    "confident": '#9A8F97',
+    "analytical": '#595858',
+    "confident": '#9F838C',
     "tentative": '#C3BABA'
 };
 

@@ -4,32 +4,46 @@ from model import connect_to_db, db, Article, Tone, Score, Category
 from sqlalchemy import desc
 
 #ARTICLE FUNCTIONS
-def get_sources_dict_db():
-    """Get dict of all sources in db to pass as json"""
-    article_sources = db.session.query(Article.source).group_by(Article.source
-                    ).order_by(Article.source).all()
-    sources_list = []
-    for article in article_sources:
-        source_dict = {
-            'source':article.source
-        }
-        sources_list.append(source_dict)
-    return sources_list
-
 def get_sources_db():
     """Get list of all sources in db"""
     article_sources = db.session.query(Article.source).group_by(Article.source
                     ).order_by(Article.source).all()
+    # print('article_sorces', article_sources)
     sources = []
     for article in article_sources:
         sources.append(article.source)
-    return sources
+    return_sources = []
+    for source in sources:
+        articles = get_articles_for_source(source)
+        if len(articles) >= 2:
+            return_sources.append(source)
+    return return_sources
+
+def get_sources_dict_db():
+    """Get dict of all sources in db to pass as json"""
+    article_sources = get_sources_db()
+    sources_list = []
+    for source in article_sources:
+        source_dict = {
+            'source':source
+        }
+        sources_list.append(source_dict)
+    return sources_list
 
 def get_articles_for_source(source):
     """get all articles of specific source"""
-    source_articles = Article.query.filter(Article.source==source).order_by(
+    articles = Article.query.filter(Article.source==source).order_by(
                                                         Article.published).all()
-    return source_articles
+    source_articles = []
+    for article in articles:
+        scores = article.scores
+        for score in scores:
+            if score.tone_id == 'no text':
+                continue
+            else:
+                source_articles.append(article)
+
+    return set(source_articles)
 
 def get_articles_for_Category(category_id):
     """get all articles within a category"""

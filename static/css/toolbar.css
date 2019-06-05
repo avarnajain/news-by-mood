@@ -48,6 +48,10 @@
 .toolbar__navigation-items a:active {
     color: #58595B;
 }
+.toolbar__logo a:hover,
+.toolbar__logo a:active {
+    color: #58595B;
+}
 
 #scrollable-dropdown {
     height: 400px;

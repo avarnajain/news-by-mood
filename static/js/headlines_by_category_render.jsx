@@ -16,44 +16,30 @@ const content = (
                                     size='h1'/>
                 </div>
             </div>
-            <div className="col">
-                <h3><a href='#'>Get Category Statistics</a></h3>
-            </div>
-        </div>
-        <div className="row">
-            <div className="col">
-                <h3>Additional Filters:</h3>
-            </div>
-            <div className="col">
-                <Heading heading='/session-category-tone.json'
-                            size='h4'/>
-            </div>
-            <div className="col">
-                <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
-                              post_url='/get-chosen-tone-from-dropdown'
-                              filter_by='Select Emotion'/>
-            </div>
-            <div className="col">
-                <h3>or</h3>
-            </div>
-            <div className="col">
-                <DropdownMenu fetch_url='/get-language-dropdown-list.json'
-                              post_url='/get-chosen-tone-from-dropdown'
-                              filter_by='Select Language'/>
-            </div>
         </div>
         <div className="row">
             <div className="col-6">
                 <Stats fetch_url='/get-category-stats.json'
                     filter_by='emotional'
-                    heading='Emotional Tones'
+                    heading='% distribution of emotional tones*'
                     post_url='/get-category-tone-filter'/>
             </div>
             <div className="col-6">
                 <Stats fetch_url='/get-category-stats.json'
                     filter_by='language'
-                    heading='Language Tones'
+                    heading='% distribution of language tones*'
                     post_url='/get-category-tone-filter'/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col">
+                <Stats fetch_url='/get-category-stats.json'
+                    filter_by='total'/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col">
+                <h6>*weighted based on the score of each tone in an article</h6>
             </div>
         </div>
         <div className="row">
@@ -64,8 +50,21 @@ const content = (
         </div>
         <div className="row">
             <div className="col">
-                <Stats fetch_url='/get-category-stats.json'
-                    filter_by='total'/>
+                <h3>Additional Filters:</h3>
+            </div>
+            <div className="col">
+                <Heading heading='/session-category-tone.json'
+                            size='h4'/>
+            </div>
+            <div className="col-2">
+                <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
+                              post_url='/get-chosen-tone-from-dropdown'
+                              filter_by='Filter by Emotion'/>
+            </div>
+            <div className="col-2">
+                <DropdownMenu fetch_url='/get-language-dropdown-list.json'
+                              post_url='/get-chosen-tone-from-dropdown'
+                              filter_by='Filter by Language'/>
             </div>
         </div>
         <div id="category-headlines">

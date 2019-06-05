@@ -48,13 +48,6 @@ class Stats extends React.Component {
                     />
                 )
             }
-            if (filter_ == 'None' && stats[key]['filter'] == 'None') {
-                return (
-                    <div key='None'> <br/>
-                        <p> Number of articles with <b><i>no dominant tones</i></b> detected: {stats[key]['data']['None'].length} </p>
-                    </div>
-                )
-            }
             if (filter_ == 'total' && stats[key]['filter'] == 'total') {
                 return (
                     <div key='total'>
@@ -62,10 +55,18 @@ class Stats extends React.Component {
                     </div>
                 )
             }
+            if (filter_ == 'None' && stats[key]['filter'] == 'None' && stats[key]['data']['None'] > 0) {
+                return (
+                    <div key='None'>
+                        <p> *{stats[key]['data']['None'].length} article(s) were excluded because they had no dominant tones</p>
+                    </div>
+                )
+            }
+     
             if (filter_ == 'source_name' && key == 0) {
                 return (
                     <div key='source'>
-                        <h1> <b>{stats[key]['source']}</b> </h1> <br/>
+                        <h1> <b>{stats[key]['source']}</b> </h1>
                     </div>
                 )
             }

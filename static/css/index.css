@@ -20,3 +20,7 @@ main svg {
 .stats {
     text-align: center;
 }
+
+.news-article h5, h6 {
+    text-align: left;
+}

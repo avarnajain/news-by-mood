@@ -84,7 +84,7 @@ class PieChart extends Component {
             }]
         };
         Object.keys(propsData).forEach((tone) => {
-            chartData['labels'].push(tone + '%');
+            chartData['labels'].push(tone.slice(0,1).toUpperCase() + tone.slice(1));
             chartData['datasets'][0]['label'].push(tone);
             let value = sumArray(propsData[tone])*100/totalSum(propsData);
             chartData['datasets'][0]['data'].push(round(value, 1));

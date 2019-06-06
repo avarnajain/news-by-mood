@@ -7,7 +7,7 @@ import Heading from './heading.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
 import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
-import CircleButton from './circle_button.jsx';
+import CircleButton from './circle_button_list.jsx';
 
 const content = (
     <div className="container-fluid">

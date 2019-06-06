@@ -1,12 +1,3 @@
-h2, h3, h4, h5 {
-    text-align: center;
-}
-
-h1 {
-    text-align: center;
-    font-size: 80px;
-    font-family: 'BlackLetter';
-}
 
 .btn-circle {
   width: 120px;
@@ -37,20 +28,6 @@ h1 {
     margin-bottom: auto;
     text-align: center; 
 }
-
-.fall {
-    animation-name: fall-animation;
-    animation-duration: 500ms;
-}
-@keyframes fall-animation {
-    from {
-        transform: translateY(-500px);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
 /*@font-face {
   font-family: 'BlackLetter';
   font-style: normal;

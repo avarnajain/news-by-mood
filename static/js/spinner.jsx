@@ -24,7 +24,7 @@ class LoadingSpinner extends React.Component {
     render () {
         const {loading} = this.state;
         return (
-            <div style={{marginTop: '60px'}}>
+            <div style={{marginTop: '60px'}} id="all-spinners">
                 <div className="spinner-grow" id='spinner-1' role="status">
                   <span className="sr-only">Loading...</span>
                 </div>

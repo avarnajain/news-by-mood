@@ -6,7 +6,7 @@ import PopoverButton from './popover_button.jsx'
 import '../css/homepage.css';
 import SourceForm from './source_form.jsx';
 import { Button } from 'reactstrap';
-import CircleButton from './circle_button.jsx';
+import CircleButton from './circle_button_list.jsx';
 
 const content = (
     <div className="container-fluid">

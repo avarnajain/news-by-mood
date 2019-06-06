@@ -2,7 +2,7 @@ h2, h3, h4, h5 {
     text-align: center;
 }
 
-h1 {
+#heading h1 {
     text-align: center;
     font-size: 80px;
     font-family: 'BlackLetter';

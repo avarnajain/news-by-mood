@@ -86,6 +86,8 @@ class News extends React.Component {
                                     <a href={`/get-chosen-category/${article.category[0]}`}>{article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1)}</a>
                                     <b> • </b> 
                                     {article.published}
+                                    <b> • </b>
+                                    <a href={`/article/${article.article_id}`}>Share</a>
                                 </h6>
                             </div>
                         </div>

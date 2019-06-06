@@ -58,6 +58,12 @@ def show_headlines_by_category_query(chosen_category):
     """Display headlines for chosen emotion"""
     return render_template('headlines_by_category.html')
 
+@app.route('/article/<chosen_article>')
+def show_chosen_article(chosen_article):
+    """Display infor for chosen article"""
+    session['selected_article'] = chosen_article
+    print("session['selected_article']", session['selected_article'])
+    return render_template('article.html')
 ########################################################################
 #SETTING SESSION ROUTES
 @app.route('/get-chosen-emotion', methods=['POST'])
@@ -190,6 +196,13 @@ def get_chosen_category_within_source():
     print("'/get-chosen-category-within-source' session['selected_category_within_source']", session['selected_category_within_source'])
     return redirect('/get-source-category-news.json')
 
+@app.route('/get-chosen-article', methods=['POST'])
+def get_chosen_article():
+    """set session for chosen article"""
+    session['selected_article'] = request.json['selected_article']
+    print("session['selected_article']", session['selected_article'])
+    return redirect('/article/{}'.format(session['selected_article']))
+
 #########################################################
 #JSON ROUTES
 @app.route('/emotional-tones.json')
@@ -279,7 +292,7 @@ def get_session_source_tone():
         return jsonify(session['selected_source_tone_id'].capitalize())
     else:
         return jsonify('')
-        
+
 @app.route('/session-source-category.json')
 def get_session_source_category():
     if (session['selected_category_within_source']):
@@ -334,6 +347,12 @@ def get_category_dropdown_list():
     """get json for category dropdown list"""
     dropdown_list = get_dropdown_filters_list('category')
     return jsonify(dropdown_list)
+
+@app.route('/article.json')
+def get_chosen_article_info():
+    """get json for chosen article"""
+    article = get_article_json(session['selected_article'])
+    return jsonify(article)
 
 ########################################################################
 # API ROUTE

@@ -28,6 +28,10 @@
   border-radius:120px;
   z-index: 200;
 }
+#selected-tone-popover a:hover, 
+#selected-tone-popover a:active {
+    color: '#58595B'
+}
 /*#unselected-tone-popover {
   display: inline-block;
   text-align: center;

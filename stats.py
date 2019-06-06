@@ -20,6 +20,12 @@ def get_Articles_with_tone_dict(tone_id, tone_type):
     Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
     return Articles_by_date
 
+def get_article_json(article):
+    """create json object for chosen article"""
+    art = Article.query.get(article)
+    article_dict = single_Article_dict_json(art, art.article_id, 'article')
+    return [article_dict]
+
 def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None):
     Categories = Article.categories
     categories = [Category.category_id for Category in Categories]

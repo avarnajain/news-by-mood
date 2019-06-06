@@ -3,7 +3,14 @@ import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
 from sqlalchemy import desc, text
 from flask import session
+from datetime import datetime
 #ARTICLE FUNCTIONS
+
+def todays_articles():
+    today = datetime.now().date()
+    articles = Article.query.filter(Article.published.date()==today).all()
+    return articles
+
 def get_sources_db():
     """Get list of all sources in db"""
     article_sources = db.session.query(Article.source).group_by(Article.source

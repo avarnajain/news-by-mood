@@ -17,3 +17,34 @@
 #plain-button a:active {
     color: white;
 }
+
+#selected-tone-popover {
+  width:120px;height:120px;
+  border: solid 1px #555;
+  box-shadow: 5px -5px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 5px -5px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 5px -5px  rgba(0,0,0,0.6);
+  -o-box-shadow: 5px -5px  rgba(0,0,0,0.6);
+  border-radius:120px;
+  z-index: 200;
+}
+/*#unselected-tone-popover {
+  display: inline-block;
+  text-align: center;
+  border: none;
+  border-radius: 100px;
+}
+*/
+.btn-circle {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  padding: 6px 6px;
+  font-size: 18px;
+  line-height: 1.42;
+  border-radius: 100px;
+}
+
+#CircleButton {
+    align-content: center;
+}

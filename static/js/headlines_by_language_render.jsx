@@ -9,6 +9,7 @@ import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
 import CircleButton from './circle_button_list.jsx';
 import {POPOVER_BODY} from './constants.jsx';
+
 const content = (
     <div className="container-fluid">
         <div className="row">

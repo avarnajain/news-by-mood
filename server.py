@@ -90,6 +90,9 @@ def show_chosen_article(chosen_article):
 @app.route('/todays-headlines')
 def show_todays_headlines():
     """render news for today"""
+    session['selected_emotion'] = ''
+    session['selected_language'] = ''
+    print("session['selected_emotion']", session['selected_emotion'], "session['selected_language']", session['selected_language'])
     return render_template('todays_headlines.html')
 
 ########################################################################

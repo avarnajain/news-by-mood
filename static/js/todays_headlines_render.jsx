@@ -8,6 +8,7 @@ import Heading from './heading.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
 import {POPOVER_BODY} from './constants.jsx';
 import PopoverButton from './popover_button.jsx'
+import '../css/index.css';
 
 const content = (
     <div id="source-stats">
@@ -76,7 +77,7 @@ const content = (
                 <div className="col" id="disappear-first"/>
             </div>
             <div className="row">
-                <h1>TODAY</h1>
+                <h2 id="heading">the world of news today</h2>
             </div>
             <div className="row">
                 <div className="col-6">

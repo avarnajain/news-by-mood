@@ -24,7 +24,7 @@ class CircleButton extends React.Component {
                             id='plain-button' 
                             type="button" 
                             className="btn btn-default btn-circle btn-xl">
-                            <a><b>{txt}</b></a>
+                            <b>{txt}</b>
                         </Button>
                     </div>
                 )

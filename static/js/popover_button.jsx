@@ -7,15 +7,17 @@ import '../css/popover.css'
 const typeToUrl = {
   'emotion': '/headlines-by-emotion',
   'language': '/headlines-by-language'
-} 
+}
 
 class PopoverButton extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
           popoverOpen: false,
-          data: []
+          data: [],
+          selected_popover: null
       };
+      this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
       this.getSession();
@@ -38,6 +40,37 @@ class PopoverButton extends React.Component {
     this.setState({
       popoverOpen: false
     });
+  }
+  handleSubmit(evt){
+    console.log('evt', evt);
+    this.setState({
+        selected_pie_tone: evt.target.value.toLowerCase()
+    }, () => {
+      evt.preventDefault();
+      if (this.state.selected_pie_tone) {
+      // console.log('handleSubmit()', this.props.post_url)
+        fetch(this.props.post_url, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                selected_popover: this.state.selected_popover
+            })
+        })
+        .then(() => {
+            window.location.href=`${typeToUrl[this.props.type]}`
+        }); 
+      } 
+    }
+    // const selected_popover = ;
+    // const lower_case = selected_popover.toLowerCase();
+    // console.log('handleSubmit(), value:', selected_popover);
+    // console.log('lower_Case value:', lower_case);
+    // console.log('postUrl', this.props.post_url)
+    //prevents from posting with flask request
+    );
   }
   render() {
     const session = this.state.data;
@@ -71,15 +104,14 @@ class PopoverButton extends React.Component {
       <div id="pops">
       <div id={id} className="row">
         <div onMouseEnter={() => this.setIsOpen()} onMouseLeave={() =>this.setIsClose()} id="pop">
-          <a href={`${urlBase}/${tone}`}>
           <Button 
+            onClick={this.handleSubmit}
             style={divStyle}
             id='Popover1' 
             type="button" 
             className="btn btn-default btn-circle btn-xl">
-            <b>{tone}</b>
+            <option>{tone}</option>
           </Button>
-        </a>
         </div>
         <Popover placement="bottom" isOpen={this.state.popoverOpen} target={id}>
           <PopoverHeader>{tone}</PopoverHeader>

@@ -26,6 +26,9 @@ app.secret_key = "SECRET"
 # error.
 app.jinja_env.undefined = StrictUndefined
 
+EMOTIONAL_TONES = ['anger', 'fear', 'joy', 'sadness']
+LANGUAGE_TONES = ['analytical', 'confident', 'tentative']
+
 @app.route('/')
 def show_homepage():
     """Show homepage with sidebar"""
@@ -90,6 +93,22 @@ def show_todays_headlines():
 
 ########################################################################
 #SETTING SESSION ROUTES
+@app.route('/get-chosen-tone-from-popover', methods=['POST'])
+def get_chosen_tone():
+    """set session for tone thorugh popover"""
+    chosen_tone = request.json['selected_popover']
+    print('CHOSEN_TONE', chosen_tone)
+    if chosen_tone in EMOTIONAL_TONES:
+        session['selected_emotion'] = chosen_tone
+        session['selected_language'] = ''
+        session['selected_tone_category'] = ''
+        print("'/get-chosen-emotion' session['selected_emotion']", session['selected_emotion'], "session['selected_language']", session['selected_language'], "session['selected_tone_category']", session['selected_tone_category'])
+    elif chosen_tone in LANGUAGE_TONES:
+        session['selected_language'] = chosen_tone
+        session['selected_emotion'] = ''
+        session['selected_tone_category'] = ''
+        print("'/get-chosen-language/' session['selected_language']", session['selected_language'], "session['selected_emotion']", session['selected_emotion'], "session['selected_tone_category']", session['selected_tone_category'])
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 @app.route('/get-chosen-emotion', methods=['POST'])
 def get_chosen_emotion():
     """Get chosen emotion from form post"""

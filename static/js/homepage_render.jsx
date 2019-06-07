@@ -36,7 +36,7 @@ const content = (
                 <CircleButton number={4} text={['', '', '', '']}/>
             </div>
             <div className="col" id='mixed-bubble-1'>
-                <CircleButton number={4} text={['', '', '', '']}/>
+                <CircleButton number={4} text={['', 'Emotions', '', '']}/>
             </div>
             <div className="col" id='mixed-bubble-2'>
                 <div className="row">
@@ -53,19 +53,14 @@ const content = (
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
+                    <div className="col" id='plain-bubble'>
+                        <CircleButton number={2} text={['Opinions', '']}/>
                     </div>
                 </div>
             </div>
             <div className="col" id="mixed-bubble-3">
                 <div className="row">
-                    <div className="col-1" id='plain-bubble'>
+                    <div className="col" id='plain-bubble'>
                         <CircleButton number={1} text={['']}/>
                     </div>
                 </div>

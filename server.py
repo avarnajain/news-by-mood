@@ -46,7 +46,8 @@ def show_headlines_by_chosen_emotion(chosen_emotion):
     session['selected_language'] = ''
     session['selected_tone_category'] = ''
     print("query string session['selected_emotion']", session['selected_emotion'] )
-    return render_template('headlines_by_emotion.html')
+    # return render_template('headlines_by_emotion.html')
+    return redirect('/headlines-by-emotion')
 
 @app.route('/headlines-by-language')
 def show_headlines_by_language():
@@ -60,7 +61,7 @@ def show_headlines_by_chosen_language(chosen_language):
     session['selected_emotion'] = ''
     session['selected_tone_category'] = ''
     print("query string session['selected_language']", session['selected_language'] )
-    return render_template('headlines_by_language.html')
+    return redirect('/headlines-by-language')
 
 @app.route('/source-stats/<chosen_source>')
 def show_chosen_source_stats(chosen_source):

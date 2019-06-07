@@ -25,7 +25,7 @@ const content = (
         <div className="row">
             <a href='/todays-headlines'> Find out how the world is doing today </a>
         </div>
-        <div className="row">
+        <div className="row" id="homepage-bubbles">
             <div className="col" id='bubble-col-1'>
                 <CircleButton number={4} text={['', '', '', '']}/>
             </div>

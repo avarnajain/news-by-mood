@@ -32,7 +32,6 @@ class DropdownMenu extends React.Component {
         // console.log('evt', evt);
         const selected_dropdown = evt.target.value;
         // console.log('handleFilterSelection(), value:', selected_dropdown)
-       
         //prevents from posting with flask request
         evt.preventDefault();
         // console.log('handleSubmit()', this.props.post_url)

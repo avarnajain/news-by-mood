@@ -21,6 +21,74 @@ h2, h3, h4, h5 {
     }
 }
 
+#homepage-bubbles {
+  column-width: 120px;
+}
+
+#bubble-col-1 .row {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+  box-sizing: inherit
+}
+#bubble-col-2 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+
+}
+#bubble-col-3 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#bubble-col-4 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#bubble-col-5 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#bubble-col-6 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#mixed-bubble-1 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#mixed-bubble-2 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#mixed-bubble-3 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#mixed-bubble-4 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#mixed-bubble-5 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+#mixed-bubble-6 {
+  padding-right: 0px;
+  padding-left: 4px;
+  box-sizing: inherit;
+}
+
+
 @media (max-width: 1440px) {
     #bubble-col-6 {
       display: none;

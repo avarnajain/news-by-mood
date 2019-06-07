@@ -61,6 +61,7 @@ def show_headlines_by_chosen_language(chosen_language):
     session['selected_emotion'] = ''
     session['selected_tone_category'] = ''
     print("query string session['selected_language']", session['selected_language'] )
+    # return render_template('headlines_by_language.html')
     return redirect('/headlines-by-language')
 
 @app.route('/source-stats/<chosen_source>')
@@ -113,6 +114,7 @@ def get_chosen_tone():
         session['selected_tone_category'] = ''
         print("'/get-chosen-language/' session['selected_language']", session['selected_language'], "session['selected_emotion']", session['selected_emotion'], "session['selected_tone_category']", session['selected_tone_category'])
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+
 @app.route('/get-chosen-emotion', methods=['POST'])
 def get_chosen_emotion():
     """Get chosen emotion from form post"""

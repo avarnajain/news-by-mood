@@ -58,7 +58,7 @@ class News extends React.Component {
         if (totalNews) {
             if (totalNews === 0) {
                 return (
-                    <div className="container-fluid">
+                    <div className="container-fluid" id="no-articles-found-div">
                         <div className="row">
                             <div className="col">
                                 <h1> No Articles Found </h1>
@@ -78,7 +78,7 @@ class News extends React.Component {
                                 </h5>
                             </div>
                         </div>
-                        <div className="row" id="news-source-row">
+                        <div className="row" id="news-info-row">
                             <div className="col">
                                 <h6>
                                     <a href={`/get-chosen-source/${article.source}`}>{article.source}</a> 
@@ -91,12 +91,12 @@ class News extends React.Component {
                                 </h6>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-4">
+                        <div className="row" id-"news-img-bubble-row">
+                            <div className="col-4" id="news-img-col">
                                 <img src={article.image_url} alt="img" className="img-thumbnail"/>
                             </div>
-                            <div className="col-8">
-                                <div className="row" id='D3'>
+                            <div className="col-8" id="news-bubble-col">
+                                <div className="row" id='news-bubble-row'>
                                     <div className="col">
                                         <Bubble tone_data={article.scores}/>
                                     </div>

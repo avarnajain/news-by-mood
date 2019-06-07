@@ -25,7 +25,7 @@ function Bubble(props) {
       height={200}
       padding={0} // optional value, number that set the padding between bubbles
       showLegend={true} // optional value, pass false to disable the legend.
-      legendPercentage={20} // number that represent the % of with that legend going to use.
+      legendPercentage={50} // number that represent the % of with that legend going to use.
       legendFont={{
           family: 'Arial',
           size: 12,

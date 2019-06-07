@@ -1,3 +1,11 @@
+.nav-link {
+    padding: 0;
+}
+
+#today-navbar a {
+    color: grey;
+}
+
 .toolbar {
     position: fixed;
     top: 0;

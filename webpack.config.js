@@ -7,7 +7,8 @@ module.exports = {
     headlines_language: './static/js/headlines_by_language_render.jsx',
     source_stats: './static/js/source_stats_render.jsx',
     headlines_category: './static/js/headlines_by_category_render.jsx',
-    article: './static/js/article_render.jsx'
+    article: './static/js/article_render.jsx',
+    todays_headlines: './static/js/todays_headlines_render.jsx'
   },
   mode: 'development',
   watchOptions: {

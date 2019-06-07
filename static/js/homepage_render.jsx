@@ -7,6 +7,8 @@ import '../css/homepage.css';
 import SourceForm from './source_form.jsx';
 import { Button } from 'reactstrap';
 import CircleButton from './circle_button_list.jsx';
+import {POPOVER_BODY} from './constants.jsx';
+import Stats from './stats.jsx';
 
 const content = (
     <div className="container-fluid">
@@ -21,64 +23,141 @@ const content = (
             </div>
         </div>
         <div className="row">
-            <div className="col-12" id='plain-bubble'>
-                <CircleButton number={12} text={['', '', '', '', '', '', '', '', '', '', '', '']}/>
-            </div>
+            <a href='/todays-headlines'> Find out how the world is doing today </a>
         </div>
         <div className="row">
-            <div className="col-4" id='plain-bubble'>
-                <CircleButton number={4} text={['', '', '', 'Emotions?']}/>
-            </div>
-            <div className="col-1" id='bubble-tone'>
-                <PopoverButton 
-                    tone='Anger'
-                    body="Evoked due to injustice, conflict, humiliation, negligence or betrayal. If anger is active, the individual attacks the target, verbally or physically. If anger is passive, the person silently sulks and feels tension and hostility."/>
-            </div>
-            <div className="col-1"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Fear'
-                    body="A response to impending danger. It is a survival mechanism that is a reaction to some negative stimulus. It may be a mild caution or an extreme phobia."/>
-            </div>
-            <div className="col-1"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Joy'
-                    body="Joy or happiness has shades of enjoyment, satisfaction and pleasure. There is a sense of well-being, inner peace, love, safety and contentment."/>
-            </div>
-            <div className="col-1"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Sadness'
-                    body="Indicates a feeling of loss and disadvantage. When a person can be observed to be quiet, less energetic and withdrawn, it may be inferred that sadness exists."/>
-            </div>
-            <div className="col-4" id='plain-bubble'>
+            <div className="col" id='bubble-col-1'>
                 <CircleButton number={4} text={['', '', '', '']}/>
             </div>
-        </div>
-        <div className="row">
-            <div className="col-5" id='plain-bubble'>
-                <CircleButton number={5} text={['', '', '', '', 'Opinions?']}/>
+            <div className="col" id='bubble-col-2'>
+                <CircleButton number={4} text={['', '', '', '']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Analytical'
-                    body="A person's reasoning and analytical attitude about things."/>
+            <div className="col" id='bubble-col-3'>
+                <CircleButton number={4} text={['', '', '', '']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Confident'
-                    body="A person's degree of certainty."/>
+            <div className="col" id='mixed-bubble-1'>
+                <CircleButton number={4} text={['', '', '', '']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Tentative'
-                    body="A person's degree of inhibition."/>
+            <div className="col" id='mixed-bubble-2'>
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1"id='bubble-tone'>
+                        <PopoverButton 
+                            tone='Anger'
+                            type='emotion'
+                            body={POPOVER_BODY['anger']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
             </div>
-            <div className="col-4" id='plain-bubble'>
-                <CircleButton number={4} text={['Click to know more!', '', '', '']}/>
+            <div className="col" id="mixed-bubble-3">
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1"id='bubble-tone'>
+                        <PopoverButton 
+                            tone='Fear'
+                            type='emotion'
+                            body={POPOVER_BODY['fear']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1"id='bubble-tone'>
+                        <PopoverButton 
+                            tone='Analytical'
+                            type='language'
+                            body={POPOVER_BODY['analytical']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div className="row">
-            <div className="col" id='plain-bubble'>
-                <CircleButton number={12} text={['', '', '', '', '', '', '', '', '', '', '', '']}/>
+            <div className="col" id="mixed-bubble-4">
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1"id='bubble-tone'>
+                        <PopoverButton 
+                            tone='Joy'
+                            type='emotion'
+                            body={POPOVER_BODY['joy']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1"id='bubble-tone'>
+                        <PopoverButton 
+                            tone='Confident'
+                            type='language'
+                            body={POPOVER_BODY['confident']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
+            </div>
+            <div className="col" id='mixed-bubble-5'>
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1"id='bubble-tone'>
+                        <PopoverButton 
+                            tone='Sadness'
+                            type='emotion'
+                            body={POPOVER_BODY['sadness']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1"id='bubble-tone'>
+                        <PopoverButton 
+                            tone='Tentative'
+                            type='language'
+                            body={POPOVER_BODY['tentative']}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-1" id='plain-bubble'>
+                        <CircleButton number={1} text={['']}/>
+                    </div>
+                </div>
+            </div>
+            <div className="col" id='mixed-bubble-6'>
+                <CircleButton number={4} text={['', '', '', '']}/>
+            </div>
+            <div className="col" id='bubble-col-4'>
+                <CircleButton number={4} text={['', '', '', '']}/>
+            </div>
+            <div className="col" id='bubble-col-5'>
+                <CircleButton number={4} text={['', '', '', '']}/>
+            </div>
+            <div className="col" id='bubble-col-6'>
+                <CircleButton number={4} text={['', '', '', '']}/>
             </div>
         </div>
         <div className="row">

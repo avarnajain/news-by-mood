@@ -16,6 +16,9 @@ const toolbar = props => (
       <div className="spacer"/>
       <div className="toolbar__navigation-items">
         <ul>
+          <li className="nav-item dropdown" id="today-navbar">
+            <a href="/todays-headlines" id="navbarDropdownMenuLink.nav-link.dropdown-toggle">This Just In</a>
+          </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               By Emotion

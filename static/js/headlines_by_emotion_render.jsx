@@ -8,52 +8,66 @@ import DropdownMenu from './dropdownMenu.jsx';
 import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
 import CircleButton from './circle_button_list.jsx';
+import {POPOVER_BODY} from './constants.jsx';
+// import PopoverButtonList from './popover_button_list.jsx';
 
 const content = (
     <div className="container-fluid">
         <div className="row">
-            <div className="col-1 offset-2" id='bubble-tone'>
+            <div className="col" id="disappear-second"/>
+            <div className="col" id="disappear-fourth"/>
+            <div className="col" id='bubble-tone'>
                 <PopoverButton
                     session='/session-emotion.json' 
                     tone='Anger'
-                    body="Evoked due to injustice, conflict, humiliation, negligence or betrayal. If anger is active, the individual attacks the target, verbally or physically. If anger is passive, the person silently sulks and feels tension and hostility."/>
+                    type='emotion'
+                    body={POPOVER_BODY['anger']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
+            <div className="col"id='bubble-tone'>
                 <PopoverButton
                     session='/session-emotion.json' 
                     tone='Fear'
-                    body="A response to impending danger. It is a survival mechanism that is a reaction to some negative stimulus. It may be a mild caution or an extreme phobia."/>
+                    type='emotion'
+                    body={POPOVER_BODY['fear']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
+            <div className="col"id='bubble-tone'>
                 <PopoverButton 
                     session='/session-emotion.json' 
                     tone='Joy'
-                    body="Joy or happiness has shades of enjoyment, satisfaction and pleasure. There is a sense of well-being, inner peace, love, safety and contentment."/>
+                    type='emotion'
+                    body={POPOVER_BODY['joy']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
+            <div className="col"id='bubble-tone'>
                 <PopoverButton 
                     session='/session-emotion.json' 
                     tone='Sadness'
-                    body="Indicates a feeling of loss and disadvantage. When a person can be observed to be quiet, less energetic and withdrawn, it may be inferred that sadness exists."/>
+                    type='emotion'
+                    body={POPOVER_BODY['sadness']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
+            <div className="col"id='bubble-tone'>
                 <PopoverButton 
                     session='/session-emotion.json' 
                     tone='Analytical'
-                    body="A person's reasoning and analytical attitude about things."/>
+                    type='language'
+                    body={POPOVER_BODY['analytical']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
+            <div className="col"id='bubble-tone'>
                 <PopoverButton 
                     session='/session-emotion.json' 
                     tone='Confident'
-                    body="A person's degree of certainty."/>
+                    type='language'
+                    body={POPOVER_BODY['confident']}/>
             </div>
-            <div className="col-1"id='bubble-tone'>
+            <div className="col"id='bubble-tone'>
                 <PopoverButton 
                     session='/session-emotion.json' 
                     tone='Tentative'
-                    body="A person's degree of inhibition."/>
+                    type='language'
+                    body={POPOVER_BODY['tentative']}/>
             </div>
+            <div className="col" id="disappear-fifth"/>
+            <div className="col" id="disappear-third"/>
+            <div className="col" id="disappear-first"/>
         </div>
         <div className="row">
             <div className="col">
@@ -91,7 +105,6 @@ const content = (
 );
 
 ReactDOM.render(
-  
     <div id="homepage">
         <App content={content}/>
     </div>,

@@ -26,6 +26,26 @@ def get_article_json(article):
     article_dict = single_Article_dict_json(art, art.article_id, 'article')
     return [article_dict]
 
+def get_todays_article_stats_json():
+    """create json object to return"""
+    todays_list = todays_articles()
+    articles = todays_list[1]
+    date = todays_list[0]
+    stats_list = get_weighted_tone_stats_dicts(articles, date, 'date')
+    return stats_list
+
+def get_todays_articles_json():
+    """create json object to return"""
+    todays_list = todays_articles()
+    Articles_list = todays_list[1]
+    date = todays_list[0]
+    articles = []
+    for Article in Articles_list:
+        Article_dict = single_Article_dict_json(Article, Article.published, 'today')
+        articles.append(Article_dict)    
+    Articles_by_date = sorted(articles, key=sort_by_date, reverse=True)
+    return Articles_by_date
+
 def single_Article_dict_json(Article, filter_id, filter_type, filter_score=None):
     Categories = Article.categories
     categories = [Category.category_id for Category in Categories]
@@ -116,10 +136,11 @@ def get_source_Articles_by_tone(source, tone_type, tone_id):
     """return articles by tone id for a source as json"""
 
     stats_list = get_chosen_stats(source, 'source')
+    article_id_list_ = []
     for dict_item in stats_list:
         if dict_item['filter'] == tone_type:
             article_id_list_ = dict_item['data'][tone_id]
-    article_id_list = article_id_list_[::-1]
+    article_id_list = article_id_list_
     article_list = []
     for article_id in article_id_list:
         article_obj = Article.query.get(article_id)

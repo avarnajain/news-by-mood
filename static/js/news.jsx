@@ -87,7 +87,7 @@ class News extends React.Component {
                                     <b> • </b> 
                                     {article.published}
                                     <b> • </b>
-                                    <a href={`/article/${article.article_id}`}>Share</a>
+                                    <a href={`/article/${article.article_id}`} target="_blank">Share</a>
                                 </h6>
                             </div>
                         </div>

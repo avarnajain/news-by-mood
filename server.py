@@ -36,11 +36,29 @@ def show_headlines_by_emotion():
     """Display headlines for chisen emotion"""
     return render_template('headlines_by_emotion.html')
 
+@app.route('/headlines-by-emotion/<chosen_emotion>')
+def show_headlines_by_chosen_emotion(chosen_emotion):
+    """Display headlines for chisen emotion"""
+    session['selected_emotion'] = chosen_emotion.lower()
+    session['selected_language'] = ''
+    session['selected_tone_category'] = ''
+    print("query string session['selected_emotion']", session['selected_emotion'] )
+    return render_template('headlines_by_emotion.html')
+
 @app.route('/headlines-by-language')
 def show_headlines_by_language():
     """Display headlines for chosen emotion"""
     return render_template('headlines_by_language.html')
-    
+
+@app.route('/headlines-by-language/<chosen_language>')
+def show_headlines_by_chosen_language(chosen_language):
+    """Display headlines for chisen emotion"""
+    session['selected_language'] = chosen_language.lower()
+    session['selected_emotion'] = ''
+    session['selected_tone_category'] = ''
+    print("query string session['selected_language']", session['selected_language'] )
+    return render_template('headlines_by_language.html')
+
 @app.route('/source-stats/<chosen_source>')
 def show_chosen_source_stats(chosen_source):
     """Get stats for chosen source"""
@@ -64,6 +82,12 @@ def show_chosen_article(chosen_article):
     session['selected_article'] = chosen_article
     print("session['selected_article']", session['selected_article'])
     return render_template('article.html')
+
+@app.route('/todays-headlines')
+def show_todays_headlines():
+    """render news for today"""
+    return render_template('todays_headlines.html')
+
 ########################################################################
 #SETTING SESSION ROUTES
 @app.route('/get-chosen-emotion', methods=['POST'])
@@ -107,6 +131,7 @@ def get_chosen_source():
     """Get chosen source from homepage"""
     session['selected_source'] = request.json['selected_source']
     session['selected_source_tone_id'] = ''
+    session['selected_source_tone_type'] = ''
     session['selected_category_within_source'] = ''
     print("'/get-chosen-source' session['selected_source']", session['selected_source'], "session['selected_source_tone_id']", session['selected_source_tone_id'])
     return redirect(('/source_stats/{}').format(session['selected_source']))
@@ -117,6 +142,7 @@ def get_chosen_source_get(chosen_source):
     print('CHOSEN SOURCE', chosen_source)
     session['selected_source'] = chosen_source
     session['selected_source_tone_id'] = ''
+    session['selected_source_tone_type'] = ''
     session['selected_category_within_source'] = ''
     print("'/get-chosen-source/<chosen_source>' session['selected_source']", session['selected_source'], "session['selected_source_tone_id']", session['selected_source_tone_id'])
     return redirect(('/source-stats/{}').format(session['selected_source']))
@@ -302,11 +328,11 @@ def get_session_source_category():
 
 @app.route('/source-news.json')
 def get_source_news_json():
-
-    if (session['selected_source_tone_type'] and session['selected_source_tone_id']):
+    print("SOURCE NEWS JSON")
+    if (session.get('selected_source_tone_type') and session.get('selected_source_tone_id')):
         source_news = get_source_Articles_by_tone(session['selected_source'], session['selected_source_tone_type'], session['selected_source_tone_id'])
         return jsonify(source_news)
-    elif (session['selected_category_within_source']):
+    elif (session.get('selected_category_within_source')):
         source_news = get_source_Articles_by_category(session['selected_source'], session['selected_category_within_source'])
         return jsonify(source_news)
     else:
@@ -354,6 +380,18 @@ def get_chosen_article_info():
     article = get_article_json(session['selected_article'])
     return jsonify(article)
 
+@app.route('/todays-stats.json')
+def get_todays_stats():
+    """get Todays news stats"""
+    stats_json = get_todays_article_stats_json()
+    return jsonify(stats_json)
+
+@app.route('/todays-news.json')
+def get_todays_news():
+    """get todays headlines for news"""
+    articles_json = get_todays_articles_json()
+    return jsonify(articles_json)
+
 ########################################################################
 # API ROUTE
 @app.route('/api-calls')
@@ -370,7 +408,7 @@ if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
 
-    # app.debug = True
+    app.debug = True
     # make sure templates, etc. are not cached in debug mode
     app.jinja_env.auto_reload = app.debug
     connect_to_db(app)

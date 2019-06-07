@@ -49,6 +49,7 @@ const content = (
                     body="A person's degree of inhibition."/>
             </div>
         </div>
+        <br />
         <div className="row">
             <div className="col">
                 <div id="individual-article">

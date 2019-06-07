@@ -1,13 +1,17 @@
 "use-strict";
 import { Component } from 'react';
 import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
-import {TONE_COLORS} from './constants.jsx'
+import {TONE_COLORS, POPOVER_BODY} from './constants.jsx'
 import '../css/popover.css'
+
+const typeToUrl = {
+  'emotion': '/headlines-by-emotion',
+  'language': '/headlines-by-language'
+} 
 
 class PopoverButton extends React.Component {
   constructor(props) {
       super(props);
-      this.toggle = this.toggle.bind(this);
       this.state = {
           popoverOpen: false,
           data: []
@@ -25,9 +29,14 @@ class PopoverButton extends React.Component {
           })
       });
   }
-  toggle() {
+  setIsOpen() {
     this.setState({
-      popoverOpen: !this.state.popoverOpen
+      popoverOpen: true
+    });
+  }
+  setIsClose() {
+    this.setState({
+      popoverOpen: false
     });
   }
   render() {
@@ -35,6 +44,11 @@ class PopoverButton extends React.Component {
     const tone = this.props.tone;
     const body = this.props.body;
     // console.log('session', session, 'tone', tone);
+    // console.log('props', this.props);
+
+    const type = this.props.type;
+    // console.log('type', type);
+    const urlBase = typeToUrl[type];
     const tone_color = tone.slice(0, 1).toLowerCase() + tone.slice(1);
     const divStyle = {
       backgroundColor: TONE_COLORS[tone_color],
@@ -46,40 +60,34 @@ class PopoverButton extends React.Component {
       borderColor: TONE_COLORS[tone_color],
       color:'white'
     };
+    let id = ''
     if (tone == session) {
       // console.log('selected tone');
-      return (
-        <div id='selected-tone-popover' className="row">
-            <Button 
-              style={selectedDivStyle}
-              id='Popover1' 
-              type="button" 
-              className="btn btn-default btn-circle btn-xl">
-              <a><b>{tone}</b></a>
-            </Button>
-            <Popover placement="bottom" isOpen={this.state.popoverOpen} target={tone} toggle={this.toggle}>
-              <PopoverHeader>{tone}</PopoverHeader>
-              <PopoverBody>{body}</PopoverBody>
-            </Popover>
-        </div>
-      );
+      id = 'selected-tone-popover'
     } else {
-      return (
-        <div id={tone} className="row">
+      id = tone
+    }
+    return (
+      <div id="pops">
+      <div id={id} className="row">
+        <div onMouseEnter={() => this.setIsOpen()} onMouseLeave={() =>this.setIsClose()} id="pop">
+          <a href={`${urlBase}/${tone}`}>
           <Button 
             style={divStyle}
             id='Popover1' 
             type="button" 
             className="btn btn-default btn-circle btn-xl">
-            <a><b>{tone}</b></a>
+            <b>{tone}</b>
           </Button>
-          <Popover placement="bottom" isOpen={this.state.popoverOpen} target={tone} toggle={this.toggle}>
-            <PopoverHeader>{tone}</PopoverHeader>
-            <PopoverBody>{body}</PopoverBody>
-          </Popover>
+        </a>
         </div>
-      )
-    }
+        <Popover placement="bottom" isOpen={this.state.popoverOpen} target={id}>
+          <PopoverHeader>{tone}</PopoverHeader>
+          <PopoverBody>{body}</PopoverBody>
+        </Popover>
+      </div>
+      </div>
+    )
   }
 };
 

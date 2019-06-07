@@ -28,3 +28,7 @@ main svg {
 #weighted-pie-statement {
     text-align: center;
 }
+
+h1, h2 {
+    text-align: center;
+}

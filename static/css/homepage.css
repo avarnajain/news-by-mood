@@ -14,14 +14,45 @@ h2, h3, h4, h5 {
     text-align: center; 
 }
 
-/*@font-face {
-  font-family: 'BlackLetter';
-  font-style: normal;
-  font-weight: normal;
-  src:
-    local('BlackLetter'),
-    local('BlackLetter'),
-    url(./Plain_Black.ttf)
-    format('ttf');
+/* To hide sidebar in small screen views */
+@media (min-width: 696px) {
+    .side-bar {
+        display: none;
+    }
 }
-*/
+
+@media (max-width: 1440px) {
+    #bubble-col-6 {
+      display: none;
+    } 
+}
+@media (max-width: 1320px) {
+    #bubble-col-1 {
+      display: none;
+    } 
+}
+@media (max-width: 1220px) {
+    #bubble-col-5 {
+      display: none;
+    } 
+}
+@media (max-width: 1100px) {
+    #bubble-col-2 {
+      display: none;
+    } 
+}
+@media (max-width: 980px) {
+    #bubble-col-4 {
+      display: none;
+    } 
+}
+@media (max-width: 860px) {
+    #bubble-col-3 {
+      display: none;
+    } 
+}
+/*@media (max-width: 799px) {
+    #mixed-bubble {
+      display: ;
+    } 
+}*/

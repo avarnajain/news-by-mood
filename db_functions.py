@@ -1,15 +1,21 @@
 import os
 import requests
 from model import connect_to_db, db, Article, Tone, Score, Category
-from sqlalchemy import desc, text
+from sqlalchemy import desc, text, cast, Date
 from flask import session
-from datetime import datetime
+from datetime import datetime, timedelta
+from pytz import timezone
+from tzlocal import get_localzone
 #ARTICLE FUNCTIONS
 
 def todays_articles():
-    today = datetime.now().date()
-    articles = Article.query.filter(Article.published.date()==today).all()
-    return articles
+    utc_time = datetime.now(timezone('UTC'))
+    today = utc_time.astimezone(timezone('US/Pacific')).date()
+    articles = Article.query.filter(cast(Article.published, Date)==today).all()
+    if not articles:
+        today = utc_time.astimezone(timezone('US/Pacific')).date() - timedelta(days=1)
+        articles = Article.query.filter(cast(Article.published, Date)==today).all()
+    return [today, articles]
 
 def get_sources_db():
     """Get list of all sources in db"""

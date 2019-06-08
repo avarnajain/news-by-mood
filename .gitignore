@@ -2,3 +2,4 @@ env/
 secrets.sh
 *.pyc
 node_modules
+news.sql

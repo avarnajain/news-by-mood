@@ -391,7 +391,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \".toggle-button {\\n    display: flex;\\n    flex-direction: column;\\n    justify-content: space-around;\\n    height: 24px;\\n    width: 30px;\\n    background: transparent;\\n    border: none;\\n    cursor: pointer;\\n    padding: 0;\\n    box-sizing: border-box;\\n}\\n\\n.toggle-button:focus {\\n    outline: none;\\n}\\n\\n.toggle-button__line {\\n    width: 30px;\\n    height: 2px;\\n    background: white;\\n}\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./static/css/sidebar_toggle.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \".toggle-button {\\n    display: flex;\\n    flex-direction: column;\\n    justify-content: space-around;\\n    height: 24px;\\n    width: 30px;\\n    background: transparent;\\n    border: none;\\n    cursor: pointer;\\n    padding: 0;\\n    box-sizing: border-box;\\n}\\n\\n.toggle-button:focus {\\n    outline: none;\\n}\\n\\n.toggle-button__line {\\n    width: 30px;\\n    height: 2px;\\n    background: black;\\n}\\n\", \"\"]);\n\n\n\n//# sourceURL=webpack:///./static/css/sidebar_toggle.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 

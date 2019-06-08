@@ -1,7 +1,8 @@
 # run the following line WITHOUT VAGRANT alongside server.py in a diff terminal
-# python server-override.py 5002
-# also run the following file outside vagrant
 # npm run start
+
+# shell command to run AWS 
+# ssh -i ~/.ssh/aws.pem ubuntu@34.214.50.15
 import os
 import requests
 from jinja2 import StrictUndefined
@@ -21,8 +22,8 @@ from stats import *
 app = Flask(__name__)
 app.secret_key = "SECRET"
 
-# Normally, if you use an undefined variable in Jinja2, it fails
-# silently. This is horrible. Fix this so that, instead, it raises an
+# Normally, if you use an undefined variablhe in Jinja2, it fails
+# silently. This is horrible. Fix this so tat, instead, it raises an
 # error.
 app.jinja_env.undefined = StrictUndefined
 

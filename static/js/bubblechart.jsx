@@ -15,7 +15,9 @@ function Bubble(props) {
       })
     });
     // console.log('obj_list', obj_list);
-    return (<BubbleChart id='bubble-chart-jsx'
+    return (
+      <div className="col-md-auto col-lg-auto" id="bubblechart">
+      <BubbleChart id='bubble-chart-jsx'
       graph= {{
         zoom: 0.4,
         offsetX: 0.05,
@@ -24,8 +26,8 @@ function Bubble(props) {
       width={600}
       height={200}
       padding={0} // optional value, number that set the padding between bubbles
-      showLegend={true} // optional value, pass false to disable the legend.
-      legendPercentage={50} // number that represent the % of with that legend going to use.
+      showLegend={false} // optional value, pass false to disable the legend.
+      legendPercentage={20} // number that represent the % of with that legend going to use.
       legendFont={{
           family: 'Arial',
           size: 12,
@@ -46,7 +48,8 @@ function Bubble(props) {
           weight: 'bold',
       }}
       data={obj_list}
-    />)
+    />
+    </div>)
 }
 
 export default Bubble;

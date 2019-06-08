@@ -27,6 +27,10 @@ ul.pagination {
     }
 }
 
+#bubblechart svg {
+    height: 250px;
+    width: 300px;
+}
 .page-bar {
     padding-bottom: 0;
 }

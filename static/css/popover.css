@@ -72,7 +72,7 @@
     }
 
 }
-@media (max-width: 450px) {
+@media (max-width: 560px) {
     #Popover1 {
         font-size: 0.2rem;
         text-align: center;

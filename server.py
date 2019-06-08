@@ -5,7 +5,7 @@
 import os
 import requests
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, request, flash, redirect, jsonify, session
+from flask import Flask, render_template, request, flash, redirect, jsonify, session, send_from_directory
 from flask_debugtoolbar import DebugToolbarExtension
 from newsapi import NewsApiClient
 import json
@@ -428,6 +428,11 @@ def api_calls():
     time_end = time.time()
     print('Time taken to get news:', time_end - time_start)
     return redirect('/')
+
+#serve js files
+@app.route("/dist/<path:resource>")
+def get_resource(resource):
+    return send_from_directory("dist", resource)
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

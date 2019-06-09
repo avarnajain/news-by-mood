@@ -64,30 +64,28 @@ class ToneForm extends React.Component {
     }
 
     render() {
-
         const tones = this.state.data;
         const toneList = tones.map((tone) =>
-            <div key={tone.tone_id.toString()}>
-                <label>   
-                    <input type="radio" name="emotion" value={tone.tone_id} 
-                        checked={this.state.emotion} onChange={this.handleToneSelection}/> {tone.tone_name}
-                </label> <br/>
-            </div>
+            <option key={tone.tone_id.toString()} value={tone.tone_id}>{tone.tone_name}</option> 
         );
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col">
                         <h1> {this.props.header} </h1>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col">
                         <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
-                                {toneList}
+                            <label>
+                                <select value='source' onChange={this.handleToneSelection}>
+                                    {toneList}
+                                </select> <br/>
+                            </label>
                             <div className="row">
-                                <div className="col-8">
-                                    <input type="submit" /> <br/>
+                                <div className="col">
+                                    <input type="submit" value="Submit"/> <br/>
                                 </div>
                             </div>
                         </form>
@@ -98,3 +96,38 @@ class ToneForm extends React.Component {
     };
 }
 export default ToneForm;
+
+
+// render() {
+
+//     const tones = this.state.data;
+//     const toneList = tones.map((tone) =>
+//         <div key={tone.tone_id.toString()}>
+//             <label>   
+//                 <input type="radio" name="emotion" value={tone.tone_id} 
+//                     checked={this.state.emotion} onChange={this.handleToneSelection}/> {tone.tone_name}
+//             </label> <br/>
+//         </div>
+//     );
+//     return (
+//         <div className="container-fluid">
+//             <div className="row">
+//                 <div className="col-8">
+//                     <h1> {this.props.header} </h1>
+//                 </div>
+//             </div>
+//             <div className="row">
+//                 <div className="col-8">
+//                     <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
+//                             {toneList}
+//                         <div className="row">
+//                             <div className="col-8">
+//                                 <input type="submit" /> <br/>
+//                             </div>
+//                         </div>
+//                     </form>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// };

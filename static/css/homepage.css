@@ -2,10 +2,35 @@ h2, h3, h4, h5 {
     text-align: center;
 }
 
-#heading h1 {
-    text-align: center;
-    font-size: 80px;
-    font-family: 'BlackLetter';
+#homepage-source-form {
+  font-size: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 695px) {
+    #heading h1 {
+        text-align: center;
+        font-size: 3rem;
+        font-family: 'BlackLetter';
+    }
+
+    #secondary-heading h2 {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    #tertiary-heading h3 {
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    #tertiary-heading a {
+      font-size: 1rem;
+    }
+}
+
+#tertiary-heading a {
+    color:grey;
 }
 
 #tone-profile {
@@ -19,10 +44,41 @@ h2, h3, h4, h5 {
     .side-bar {
         display: none;
     }
+    #heading h1 {
+        text-align: center;
+        font-size: 5rem;
+        font-family: 'BlackLetter';
+    }
+    #secondary-heading h2 {
+        font-size: 3rem;
+    }
+    #tertiary-heading h3 {
+      text-align: center;
+      font-size: 2rem;
+    }
 }
 
+@media (max-width: 350px) {
+    #heading h1 {
+        text-align: center;
+        font-size: 2rem;
+        font-family: 'BlackLetter';
+    }
+    #secondary-heading h2 {
+        font-size: 1.5rem;
+    }
+    #tertiary-heading h3 {
+      text-align: center;
+      font-size: 1rem;
+    }
+    #tertiary-heading a {
+      font-size: 1rem;
+    }
+}
+
+
 #homepage-bubbles {
-  column-width: 120px;
+  column-width: auto;
 }
 
 #bubble-col-1 .row {
@@ -88,7 +144,7 @@ h2, h3, h4, h5 {
   box-sizing: inherit;
 }
 
-
+/*
 @media (max-width: 1440px) {
     #bubble-col-6 {
       display: none;
@@ -118,7 +174,7 @@ h2, h3, h4, h5 {
     #bubble-col-3 {
       display: none;
     } 
-}
+}*/
 /*@media (max-width: 799px) {
     #mixed-bubble {
       display: ;

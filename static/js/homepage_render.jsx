@@ -10,21 +10,25 @@ import { Button } from 'reactstrap';
 import CircleButton from './circle_button_list.jsx';
 import {POPOVER_BODY} from './constants.jsx';
 import Stats from './stats.jsx';
+import DropdownSources from './dropdownSources.jsx';
+import HomepageDropdownMenu from './homepage_source_dropdown.jsx';
 
 const content = (
     <div className="container-fluid">
         <div className="row">
-            <div className="col">
+            <div className="col" id="heading">
                 <h1>know your news</h1>
             </div>
         </div>
         <div className="row">
-            <div className="col" id="heading">
+            <div className="col" id="secondary-heading">
                 <h2>does it have a personality?</h2>
             </div>
         </div>
         <div className="row">
-            <a href='/todays-headlines'> Find out how the world is doing today </a>
+            <div className="col" id="tertiary-heading">
+                <a href='/todays-headlines'><h3>Find out how the world is doing today</h3></a>
+            </div>
         </div>
         <div className="row" id="homepage-bubbles">
             <div className="col" id='bubble-col-1'>
@@ -157,28 +161,15 @@ const content = (
             </div>
         </div>
         <div className="row">
-            <div className="col">
+            <div className="col" id="secondary-heading">
                 <h2>do news sources have peronalities too?</h2>
             </div>
         </div>
         <div className="row">
             <div className="col">
-                <h3>let's find out!</h3>
-            </div>
-        </div>
-        <div className="row">
-            <div className="col-12" id='plain-bubble'>
-                <CircleButton number={12} text={['', '', '', '', '', <a href='/source-stats/CNN'>CNN</a>, '', '', '', '', '', '']}/>
-            </div>
-        </div>
-        <div className="row">
-            <div className="col-12" id='plain-bubble'>
-                <CircleButton number={12} text={['', '', <a href='/source-stats/The%20New%20York%20Times'>The New York Times</a>, '', '', '', '', '', '', '', '', <a href='/'>See More</a>]}/>
-            </div>
-        </div>
-        <div className="row">
-            <div className="col-12" id='plain-bubble'>
-                <CircleButton number={12} text={['', '', '', '', '', '', '', <a href='/source-stats/Fox%20News'>Fox News</a>, '', '', '', '']}/>
+                <HomepageDropdownMenu fetch_url='/all-sources.json'
+                                post_url='/get-chosen-source'
+                                filter_by='Source Personaity'/>
             </div>
         </div>
     </div>

@@ -10,6 +10,12 @@
     z-index: 200;
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
+    overflow-y: scroll;
+    padding-top: 80px;
+}
+
+.sidebar_content h3 {
+    text-align: left;
 }
 
 .side-bar.open {
@@ -17,11 +23,15 @@
 }
 
 .side-bar ul {
-    height: 100%;
+    height: auto;
     list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#sidebar-dropdown {
+    border-color: black;
 }
 
 .side-bar li {
@@ -48,7 +58,7 @@
 }
 
 /* To hide sidebar in small screen views */
-@media (min-width: 696px) {
+@media (min-width: 749px) {
     .side-bar {
         display: none;
     }

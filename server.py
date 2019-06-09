@@ -45,7 +45,7 @@ def show_homepage():
 @app.route('/about')
 def show_about():
     """Show about page"""
-    return redirect('/')
+    return render_template('about.html')
 
 @app.route('/headlines-by-emotion')
 def show_headlines_by_emotion():
@@ -138,7 +138,7 @@ def get_chosen_emotion():
     return redirect('/headlines-by-emotion')
 
 @app.route('/get-chosen-emotion/<chosen_emotion>')
-def get_chosen_emotion_query():
+def get_chosen_emotion_query(chosen_emotion):
     """Get chosen emotion from form post"""
     session['selected_emotion'] = chosen_emotion
     session['selected_language'] = ''
@@ -156,7 +156,7 @@ def get_chosen_language():
     return redirect('/headlines-by-language')
 
 @app.route('/get-chosen-language/<chosen_language>')
-def get_chosen_language_query():
+def get_chosen_language_query(chosen_language):
     """Get chosen emotion from form post"""
     session['selected_language'] = chosen_language
     session['selected_emotion'] = ''
@@ -451,7 +451,7 @@ if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
 
-    app.debug = False
+    app.debug = True
     # make sure templates, etc. are not cached in debug mode
     app.jinja_env.auto_reload = app.debug
     connect_to_db(app)

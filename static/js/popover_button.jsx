@@ -69,7 +69,7 @@ class PopoverButton extends React.Component {
     }
     return (
       <div id="pops">
-      <div id={id} className="row">
+      <div id={id}>
         <div onMouseEnter={() => this.setIsOpen()} onMouseLeave={() =>this.setIsClose()} id="pop">
           <a href={`${urlBase}/${tone}`}>
           <Button 

@@ -20,6 +20,7 @@
     "react-pagination": "^1.0.0",
     "react-pose": "^4.0.8",
     "react-router-dom": "^5.0.0",
+    "react-select": "^3.0.4",
     "react-sidebar": "^3.0.2",
     "react-sidenav": "^4.0.0",
     "reactstrap": "^8.0.0",

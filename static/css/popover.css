@@ -3,11 +3,73 @@
     color: '#58595B'
 }
 
+@media (min-width:841px) {
+    #plain-button {
+      background-color: #B4B8C5;
+      border-color: #B4B8C5;
+      opacity: 0.5;
+      color: black;
+    }
+    .btn-circle {
+      width: 120px;
+      height: 120px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.42;
+      border-radius: 100px;
+    }
+}
+
 #plain-button {
   background-color: #B4B8C5;
   border-color: #B4B8C5;
   opacity: 0.5;
   color: black;
+  font-size: 0.8rem;
+  padding: 6px 6px;
+}
+.btn-circle {
+  padding: 6px 6px;
+}
+
+@media (max-width:840px) {
+    #plain-button {
+        font-size: 0.8rem;
+        width:80px;height:80px;
+        border-radius:80px;
+        /*z-index: 200;*/
+    }
+    .btn-circle {
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        /*padding: 6px 6px;*/
+        font-size: 18px;
+        line-height: 1.42;
+        border-radius: 80px;
+    }
+}
+
+@media (max-width:560px) {
+    #plain-button {
+        width:50px;height:50px;
+        border-radius:50px;
+        /*z-index: 200;*/
+    }
+    .btn-circle {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        /*padding: 6px 6px;*/
+        font-size: 18px;
+        line-height: 1.42;
+        border-radius: 50px;
+    }
+}
+@media (max-width:350px) {
+    #plain-button {
+        display: none;
+    }
 }
 
 #plain-button a {
@@ -32,22 +94,6 @@
 #selected-tone-popover a:active {
     color: '#58595B'
 }
-/*#unselected-tone-popover {
-  display: inline-block;
-  text-align: center;
-  border: none;
-  border-radius: 100px;
-}
-*/
-.btn-circle {
-  width: 120px;
-  height: 120px;
-  text-align: center;
-  padding: 6px 6px;
-  font-size: 18px;
-  line-height: 1.42;
-  border-radius: 100px;
-}
 
 #CircleButton {
     align-content: center;
@@ -70,19 +116,8 @@
       border-radius:80px;
       /*z-index: 200;*/
     }
-
 }
 
-@media (min-width: 501px) {
-  #phone-popovers {
-      display: none;
-  }
-}
-@media (max-width: 500px) {
-  #popovers {
-      display: none;
-  }
-}
 @media (max-width: 560px) {
     #Popover1 {
         font-size: 7px;
@@ -101,5 +136,14 @@
       border-radius:50px;
       /*z-index: 200;*/
     }
-
+}
+@media (min-width: 501px) {
+  #phone-popovers {
+      display: none;
+  }
+}
+@media (max-width: 560px) {
+  #popovers {
+      display: none;
+  }
 }

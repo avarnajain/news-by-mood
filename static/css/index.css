@@ -13,15 +13,18 @@ body {
     text-align: center;
 }*/
 
+@media (max-width: 360) {
+    main svg {
+        width: 260px;
+        height: auto;
+    }
+}
+
 /*main svg {
     overflow: visible;
 }*/
 
 .stats {
-    text-align: center;
-}
-
-#weighted-pie-statement {
     text-align: center;
 }
 

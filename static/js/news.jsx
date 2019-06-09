@@ -69,7 +69,7 @@ class News extends React.Component {
             }
             const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
             const newsList = news.map((article) => 
-                <div key={article.article_id.toString()+'news'} className='news-article'>
+                <div key={article.article_id.toString()+'news'} className='row' id="news-article">
                     <div className="container-fluid">
                         <div className="row" id='news-title-row'>
                             <div className="col">
@@ -111,7 +111,7 @@ class News extends React.Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="page-bar">
-                            <div className="col-12">
+                            <div className="col">
                                 <div className="page-bar-2">
                                     <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
                                 </div>

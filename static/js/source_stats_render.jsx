@@ -1,5 +1,4 @@
 "use strict";
-
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
@@ -19,13 +18,13 @@ const content = (
                 </div>
             </div>
             <div className="row">
-                <div className="col-6">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='emotional'
                               heading='% distribution of emotional tones*'
                               post_url='/get-source-news'/>
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <Stats fetch_url='/all-source-stats.json'
                               filter_by='language'
                               heading='% distribution of language tones*'

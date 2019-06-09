@@ -72,9 +72,20 @@
     }
 
 }
+
+@media (min-width: 501px) {
+  #phone-popovers {
+      display: none;
+  }
+}
+@media (max-width: 500px) {
+  #popovers {
+      display: none;
+  }
+}
 @media (max-width: 560px) {
     #Popover1 {
-        font-size: 0.2rem;
+        font-size: 7px;
         text-align: center;
         width:50px;height:50px;
         border-radius:50px;

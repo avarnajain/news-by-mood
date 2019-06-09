@@ -19,13 +19,20 @@ const content = (
             </div>
         </div>
         <div className="row">
-            <div className="col-6">
+            <div className="col">
+                <Heading heading='/session-category-tone.json'
+                        size='h5'
+                        filter='tone-filter'/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <Stats fetch_url='/get-category-stats.json'
                     filter_by='emotional'
                     heading='% distribution of emotional tones*'
                     post_url='/get-category-tone-filter'/>
             </div>
-            <div className="col-6">
+            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <Stats fetch_url='/get-category-stats.json'
                     filter_by='language'
                     heading='% distribution of language tones*'
@@ -63,13 +70,6 @@ const content = (
                         <DropdownMenu fetch_url='/get-language-dropdown-list.json'
                                       post_url='/get-chosen-tone-from-dropdown'
                                       filter_by='Filter by Opinion'/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <Heading heading='/session-category-tone.json'
-                                size='h5'
-                                filter='tone-filter'/>
                     </div>
                 </div>
             </div>

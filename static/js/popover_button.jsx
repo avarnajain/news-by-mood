@@ -79,7 +79,7 @@ class PopoverButton extends React.Component {
             className="btn btn-default btn-circle btn-xl">
             <b>{tone}</b>
           </Button>
-        </a>
+          </a>
         </div>
         <Popover placement="bottom" isOpen={this.state.popoverOpen} target={id}>
           <PopoverHeader>{tone}</PopoverHeader>

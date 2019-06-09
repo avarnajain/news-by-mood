@@ -3,6 +3,13 @@
 
 # shell command to run AWS 
 # ssh -i ~/.ssh/aws.pem ubuntu@34.214.50.15
+
+#shell commands to update git repo on server
+# ssh -i ~/.ssh/aws.pem ubuntu@34.214.50.15
+# cd news-by-mood
+# git pull
+# sudo systemctl restart flask
+
 import os
 import requests
 from jinja2 import StrictUndefined
@@ -420,15 +427,15 @@ def get_todays_news():
 
 ########################################################################
 # API ROUTE
-@app.route('/api-calls')
-def api_calls():
-    """Call news and tone api"""
+# @app.route('/api-calls')
+# def api_calls():
+#     """Call news and tone api"""
 
-    time_start = time.time()
-    get_articles_add_to_db()
-    time_end = time.time()
-    print('Time taken to get news:', time_end - time_start)
-    return redirect('/')
+#     time_start = time.time()
+#     get_articles_add_to_db()
+#     time_end = time.time()
+#     print('Time taken to get news:', time_end - time_start)
+#     return redirect('/')
 
 #serve js files
 @app.route("/dist/<path:resource>")

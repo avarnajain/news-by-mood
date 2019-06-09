@@ -8,12 +8,14 @@ import Heading from './heading.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
 import {POPOVER_BODY} from './constants.jsx';
 import PopoverButton from './popover_button.jsx'
-import '../css/index.css';
+import PopoverButtonPhone from './popover_button_phone.jsx'
+import '../css/headlines.css';
+// import '../css/index.css';
 
 const content = (
     <div id="source-stats">
         <div className="container-fluid">
-            <div className="row">
+            <div className="row" id="popovers">
                 <div className="col" id="disappear-second"/>
                 <div className="col" id="disappear-fourth"/>
                 <div className="col" id='bubble-tone'>
@@ -76,17 +78,73 @@ const content = (
                 <div className="col" id="disappear-third"/>
                 <div className="col" id="disappear-first"/>
             </div>
+            <div className="row" id="phone-popovers">
+                <div className="col" id="disappear-second"/>
+                <div className="col" id="disappear-fourth"/>
+                <div className="col" id='bubble-tone'>
+                    <PopoverButtonPhone
+                        session='/session-emotion.json' 
+                        tone='Anger'
+                        type='emotion'
+                        body={POPOVER_BODY['anger']}/>
+                </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButtonPhone
+                        session='/session-emotion.json' 
+                        tone='Fear'
+                        type='emotion'
+                        body={POPOVER_BODY['fear']}/>
+                </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButtonPhone 
+                        session='/session-emotion.json' 
+                        tone='Joy'
+                        type='emotion'
+                        body={POPOVER_BODY['joy']}/>
+                </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButtonPhone 
+                        session='/session-emotion.json' 
+                        tone='Sadness'
+                        type='emotion'
+                        body={POPOVER_BODY['sadness']}/>
+                </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButtonPhone 
+                        session='/session-emotion.json' 
+                        tone='Analytical'
+                        type='language'
+                        body={POPOVER_BODY['analytical']}/>
+                </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButtonPhone 
+                        session='/session-emotion.json' 
+                        tone='Confident'
+                        type='language'
+                        body={POPOVER_BODY['confident']}/>
+                </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButtonPhone 
+                        session='/session-emotion.json' 
+                        tone='Tentative'
+                        type='language'
+                        body={POPOVER_BODY['tentative']}/>
+                </div>
+                <div className="col" id="disappear-fifth"/>
+                <div className="col" id="disappear-third"/>
+                <div className="col" id="disappear-first"/>
+            </div>
             <div className="row">
                 <h2 id="heading">the world of news today</h2>
             </div>
             <div className="row">
-                <div className="col-6">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <Stats fetch_url='/todays-stats.json'
                               filter_by='emotional'
                               heading='% distribution of emotional tones*'
                               post_url='/todays-headlines'/>
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <Stats fetch_url='/todays-stats.json'
                               filter_by='language'
                               heading='% distribution of language tones*'

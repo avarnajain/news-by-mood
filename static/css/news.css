@@ -27,20 +27,28 @@ ul.pagination {
     }
 }
 
+.page-bar-2 {
+    align-items: right;
+}
 
-.news-article h5, h6 {
+#news-article {
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 4px 9px 16px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+#news-article h5, h6 {
     text-align: left;
 }
 
-.news-article img {
+#news-article img {
   height: 250px;
   width: auto;
 }
 
-.news-article {
-  border: 2px solid grey;
-  border-style: ridge;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+#news-info-row h6 {
+    text-align: left;
 }
 
 #bubblechart svg {

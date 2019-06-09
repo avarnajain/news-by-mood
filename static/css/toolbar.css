@@ -13,7 +13,7 @@
     width: 100%;
     background: white;
     height: 56px;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 2px 2px 3px grey;
     /*outline: black;*/
 }

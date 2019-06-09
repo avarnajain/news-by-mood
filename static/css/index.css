@@ -9,13 +9,13 @@ body {
     height: 100%;
 }
 
-.heading {
+/*.heading {
     text-align: center;
-}
+}*/
 
-main svg {
+/*main svg {
     overflow: visible;
-}
+}*/
 
 .stats {
     text-align: center;
@@ -28,3 +28,4 @@ main svg {
 h2 {
     text-align: center;
 }
+

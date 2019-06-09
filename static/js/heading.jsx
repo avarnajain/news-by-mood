@@ -31,44 +31,44 @@ class Heading extends React.Component {
         const filter = this.props.filter;
         if (size == 'h3') {
             return (
-                <div>
+                <div id="heading">
                    <h3> {heading} </h3>
                 </div>
             ) 
         } else if (size == 'h4') {
             return (
-                <div>
+                <div id="heading">
                    <h2> {heading} </h2>
                 </div>
             )
         } else if (size == 'h2' && filter == 'emotion') {
             return (
-                <div>
+                <div id="heading">
                     <h2>{heading}</h2>
                 </div>
             )
         } else if (size == 'h2' && filter == 'language') {
             return (
-                <div>
+                <div id="heading">
                     <h2>{heading}</h2>
                 </div>
             )
-        } else if (size == 'h2' && filter == 'category') {
+        } else if (size == 'h1' && filter == 'category') {
             return (
-                <div>
-                   <h1>{heading} </h1>
+                <div id="heading">
+                   <h1>{heading}</h1>
                 </div>
             )
         } else if (size == 'h2' && filter == 'source') {
             return (
-                <div>
+                <div id="heading"> 
                    <h2> {heading} </h2>
                    <h5> Overall Tone Profile </h5>
                 </div>
             )
         } else if (size == 'h5') {
             return (
-                <div>
+                <div id="heading">
                    <h5> {heading} </h5>
                 </div>
             )

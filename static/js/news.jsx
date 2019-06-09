@@ -55,13 +55,14 @@ class News extends React.Component {
         // console.log('currentNews', currentNews);
         const { currentNews, currentPage, totalPages } = this.state;
         const totalNews = this.state.data.length;
+        // console.log('totalNews', totalNews);
         if (totalNews) {
             if (totalNews === 0) {
                 return (
                     <div className="container-fluid" id="no-articles-found-div">
                         <div className="row">
                             <div className="col">
-                                <h1> No Articles Found </h1>
+                             <h1> No Articles Found </h1>
                             </div>
                         </div>
                     </div>
@@ -72,7 +73,7 @@ class News extends React.Component {
                 <div key={article.article_id.toString()+'news'} className='row' id="news-article">
                     <div className="container-fluid">
                         <div className="row" id='news-title-row'>
-                            <div className="col">
+                            <div className="col" id="article-title">
                                 <h5>
                                     <a href={article.url} target="_blank">{article.title}</a>
                                 </h5>
@@ -92,26 +93,25 @@ class News extends React.Component {
                             </div>
                         </div>
                         <div className="row" id="news-img-bubble-row">
-                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-8" id="news-img-col">
-                                <img src={article.image_url} alt="img" className="img-thumbnail"/>
-                            </div>
-                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="news-bubble-col">
+                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 order-lg-2 order-md-2 order-sm-2 order-xs-1" id="news-bubble-col">
                                 <div className="row" id='news-bubble-row'>
                                     <div className="col">
                                         <Bubble tone_data={article.scores}/>
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 order-lg-1 order-md-1 order-sm-1 order-xs-2" id="news-img-col">
+                                <img src={article.image_url} alt="img" className="img-thumbnail"/>
+                            </div>
                         </div>
-                        <br />
                     </div>
                 </div>
             );
             return (
                 <div className="container-fluid">
-                    <div className="row">
+                    <div className="row pull-right">
                         <div className="page-bar">
-                            <div className="col">
+                            <div className="col pull-right">
                                 <div className="page-bar-2">
                                     <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
                                 </div>

@@ -63,7 +63,6 @@ class SourceForm extends React.Component {
     }
 
     render() {
-
         const sources = this.state.data;
         const sourceList = sources.map((source) =>
             <option key={source.source.toString()} value={source.source}>{source.source}</option> 

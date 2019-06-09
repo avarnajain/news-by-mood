@@ -56,7 +56,7 @@ class Stats extends React.Component {
                 const total = stats[key]['data']['total'];
                 // console.log('total', total)
                 return (
-                    <div key='total'>
+                    <div key='total' id='stats-total'>
                         <p> Total number of articles for source: {stats[key]['data']['total']} </p>
                     </div>
                 )

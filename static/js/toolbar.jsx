@@ -13,6 +13,11 @@ const toolbar = props => (
       <div className="toolbar__logo"> 
         <a href="/">News By Mood</a>
       </div>
+      <div className="toolbar__navigation-items">
+        <ul className="nav-item dropdown" id="about-navbar">
+          <a href="/about" id="navbarDropdownMenuLink.nav-link.dropdown-toggle">About</a>
+        </ul>
+      </div>
       <div className="spacer"/>
       <div className="toolbar__navigation-items">
         <ul>

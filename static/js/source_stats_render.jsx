@@ -40,7 +40,7 @@ const content = (
             <div className="row">
                 <div className="col">
                     <h6 id='weighted-pie-statement'>
-                        *weighted per cent based on the score of each tone in an article
+                        *pie percentages are weighted per cent based on the score of each tone in an article
                     </h6>
                 </div>
             </div>

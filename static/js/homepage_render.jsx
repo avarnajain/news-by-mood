@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
 import PopoverButton from './popover_button.jsx'
 import '../css/homepage.css';
+import '../css/headlines.css';
 import SourceForm from './source_form.jsx';
 import { Button } from 'reactstrap';
 import CircleButton from './circle_button_list.jsx';
@@ -18,7 +19,7 @@ const content = (
             </div>
         </div>
         <div className="row">
-            <div className="col">
+            <div className="col" id="heading">
                 <h2>does it have a personality?</h2>
             </div>
         </div>

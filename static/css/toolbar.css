@@ -36,6 +36,16 @@
     font-size: 1.5rem;
 }
 
+#about-navbar {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+#about-navbar a {
+    color: grey;
+}
+
+
 .toolbar__navigation-items ul {
     list-style: none;
     margin: 0;

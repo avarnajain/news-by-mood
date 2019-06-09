@@ -14,63 +14,6 @@ import {POPOVER_BODY} from './constants.jsx';
 const content = (
     <div className="container-fluid">
         <div className="row">
-            <div className="col" id="disappear-second"/>
-            <div className="col" id="disappear-fourth"/>
-            <div className="col" id='bubble-tone'>
-                <PopoverButton
-                    tone='Anger'
-                    type='emotion'
-                    post_url='/get-chosen-tone-from-popover'
-                    body={POPOVER_BODY['anger']}/>
-            </div>
-            <div className="col"id='bubble-tone'>
-                <PopoverButton
-                    tone='Fear'
-                    type='emotion'
-                    post_url='/get-chosen-tone-from-popover'
-                    body={POPOVER_BODY['fear']}/>
-            </div>
-            <div className="col"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Joy'
-                    type='emotion'
-                    post_url='/get-chosen-tone-from-popover'
-                    body={POPOVER_BODY['joy']}/>
-            </div>
-            <div className="col"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Sadness'
-                    type='emotion'
-                    post_url='/get-chosen-tone-from-popover'
-                    body={POPOVER_BODY['sadness']}/>
-            </div>
-            <div className="col"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Analytical'
-                    type='language'
-                    post_url='/get-chosen-tone-from-popover'
-                    body={POPOVER_BODY['analytical']}/>
-            </div>
-            <div className="col"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Confident'
-                    type='language'
-                    post_url='/get-chosen-tone-from-popover'
-                    body={POPOVER_BODY['confident']}/>
-            </div>
-            <div className="col"id='bubble-tone'>
-                <PopoverButton 
-                    tone='Tentative'
-                    type='language'
-                    post_url='/get-chosen-tone-from-popover'
-                    body={POPOVER_BODY['tentative']}/>
-            </div>
-            <div className="col" id="disappear-fifth"/>
-            <div className="col" id="disappear-third"/>
-            <div className="col" id="disappear-first"/>
-        </div>
-        <br />
-        <div className="row">
             <div className="col">
                 <div id="individual-article">
                     <News fetch_url='/article.json'/>

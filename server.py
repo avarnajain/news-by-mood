@@ -39,8 +39,13 @@ LANGUAGE_TONES = ['analytical', 'confident', 'tentative']
 
 @app.route('/')
 def show_homepage():
-    """Show homepage with sidebar"""
+    """Show homepage"""
     return render_template('homepage.html')
+
+@app.route('/about')
+def show_about():
+    """Show about page"""
+    return redirect('/')
 
 @app.route('/headlines-by-emotion')
 def show_headlines_by_emotion():

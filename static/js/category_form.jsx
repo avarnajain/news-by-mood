@@ -66,23 +66,22 @@ class CategoryForm extends React.Component {
     render() {
 
         const categories = this.state.data;
-        const categoryList = categories.map((category) =>
-            <div key={category.category_id.toString()}>
-                <label>   
-                    <input type="radio" name="category" value={category.category_id} 
-                        checked={this.state.category} onChange={this.handleCategorySelection}/> {category.category_name}
-                </label> <br/>
-            </div>
+        const categoryList = categories.map((category) => 
+            <option key={category.category_id.toString()} value={category.category_id}>{category.category_id}</option>   
         );
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-8">
                         <form id='category-form' onSubmit={this.handleSubmit} method='POST'>
-                            {categoryList}
+                            <label>
+                                <select value='category' onChange={this.handleCategorySelection}>
+                                    {categoryList}
+                                </select> <br/>
+                            </label>
                             <div className="row">
                                 <div className="col-8">
-                                    <input type="submit" /> <br/>
+                                    <input type="submit" value="Submit"/><br/>
                                 </div>
                             </div>
                         </form>

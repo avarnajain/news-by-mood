@@ -13,7 +13,7 @@ const content = (
             <div className="col">
                 <div className='heading'>
                     <Heading heading='/session-category.json'
-                                    size='h2'
+                                    size='h1'
                                     filter='category'/>
                 </div>
             </div>
@@ -48,7 +48,7 @@ const content = (
         <div className="row">
             <div className="col">
                 <h6 id='weighted-pie-statement'>
-                    *weighted based on the score of each tone in an article
+                    *pie percentages are weighted based on the score of each tone in an article
                 </h6>
             </div>
         </div>

@@ -6,10 +6,20 @@ import Stats from "./stats.jsx";
 import News from "./news.jsx";
 import Heading from './heading.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
+import SourceForm from './source_form.jsx';
 
 const content = (
     <div id="source-stats">
         <div className="container-fluid">
+            <div className="d-flex justify-content-center">
+                <div className="d-block d-sm-none">
+                    <div className="col source-form">
+                        <h5> Select a different source</h5>
+                        <SourceForm fetch_url='/all-sources.json' 
+                                    post_url='/get-chosen-source'/>
+                    </div>
+                </div>
+            </div>
             <div className="row">
                 <div className="col">
                     <Heading heading='/session-source.json'
@@ -53,31 +63,35 @@ const content = (
             <div className="row">
               <br />
             </div>
-            <div className="row">
-                <div className="col">
-                    <DropdownMenu fetch_url='/get-category-dropdown-list.json'
-                                post_url='/get-chosen-category-within-source'
-                                filter_by='Filter by Category'/>
-                </div>
-                <div className="col">
-                    <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
-                                  post_url='/get-chosen-tone-within-source'
-                                  filter_by='Filter by Emotion'/>
-                </div>
-                <div className="col">
-                    <DropdownMenu fetch_url='/get-language-dropdown-list.json'
-                                  post_url='/get-chosen-tone-within-source'
-                                  filter_by='Filter by Language'/>
+            <div className="d-flex justify-content-center"> 
+                <div className="d-none d-sm-block">
+                    <div className="row">
+                        <div className="col">
+                            <DropdownMenu fetch_url='/get-category-dropdown-list.json'
+                                        post_url='/get-chosen-category-within-source'
+                                        filter_by='Filter by Category'/>
+                        </div>
+                        <div className="col">
+                            <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
+                                          post_url='/get-chosen-tone-within-source'
+                                          filter_by='Filter by Emotion'/>
+                        </div>
+                        <div className="col">
+                            <DropdownMenu fetch_url='/get-language-dropdown-list.json'
+                                          post_url='/get-chosen-tone-within-source'
+                                          filter_by='Filter by Language'/>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="row">
+            <div className="d-none d-sm-block">
                 <div className="col">
                     <Heading heading='/session-source-category.json'
                                 size='h5'
                                 filter='category-filter'/>
                 </div>
             </div>
-            <div className="row">
+            <div className="d-none d-sm-block">
                 <div className="col">
                     <Heading heading='/session-source-tone.json'
                                 size='h5'

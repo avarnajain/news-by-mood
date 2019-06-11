@@ -40,6 +40,12 @@ LANGUAGE_TONES = ['analytical', 'confident', 'tentative']
 @app.route('/')
 def show_homepage():
     """Show homepage"""
+    session['selected_tone'] = ''
+    session['selected_emotion'] = ''
+    session['selected_language'] = ''
+    session['selected_source'] = ''
+    session['selected_category'] = ''
+    
     return render_template('homepage.html')
 
 @app.route('/about')

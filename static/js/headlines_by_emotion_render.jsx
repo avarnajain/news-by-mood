@@ -66,7 +66,7 @@ const content = (
                 </div>
             </div>
         </div>
-        <div className="row">
+        <div className="d-none d-sm-block">
             <div className="col">
                 <div className='heading'>
                     <Heading heading='/session-emotion.json'
@@ -74,14 +74,16 @@ const content = (
                                 filter='emotion'/>
                 </div>
             </div>
-            <div className="col">
+        </div>
+        <div className="d-flex justify-content-center">
+            <div className="d-none d-sm-block">
                 <div className="row">
                     <div className="col">
                         <DropdownMenu fetch_url='/get-category-dropdown-list.json'
                                         post_url='/get-chosen-category-from-dropdown'
                                         filter_by='Filter by Category'/>
                     </div>
-                </div> 
+                </div>
                 <div className="row">
                     <div className="col">
                         <Heading heading='/session-tone-category.json'

@@ -69,28 +69,22 @@ class ToneForm extends React.Component {
             <option key={tone.tone_id.toString()} value={tone.tone_id}>{tone.tone_name}</option> 
         );
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col">
-                        <h1> {this.props.header} </h1>
-                    </div>
+            <div>
+                <div>
+                    <h1> {this.props.header} </h1>
                 </div>
-                <div className="row">
-                    <div className="col">
-                        <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
-                            <label>
-                                <select value='source' onChange={this.handleToneSelection}>
-                                    {toneList}
-                                </select> <br/>
-                            </label>
-                            <div className="row">
-                                <div className="col">
-                                    <input type="submit" value="Submit"/> <br/>
-                                </div>
-                            </div>
-                        </form>
+                <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
+                    <label>
+                        <select value='source' onChange={this.handleToneSelection}>
+                            {toneList}
+                        </select> <br/>
+                    </label>
+                    <div className="row">
+                        <div className="col">
+                            <input type="submit" value="Submit"/> <br/>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         )
     };

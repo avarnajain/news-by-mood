@@ -16,23 +16,19 @@ const content = (
     <div className="container-fluid">
         <div className="row">
             <div className="col" id="heading">
-                <h1>know your news</h1>
+                <h1>Know Your News</h1>
             </div>
         </div>
         <div className="row">
             <div className="col" id="secondary-heading">
-                <h2>does it have a personality?</h2>
+                <h3>Does it have a personality?</h3>
             </div>
         </div>
-        <div className="row">
-            <div className="col" id="tertiary-heading">
-                <a href='/todays-headlines'><h3>Find out how the world is doing today</h3></a>
-            </div>
-        </div>
-        <div className="d-flex justify-content-center" id="homepage-bubbles">
+        <div className="d-flex justify-content-center" 
+             id="homepage-bubbles">
             <div className="row">
                 <div className="col" id='bubble-tone'>
-                    <PopoverButton
+                    <PopoverButton id="homepage-pop"
                         session='/session-emotion.json' 
                         tone='Anger'
                         type='emotion'
@@ -61,7 +57,8 @@ const content = (
                 </div>
             </div>
         </div>
-        <div className="d-flex justify-content-center" id="homepage-bubbles">
+        <div className="d-flex justify-content-center" 
+             id="homepage-bubbles">
             <div className="row">
                 <div className="col"id='bubble-tone'>
                     <PopoverButton 
@@ -86,16 +83,36 @@ const content = (
                 </div>
             </div>
         </div>
-        <div className="row">
-            <div className="col" id="secondary-heading">
-                <h2>do news sources have peronalities too?</h2>
+        <div className="d-flex justify-content-center" 
+             id="tone-descripton-link">
+            <div className="d-block d-sm-none">
+                <div className="col">
+                    <p>Click 
+                        <a href="/about">here</a> 
+                        to know more about each tone
+                    </p>
+                </div>
             </div>
         </div>
         <div className="row">
-            <div className="col">
-                <HomepageDropdownMenu fetch_url='/all-sources.json'
-                                post_url='/get-chosen-source'
-                                filter_by='Source Personaity'/>
+            <div className="col" id="news-today-heading">
+                <h4>do news sources have peronalities too?</h4>
+            </div>
+        </div>
+        <div className="d-flex justify-content-center">
+            <div className="d-none d-sm-block">
+                <div className="col">
+                    <HomepageDropdownMenu fetch_url='/all-sources.json'
+                                    post_url='/get-chosen-source'
+                                    filter_by='Select Source'/>
+                </div>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col" id="tertiary-heading">
+                <a href='/todays-headlines'>
+                    <h4>How does the world feel today?</h4>
+                </a>
             </div>
         </div>
     </div>
@@ -108,6 +125,7 @@ ReactDOM.render(
     </div>,
   document.getElementById('root')
 );
+
 
 
 

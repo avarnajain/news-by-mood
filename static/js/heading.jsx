@@ -1,7 +1,7 @@
 "use-strict";
 import React from "react";
 import '../css/heading.css';
-
+import {TONE_COLORS} from './constants.jsx'
 class Heading extends React.Component {
 
     constructor(props) {
@@ -35,6 +35,19 @@ class Heading extends React.Component {
                    <h3> {heading} </h3>
                 </div>
             ) 
+        } else if (filter == 'tone-filter' || filter == 'category-filter') {
+            if (heading) {
+                    return (
+                    <div>
+                        <h5> Filtered by {heading} </h5>
+                    </div>
+                )
+            } else {
+                return (
+                    <div>
+                    </div>
+                )
+            } 
         } else if (size == 'h4') {
             return (
                 <div id="heading">
@@ -44,7 +57,10 @@ class Heading extends React.Component {
         } else if (size == 'h2' && filter == 'emotion') {
             return (
                 <div id="heading">
-                    <h2>All articles for {heading}</h2>
+                    <h2 id="heading-tone" 
+                        style={{color:'grey'}}>
+                        All articles with the tone {heading}
+                    </h2>
                 </div>
             )
         } else if (size == 'h2' && filter == 'language') {
@@ -72,7 +88,7 @@ class Heading extends React.Component {
                    <h5> {heading} </h5>
                 </div>
             )
-        }
+        } 
     };
 }
 

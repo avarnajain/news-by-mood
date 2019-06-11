@@ -6,7 +6,9 @@ import News from "./news.jsx";
 import Heading from './heading.jsx';
 import Stats from './stats.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
+import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
+import {POPOVER_BODY} from './constants.jsx';
 
 const content = (
     <div className="container-fluid">
@@ -73,13 +75,6 @@ const content = (
             </div>
         </div>
         <div className="row">
-            <div className="col">
-                <Heading heading='/session-category-tone.json'
-                        size='h5'
-                        filter='tone-filter'/>
-            </div>
-        </div>
-        <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <Stats fetch_url='/get-category-stats.json'
                     filter_by='emotional'
@@ -100,8 +95,9 @@ const content = (
             </div>
         </div>
         <div className="row">
-            <div className="col">
-                <h6 id='weighted-pie-statement'>
+            <div className="col" 
+                 id='weighted-pie-statement'>
+                <h6>
                     *pie percentages are weighted based on the score of each tone in an article
                 </h6>
             </div>
@@ -112,20 +108,36 @@ const content = (
                     filter_by='None'/>
             </div>
         </div>
-        <div className="row">
+        <div className="d-none d-sm-block">
             <div className="col">
-                <div className="row">
-                    <div className="col">
-                        <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
-                                      post_url='/get-chosen-tone-from-dropdown'
-                                      filter_by='Filter by Emotion'/>
-                    </div>
-                    <div className="col">
-                        <DropdownMenu fetch_url='/get-language-dropdown-list.json'
-                                      post_url='/get-chosen-tone-from-dropdown'
-                                      filter_by='Filter by Opinion'/>
+                <div className='heading'>
+                    <Heading heading='/session-category.json'
+                                    size='h3'
+                                    filter='category-all-articles'/>
+                </div>
+            </div>
+            <div className="d-flex justify-content-center">
+                <div className="d-none d-sm-block">
+                    <div className="row">
+                        <div className="col">
+                            <DropdownMenu fetch_url='/get-emotional-dropdown-list.json'
+                                          post_url='/get-chosen-tone-from-dropdown'
+                                          filter_by='Filter by Emotion'/>
+                        </div>
+                        <div className="col">
+                            <DropdownMenu fetch_url='/get-language-dropdown-list.json'
+                                          post_url='/get-chosen-tone-from-dropdown'
+                                          filter_by='Filter by Opinion'/>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div className="d-none d-sm-block">
+            <div className="col">
+                <Heading heading='/session-category-tone.json'
+                        size='h5'
+                        filter='tone-filter'/>
             </div>
         </div>
         <div id="category-headlines">

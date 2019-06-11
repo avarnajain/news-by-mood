@@ -23,7 +23,7 @@ const content = (
             <div className="row">
                 <div className="col">
                     <Heading heading='/session-source.json'
-                                size='h2'
+                                size='h1'
                                 filter='source'/>
                 </div>
             </div>
@@ -48,8 +48,9 @@ const content = (
                 </div>
             </div>
             <div className="row">
-                <div className="col">
-                    <h6 id='weighted-pie-statement'>
+                <div className="col" 
+                    id='weighted-pie-statement'>
+                    <h6>
                         *pie percentages are weighted per cent based on the score of each tone in an article
                     </h6>
                 </div>
@@ -60,8 +61,15 @@ const content = (
                             filter_by='None'/>
                 </div>
             </div>
-            <div className="row">
+            <div className="row" style={{padding: "10px"}}>
               <br />
+            </div>
+            <div className="d-flex justify-content-center"> 
+                <div className="row">
+                    <Heading heading='/session-source.json'
+                                size='h3'
+                                filter='source'/>
+                </div>
             </div>
             <div className="d-flex justify-content-center"> 
                 <div className="d-none d-sm-block">

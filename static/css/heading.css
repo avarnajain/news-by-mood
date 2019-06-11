@@ -6,18 +6,22 @@
     #heading h1 {
         text-align: center;
         font-size: 40px;
-        font-family: 'BlackLetter';
+        font-family: sans-serif;
     }
 }
 
 @media (min-width: 561px) {
     #heading h1 {
         text-align: center;
-        font-size: 80px;
-        font-family: 'BlackLetter';
+        font-size: 60px;
+        font-family: sans-serif;
     }
 }
 
 #heading-tone {
+    padding-top: 15px;
+}
+
+#heading-category {
     padding-top: 15px;
 }

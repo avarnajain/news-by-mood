@@ -9,7 +9,6 @@ import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
 // import PopoverButtonPhone from './popover_button_phone.jsx'
 import {POPOVER_BODY} from './constants.jsx';
-// import PopoverButtonList from './popover_button_list.jsx';
 
 const content = (
     <div className="container-fluid">
@@ -70,7 +69,7 @@ const content = (
             <div className="col">
                 <div className='heading'>
                     <Heading heading='/session-emotion.json'
-                                size='h2'
+                                size='h3'
                                 filter='emotion'/>
                 </div>
             </div>

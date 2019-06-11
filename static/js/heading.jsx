@@ -29,16 +29,11 @@ class Heading extends React.Component {
         const heading = this.state.data;
         const size = this.props.size;
         const filter = this.props.filter;
-        if (size == 'h3') {
-            return (
-                <div id="heading">
-                   <h3> {heading} </h3>
-                </div>
-            ) 
-        } else if (filter == 'tone-filter' || filter == 'category-filter') {
+        if (filter == 'tone-filter' || filter == 'category-filter') {
+            console.log(heading, 'heading')
             if (heading) {
                     return (
-                    <div>
+                    <div style={{color:'grey'}}>
                         <h5> Filtered by {heading} </h5>
                     </div>
                 )
@@ -48,25 +43,22 @@ class Heading extends React.Component {
                     </div>
                 )
             } 
-        } else if (size == 'h4') {
+        } else if (size == 'h3' && (filter == 'emotion' || filter == 'language')) {
             return (
                 <div id="heading">
-                   <h2> {heading} </h2>
-                </div>
-            )
-        } else if (size == 'h2' && filter == 'emotion') {
-            return (
-                <div id="heading">
-                    <h2 id="heading-tone" 
+                    <h3 id="heading-tone" 
                         style={{color:'grey'}}>
                         All articles with the tone {heading}
-                    </h2>
+                    </h3>
                 </div>
             )
-        } else if (size == 'h2' && filter == 'language') {
+        } else if (size == 'h3' && filter == 'category-all-articles') {
             return (
                 <div id="heading">
-                    <h2>All articles for {heading}</h2>
+                    <h3 id="heading-category" 
+                        style={{color:'grey'}}>
+                        All articles within the {heading} category
+                    </h3>
                 </div>
             )
         } else if (size == 'h1' && filter == 'category') {
@@ -75,17 +67,36 @@ class Heading extends React.Component {
                    <h1>{heading}</h1>
                 </div>
             )
-        } else if (size == 'h2' && filter == 'source') {
+        } else if (size == 'h1' && filter == 'source') {
             return (
                 <div id="heading"> 
-                   <h2> {heading} </h2>
+                   <h1> {heading} </h1>
                    <h5> Overall Tone Profile </h5>
                 </div>
             )
-        } else if (size == 'h5') {
+        } else if (size=='h3' && filter == 'source') {
+            return (
+                <div id="heading"
+                    style={{color:'grey'}}>
+                    <h3>All articles for source {heading}</h3>
+                </div>
+            )
+        }else if (size == 'h5') {
             return (
                 <div id="heading">
                    <h5> {heading} </h5>
+                </div>
+            )
+        } else if (size == 'h3') {
+            return (
+                <div id="heading">
+                   <h3> {heading} </h3>
+                </div>
+            ) 
+        } else if (size == 'h4') {
+            return (
+                <div id="heading">
+                   <h2> {heading} </h2>
                 </div>
             )
         } 

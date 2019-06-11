@@ -96,7 +96,7 @@ const content = (
         </div>
         <div className="row">
             <div className="col" id="news-today-heading">
-                <h4>do news sources have peronalities too?</h4>
+                <h4>Do news sources have peronalities too?</h4>
             </div>
         </div>
         <div className="d-flex justify-content-center">

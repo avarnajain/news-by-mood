@@ -68,8 +68,10 @@ const content = (
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <h2 id="heading">the world of news today</h2>
+            <div className="d-flex justify-content-center">
+                <div className="row" id="todays-news-header">
+                    <h2 id="heading">The World Of News Today</h2>
+                </div>
             </div>
             <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -92,8 +94,9 @@ const content = (
                 </div>
             </div>
             <div className="row">
-                <div className="col">
-                    <h6 id='weighted-pie-statement'>
+                <div className="col" 
+                    id='weighted-pie-statement'>
+                    <h6>
                         *pie percentages are weighted per cent based on the score of each tone in an article
                     </h6>
                 </div>
@@ -106,6 +109,13 @@ const content = (
             </div>
             <div className="row">
               <br />
+            </div>
+            <div className="d-flex justify-content-center">
+                <div className="row">
+                    <div style={{color:'grey'}}>
+                        <h3>All articles for today</h3>
+                    </div>
+                </div>
             </div>
             <div className="sourceNews">
                 <News fetch_url='/todays-news.json'/>

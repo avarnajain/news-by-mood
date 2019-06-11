@@ -56,7 +56,7 @@ class Stats extends React.Component {
                 const total = stats[key]['data']['total'];
                 // console.log('total', total)
                 return (
-                    <div key='total' id='stats-total'>
+                    <div key='total' id='stats-total' style={{color:'grey'}}>
                         <p> Total number of articles for source: {stats[key]['data']['total']} </p>
                     </div>
                 )
@@ -64,7 +64,7 @@ class Stats extends React.Component {
             if (filter_ == 'None' && stats[key]['filter'] == 'None' && stats[key]['data']['None'] > 0) {
                 // console.log('rendering none');
                 return (
-                    <div key='None'>
+                    <div key='None' style={{color:'grey'}}>
                         <p> *{stats[key]['data']['None'].length} article(s) were excluded because they had no dominant tones</p>
                     </div>
                 )

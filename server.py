@@ -45,7 +45,7 @@ def show_homepage():
     session['selected_language'] = ''
     session['selected_source'] = ''
     session['selected_category'] = ''
-    
+
     return render_template('homepage.html')
 
 @app.route('/about')
@@ -93,6 +93,10 @@ def show_chosen_source_stats(chosen_source):
 @app.route('/headlines-by-category')
 def show_headlines_by_category():
     """Display headlines for chosen emotion"""
+    session['selected_tone'] = ''
+    session['selected_emotion'] = ''
+    session['selected_language'] = ''
+    session['selected_source'] = ''
     return render_template('headlines_by_category.html')
 
 @app.route('/headlines-by-category/<chosen_category>')
@@ -348,7 +352,8 @@ def get_session_source():
 def get_session_category_tone():
     if (session['selected_category_tone_id']):
         return jsonify(session['selected_category_tone_id'].capitalize())
-
+    else:
+        return jsonify('')
 @app.route('/session-tone-category.json')
 def get_session_tone_category():
     if (session['selected_tone_category']):

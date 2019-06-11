@@ -83,6 +83,9 @@
     .toolbar__navigation-items {
         display: none;
     }
+    .toolbar__logo a {
+        font-size: 0.5rem;
+    }
 }
 
 /* To hide sidebar in big screen views */
@@ -101,6 +104,9 @@
     .toolbar__navigation-items li {
     padding: 1rem 1rem 1rem 1rem;
     }
+    .toolbar__logo a {
+        font-size: 1.2rem;
+    }
 }
 @media (max-width: 950px) {
     .toolbar__navigation-items a {
@@ -108,5 +114,8 @@
     }
     .toolbar__navigation-items li {
     padding: 1rem 1rem 1rem 1rem;
+    }
+    .toolbar__logo a {
+        font-size: 1.2rem;
     }
 }

@@ -30,134 +30,61 @@ const content = (
                 <a href='/todays-headlines'><h3>Find out how the world is doing today</h3></a>
             </div>
         </div>
-        <div className="row" id="homepage-bubbles">
-            <div className="col" id='bubble-col-1'>
-                <CircleButton number={4} text={['', '', '', '']}/>
-            </div>
-            <div className="col" id='bubble-col-2'>
-                <CircleButton number={4} text={['', '', '', '']}/>
-            </div>
-            <div className="col" id='bubble-col-3'>
-                <CircleButton number={4} text={['', '', '', '']}/>
-            </div>
-            <div className="col" id='mixed-bubble-1'>
-                <CircleButton number={4} text={['', 'Emotions', '', '']}/>
-            </div>
-            <div className="col" id='mixed-bubble-2'>
-                <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
+        <div className="d-flex justify-content-center" id="homepage-bubbles">
+            <div className="row">
+                <div className="col" id='bubble-tone'>
+                    <PopoverButton
+                        session='/session-emotion.json' 
+                        tone='Anger'
+                        type='emotion'
+                        body={POPOVER_BODY['anger']}/>
                 </div>
-                <div className="row">
-                    <div className="col-1"id='bubble-tone'>
-                        <PopoverButton 
-                            tone='Anger'
-                            type='emotion'
-                            body={POPOVER_BODY['anger']}/>
-                    </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButton
+                        session='/session-emotion.json' 
+                        tone='Fear'
+                        type='emotion'
+                        body={POPOVER_BODY['fear']}/>
                 </div>
-                <div className="row">
-                    <div className="col" id='plain-bubble'>
-                        <CircleButton number={2} text={['Opinions', '']}/>
-                    </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButton 
+                        session='/session-emotion.json' 
+                        tone='Joy'
+                        type='emotion'
+                        body={POPOVER_BODY['joy']}/>
+                </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButton 
+                        session='/session-emotion.json' 
+                        tone='Sadness'
+                        type='emotion'
+                        body={POPOVER_BODY['sadness']}/>
                 </div>
             </div>
-            <div className="col" id="mixed-bubble-3">
-                <div className="row">
-                    <div className="col" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
+        </div>
+        <div className="d-flex justify-content-center" id="homepage-bubbles">
+            <div className="row">
+                <div className="col"id='bubble-tone'>
+                    <PopoverButton 
+                        session='/session-emotion.json' 
+                        tone='Analytical'
+                        type='language'
+                        body={POPOVER_BODY['analytical']}/>
                 </div>
-                <div className="row">
-                    <div className="col-1"id='bubble-tone'>
-                        <PopoverButton 
-                            tone='Fear'
-                            type='emotion'
-                            body={POPOVER_BODY['fear']}/>
-                    </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButton 
+                        session='/session-emotion.json' 
+                        tone='Confident'
+                        type='language'
+                        body={POPOVER_BODY['confident']}/>
                 </div>
-                <div className="row">
-                    <div className="col-1"id='bubble-tone'>
-                        <PopoverButton 
-                            tone='Analytical'
-                            type='language'
-                            body={POPOVER_BODY['analytical']}/>
-                    </div>
+                <div className="col"id='bubble-tone'>
+                    <PopoverButton 
+                        session='/session-emotion.json' 
+                        tone='Tentative'
+                        type='language'
+                        body={POPOVER_BODY['tentative']}/>
                 </div>
-                <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
-                </div>
-            </div>
-            <div className="col" id="mixed-bubble-4">
-                <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-1"id='bubble-tone'>
-                        <PopoverButton 
-                            tone='Joy'
-                            type='emotion'
-                            body={POPOVER_BODY['joy']}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-1"id='bubble-tone'>
-                        <PopoverButton 
-                            tone='Confident'
-                            type='language'
-                            body={POPOVER_BODY['confident']}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
-                </div>
-            </div>
-            <div className="col" id='mixed-bubble-5'>
-                <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-1"id='bubble-tone'>
-                        <PopoverButton 
-                            tone='Sadness'
-                            type='emotion'
-                            body={POPOVER_BODY['sadness']}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-1"id='bubble-tone'>
-                        <PopoverButton 
-                            tone='Tentative'
-                            type='language'
-                            body={POPOVER_BODY['tentative']}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-1" id='plain-bubble'>
-                        <CircleButton number={1} text={['']}/>
-                    </div>
-                </div>
-            </div>
-            <div className="col" id='mixed-bubble-6'>
-                <CircleButton number={4} text={['', '', '', '']}/>
-            </div>
-            <div className="col" id='bubble-col-4'>
-                <CircleButton number={4} text={['', '', '', '']}/>
-            </div>
-            <div className="col" id='bubble-col-5'>
-                <CircleButton number={4} text={['', '', '', '']}/>
-            </div>
-            <div className="col" id='bubble-col-6'>
-                <CircleButton number={4} text={['', '', '', '']}/>
             </div>
         </div>
         <div className="row">

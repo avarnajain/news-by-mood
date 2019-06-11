@@ -90,6 +90,10 @@ class Pagination extends Component {
         // console.log('componentDidMount');
         this.gotoPage(1);
     }
+    // componentDidMount() {
+    //     console.log('scroll');
+    //     window.scrollTo(0, 0);
+    // }
 
     gotoPage = page => {
         const { onPageChanged = f => f } = this.props;
@@ -108,6 +112,8 @@ class Pagination extends Component {
         // console.log('handleClick page', page);
         evt.preventDefault();
         this.gotoPage(page);
+        console.log('scroll');
+        window.scrollTo(0, 0);
     }
 
     handleMoveLeft = evt => {

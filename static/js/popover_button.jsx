@@ -58,7 +58,7 @@ class PopoverButton extends React.Component {
     const selectedDivStyle = {
       backgroundColor: TONE_COLORS[tone_color],
       borderColor: TONE_COLORS[tone_color],
-      color:'white'
+      color:'black'
     };
     let id = ''
     if (tone == session) {

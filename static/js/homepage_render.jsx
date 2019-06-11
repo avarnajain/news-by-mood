@@ -7,7 +7,6 @@ import '../css/homepage.css';
 import '../css/headlines.css';
 import SourceForm from './source_form.jsx';
 import { Button } from 'reactstrap';
-import CircleButton from './circle_button_list.jsx';
 import {POPOVER_BODY} from './constants.jsx';
 import Stats from './stats.jsx';
 import DropdownSources from './dropdownSources.jsx';

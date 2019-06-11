@@ -109,16 +109,25 @@ class News extends React.Component {
             );
             return (
                 <div className="container-fluid">
-                    <div className="row">
-                        <div className="col align-self-end">
-                            <div className="page-bar">
-                                <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
-                            </div>
+                    <div className="row justify-content-end">
+                        <div className="p-2">
+                            { currentPage && (
+                                <span className="current-page text-secondary">
+                                    Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
+                                </span>
+                            ) }
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-12">
                             {newsList}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col align-self-end">
+                            <div className="page-bar">
+                                <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
+                            </div>
                         </div>
                     </div>
                 </div>

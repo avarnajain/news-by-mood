@@ -44,13 +44,13 @@ class Heading extends React.Component {
         } else if (size == 'h2' && filter == 'emotion') {
             return (
                 <div id="heading">
-                    <h2>{heading}</h2>
+                    <h2>All articles for {heading}</h2>
                 </div>
             )
         } else if (size == 'h2' && filter == 'language') {
             return (
                 <div id="heading">
-                    <h2>{heading}</h2>
+                    <h2>All articles for {heading}</h2>
                 </div>
             )
         } else if (size == 'h1' && filter == 'category') {

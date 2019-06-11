@@ -7,7 +7,6 @@ import App from './homepage.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
 // import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
-import CircleButton from './circle_button_list.jsx';
 import News from './news.jsx';
 import {POPOVER_BODY} from './constants.jsx';
 

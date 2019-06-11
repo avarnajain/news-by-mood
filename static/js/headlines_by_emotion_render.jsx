@@ -8,7 +8,6 @@ import DropdownMenu from './dropdownMenu.jsx';
 import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
 // import PopoverButtonPhone from './popover_button_phone.jsx'
-import CircleButton from './circle_button_list.jsx';
 import {POPOVER_BODY} from './constants.jsx';
 // import PopoverButtonList from './popover_button_list.jsx';
 

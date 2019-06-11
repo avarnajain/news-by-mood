@@ -4,6 +4,8 @@ ul.pagination {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     font-size: 0.5em;
     float: right;
+    padding-bottom: 5px;
+    padding-top: 5px;
 
     li.page-item.active {
         a.page-link {
@@ -27,6 +29,22 @@ ul.pagination {
             background-color: $light-background;
         }
     }
+}
+
+/*@media (min-width: 561px)*/
+.text-secondary {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 560px) {
+    .text-secondary {
+        font-size: 1rem;
+    }
+}
+
+#bubblechart svg {
+    height: 250px;
+    width: 300px;
 }
 
 #news-article {
@@ -60,19 +78,32 @@ ul.pagination {
 }
 
 #news-info-row {
-    background: rgba(180, 184, 197, 0.5);
+    /*background: rgba(180, 184, 197, 0.5);*/
 }
 
 #news-info-row h6 {
     padding-top: 10px;
     text-align: left;
-    font-family: 'initial';
+    font-family: sans-serif;
 }
 
-#bubblechart svg {
-    height: 250px;
-    width: 300px;
+#bubble-chart-jsx {
+    display: inline !important;
+    height: 200;
+    width: 100;
 }
+
+/*#bubblechart svg {
+    padding-left: 40px;
+}*/
+/*@media (max-width: 560px) {
+
+    #news-article img {
+        height: 100px;
+        width: auto;
+    }
+}*/
+
 .page-bar {
     padding-bottom: 10px;
 }
@@ -88,7 +119,7 @@ ul.pagination {
 
 #news-title-row a {
     color: #36373b;
-    font-family: 'initial';
+    font-family: sans-serif;
 }
 
 #news-title-row a:hover,

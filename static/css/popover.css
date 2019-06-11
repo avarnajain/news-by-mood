@@ -4,12 +4,6 @@
 }
 
 @media (min-width:841px) {
-    #plain-button {
-      background-color: #B4B8C5;
-      border-color: #B4B8C5;
-      opacity: 0.5;
-      color: black;
-    }
     .btn-circle {
       width: 120px;
       height: 120px;
@@ -20,25 +14,17 @@
     }
 }
 
-#plain-button {
-  background-color: #B4B8C5;
-  border-color: #B4B8C5;
-  opacity: 0.5;
-  color: black;
-  font-size: 0.8rem;
+/*.btn-circle {
   padding: 6px 6px;
 }
-.btn-circle {
-  padding: 6px 6px;
+*/
+#selected-tone-popover b {
+  border-style: solid;
+  border-color: white;
+  padding: 2px 2px 2px 2px;
+  border:0 0 0 0;
 }
-
 @media (max-width:840px) {
-    #plain-button {
-        font-size: 0.8rem;
-        width:80px;height:80px;
-        border-radius:80px;
-        /*z-index: 200;*/
-    }
     .btn-circle {
         width: 80px;
         height: 80px;
@@ -51,11 +37,6 @@
 }
 
 @media (max-width:560px) {
-    #plain-button {
-        width:50px;height:50px;
-        border-radius:50px;
-        /*z-index: 200;*/
-    }
     .btn-circle {
         width: 50px;
         height: 50px;
@@ -72,14 +53,6 @@
     }
 }
 
-#plain-button a {
-    color: black;
-}
-#plain-button a:hover,
-#plain-button a:active {
-    color: white;
-}
-
 #selected-tone-popover {
   width:120px;height:120px;
   /*border: solid 1px #555;*/
@@ -92,17 +65,9 @@
   color: black;
 }
 
-#selected-tone-popover a {
-  color:black;
-}
-
 #selected-tone-popover a:hover, 
 #selected-tone-popover a:active {
     color: '#58595B'
-}
-
-#CircleButton {
-    align-content: center;
 }
 
 @media (max-width: 840px) {

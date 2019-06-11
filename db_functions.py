@@ -16,9 +16,11 @@ def todays_articles():
     utc_time = datetime.now(timezone('UTC'))
     today = utc_time.astimezone(timezone('US/Pacific')).date()
     articles = Article.query.filter(cast(Article.published, Date)==today).all()
-    if not articles:
-        today = utc_time.astimezone(timezone('US/Pacific')).date() - timedelta(days=1)
+    while not articles:
+        yesterday = today - timedelta(days=1)
+        print(today)
         articles = Article.query.filter(cast(Article.published, Date)==today).all()
+        today = yesterday
     return [today, articles]
 
 def get_sources_db():

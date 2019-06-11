@@ -16,9 +16,11 @@ class DropdownMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            isOpen: false
         };
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.toggleOpen = this.toggleOpen.bind(this)
         // this.select = this.select.bind(this);
         // this.handleFilterSelection = this.handleFilterSelection.bind(this)
     }
@@ -30,8 +32,8 @@ class DropdownMenu extends React.Component {
 
     handleSubmit(evt){
         // console.log('evt', evt);
+        console.log('evt:', evt)
         const selected_dropdown = evt.target.value;
-        // console.log('handleFilterSelection(), value:', selected_dropdown)
         //prevents from posting with flask request
         evt.preventDefault();
         // console.log('handleSubmit()', this.props.post_url)
@@ -50,6 +52,7 @@ class DropdownMenu extends React.Component {
                 });
     }
 
+    toggleOpen () { this.setState({ isOpen: !this.state.isOpen }) };
 
     getFilters() {
         //.then() handles the response from the ajax call
@@ -66,19 +69,26 @@ class DropdownMenu extends React.Component {
     }
 
     render() {
+        const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
         const filters = this.state.data;
-        // console.log('filters', filters);
+        console.log('filters', filters);
         const dropdownList = filters.map((filter) =>
-            <div key={filter.filter_id.toString()} id='dropdown-item'>
-                <option onClick={this.handleSubmit} value={filter.filter_id}>{filter.filter_name}</option>
-            </div>
+            <option key={filter.filter_id.toString()} 
+                           value={filter.filter_id}
+                           onClick={this.handleSubmit}>
+                           {filter.filter_id}
+            </option>
         );
         return (
             <div className="col">
-                <DropdownButton id="dropdown-button" title={this.props.filter_by}>
+
+                <DropdownButton 
+                    id="dropdown-button" 
+                    title={this.props.filter_by}>
                     {dropdownList}
                 </DropdownButton>
             </div>
+
         )
     };
 }

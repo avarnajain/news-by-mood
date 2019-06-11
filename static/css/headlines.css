@@ -4,6 +4,11 @@
     text-align: center; 
 }
 
+#bubble-tone {
+  padding:0;
+}
+
+
 #disappear-first, #disappear-second, #disappear-third, #disappear-fourth, #disappear-fifth {
   padding:0;
 }

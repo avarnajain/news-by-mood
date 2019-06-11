@@ -109,12 +109,10 @@ class News extends React.Component {
             );
             return (
                 <div className="container-fluid">
-                    <div className="row pull-right">
-                        <div className="page-bar">
-                            <div className="col pull-right">
-                                <div className="page-bar-2">
-                                    <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
-                                </div>
+                    <div className="row">
+                        <div className="col align-self-end">
+                            <div className="page-bar">
+                                <Pagination totalRecords={totalNews} pageLimit={10} pageNeighbours={0} onPageChanged={this.onPageChanged} />
                             </div>
                         </div>
                     </div>

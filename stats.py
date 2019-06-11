@@ -4,6 +4,16 @@ from model import connect_to_db, db, Article, Tone, Score, Category
 from sqlalchemy import desc
 from db_functions import *
 
+TONE_COLORS_RGBA = {
+    'anger': 'rgba(118, 138, 103, 0.75)',
+    'fear': 'rgba(118, 138, 103, 0.75)',
+    'joy': 'rgba(162, 62, 72, 0.75)',
+    'sadness': 'rgba(118, 160, 160, 0.75)',
+    'analytical':'rgba(89, 88, 88, 0.75)',
+    'confident':'rgba(159, 131, 140, 0.75)',
+    'tentative': 'rgba(195, 186, 186, 0.75)'
+}
+
 #Article functions
 def get_Articles_with_tone_dict(tone_id, tone_type):
     """create json object to return"""
@@ -239,6 +249,69 @@ def create_tone_dict(tone_type, stats_filter, stats_type):
         if tone.tone_type == tone_type:
             tone_type_dict['data'][tone.tone_id] = []
     return tone_type_dict
+
+    data: {
+        labels: ['1', '2', '3', '4', '5'],
+        datasets: [
+            {
+                label: "Videos Made",
+                backgroundColor: '#C3BABA',
+                data: [4, 5, 1, 10, 32, 2, 12]
+            },
+            {
+                label: "Subscription",
+                backgroundColor:'#595858',
+                data: [14, 15, 21, 0, 12, 4, 2]
+            }
+        ]
+    }
+
+def get_source_stats_over_time(source):
+    """get source stats dict over time"""
+    anger_dict = tone_dict_for_line_graph('anger')
+    fear_dict = tone_dict_for_line_graph('fear')
+    joy_dict = tone_dict_for_line_graph('joy')
+    sadness_dict = tone_dict_for_line_graph('sadness')
+    analytical_dict = tone_dict_for_line_graph('analytical')
+    confident_dict = tone_dict_for_line_graph('confident')
+    tentative_dict = tone_dict_for_line_graph('tentative')
+
+    source_articles = get_all_source_Articles(source)    
+    
+    for article_dict in source_articles:
+        # print("article_dict['scores']", article_dict['scores'])
+        for score_dict in article_dict['scores']:
+            # print('score_dict', score_dict)
+            if score_dict['tone'] == 'anger':
+                anger_dict['data'] += 1
+            elif score_dict['tone'] == 'fear':
+                fear_dict['data'] += 1
+            elif score_dict['tone'] == 'joy':
+                joy_dict['data'] += 1
+            elif score_dict['tone'] == 'sadness':
+                sadness_dict['data'] += 1
+            elif score_dict['tone'] == 'analytical':
+                analytical_dict['data'] += 1
+            elif score_dict['tone'] == 'confident':
+                confident_dict['data'] += 1
+            elif score_dict['tone'] == 'tentative':
+                tentative_dict['data'] += 1
+            else:
+                continue
+    return [anger_dict, fear_dict, joy_dict, sadness_dict, analytical_dict, confident_dict, tentative_dict]
+    # Articles_by_date = sorted(articles_list, key=sort_by_date, reverse=True)
+    # return Articles_by_date
+
+def tone_dict_for_line_graph(tone):
+    """create tone dict for source"""
+    color = TONE_COLORS_RGBA[tone]
+    tone_dict = {
+        'label': tone,
+        'backgroundColor': color,
+        'data': 0
+    }
+    return tone_dict
+
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

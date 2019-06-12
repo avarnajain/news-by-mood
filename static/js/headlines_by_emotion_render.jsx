@@ -67,7 +67,7 @@ const content = (
         </div>
         <div className="d-none d-sm-block">
             <div className="col">
-                <div className='heading'>
+                <div className='heading' id="all-articles-heading">
                     <Heading heading='/session-emotion.json'
                                 size='h3'
                                 filter='emotion'/>

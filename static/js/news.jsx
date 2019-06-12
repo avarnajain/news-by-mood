@@ -14,7 +14,8 @@ class News extends React.Component {
             data: [],
             currentNews:[],
             currentPage: null,
-            totalPages: null
+            totalPages: null, 
+            isLoading:false,
         };
     }
 
@@ -37,6 +38,9 @@ class News extends React.Component {
     getNews() {
         // console.log('getNews()')
         //.then() handles the response from the ajax call
+        this.setState({
+            isLoading: true,
+        })
         fetch(this.props.fetch_url)
         //tells it to handle response like a json object
         .then(response => response.json())
@@ -45,7 +49,8 @@ class News extends React.Component {
             //console.log(data);
             this.setState({
                 data: data,
-                currentNews: data.slice(0, 10)
+                currentNews: data.slice(0, 10),
+                isLoading: false,
             })
         });
     }
@@ -57,17 +62,6 @@ class News extends React.Component {
         const totalNews = this.state.data.length;
         // console.log('totalNews', totalNews);
         if (totalNews) {
-            if (totalNews === 0) {
-                return (
-                    <div className="container-fluid" id="no-articles-found-div">
-                        <div className="row">
-                            <div className="col">
-                             <h1> No Articles Found </h1>
-                            </div>
-                        </div>
-                    </div>
-                );
-            }
             const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
             const newsList = news.map((article) => 
                 <div key={article.article_id.toString()+'news'} className='row' id="news-article">
@@ -133,6 +127,17 @@ class News extends React.Component {
                 </div>
             )
         } else {
+            if (!this.state.isLoading) {
+                return (
+                    <div className="container-fluid" id="no-articles-found-div">
+                        <div className="row">
+                            <div className="col">
+                             <h1> No Articles Found </h1>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
             return (
                 <div id='spinner'>
                     <LoadingSpinner/>

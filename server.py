@@ -87,7 +87,7 @@ def show_headlines_by_chosen_language(chosen_language):
 def show_chosen_source_stats(chosen_source):
     """Get stats for chosen source"""
     # session['selected_source'] = chosen_source
-    # print('Selected source changed insode source-stats/<chosen_source>', session['chosen_source'])
+    # print("/source-stats/<chosen_source> session['selected_source']", session['chosen_source'])
     return render_template('source_stats.html')
 
 @app.route('/headlines-by-category')
@@ -346,7 +346,7 @@ def get_session_category():
 
 @app.route('/session-source.json')
 def get_session_source():
-    return jsonify(session['selected_source'].capitalize())
+    return jsonify(session['selected_source'])
 
 @app.route('/session-category-tone.json')
 def get_session_category_tone():

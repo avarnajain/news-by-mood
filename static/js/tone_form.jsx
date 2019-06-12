@@ -75,7 +75,7 @@ class ToneForm extends React.Component {
                 </div>
                 <form id='tone-form' onSubmit={this.handleSubmit} method='POST'>
                     <label>
-                        <select value='source' onChange={this.handleToneSelection}>
+                        <select onChange={this.handleToneSelection}>
                             {toneList}
                         </select> <br/>
                     </label>

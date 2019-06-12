@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import ReactDOM from 'react-dom';
 import App from './homepage.jsx';
 import PopoverButton from './popover_button.jsx'
+import SourceButton from './source_button.jsx'
 import '../css/homepage.css';
 import '../css/headlines.css';
 import SourceForm from './source_form.jsx';
@@ -20,8 +21,16 @@ const content = (
             </div>
         </div>
         <div className="row">
+            <div className="col" id="tertiary-heading">
+                <a href='/todays-headlines'>
+                    <h4>How does the world feel today?</h4>
+                </a>
+            </div>
+        </div>
+        <div className="row">
             <div className="col" id="secondary-heading">
-                <h3>Does it have a personality?</h3>
+                <h4>Does news have a personality?</h4> 
+                <h5>How does it make you feel? Is it opinionated?</h5>
             </div>
         </div>
         <div className="d-flex justify-content-center" 
@@ -88,15 +97,46 @@ const content = (
             <div className="d-block d-sm-none">
                 <div className="col">
                     <p>Click 
-                        <a href="/about">here</a> 
+                        <a href="/about"> here </a> 
                         to know more about each tone
                     </p>
                 </div>
             </div>
         </div>
         <div className="row">
-            <div className="col" id="news-today-heading">
-                <h4>Do news sources have peronalities too?</h4>
+            <div className="col" id="secondary-heading">
+                <div id="news-today-link" style={{padding:"10px"}}>
+                    <h4>Do news sources have peronalities too?</h4>
+                </div>
+            </div>
+        </div>
+        <div className="d-flex justify-content-center" 
+             id="source-bubbles">
+                <div className="row">
+                    <div className="col" id='bubble-tone'>
+                        <SourceButton 
+                            id="source-pop" 
+                            source='Fox News'
+                            type='source'/>
+                    </div>
+                    <div className="col"id='bubble-tone'>
+                        <SourceButton 
+                            id="source-pop"
+                            source='CNN'
+                            type='source'/>
+                    </div>
+                    <div className="col"id='bubble-tone'>
+                        <SourceButton 
+                            id="source-pop" 
+                            source='The New York Times'
+                            type='source'/>
+                    </div>
+                    <div className="col"id='bubble-tone'>
+                        <SourceButton  
+                            id="source-pop"
+                            source='Daily Mail'
+                            type='source'/>
+                    </div>
             </div>
         </div>
         <div className="d-flex justify-content-center">
@@ -108,11 +148,12 @@ const content = (
                 </div>
             </div>
         </div>
-        <div className="row">
-            <div className="col" id="tertiary-heading">
-                <a href='/todays-headlines'>
-                    <h4>How does the world feel today?</h4>
-                </a>
+        <div className="d-flex justify-content-center" 
+             id="tone-descripton-link">
+            <div className="d-block d-sm-none">
+                <div className="col">
+                    <p>Select one to find out!</p>
+                </div>
             </div>
         </div>
     </div>

@@ -71,7 +71,6 @@ class SourceForm extends React.Component {
                         <form id='source-form' onSubmit={this.handleSubmit} method='POST'>
                             <label>
                                 <select class="select-css"
-                                    value='source' 
                                     onChange={this.handleSourceSelection}>
                                     {sourceList}
                                 </select> <br/>

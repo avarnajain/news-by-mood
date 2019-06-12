@@ -75,7 +75,7 @@ class CategoryForm extends React.Component {
                     <div className="col-8">
                         <form id='category-form' onSubmit={this.handleSubmit} method='POST'>
                             <label>
-                                <select value='category' onChange={this.handleCategorySelection}>
+                                <select onChange={this.handleCategorySelection}>
                                     {categoryList}
                                 </select> <br/>
                             </label>

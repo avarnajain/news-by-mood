@@ -65,7 +65,7 @@ const content = (
               <br />
             </div>
             <div className="d-flex justify-content-center"> 
-                <div className="row">
+                <div className="row" id="all-articles-heading">
                     <Heading heading='/session-source.json'
                                 size='h3'
                                 filter='source'/>

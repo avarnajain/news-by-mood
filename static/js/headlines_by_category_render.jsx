@@ -110,7 +110,7 @@ const content = (
         </div>
         <div className="d-none d-sm-block">
             <div className="col">
-                <div className='heading'>
+                <div className='heading' id="all-articles-heading">
                     <Heading heading='/session-category.json'
                                     size='h3'
                                     filter='category-all-articles'/>

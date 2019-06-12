@@ -8,7 +8,6 @@ import Heading from './heading.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
 import {POPOVER_BODY} from './constants.jsx';
 import PopoverButton from './popover_button.jsx'
-import PopoverButtonPhone from './popover_button_phone.jsx'
 import '../css/headlines.css';
 // import '../css/index.css';
 
@@ -112,7 +111,8 @@ const content = (
             </div>
             <div className="d-flex justify-content-center">
                 <div className="row">
-                    <div style={{color:'grey'}}>
+                    <div id="all-articles-heading"
+                            style={{color:'grey'}}>
                         <h3>All articles for today</h3>
                     </div>
                 </div>

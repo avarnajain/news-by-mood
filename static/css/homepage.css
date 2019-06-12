@@ -14,7 +14,7 @@ h2, h3, h4, h5 {
     #heading h1 {
         text-align: center;
         font-size: 3rem;
-        font-family: 'BlackLetter';
+        font-family: sans-serif;
     }
 
     #secondary-heading h2 {
@@ -45,11 +45,6 @@ h2, h3, h4, h5 {
     color:grey;
 }
 
-@media (min-width: 696px) {
-  #tertiary-heading h4 {
-    padding-bottom: 1rem;
-  }
-}
 #tone-profile {
     margin-top: auto;
     margin-bottom: auto;
@@ -76,7 +71,7 @@ a {
     #heading h1 {
         text-align: center;
         font-size: 5rem;
-        font-family: 'BlackLetter';
+        font-family: sans-serif;
     }
     #secondary-heading h2 {
         font-size: 3rem;
@@ -90,13 +85,17 @@ a {
       font-size: 1.5rem;
       color:black;
     }
+    #tertiary-heading h4 {
+      padding-bottom: 0.5rem;
+      font-size: 2rem;
+    }
 }
 
 @media (max-width: 350px) {
     #heading h1 {
         text-align: center;
         font-size: 2rem;
-        font-family: 'BlackLetter';
+        font-family: sans-serif;
     }
     #secondary-heading h4 {
         font-size: 1rem;

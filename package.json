@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@material-ui/core": "^4.1.0",
     "@weknow/react-bubble-chart-d3": "^1.0.12",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",

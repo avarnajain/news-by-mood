@@ -116,13 +116,13 @@ const content = (
                     <div className="col" id='bubble-tone'>
                         <SourceButton 
                             id="source-pop" 
-                            source='Fox News'
+                            source='CNN'
                             type='source'/>
                     </div>
                     <div className="col"id='bubble-tone'>
                         <SourceButton 
                             id="source-pop"
-                            source='CNN'
+                            source='Fox News'
                             type='source'/>
                     </div>
                     <div className="col"id='bubble-tone'>
@@ -134,7 +134,7 @@ const content = (
                     <div className="col"id='bubble-tone'>
                         <SourceButton  
                             id="source-pop"
-                            source='Daily Mail'
+                            source='BBC'
                             type='source'/>
                     </div>
             </div>

@@ -23,8 +23,8 @@ h2, h3, h4, h5 {
     }
     #secondary-heading h5 {
       text-align: center;
-      font-size: 0.7rem;
-      color:grey;
+      font-size: 0.9rem;
+      color:black;
     }
 
     #tertiary-heading h3 {
@@ -87,7 +87,7 @@ a {
     }
     #secondary-heading h5 {
       text-align: center;
-      font-size: 0.7rem;
+      font-size: 1.5rem;
       color:grey;
     }
 }

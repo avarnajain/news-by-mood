@@ -102,6 +102,10 @@ def show_headlines_by_category():
 @app.route('/headlines-by-category/<chosen_category>')
 def show_headlines_by_category_query(chosen_category):
     """Display headlines for chosen emotion"""
+    session['selected_tone'] = ''
+    session['selected_emotion'] = ''
+    session['selected_language'] = ''
+    session['selected_source'] = ''
     return render_template('headlines_by_category.html')
 
 @app.route('/article/<chosen_article>')
@@ -116,6 +120,8 @@ def show_todays_headlines():
     """render news for today"""
     session['selected_emotion'] = ''
     session['selected_language'] = ''
+    session['selected_source'] = ''
+    session['selected_category'] = ''
     print("session['selected_emotion']", session['selected_emotion'], "session['selected_language']", session['selected_language'])
     return render_template('todays_headlines.html')
 

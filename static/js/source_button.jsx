@@ -25,7 +25,10 @@ class SourceButton extends React.Component {
       });
   }
   render() {
-    const source = this.props.source;
+    let source = this.props.source;
+    if (source == "BBC") {
+      source = "Bbc.com"
+    }
     const type = this.props.type;
     const urlBase = '/get-chosen-source';
     const divStyle = {
@@ -42,7 +45,7 @@ class SourceButton extends React.Component {
             id='Popover1' 
             type="button" 
             className="btn btn-default btn-circle btn-xl">
-            <b>{source}</b>
+            <b>{this.props.source}</b>
           </Button>
         </a>
       </div>

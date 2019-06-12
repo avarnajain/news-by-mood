@@ -144,7 +144,7 @@ const content = (
                 <div className="col">
                     <HomepageDropdownMenu fetch_url='/all-sources.json'
                                     post_url='/get-chosen-source'
-                                    filter_by='Select Source'/>
+                                    filter_by='Select A Different Source'/>
                 </div>
             </div>
         </div>

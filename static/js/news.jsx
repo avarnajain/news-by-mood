@@ -130,9 +130,9 @@ class News extends React.Component {
             if (!this.state.isLoading) {
                 return (
                     <div className="container-fluid" id="no-articles-found-div">
-                        <div className="row">
-                            <div className="col">
-                             <h1> No Articles Found </h1>
+                        <div className="d-flex justify-content-center">
+                            <div className="row">
+                             <h3> No Articles Found </h3>
                             </div>
                         </div>
                     </div>

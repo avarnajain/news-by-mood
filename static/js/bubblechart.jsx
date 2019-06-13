@@ -17,41 +17,72 @@ function Bubble(props) {
       })
     });
     // console.log('obj_list', obj_list);
-    return (
-      <div className="col-md-auto col-lg-auto" id="bubblechart">
-      <BubbleChart id='bubble-chart-jsx'
-      graph= {{
-        zoom: 0.4,
-        offsetX: 0.05,
-        offsetY: 0.01,
-      }}
-      width={600}
-      height={200}
-      padding={0} // optional value, number that set the padding between bubbles
-      showLegend={false} // optional value, pass false to disable the legend.
-      legendPercentage={20} // number that represent the % of with that legend going to use.
-      legendFont={{
-          family: 'Arial',
-          size: 12,
-          color: '#000',
-          weight: 'bold'
-      }}
-      showValue={false}
-      valueFont={{
-          family: 'Arial',
-          size: 9,
-          color: '#fff',
-          weight: 'bold',
-      }}
-      labelFont={{
-          family: 'Arial',
-          size: 14,
-          color: '#fff',
-          weight: 'bold',
-      }}
-      data={obj_list}
-    />
-    </div>)
+    if (window_width > 560) {
+      return (
+        <div className="col align-self-end" id="bubblechart-lg">
+        <BubbleChart id='bubble-chart-jsx'
+        graph= {{
+          zoom: 0.4,
+          offsetX: 0.05,
+          offsetY: 0.01,
+        }}
+        width={600}
+        height={200}
+        padding={0} // optional value, number that set the padding between bubbles
+        showLegend={false} // optional value, pass false to disable the legend.
+        legendPercentage={20} // number that represent the % of with that legend going to use.
+        legendFont={{
+            family: 'Arial',
+            size: 12,
+            color: '#000',
+            weight: 'bold'
+        }}
+        showValue={false}
+        valueFont={{
+            family: 'Arial',
+            size: 13,
+            color: '#fff',
+            weight: 'bold',
+        }}
+        labelFont={{
+            family: 'Arial',
+            size: 16,
+            color: '#fff',
+            weight: 'bold',
+        }}
+        data={obj_list}
+      />
+      </div>)
+    } else if (window_width <= 560) {
+      return (
+        <div className="col align-self-end" id="bubblechart-xs">
+        <BubbleChart id='bubble-chart-jsx'
+        graph= {{
+          zoom: 0.4,
+          offsetX: 0.02,
+          offsetY: 0.01,
+        }}
+        width={300}
+        height={150}
+        padding={0} // optional value, number that set the padding between bubbles
+        showLegend={false} // optional value, pass false to disable the legend.
+        legendPercentage={20} // number that represent the % of with that legend going to use.
+        valueFont={{
+            family: 'Arial',
+            size: 7,
+            color: '#fff',
+            weight: 'bold',
+        }}
+        labelFont={{
+            family: 'Arial',
+            size: 10,
+            color: '#fff',
+            weight: 'bold',
+        }}
+        data={obj_list}
+      />
+      </div>)
+    }
 }
 
 export default Bubble;

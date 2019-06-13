@@ -87,15 +87,15 @@ class News extends React.Component {
                             </div>
                         </div>
                         <div className="row" id="news-img-bubble-row">
-                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 order-lg-2 order-md-2 order-sm-2 order-xs-1" id="news-bubble-col">
+                            <div className="col" id="news-img-col">
+                                <img src={article.image_url} alt="img" className="img-thumbnail"/>
+                            </div>
+                            <div className="col" id="news-bubble-col">
                                 <div className="row" id='news-bubble-row'>
-                                    <div className="col">
+                                    <div className="col bubble-col">
                                         <Bubble tone_data={article.scores}/>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 order-lg-1 order-md-1 order-sm-1 order-xs-2" id="news-img-col">
-                                <img src={article.image_url} alt="img" className="img-thumbnail"/>
                             </div>
                         </div>
                     </div>

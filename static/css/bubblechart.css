@@ -1,7 +1,27 @@
 /*#bubble-chart-jsx {
     box-shadow: 2px 2px 2px grey;
 }*/
-
+/*
 circle {
     border-color: black;
+}*/
+
+/*#bubblechart svg {
+    padding-left: 40px;
+}*/
+
+#bubblechart-lg svg {
+    height: 250px;
+    width: 300px;
 }
+
+#bubblechart-xs svg {
+    height: 150px;
+    width: 150px;
+}
+/*#bubble-chart-jsx {
+    display: inline !important;
+    height: 200;
+    width: 100;
+}
+*/

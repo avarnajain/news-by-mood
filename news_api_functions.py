@@ -28,7 +28,7 @@ def get_articles_add_to_db():
             Article_added = add_Article_to_db(article)
             add_Article_Category_to_db(category, Article_added)
 
-        print(('Category {} completed (70 per category)').format(category))
+        print(('Category {} completed (10 per category)').format(category))
 
 
 def get_articles_by_category(category, pageSize=1):

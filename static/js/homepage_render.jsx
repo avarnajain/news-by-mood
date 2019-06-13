@@ -97,7 +97,7 @@ const content = (
             <div className="d-block d-sm-none">
                 <div className="col">
                     <p>Click 
-                        <a href="/about"> here </a> 
+                        <a href={`/about#tone-table`}> here </a> 
                         to know more about each tone
                     </p>
                 </div>
@@ -144,7 +144,7 @@ const content = (
                 <div className="col">
                     <HomepageDropdownMenu fetch_url='/all-sources.json'
                                     post_url='/get-chosen-source'
-                                    filter_by='Select A Different Source'/>
+                                    filter_by='Select a Different Source'/>
                 </div>
             </div>
         </div>

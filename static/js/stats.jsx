@@ -41,7 +41,7 @@ class Stats extends React.Component {
             if (stats[key]['filter'] == filter_ && filter_ != 'None' && filter_ != 'total') {
                 const dict = stats[key]['data'];
                 // console.log('dict', dict);
-                console.log('rendering piechart');
+                // console.log('rendering piechart');
                 // console.log('dict', dict);
                 return (
                     <PieChart key={key}

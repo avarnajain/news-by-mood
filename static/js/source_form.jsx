@@ -70,7 +70,7 @@ class SourceForm extends React.Component {
         return (
                         <form id='source-form' onSubmit={this.handleSubmit} method='POST'>
                             <label>
-                                <select class="select-css"
+                                <select className="select-css"
                                     onChange={this.handleSourceSelection}>
                                     {sourceList}
                                 </select> <br/>

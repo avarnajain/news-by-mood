@@ -36,7 +36,7 @@ class SourceButton extends React.Component {
       borderColor: 'rgba(191, 191, 191, 1)',
       color:'white'
     };
-    console.log('url', urlBase, '/', source)
+    // console.log('url', urlBase, '/', source)
     return (
       <div id="source-button">
         <a href={`${urlBase}/${source}`}>

@@ -32,7 +32,7 @@ class DropdownMenu extends React.Component {
 
     handleSubmit(evt){
         // console.log('evt', evt);
-        console.log('evt:', evt)
+        // console.log('evt:', evt)
         const selected_dropdown = evt.target.value;
         //prevents from posting with flask request
         evt.preventDefault();
@@ -71,7 +71,7 @@ class DropdownMenu extends React.Component {
     render() {
         const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
         const filters = this.state.data;
-        console.log('filters', filters);
+        // console.log('filters', filters);
         const dropdownList = filters.map((filter) =>
             <option key={filter.filter_id.toString()} 
                            value={filter.filter_id}

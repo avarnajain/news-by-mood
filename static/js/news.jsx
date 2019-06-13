@@ -82,7 +82,7 @@ class News extends React.Component {
                                     <b> • </b> 
                                     {article.published.toString().slice(0, 17)}
                                     <b> • </b>
-                                    <a href={`/article/${article.article_id}`} target="_blank">Share</a>
+                                    <a href={`/article/${article.article_id}`} target="_blank">Share Link</a>
                                 </h6>
                             </div>
                         </div>

@@ -5,7 +5,7 @@ import {TONE_COLORS} from './constants.jsx'
 import '../css/bubblechart.css';
 function Bubble(props) {
     const window_width = window.innerWidth;
-    console.log('width', window_width);
+    // console.log('width', window_width);
     const tones = props.tone_data;
     // console.log('tones', tones);
     const obj_list = [];

@@ -30,7 +30,7 @@ class Heading extends React.Component {
         const size = this.props.size;
         const filter = this.props.filter;
         if (filter == 'tone-filter' || filter == 'category-filter') {
-            console.log(heading, 'heading')
+            // console.log(heading, 'heading')
             if (heading) {
                     return (
                     <div style={{color:'grey'}}>

@@ -70,24 +70,18 @@ class CategoryForm extends React.Component {
             <option key={category.category_id.toString()} value={category.category_id}>{category.category_id}</option>   
         );
         return (
-            <div className="container-fluid">
+            <form id='category-form' onSubmit={this.handleSubmit} method='POST'>
+                <label>
+                    <select onChange={this.handleCategorySelection}>
+                        {categoryList}
+                    </select> <br/>
+                </label>
                 <div className="row">
                     <div className="col">
-                        <form id='category-form' onSubmit={this.handleSubmit} method='POST'>
-                            <label>
-                                <select onChange={this.handleCategorySelection}>
-                                    {categoryList}
-                                </select> <br/>
-                            </label>
-                            <div className="row">
-                                <div className="col">
-                                    <input type="submit" value="Submit"/><br/>
-                                </div>
-                            </div>
-                        </form>
+                        <input type="submit" value="Submit"/><br/>
                     </div>
                 </div>
-            </div>
+            </form>   
         )
     };
 }

@@ -13,7 +13,7 @@ h2, h3, h4, h5 {
 @media (max-width: 695px) {
     #heading h1 {
         text-align: center;
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-family: sans-serif;
     }
 
@@ -21,10 +21,12 @@ h2, h3, h4, h5 {
       text-align: center;
       font-size: 1rem;
     }
-    #secondary-heading h5 {
+    #secondary-heading h4 {
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color:black;
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     #tertiary-heading h3 {
@@ -37,7 +39,7 @@ h2, h3, h4, h5 {
     }
 
     #tertiary-heading h4 {
-      padding-bottom: 10px;
+      padding-bottom: 1rem;
     }
 }
 

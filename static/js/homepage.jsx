@@ -6,6 +6,7 @@ import ToneForm from './tone_form.jsx';
 import SourceForm from './source_form.jsx';
 import SideBar from "./sidebar.jsx";
 import Backdrop from "./backdrop.jsx";
+import SocialFollow from './social_follow.jsx';
 // import LoadingSpinner from './spinner.jsx';
 
 class App extends React.Component {
@@ -49,6 +50,13 @@ class App extends React.Component {
                 <main style={{marginTop: '64px'}}>
                     <h1> {this.props.content} </h1>
                 </main>
+                <div className="d-flex justify-content-center">
+                    <div className="row">
+                        <div className="col">
+                            <SocialFollow/>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

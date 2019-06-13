@@ -29,8 +29,7 @@ const content = (
         </div>
         <div className="row">
             <div className="col" id="secondary-heading">
-                <h4>Does news have a personality?</h4> 
-                <h5>How does it make you feel? Is it opinionated?</h5>
+                <h4>What emotional and language cues lie in your news?</h4>
             </div>
         </div>
         <div className="d-flex justify-content-center" 
@@ -106,7 +105,7 @@ const content = (
         <div className="row">
             <div className="col" id="secondary-heading">
                 <div id="news-today-link" style={{padding:"10px"}}>
-                    <h4>Do news sources have peronalities too?</h4>
+                    <h4>Do news sources have personalities too?</h4>
                 </div>
             </div>
         </div>

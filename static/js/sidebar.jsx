@@ -19,7 +19,7 @@ const SideBar = props => {
             <ul className='sidebar_content'>
                 <a href="/">Home</a>
                 <a href="/about">About</a>
-                <a href="/todays-headlines">This Just In</a>
+                <a href="/todays-headlines">The World Today</a>
                 <h3>Source Personality</h3>
                 <SourceForm fetch_url='/all-sources.json' 
                             post_url='/get-chosen-source'/>

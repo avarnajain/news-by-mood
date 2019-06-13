@@ -1,0 +1,32 @@
+a.social {
+    /*margin: 0 2rem;*/
+    transition: transform 250ms;
+    display: inline-block;
+}
+
+a.social:hover,
+a.social:active {
+    transform: translateY(-2px);
+}
+
+a {
+    color: grey;
+}
+
+a.github:hover,
+a.github:active {
+    color: black;
+}
+a.twitter:hover,
+a.twitter:active {
+    color: #49a1eb;
+}
+a.linkedin:hover,
+a.linkedin:active {
+    color: #0077b5;
+}
+
+.social-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}

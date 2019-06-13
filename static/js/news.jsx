@@ -104,16 +104,16 @@ class News extends React.Component {
             return (
                 <div className="container-fluid">
                     <div className="row justify-content-end">
-                        <div className="p-2">
+                        <div className="p-2 page-of-page">
                             { currentPage && (
                                 <span className="current-page text-secondary">
-                                    Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
+                                    Page <span className="font-weight-bold">{ currentPage }</span> of <span className="font-weight-bold">{ totalPages }</span>
                                 </span>
                             ) }
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col align-self-center">
                             {newsList}
                         </div>
                     </div>

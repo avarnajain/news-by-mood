@@ -72,7 +72,7 @@ class CategoryForm extends React.Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col">
                         <form id='category-form' onSubmit={this.handleSubmit} method='POST'>
                             <label>
                                 <select onChange={this.handleCategorySelection}>
@@ -80,7 +80,7 @@ class CategoryForm extends React.Component {
                                 </select> <br/>
                             </label>
                             <div className="row">
-                                <div className="col-8">
+                                <div className="col">
                                     <input type="submit" value="Submit"/><br/>
                                 </div>
                             </div>

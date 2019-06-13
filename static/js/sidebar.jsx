@@ -19,19 +19,19 @@ const SideBar = props => {
             <ul className='sidebar_content'>
                 <a href="/">Home</a>
                 <a href="/about">About</a>
-                <a href="/todays-headlines">The World Today</a>
-                <h3>What is this news source's personality?</h3>
+                <a href="/todays-headlines">This Just In</a>
+                <h3>Source Personality</h3>
                 <SourceForm fetch_url='/all-sources.json' 
                             post_url='/get-chosen-source'/>
-                <h3>By Emotion</h3>
+                <h3>Get News By Emotion</h3>
                 <ToneForm fetch_url='/emotional-tones.json' 
                           post_url='/get-chosen-emotion'
                           redirect='/headlines-by-emotion'/>    
-                <h3>By Opinion</h3>
+                <h3>Get News By Opinion</h3>
                 <ToneForm fetch_url='/language-tones.json' 
                           post_url='/get-chosen-language'
                           redirect='/headlines-by-language'/>
-                <h3>By Category</h3>
+                <h3>Get News By Category</h3>
                 <CategoryForm fetch_url='/all-categories.json'
                               post_url='/get-chosen-category'
                               redirect='/headlines-by-category'/>

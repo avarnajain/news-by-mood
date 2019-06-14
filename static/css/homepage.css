@@ -61,10 +61,6 @@ a {
     color:grey;
 }
 
-#tone-descripton-link p {
-  font-size: 10px;
-  padding-top: 10px;
-}
 /* To hide sidebar in small screen views */
 @media (min-width: 696px) {
     .side-bar {

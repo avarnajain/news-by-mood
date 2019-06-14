@@ -130,6 +130,17 @@ const content = (
                 </div>
             </div>
         </div>
+        <div className="d-flex justify-content-center" 
+             id="tone-descripton-link">
+            <div className="d-block d-sm-none">
+                <div className="col">
+                    <p>Click 
+                        <a href={`/about#tone-table`}> here </a> 
+                        to know more about each tone
+                    </p>
+                </div>
+            </div>
+        </div>
         <div className="d-none d-sm-block">
             <div className="col">
                 <div className='heading' id="all-articles-heading">

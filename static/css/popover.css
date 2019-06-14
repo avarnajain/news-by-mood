@@ -3,6 +3,14 @@
     color: '#58595B'
 }
 
+#tone-descripton-link p {
+  font-size: 12px;
+  padding-top: 10px;
+}
+a {
+    color:grey;
+}
+
 @media (min-width:841px) {
     .btn-circle {
       width: 120px;

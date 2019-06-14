@@ -32,8 +32,8 @@ class SourceButton extends React.Component {
     const type = this.props.type;
     const urlBase = '/get-chosen-source';
     const divStyle = {
-      backgroundColor: "rgba(191, 191, 191, 1)",
-      borderColor: 'rgba(191, 191, 191, 1)',
+      backgroundColor: "rgba(0, 0, 0, 0.85)",
+      borderColor: 'rgba(0, 0, 0, 0.85)',
       color:'white'
     };
     // console.log('url', urlBase, '/', source)

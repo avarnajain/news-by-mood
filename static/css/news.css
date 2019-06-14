@@ -9,6 +9,14 @@
     text-align: left;
     position: relative;
 }
+.page-link {
+    color: black;
+}
+.page-item.active .page-link {
+    background-color: black;
+    border-color: black;
+}
+
 
 @media (max-width: 560px) {
     #news-article img {
@@ -49,10 +57,11 @@
         /*margin-right: 10%;*/
 
         li.page-item.active {
+            background-color: black;
             a.page-link {
-                color: saturate(darken($base-color, 50%), 5%) !important;
-                background-color: saturate(lighten($base-color, 7.5%), 2.5%) !important;
-                border-color: $base-color !important;
+                /*color: saturate(darken($base-color, 50%), 5%) !important;*/
+                /*background-color: saturate(lighten($base-color, 7.5%), 2.5%) !important;*/
+                /*border-color: $base-color !important;*/
             }
         }
 
@@ -61,8 +70,8 @@
             min-width: 3.5rem;
             text-align: center;
             box-shadow: none !important;
-            border-color: $base-color !important;
-            color: saturate(darken($base-color, 30%), 10%);
+            /*border-color: $base-color !important;*/
+            /*color: saturate(darken($base-color, 30%), 10%);*/
             font-weight: 900;
             
 
@@ -103,6 +112,7 @@
         text-align: left;
         font-family: sans-serif;
     }
+
     ul.pagination {
         margin-top: 0;
         margin-bottom: 0;
@@ -112,12 +122,13 @@
         padding-bottom: 0;
         padding-top: 0;
         margin-right: 10%;
+        /*background-color: black;*/
 
         li.page-item.active {
             a.page-link {
-                color: saturate(darken($base-color, 50%), 5%) !important;
-                background-color: saturate(lighten($base-color, 7.5%), 2.5%) !important;
-                border-color: $base-color !important;
+                /*color: saturate(darken($base-color, 50%), 5%) !important;*/
+                /*background-color: saturate(lighten($base-color, 7.5%), 2.5%) !important;*/
+                /*border-color: $base-color !important;*/
             }
         }
 
@@ -126,8 +137,8 @@
             min-width: 3.5rem;
             text-align: center;
             box-shadow: none !important;
-            border-color: $base-color !important;
-            color: saturate(darken($base-color, 30%), 10%);
+            /*border-color: $base-color !important;*/
+            /*color: saturate(darken($base-color, 30%), 10%);*/
             font-weight: 1100;
             
 

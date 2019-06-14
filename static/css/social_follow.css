@@ -27,3 +27,11 @@ a.linkedin:active {
     margin-top: 5rem;
     margin-bottom: 5rem;
 }
+
+#about-social-col .social-container .fa-2x{
+    font-size: 1em;
+}
+#about-social-col .social-container {
+    margin-top: 0;
+    margin-bottom: 1em;
+}

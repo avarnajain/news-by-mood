@@ -5,11 +5,26 @@ import App from './homepage.jsx';
 // import PopoverButton from './popover_button.jsx'
 import SimpleTable from './tones_table.jsx';
 import '../css/about.css';
+import SocialFollow from './social_follow.jsx';
+import '../css/social_follow.css';
+
 const content = (
     <div className="container-fluid">
             <div className="justify-content-center row">
                 <div className="col heading">
-                    <h2 > About News By Mood</h2>
+                    <h2>About News By Mood</h2>
+                </div>
+            </div>
+            <div className="d-flex justify-content-center">
+                <div className="row about-created-by">
+                    <h5>Created by Avarna Jain</h5>
+                </div>
+            </div>
+            <div className="d-flex justify-content-center">
+                <div className="row" id="about-social-row">
+                    <div className="col" id="about-social-col">
+                        <SocialFollow />
+                    </div>
                 </div>
             </div>
             <div className="row">

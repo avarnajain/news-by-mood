@@ -47,7 +47,7 @@ class Heading extends React.Component {
             return (
                 <div id="heading">
                     <h3 id="heading-tone" 
-                        style={{color:'grey'}}>
+                        style={{color:'black'}}>
                         All articles with the tone {heading}
                     </h3>
                 </div>
@@ -56,7 +56,7 @@ class Heading extends React.Component {
             return (
                 <div id="heading">
                     <h3 id="heading-category" 
-                        style={{color:'grey'}}>
+                        style={{color:'black'}}>
                         All articles within the {heading} category
                     </h3>
                 </div>
@@ -77,7 +77,7 @@ class Heading extends React.Component {
         } else if (size=='h3' && filter == 'source') {
             return (
                 <div id="heading"
-                    style={{color:'grey'}}>
+                    style={{color:'black'}}>
                     <h3>All articles for source {heading}</h3>
                 </div>
             )

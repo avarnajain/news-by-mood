@@ -29,7 +29,7 @@ const content = (
         </div>
         <div className="row">
             <div className="col" id="secondary-heading">
-                <h4>What emotional and language cues lie in your news?</h4>
+                <h4>What emotional and language tones are conveyed in your news?</h4>
             </div>
         </div>
         <div className="d-flex justify-content-center" 

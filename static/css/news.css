@@ -41,11 +41,11 @@
     ul.pagination {
         margin-top: 0;
         margin-bottom: 0;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);*/
         font-size: 0.5rem;
         float: right;
-        padding-bottom: 5px;
-        padding-top: 5px;
+        padding-bottom: 0;
+        padding-top: 0;
         /*margin-right: 10%;*/
 
         li.page-item.active {
@@ -106,11 +106,11 @@
     ul.pagination {
         margin-top: 0;
         margin-bottom: 0;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);*/
         font-size: 1rem;
         float: right;
-        padding-bottom: 5px;
-        padding-top: 5px;
+        padding-bottom: 0;
+        padding-top: 0;
         margin-right: 10%;
 
         li.page-item.active {

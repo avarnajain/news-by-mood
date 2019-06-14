@@ -78,7 +78,7 @@ class Heading extends React.Component {
             return (
                 <div id="heading"
                     style={{color:'black'}}>
-                    <h3>All articles for source {heading}</h3>
+                    <h3>All articles from {heading}</h3>
                 </div>
             )
         }else if (size == 'h5') {

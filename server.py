@@ -2,7 +2,8 @@
 # npm run start
 
 # shell command to run AWS 
-# ssh -i ~/.ssh/aws.pem ubuntu@34.214.50.15
+# static IP 
+# ssh -i ~/.ssh/aws.pem ubuntu@52.41.7.186
 
 #shell commands to update git repo on server
 # ssh -i ~/.ssh/aws.pem ubuntu@34.214.50.15

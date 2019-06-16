@@ -40,24 +40,32 @@ const content = (
                         how news articles can elicit specific emotional 
                         responses within their readers and give 
                         these readers an “emotional profile” of the article 
-                        before they read it.
+                        beforehand. 
+                        It also provides users with a "source personality" of 
+                        each source found on the website, which 
+                        is meant to be a snapshot of the kinds of 
+                        tones found in articles written by that source. 
+                        This is an effort to make more clear the subjective 
+                        and objective tendencies of sources to write articles 
+                        that make their readers feel a certain way, or how these 
+                        sources present their data and conclusions 
+                        (or lack thereof).
                     </h6>
                     <br />
                     <h6> 
                         <u>How it works</u>   
                         <br />
-                        News By Mood pulls in approximately 100 articles a 
-                        day, across various news sources, within the United 
-                        States. A user can can filter these articles by the 
-                        emotional (anger, fear, joy, sadness) or opionion/language 
-                        (analytical, confident, tentative) tones, or by the category 
-                        of news they want to read. They can also evaluate the 
-                        "personality profiles” of news sources to see what 
-                        types of articles the source puts out. This is an effort 
-                        to make more clear the subjective and objective tendencies 
-                        of sources to write articles that make their readers 
-                        feel a certain way, or how these sources present 
-                        their data and conclusions (or lack thereof).
+                        News By Mood pulls in approximately 70 articles a day, 
+                        across various news sources within the United States and abroad. 
+                        These articles are web scraped for their content, which is then
+                        processed by the sentimental analyzer to recognize the dominant 
+                        emotional (anger, fear, joy, sadness) 
+                        and language (analytical, confident, tentative) 
+                        tones present in them. 
+                        A user can then filter these articles by tone, or by 
+                        the category of news they want to read. They can also 
+                        evaluate the personality profiles of news sources 
+                        to see what types of articles the source generally puts out.
                         <br/>
                     </h6>
                     <h6>
@@ -75,8 +83,9 @@ const content = (
                         <a href="https://cloud.ibm.com/apidocs/tone-analyzer"
                         > IBM Watson Tone Analyzer</a>
                         <br/>
-                        Python, Javascript, React, AJAX, Webpack, Bootstrap, 
-                        Postgres, SQL Alchemy,  Chart.js, D3, Beautiful Soup 
+                        Python, Javascript, React, Flask, AJAX, JQuery, Webpack, 
+                        Postgres, SQL Alchemy, Chart.js, Beautiful Soup,
+                        Bootstrap, CSS.
                     </h6>
                     <h6>
                         <u>Disclaimer</u><br />
@@ -102,9 +111,9 @@ const content = (
                             target="_blank"
                             > IBM Watson Tone Analyzer </a>
                             describes the tones returned from the linguistics 
-                            analysis with the following definitions.
+                            analysis with the above definitions.
                             Each tone is returned with a score 
-                            that ranges between 0-1. 
+                            that ranges between 0 and 1. 
                             The closer to 1, the more dominant the score. 
                             All scores below 0.5 are excluded. 
                             Additionally, each tone is independent of one-another, 

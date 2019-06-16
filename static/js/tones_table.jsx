@@ -25,7 +25,7 @@ const rows = [
             POPOVER_BODY['joy']),
   createData(<PopoverButton tone='Sadness' type='emotion'/>, 
             'Emotional', 
-            POPOVER_BODY['fear']),
+            POPOVER_BODY['sadness']),
   createData(<PopoverButton tone='Analytical' type='language'/>, 
             'Language', 
             POPOVER_BODY['analytical']),

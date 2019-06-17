@@ -109,21 +109,21 @@ class Pagination extends Component {
         // console.log('handleClick page', page);
         evt.preventDefault();
         this.gotoPage(page);
-        // console.log('scroll');
+        console.log('scroll');
         window.scrollTo(0, 0);
     }
 
     handleMoveLeft = evt => {
         evt.preventDefault();
         this.gotoPage(this.state.currentPage - (this.pageNeighbours * 2) - 1);
-        // console.log('scroll left');
+        console.log('scroll left');
         window.scrollTo(0, 0);
     }
 
     handleMoveRight = evt => {
         evt.preventDefault();
         this.gotoPage(this.state.currentPage + (this.pageNeighbours * 2) + 1);
-        // console.log('scroll right');
+        console.log('scroll right');
         window.scrollTo(0, 0);
     }
 

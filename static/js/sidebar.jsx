@@ -20,14 +20,14 @@ const SideBar = props => {
                 <a href="/">Home</a>
                 <a href="/about">About</a>
                 <a href="/todays-headlines">The World Today</a>
-                <h3>Source Personality</h3>
+                <h3>Get Source Personality</h3>
                 <SourceForm fetch_url='/all-sources.json' 
                             post_url='/get-chosen-source'/>
                 <h3>Get News By Emotion</h3>
                 <ToneForm fetch_url='/emotional-tones.json' 
                           post_url='/get-chosen-emotion'
                           redirect='/headlines-by-emotion'/>    
-                <h3>Get News By Opinion</h3>
+                <h3>Get News By Language</h3>
                 <ToneForm fetch_url='/language-tones.json' 
                           post_url='/get-chosen-language'
                           redirect='/headlines-by-language'/>

@@ -37,7 +37,7 @@ const toolbar = props => (
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              By Opinion
+              By Language
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <DropdownItems fetch_url='/language-tones.json'
@@ -59,7 +59,7 @@ const toolbar = props => (
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle select-source" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Source Statistics
+              Source Personality
             </a>
             
             <div id='scrollable-dropdown' className="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdownMenuLink">

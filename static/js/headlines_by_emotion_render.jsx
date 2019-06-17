@@ -7,7 +7,6 @@ import Heading from './heading.jsx';
 import DropdownMenu from './dropdownMenu.jsx';
 import '../css/headlines.css';
 import PopoverButton from './popover_button.jsx'
-// import PopoverButtonPhone from './popover_button_phone.jsx'
 import {POPOVER_BODY} from './constants.jsx';
 
 const content = (

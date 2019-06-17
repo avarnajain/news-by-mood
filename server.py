@@ -113,6 +113,8 @@ def show_headlines_by_category_query(chosen_category):
 def show_chosen_article(chosen_article):
     """Display infor for chosen article"""
     session['selected_article'] = chosen_article
+    session['selected_emotion'] = ''
+    session['selected_language'] = ''
     print("session['selected_article']", session['selected_article'])
     return render_template('article.html')
 

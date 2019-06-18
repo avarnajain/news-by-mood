@@ -70,11 +70,11 @@ const content = (
                     </h6>
                     <h6>
                         <u>Future Ideas</u><br />
-                        It would interesting to see how different sources
+                        It will be interesting to see how different sources
                         rank based on their overall tone profiles. 
                         To make it more statistically significant, it would 
-                        be useful to incorporate more news from multiple 
-                        APIs, in order to provide a 
+                        be useful to incorporate more news articles from multiple 
+                        APIs, in order to provide a better, more 
                         well-rounded view of each source’s personality.     
                     </h6>
                     <h6>
@@ -91,8 +91,8 @@ const content = (
                         <u>Disclaimer</u><br />
                         The approximations of the tone analyzer are not perfect. 
                         Aditionally, the website pulls in a small number of 
-                        articles from a source, and is therefore only meant 
-                        to be a snapshot of the source and not entirely 
+                        articles from each source, and is therefore only meant 
+                        to be a snapshot of its personality and not entirely 
                         representative of all their work.
                     </h6>
                 </div>

@@ -1,4 +1,5 @@
 # News By Mood
+# newsbymood.com
 
 The goal behind News By Mood was to understand how news articles can elicit specific emotional responses within their readers and give these readers an “emotional profile” of the article beforehand. It also provides users with a "source personality" of each source found on the website, which is meant to be a snapshot of the kinds of tones found in articles written by that source. 
 
@@ -25,8 +26,7 @@ Meanings of Tones as described by the IBM API
 ![](./gifs/popovers.gif)
 
 ### News Articles
-Bubblechart using @weknow/react-bubble-chart-d3
-Pagination with the help of - https://scotch.io/tutorials/build-custom-pagination-with-react
+Bubblechart using @weknow/react-bubble-chart-d3 and Pagination with the help of the following tutorial- https://scotch.io/tutorials/build-custom-pagination-with-react
 
 ![](./gifs/news.gif)
 
@@ -36,16 +36,10 @@ Pie charts using react-chartjs-2
 ![](./gifs/sources.gif)
 
 ### Phone Mode
-Responsive sizing with react-bootstrap
-Lots of @media queries
+Responsive sizing with react-bootstrap and lots of media queries
 
 ![](./gifs/phone.gif)
 
-## Hope you liked my website!
-
-# newsbymood.com
-
-
-
+### Hope you liked my website!
 
 

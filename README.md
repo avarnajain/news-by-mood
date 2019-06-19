@@ -13,9 +13,39 @@ Using Amazon Web Services And Google Domains
 
 ## How It Works
 
-### Meanings of Tones as described by the IBM API
-Popovers made using the Popover component from the reactstrap module
+### Toolbar
+Made with react-bootstrap
+
+![](./gifs/toolbar.gif)
+
+### Popovers
+Made using the Popover component from the reactstrap module
+Meanings of Tones as described by the IBM API
 
 ![](./gifs/popovers.gif)
+
+### News Articles
+Bubblechart using @weknow/react-bubble-chart-d3
+Pagination with the help of - https://scotch.io/tutorials/build-custom-pagination-with-react
+
+![](./gifs/news.gif)
+
+### Source Personalities
+Pie charts using react-chartjs-2
+
+![](./gifs/sources.gif)
+
+### Phone Mode
+Responsive sizing with react-bootstrap
+Lots of @media queries
+
+![](./gifs/phone.gif)
+
+## Hope you liked my website!
+
+# newsbymood.com
+
+
+
 
 

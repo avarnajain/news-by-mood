@@ -19,8 +19,7 @@ Made with react-bootstrap
 ![](./gifs/toolbar.gif)
 
 ### Popovers
-Made using the Popover component from the reactstrap module
-Meanings of Tones as described by the IBM API
+Made with the reactstrap module. Meanings of tones as described by the IBM Watson Tone Analyzer.
 
 ![](./gifs/popovers.gif)
 

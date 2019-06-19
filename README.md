@@ -11,7 +11,11 @@ Python, Javascript, React, Flask, AJAX, JQuery, Webpack, Postgres, SQL Alchemy, 
 
 Using Amazon Web Services And Google Domains
 
-### Screenshots
+## How It Works
 
+### Meanings of Tones as described by the IBM API
+Popovers made using the Popover component from the reactstrap module
+
+![](./gifs/popovers.gif)
 
 

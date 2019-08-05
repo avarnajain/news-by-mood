@@ -14,7 +14,7 @@ def get_article_body(url):
         article_body = format_p_string(full_html_str)
     else:
         return []
-    return article_body
+    # return article_body
 
 def fetch_article(url):
     """given the url, fetch the news article and parse html"""
@@ -33,6 +33,7 @@ def find_p_tags(soup):
     text_list = []
     counter = 0
     for tag in soup.find_all('p'):
+        # print('_______', '\n', tag)
         text_list.append(str(tag))
         counter += 1
     html_string = " ".join(text_list)   
@@ -49,10 +50,11 @@ def format_p_string(html_string):
         counter+=1
         if character == '>':
             text = find_text(html_string, counter)
-            # print(counter, text)
+
             text_str+=text
     formatted_str = re.sub(' +', ' ', text_str).replace('\n', '')
     formatted_str.replace('&amp;apos', "'")
+    # print('_____', formatted_str, '\n')
     return formatted_str
 
 def find_text(html_string, start_from):
@@ -63,9 +65,11 @@ def find_text(html_string, start_from):
         stop_index = html_string.index('<', start_index)
         result = html_string[start_index:stop_index]
         # print(result)
-        if "\t" in result:
+        if "\t" in result or '@media' in result:
             return ""
+        print(result, '\n')
         return result
     except ValueError:
         return ""
+
 

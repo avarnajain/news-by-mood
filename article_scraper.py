@@ -67,7 +67,7 @@ def find_text(html_string, start_from):
         # print(result)
         if "\t" in result or '@media' in result:
             return ""
-        print(result, '\n')
+        # print(result, '\n')
         return result
     except ValueError:
         return ""

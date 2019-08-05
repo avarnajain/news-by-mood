@@ -14,7 +14,7 @@ def get_article_body(url):
         article_body = format_p_string(full_html_str)
     else:
         return []
-    # return article_body
+    return article_body
 
 def fetch_article(url):
     """given the url, fetch the news article and parse html"""

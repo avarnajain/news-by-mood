@@ -25,3 +25,8 @@ circle {
     width: 100;
 }
 */
+
+#no_text p {
+    text-align: center;
+    color: grey;
+}

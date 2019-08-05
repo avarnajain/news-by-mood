@@ -17,7 +17,17 @@ function Bubble(props) {
       })
     });
     // console.log('obj_list', obj_list);
+    // console.log(obj_list[0].label)
     if (window_width > 560) {
+      if (obj_list[0].label == 'no text' || obj_list[0].label == 'None') {
+        return (
+          <div className="col align-self-center" id="bubblechart-lg">
+            <div className="big_screen" id="no_text">
+              <p style={{height: 250}}>No Dominant Tones Found</p>
+            </div>
+          </div>
+        )
+      }
       return (
         <div className="col align-self-end" id="bubblechart-lg">
         <BubbleChart id='bubble-chart-jsx'
@@ -54,6 +64,15 @@ function Bubble(props) {
       />
       </div>)
     } else if (window_width <= 560) {
+      if (obj_list[0].label == 'no text' || obj_list[0].label == 'None') {
+        return (
+          <div className="col align-items-baseline" id="bubblechart-xs">
+            <div className="small_screen" id="no_text">
+              <p style={{height: 120}}>No Dominant Tones Found</p>
+            </div>
+          </div>
+        )
+      }
       return (
         <div className="col align-self-end" id="bubblechart-xs">
         <BubbleChart id='bubble-chart-jsx'

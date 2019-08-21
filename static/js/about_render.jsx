@@ -58,7 +58,7 @@ const content = (
                         News By Mood pulls in approximately 70 articles a day, 
                         across various news sources within the United States and abroad. 
                         These articles are web scraped for their content, which is then
-                        processed by the sentimental analyzer to recognize the dominant 
+                        processed by the sentiment analyzer to recognize the dominant 
                         emotional (anger, fear, joy, sadness) 
                         and language (analytical, confident, tentative) 
                         tones present in them. 

@@ -3,3 +3,5 @@ secrets.sh
 *.pyc
 node_modules
 news.sql
+cron_fetch_news.txt
+flask.log

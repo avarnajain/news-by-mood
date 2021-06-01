@@ -30,7 +30,7 @@ six==1.12.0
 soupsieve==1.9
 SQLAlchemy==1.3.2
 tzlocal==1.5.1
-urllib3==1.21.1
+urllib3==1.26.5
 watson-developer-cloud==2.8.1
 websocket-client==0.48.0
 Werkzeug==0.15.2
